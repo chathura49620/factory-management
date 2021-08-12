@@ -8,14 +8,14 @@ exports.create = (req,res)=>{
         return;
     }
 
-    // new user
+    // new category
     
     const cat = new category({
         categoryName : req.body.categoryName,
         status : req.body.status
     })
 
-    // save user in the database
+    // save category in the database
     cat
         .save(cat)
         .then(data => {
@@ -69,7 +69,7 @@ exports.update = (req,res) => {
     category.findByIdAndUpdate(id, req.body,{useFindAndModify:false})
     .then(data =>{
         if(!data){
-            res.status(400).send({message:"test"+ id});
+            res.status(400).send({message:"category is not found"});
         }else{
             res.send(data);
         }
