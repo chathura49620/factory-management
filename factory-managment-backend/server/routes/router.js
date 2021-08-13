@@ -17,4 +17,10 @@ route.get('/api/meterial-code/',contoller.materialCode.find);
 route.put('/api/meterial-code/',contoller.materialCode.update);
 route.delete('/api/meterial-code/',contoller.materialCode.delete);
 
+//Super Admin Factory Details APIs
+route.post('/api/factory-details/',contoller.factoryDetails.create);
+route.get('/api/factory-details/',contoller.factoryDetails.find);
+route.put('/api/factory-details/',contoller.factoryDetails.update);
+route.delete('/api/factory-details/',contoller.factoryDetails.delete);
+
 module.exports =route;
