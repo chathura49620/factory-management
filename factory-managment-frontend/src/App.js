@@ -1,21 +1,27 @@
 import './App.css';
 import Sidebar from './components/SuperAdmin/sideNav/Sidebar';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Overview from './pages/SuperAdmin/Overview';
-import { Reports, ReportsOne, ReportsTwo, ReportsThree } from './pages/SuperAdmin/Reports';
-import Team from './pages/SuperAdmin/Team';
+import BasicInfo from './pages/SuperAdmin/BasicInfo';
+import UserRoles from './pages/SuperAdmin/UserRoles';
+import UserList from './pages/SuperAdmin/UserList';
+import Categories from './pages/SuperAdmin/Categories';
+import ProductCodes from './pages/SuperAdmin/ProductCodes';
+import MaterialCodes from './pages/SuperAdmin/MaterialCodes';
+
+
+// import routes from './route'
 
 function App() {
   return (
     <Router>
       <Sidebar />
       <Switch>
-        <Route path='/overview' exact component={Overview} />
-        <Route path='/reports' exact component={Reports} />
-        <Route path='/reports/reports1' exact component={ReportsOne} />
-        <Route path='/reports/reports2' exact component={ReportsTwo} />
-        <Route path='/reports/reports3' exact component={ReportsThree} />
-        <Route path='/team' exact component={Team} />
+        <Route path='/basic-info' exact component={BasicInfo} />
+        <Route path='/user-roles' exact component={UserRoles} />
+        <Route path='/user-list' exact component={UserList} />
+        <Route path='/categories' exact component={Categories} />
+        <Route path='/product-codes' exact component={ProductCodes} />
+        <Route path='/metirial-codes' exact component={MaterialCodes} />
       </Switch>
     </Router>
   );
