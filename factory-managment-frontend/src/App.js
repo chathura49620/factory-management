@@ -1,5 +1,5 @@
 import './App.css';
-import Sidebar from './components/SuperAdmin/sideNav/Sidebar';
+import SuperAdminSideNav from './components/SuperAdmin/sideNav/Sidebar';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import BasicInfo from './pages/SuperAdmin/BasicInfo';
 import UserRoles from './pages/SuperAdmin/UserRoles';
@@ -14,7 +14,7 @@ import MaterialCodes from './pages/SuperAdmin/MaterialCodes';
 function App() {
   return (
     <Router>
-      <Sidebar />
+            <SuperAdminSideNav />
       <Switch>
         <Route path='/basic-info' exact component={BasicInfo} />
         <Route path='/user-roles' exact component={UserRoles} />
