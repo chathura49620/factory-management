@@ -23,4 +23,10 @@ route.get('/api/factory-details/',contoller.factoryDetails.find);
 route.put('/api/factory-details/',contoller.factoryDetails.update);
 route.delete('/api/factory-details/',contoller.factoryDetails.delete);
 
+//Employee Leave Details APIs
+route.post('/api/leave-details/',contoller.leaveDetails.create);
+route.get('/api/leave-details/',contoller.leaveDetails.find);
+route.put('/api/leave-details/',contoller.leaveDetails.update);
+route.delete('/api/leave-details/',contoller.leaveDetails.delete);
+
 module.exports =route;
