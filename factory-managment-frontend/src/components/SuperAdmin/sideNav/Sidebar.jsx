@@ -33,7 +33,10 @@ const SidebarNav = styled.nav`
   justify-content: center;
   position: fixed;
   top: 0;
-  left: ${({ sidebar }) => (sidebar ? '0' : '-100%')};
+  @media only screen and (max-width: 600px) {
+    left: ${({ sidebar }) => (sidebar ? '0' : '-100%')};
+  }
+  left: 0;
   transition: 350ms;
   z-index: 10;
 `;
