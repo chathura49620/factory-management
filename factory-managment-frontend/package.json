@@ -1,5 +1,5 @@
 {
-  "name": "factory-management-frontend",
+  "name": "factory-managment-frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -12,10 +12,15 @@
     "joi-browser": "13.4",
     "lodash": "^4.17.21",
     "react": "^17.0.2",
+    "react-bootstrap": "^2.0.0-beta.4",
     "react-dom": "^17.0.2",
+    "react-icons": "^3.10.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
-    "web-vitals": "^1.1.2"
+    "styled-components": "^5.2.1",
+    "web-vitals": "^1.1.2",
+    "loadash": "^1.0.0",
+    "react-datepicker": "^4.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
