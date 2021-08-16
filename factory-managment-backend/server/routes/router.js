@@ -17,6 +17,11 @@ route.get('/api/meterial-code/',contoller.materialCode.find);
 route.put('/api/meterial-code/',contoller.materialCode.update);
 route.delete('/api/meterial-code/',contoller.materialCode.delete);
 
+//Super Admin Metirial Code APIs
+route.get('/api/user-roles/',contoller.userRole.find);
+route.post('/api/user-roles/',contoller.userRole.create);
+
+
 //Super Admin Factory Details APIs
 route.post('/api/factory-details/',contoller.factoryDetails.create);
 route.get('/api/factory-details/',contoller.factoryDetails.find);
