@@ -39,13 +39,13 @@ exports.find = (req,res) =>{
         employeeLeaveDetails.findById(id)
         .then(data =>{
             if(!data){
-                res.status(404).send({message:"not found factory Details with id" + id});
+                res.status(404).send({message:"Could not find employee leave request with ID" + id});
             }else{
                 res.send(data);
             }
         })
         .catch(err =>{
-            res.status(500).send({message:"Error while retriving factory Details with id" +id})
+            res.status(500).send({message:"Error while retrieving Employee Leave Details with ID" +id})
         })
     }else{
         employeeLeaveDetails.find()
@@ -53,7 +53,7 @@ exports.find = (req,res) =>{
             res.send(matCode)
         })
         .catch(err =>{
-            res.status(500).send({message:err.message || "Error on retriving factory Details"})
+            res.status(500).send({message:err.message || "Error: Cannot retrieve Employee Leave Details"})
         })
     }
 }
@@ -63,20 +63,20 @@ exports.update = (req,res) => {
     if(!req.body){
         return res
                 .status(400)
-                .send({message:"Data to update can not be empty"})
+                .send({message:"Data cannot be empty."})
     }
 
     const id  = req.body.id;
     employeeLeaveDetails.findByIdAndUpdate(id, req.body,{useFindAndModify:false})
     .then(data =>{
         if(!data){
-            res.status(400).send({message:"factory Details id not found"});
+            res.status(400).send({message:"Employee Leave Request ID not found."});
         }else{
             res.send(data);
         }
     })
     .catch(err =>{
-        res.status(500).send({message:"Error while updatting"})
+        res.status(500).send({message:"Error while updating."})
     })
 }
 
@@ -87,14 +87,14 @@ exports.delete = (req,res) => {
     employeeLeaveDetails.findByIdAndDelete(id)
     .then(data=>{
         if(!data){
-            res.status(400).send({message:`cannot Delete factory Details with $(id). Maybe factory Details not found`});
+            res.status(400).send({message:`Cannot delete Employee Request with $(id).`});
         }
         else{
             res.send({message:"Leave Details was deleted"});
         }
     })
     .catch(err =>{
-        res.status(500).send({message:"Error while Deleting"})
+        res.status(500).send({message:"Error while Deleting."})
     })
 
 }
