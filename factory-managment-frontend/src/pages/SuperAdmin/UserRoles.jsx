@@ -101,14 +101,14 @@ class UserRoles extends Component {
             </Link>
           </div>
         </div> */}
-        <div className='home'>
+        <h1 className="mb-5">User Roles</h1>
         <div className="row">
           <div className="col-1"></div>
           <div className="col">
             <UserRolesTable filteredItems={this.state.userRoles} />
           </div>
         </div>
-        </div>
+      
       </React.Fragment>
     );
   }

@@ -100,13 +100,12 @@ class Categories extends Component {
             </Link>
           </div>
         </div> */}
-        <div className='home'>
+        <h1 className="mb-5">Categories</h1>
         <div className="row">
           <div className="col-1"></div>
           <div className="col">
             <UserRolesTable filteredItems={this.state.categories} />
           </div>
-        </div>
         </div>
       </React.Fragment>
     );
