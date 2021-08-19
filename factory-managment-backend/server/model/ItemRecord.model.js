@@ -9,7 +9,7 @@ const itemRecordSchema = new Schema(
     iCategory: { type: String, required: true },
     iQuantity: { type: Number, required: true },
     iSupplier: { type: String, required: true },
-    iAddedDate: { type: Date, required: true },
+    iAddedDate: { type: String, required: true },
   },
   {
     timestamps: true,

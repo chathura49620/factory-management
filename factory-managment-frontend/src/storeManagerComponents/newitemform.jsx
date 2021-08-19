@@ -9,34 +9,50 @@ import ListGroup from "./common/listgroup";
 class NewItemForm extends FormSuper {
   state = {
     data: {
-      iCode: "",
-      iType: "",
-      iCategory: "",
-      iQuantity: "",
-      iSupplier: "",
-      iAddedDate: "",
+      Code: "",
+      Type: "",
+      Category: "",
+      Quantity: "",
+      Supplier: "",
+      AddedDate: "",
     },
     categories: ["category1", "category2", "category3"],
-    types: ["Product", "Material"],
+    types: [{ categoryName: "Product" }, { categoryName: "Material" }],
     iCodes: [],
     genres: ["All", "Product", "Material"],
     searchQuery: "",
     errors: {},
     selectedGenre: "All",
+    materialCodeObjects: [],
+    categoryObjects: [],
   };
 
   schema = {
-    iCode: Joi.string().required(),
-    iType: Joi.string().required(),
-    iCategory: Joi.string().required(),
-    iQuantity: Joi.number().required(),
-    iSupplier: Joi.string().required(),
-    iAddedDate: Joi.date().required(),
+    Code: Joi.string().required(),
+    Type: Joi.string().required(),
+    Category: Joi.string().required(),
+    Quantity: Joi.number().required(),
+    Supplier: Joi.string().required(),
+    AddedDate: Joi.date().required(),
   };
 
   componentDidMount() {
     //take the category set from db
     //take the Material codes from db
+    axios.get("http://localhost:5000/codes/material/").then((result) => {
+      const materialCodesObjs = result.data;
+      console.log(materialCodesObjs);
+      axios.get("http://localhost:5000/category/").then((result) => {
+        const categoryObjs = result.data;
+        console.log(categoryObjs);
+        //this.setState({categoryObjects: categoryObjs});
+        this.setState({
+          materialCodeObjects: materialCodesObjs,
+          categoryObjects: categoryObjs,
+        });
+      });
+    });
+
     //take the Product codes from db
     //and put them into single array name iCodes after put them into codes table after set search and fiter them and put again
   }
@@ -55,12 +71,12 @@ class NewItemForm extends FormSuper {
   doSubmit() {
     // console.log("submitted", this.state.data);
     const jsonOb = this.state.data;
-    axios
-      .post("http://localhost:5000/items/add", jsonOb)
-      .then((result) => console.log(result.data));
 
     axios
       .post("http://localhost:5000/items/add/record", jsonOb)
+      .then((result) => console.log(result.data));
+    axios
+      .post("http://localhost:5000/items/add", jsonOb)
       .then((result) => console.log(result.data));
 
     //this.props.history.push("/items");
@@ -74,16 +90,16 @@ class NewItemForm extends FormSuper {
           <div className="col">
             <h1>New Item</h1>
             <form onSubmit={this.handleSubmit}>
-              {this.renderInput("iCode", "Item Code")}
-              {this.renderSelect("iType", "Item Type", this.state.types)}
+              {this.renderInput("Code", "Item Code")}
+              {this.renderSelect("Type", "Item Type", this.state.types)}
               {this.renderSelect(
-                "iCategory",
                 "Category",
-                this.state.categories
+                "Category",
+                this.state.categoryObjects
               )}
-              {this.renderInput("iQuantity", "Item Quantity")}
-              {this.renderInput("iSupplier", "Supplier Name")}
-              {this.renderInput("iAddedDate", "Received date", "date")}
+              {this.renderInput("Quantity", "Item Quantity")}
+              {this.renderInput("Supplier", "Supplier Name")}
+              {this.renderInput("AddedDate", "Received date", "date")}
               {this.renderButton("Submit")}
             </form>
           </div>
@@ -106,7 +122,7 @@ class NewItemForm extends FormSuper {
               </div>
             </div>
 
-            <ItemCodeTable />
+            <ItemCodeTable materialCodeObs={this.state.materialCodeObjects} />
           </div>
         </div>
       </React.Fragment>

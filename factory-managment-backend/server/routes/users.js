@@ -15,4 +15,30 @@ router.route("/:id").get((req, res) => {
     .catch((err) => res.status(400).json(err.message));
 });
 
+router.route("/update/:id").post((req, res) => {
+  const id = req.params.id;
+  User.updateOne(
+    { _id: id },
+    {
+      $set: {
+        fullName: req.body.FullName,
+        dob: req.body.BirthDate,
+        email: req.body.Email,
+        contact: req.body.Contact,
+        age: Number(req.body.Age),
+        gender: req.body.Gender,
+        address: req.body.Address,
+        designation: req.body.Designation,
+        bankName: req.body.BankName,
+        accountNumber: req.body.AccountNumber,
+        branch: req.body.Branch,
+        branchCode: req.body.BranchCode,
+        numberOfFamilyMembers: req.body.NumberOfFamilyMembers,
+      },
+    }
+  )
+    .then((result) => res.json("Updated"))
+    .catch((err) => res.status(400).json(err.message));
+});
+
 module.exports = router;

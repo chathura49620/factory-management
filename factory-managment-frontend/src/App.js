@@ -1,15 +1,15 @@
 import "./App.css";
 import React, { Component } from "react";
-import NavBar from "./components/navbar";
+import NavBar from "./storeManagerComponents/navbar";
 import { Switch } from "react-router-dom";
 import { Route } from "react-router-dom";
-import Item from "./components/items";
+import Item from "./storeManagerComponents/items";
 import { Redirect } from "react-router-dom";
-import NotFound from "./components/notfound";
-import SMDashBoard from "./components/sm_dashboard";
-import NewItemForm from "./components/newitemform";
-import ItemRecord from "./components/itemsrecords";
-import MyProfile from "./components/myprofile";
+import NotFound from "./storeManagerComponents/notfound";
+import SMDashBoard from "./storeManagerComponents/sm_dashboard";
+import NewItemForm from "./storeManagerComponents/newitemform";
+import ItemRecord from "./storeManagerComponents/itemsrecords";
+import MyProfile from "./storeManagerComponents/myprofile";
 
 function App() {
   return (
