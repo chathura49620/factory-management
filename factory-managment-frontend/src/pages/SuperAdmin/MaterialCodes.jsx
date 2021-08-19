@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import MaterialCodeTable from "../../components/SuperAdmin/Tables/MaterialCodeTable";
+import AddNewMaterialCode from '../../components/SuperAdmin/Modals/AddNewMaterilCodeModal';
 
 class MaterialCodes extends Component {
   state = {
@@ -58,6 +59,11 @@ class MaterialCodes extends Component {
           </div>
         </div> */}
         <h1 className="mb-5">Material Codes</h1>
+        <AddNewMaterialCode show={this.state.show} handleClose={this.hideModal}>
+          <p>Modal</p>
+        </AddNewMaterialCode>
+        <button type="button" onClick={this.showModal} />
+
         <div className="row">
           <div className="col-1"></div>
           <div className="col">

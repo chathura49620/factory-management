@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import AddNewCAtegoryModal from '../Modals/AddNewCategoryModel';
 const categoriesTable = ({ filteredItems}) => {
   return (
     <table className="table table-bordered table-sm m-2">
@@ -19,7 +20,7 @@ const categoriesTable = ({ filteredItems}) => {
           >
             <td>{i.userRoleNo}</td>
             <td>{i.categoryName}</td>
-            <td></td>
+            <td><button className="btn btn-success btn-sm">Edit</button> <button className="btn btn-warning btn-sm" >Delete</button></td>
           </tr>
         ))}
       </tbody>
