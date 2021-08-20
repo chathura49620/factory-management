@@ -50,7 +50,14 @@ class FormSuper extends Component {
   };
 
   renderButton(label) {
-    return <button className="btn btn-primary my-2">{label}</button>;
+    return (
+      <button
+        className="btn my-2"
+        style={{ backgroundColor: "#2461A7", color: "white" }}
+      >
+        {label}
+      </button>
+    );
   }
 
   renderInput(name, label, type = "text") {

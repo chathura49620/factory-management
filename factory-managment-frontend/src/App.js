@@ -1,3 +1,4 @@
+
 import './App.css';
 import SuperAdminSideNav from './components/SuperAdmin/sideNav/Sidebar';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -7,6 +8,7 @@ import UserList from './pages/SuperAdmin/UserList';
 import Categories from './pages/SuperAdmin/Categories';
 import ProductCodes from './pages/SuperAdmin/ProductCodes';
 import MaterialCodes from './pages/SuperAdmin/MaterialCodes';
+<<<<<<< HEAD
 import NotFound from "./components/notfound";
 import SMDashBoard from "./components/sm_dashboard";
 import NewItemForm from "./components/newitemform";
@@ -27,6 +29,15 @@ import Payments from './pages/Employee/Payments';
 
 
 // import routes from './route'
+=======
+import NotFound from "./components/storeManagerComponents/notfound";
+import SMDashBoard from "./components/storeManagerComponents/sm_dashboard";
+import NewItemForm from "./components/storeManagerComponents/newitemform";
+import ItemRecord from "./components/storeManagerComponents/itemsrecords";
+import MyProfile from "./components/storeManagerComponents/myprofile";
+import NavBar from "./components/storeManagerComponents/navbar";
+import Item from "./components/storeManagerComponents/items";
+>>>>>>> 1589b83d1bab71b7628003a12975c227045f88a6
 
 function App() {
   return (

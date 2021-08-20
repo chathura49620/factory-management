@@ -3,12 +3,17 @@ import TableVertilcle from "./common/tableverticle";
 import SearchBox from "./common/searchBox";
 import axios from "axios";
 import { result } from "lodash";
+import DialogBox from "./common/dialogbox";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 class ItemRecord extends Component {
   state = {
     itemRecords: [],
     searchQuery: "",
     previousSearch: "",
+    showTaskDialog: false,
+    wannaDeleteRecord: {},
   };
 
   componentDidMount() {}
@@ -19,13 +24,28 @@ class ItemRecord extends Component {
     });
   };
 
-  handleDelete = (record) => {
+  setConfirmDialog = (i) => {
+    this.setState({ showTaskDialog: true, wannaDeleteRecord: i });
+  };
+
+  deleteOrNot = (answer) => {
+    if (answer === "yes") {
+      this.handleDelete();
+    } else {
+      this.setState({ showTaskDialog: false });
+    }
+  };
+
+  handleDelete = () => {
+    const record = this.state.wannaDeleteRecord;
     console.log(record._id);
 
     const itemRecords = this.state.itemRecords.filter(
       (r) => r._id !== record._id
     );
-    this.setState({ itemRecords: itemRecords });
+
+    toast("deleted successfully.");
+    this.setState({ itemRecords: itemRecords, showTaskDialog: false });
     //const { previousSearch: d } = this.state;
 
     axios
@@ -69,6 +89,11 @@ class ItemRecord extends Component {
 
     return (
       <React.Fragment>
+        <ToastContainer />
+        <DialogBox
+          show={this.state.showTaskDialog}
+          deleteOrNot={this.deleteOrNot}
+        />
         <div className="row my-3">
           <div className="col-4"></div>
           <div className="col">
@@ -79,7 +104,11 @@ class ItemRecord extends Component {
             />
           </div>
           <div className="col">
-            <button onClick={this.onSearch} className="btn btn-primary my-2">
+            <button
+              onClick={this.onSearch}
+              className="btn  my-2"
+              style={{ backgroundColor: "#2461A7", color: "white" }}
+            >
               Search
             </button>
           </div>
@@ -90,6 +119,7 @@ class ItemRecord extends Component {
             <TableVertilcle
               records={this.state.itemRecords}
               handleDelete={this.handleDelete}
+              onSet={this.setConfirmDialog}
             />
           </div>
         </div>

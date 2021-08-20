@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 
-const TableVertilcle = ({ records, handleDelete }) => {
+const TableVertilcle = ({ records, handleDelete, onSet }) => {
   return (
     <div>
       {records.map((r) => (
         <table key={r._id} className="table table-bordered table-sm m-2">
           <tbody key={r._id}>
-            <tr className="table-secondary">
+            <tr style={{ backgroundColor: "#2461A7", color: "white" }}>
               <th scope="col">Record</th>
               <th scope="col">details</th>
             </tr>
@@ -39,10 +39,16 @@ const TableVertilcle = ({ records, handleDelete }) => {
             <tr className="table-primary">
               <th scope="col">Actions</th>
               <td>
-                <button className="btn btn-success btn-sm mx-2">Edit</button>
                 <button
-                  onClick={() => handleDelete(r)}
-                  className="btn btn-success btn-sm"
+                  style={{ backgroundColor: "#2461A7", color: "white" }}
+                  className="btn-sm mx-2"
+                >
+                  Edit
+                </button>
+                <button
+                  onClick={() => onSet(r)}
+                  style={{ backgroundColor: "#BA0D32 ", color: "white" }}
+                  className="btn-sm"
                 >
                   Delete
                 </button>

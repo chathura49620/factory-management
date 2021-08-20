@@ -16,11 +16,15 @@ connectDB();
 
 const itemsRouter = require("./server/routes/items");
 const usersRouter = require("./server/routes/users");
+const codesRouter = require("./server/routes/codes");
+const cateRouter = require("./server/routes/categories");
 
 //load routers
 app.use("/", require("./server/routes/router"));
 app.use("/items", itemsRouter);
 app.use("/users", usersRouter);
+app.use("/codes", codesRouter);
+app.use("/category", cateRouter);
 
 app.listen(port, () => {
   console.log(`Server is Running on port: ${port}`);
