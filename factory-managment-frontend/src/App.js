@@ -8,14 +8,13 @@ import UserList from './pages/SuperAdmin/UserList';
 import Categories from './pages/SuperAdmin/Categories';
 import ProductCodes from './pages/SuperAdmin/ProductCodes';
 import MaterialCodes from './pages/SuperAdmin/MaterialCodes';
-<<<<<<< HEAD
-import NotFound from "./components/notfound";
-import SMDashBoard from "./components/sm_dashboard";
-import NewItemForm from "./components/newitemform";
-import ItemRecord from "./components/itemsrecords";
-import MyProfile from "./components/myprofile";
-import NavBar from "./components/navbar";
-import Item from "./components/items";
+// import NotFound from "./components/notfound";
+// import SMDashBoard from "./components/sm_dashboard";
+// import NewItemForm from "./components/newitemform";
+// import ItemRecord from "./components/itemsrecords";
+// import MyProfile from "./components/myprofile";
+// import NavBar from "./components/navbar";
+// import Item from "./components/items";
 
 
 import EmployeeDashboard from './pages/Employee/EmployeeDashboard';
@@ -29,15 +28,13 @@ import Payments from './pages/Employee/Payments';
 
 
 // import routes from './route'
-=======
-import NotFound from "./components/storeManagerComponents/notfound";
+// import NotFound from "./components/storeManagerComponents/notfound";
 import SMDashBoard from "./components/storeManagerComponents/sm_dashboard";
 import NewItemForm from "./components/storeManagerComponents/newitemform";
 import ItemRecord from "./components/storeManagerComponents/itemsrecords";
 import MyProfile from "./components/storeManagerComponents/myprofile";
 import NavBar from "./components/storeManagerComponents/navbar";
 import Item from "./components/storeManagerComponents/items";
->>>>>>> 1589b83d1bab71b7628003a12975c227045f88a6
 
 function App() {
   return (
@@ -57,7 +54,7 @@ function App() {
           <Route path="/items/:id" component={NewItemForm}></Route>
           <Route path="/items" component={Item}></Route>
           <Route path="/itemsrecords" component={ItemRecord}></Route>
-          <Route path="/notfound" component={NotFound}></Route>
+          {/* <Route path="/notfound" component={NotFound}></Route> */}
 
           //employee routes
           <Route path= '/employee-dashboard' exact component={EmployeeDashboard} />

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-var schema = new mongoose.Schema({
+var Empschema = new mongoose.Schema({
     refno:{
         type:String,
         required:true
@@ -17,6 +17,6 @@ var schema = new mongoose.Schema({
 
 })
 
-const employeeLeaveDetails = mongoose.model('leaveDetails',schema);
+const employeeLeaveDetails = mongoose.model('leaveDetails',Empschema);
 
 module.exports = employeeLeaveDetails;
