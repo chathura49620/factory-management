@@ -16,6 +16,16 @@ import NavBar from "./components/navbar";
 import Item from "./components/items";
 
 
+import EmployeeDashboard from './pages/Employee/EmployeeDashboard';
+import Assignments from './pages/Employee/Assignments';
+import Calendar from './pages/Employee/Calendar';
+import Leave from './pages/Employee/Leave';
+import Profile from './pages/Employee/Profile';
+import Payments from './pages/Employee/Payments';
+
+
+
+
 // import routes from './route'
 
 function App() {
@@ -37,6 +47,18 @@ function App() {
           <Route path="/items" component={Item}></Route>
           <Route path="/itemsrecords" component={ItemRecord}></Route>
           <Route path="/notfound" component={NotFound}></Route>
+
+          //employee routes
+          <Route path= '/employee-dashboard' exact component={EmployeeDashboard} />
+          <Route path= '/assignments' exact component={Assignments}/>
+          <Route path= '/calendar' exact component={Calendar}/>
+          <Route path= '/profile' exact component={Profile}/>
+          <Route path= '/payments' exact component={Payments}/>
+
+          <Route path= '/leave' exact component={Leave}/>
+         
+       
+
           {/* <Redirect to="/notfound"></Redirect> */}
       </Switch>
     </main>

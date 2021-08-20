@@ -18,3 +18,26 @@
   justify-content: center;
   font-size: 3rem;
 }
+
+.leave{
+  position: sticky;
+  overflow-y:auto;
+  top:0;
+  padding-top: 1%;
+  margin-left: 10%;
+  padding-right: 20%;
+  padding-bottom: 0%;
+  width: 100rem;
+}
+
+.leave1{
+  position: sticky;
+  overflow-y:auto;
+  top:0;
+  padding-top: 1%;
+  margin-left: 10%;
+  padding-right: 20%;
+  padding-bottom: 0%;
+  width: 100rem;
+}
+
