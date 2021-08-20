@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Table, Button, ButtonToolbar } from 'react-bootstrap';
 import { AddMaterialCodeModal } from '../../components/SuperAdmin/Modals/AddMaterialCodeModal';
-import MaterialCodeTable from "../../components/SuperAdmin/Tables/MaterialCodeTable";
+import {MaterialCodeTable} from "../../components/SuperAdmin/Tables/MaterialCodeTable";
 
 class MaterialCodes extends Component {
   state = {
