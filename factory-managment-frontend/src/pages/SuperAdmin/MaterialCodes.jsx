@@ -1,17 +1,13 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Table, Button, ButtonToolbar } from 'react-bootstrap';
+import { AddMaterialCodeModal } from '../../components/SuperAdmin/Modals/AddMaterialCodeModal';
 import MaterialCodeTable from "../../components/SuperAdmin/Tables/MaterialCodeTable";
 
 class MaterialCodes extends Component {
   state = {
     MaterialCodes: [],
-    currentPage: 1,
-    pageSize: 4,
-    genres: ["All", "Product", "Material"], //array of genre
-    categories: ["clothes", "plastic", "anything"],
-    selectedGenre: "All",
-    searchQuery: "",
-    selectedCategory: "",
+    addModalShow: false
   };
 
   componentDidMount() {
@@ -26,39 +22,20 @@ class MaterialCodes extends Component {
   }
 
   render(){
+    let AddModelClose = () => this.setState({ addModalShow: false })
   return (
     <React.Fragment>
-        {/* <div className="row">
-          <div className="col">
-            <ListGroup
-              genres={this.state.genres}
-              onGenreSelect={this.handleGenreSelect}
-              selectedGenre={this.state.selectedGenre}
-            />
-          </div>
-          <div className="col">
-            <SelectSearch
-              categories={this.state.categories}
-              onChange={this.handleSelectChange}
-              categoryValue={this.state.selectedCategory}
-            />
-          </div>
-
-          <div className="col">
-            <SearchBox
-              onChange={this.handleSearch}
-              value={this.state.searchQuery}
-              placeHolder="Search date and time"
-            />
-          </div>
-          <div className="col">
-            <Link to="/items/new" className="btn btn-primary mt-2">
-              New Item
-            </Link>
-          </div>
-        </div> */}
         <h1 className="mb-5">Material Codes</h1>
-      
+        <ButtonToolbar>
+                    <Button variant='primary'
+                        onClick={() => this.setState({ addModalShow: true })}
+                    >Add Category
+                    </Button>
+                    <AddMaterialCodeModal
+                        show={this.state.addModalShow}
+                        onHide={AddModelClose}
+                    />
+          </ButtonToolbar>
         <div className="row">
           <div className="col-1"></div>
           <div className="col">

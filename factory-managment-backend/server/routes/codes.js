@@ -1,5 +1,5 @@
 const router = require("express").Router();
-let MaterialCode = require("../model/materialCode.model");
+let MaterialCode = require("../model/materialcode.model");
 
 //get all the codes list as a complex object(json) List
 router.route("/material/").get((req, res) => {
