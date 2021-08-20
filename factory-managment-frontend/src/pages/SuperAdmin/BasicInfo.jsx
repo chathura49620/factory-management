@@ -1,10 +1,7 @@
 import React, { Component } from "react";
-import FormSuper from "../../components/common/formsuper";
+import FormSuper from "../../components/storeManagerComponents/common/formsuper";
 import Joi, { join } from "joi-browser";
 import axios from "axios";
-import ItemCodeTable from "../../components/common/itemcodestable";
-import SearchBox from "../../components/common/searchBox";
-import ListGroup from "../../components/common/listgroup";
 
 class BasicInfo  extends FormSuper {
   state = {

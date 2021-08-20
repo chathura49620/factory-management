@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import axios from "axios";
-import MaterialCodeTable from "../../components/SuperAdmin/Tables/MaterialCodeTable";
 
-class MaterialCodes extends Component {
+import LeaveTable from "../../components/SuperAdmin/Tables/LeaveTable";
+
+class Leave extends Component {
   state = {
-    MaterialCodes: [],
+    Leave: [],
     currentPage: 1,
     pageSize: 4,
     genres: ["All", "Product", "Material"], //array of genre
@@ -16,18 +17,28 @@ class MaterialCodes extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:5000/api/meterial-code")
+      .get("http://localhost:5000/api/leave-details")
       .then((result) => {
-        const MaterialCodes = result.data;
+        const Leave = result.data;
+        console.log(Leave);
 
-        this.setState({ MaterialCodes: MaterialCodes });
+        this.setState({ Leave: Leave });
       })
       .catch((err) => console.log(err.message));
   }
 
+handleLeaveDelete = (leave) => {
+  // console.log("Delete");
+  const Leave = this.state.Leave.filter(l => l._id !== leave._id );
+  this.setState({Leave:Leave});
+}
+
+
+
   render(){
   return (
     <React.Fragment>
+
         {/* <div className="row">
           <div className="col">
             <ListGroup
@@ -43,7 +54,6 @@ class MaterialCodes extends Component {
               categoryValue={this.state.selectedCategory}
             />
           </div>
-
           <div className="col">
             <SearchBox
               onChange={this.handleSearch}
@@ -57,12 +67,15 @@ class MaterialCodes extends Component {
             </Link>
           </div>
         </div> */}
-        <h1 className="mb-5">Material Codes</h1>
-      
+        <h1 className="mb-5">Leave Requests</h1>
+            <button class="btn btn-info">Add a New Leave Request</button>
+
+            <br></br><br></br>
+
         <div className="row">
           <div className="col-1"></div>
-          <div className="col">
-            <MaterialCodeTable filteredItems={this.state.MaterialCodes} />
+              <div className="col">
+            <LeaveTable onDelete={this.handleLeaveDelete} filteredItems={this.state.Leave} />
           </div>
         </div>
       </React.Fragment>
@@ -70,4 +83,4 @@ class MaterialCodes extends Component {
   }
 };
 
-export default MaterialCodes;
+export default Leave;

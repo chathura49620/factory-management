@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 
-const Table = ({ filteredItems, onItemDelete }) => {
+const Table = ({ filteredItems, onItemDelete, onSet }) => {
   return (
-    <table className="table table-bordered table-sm m-2">
+    <table className="table table-bordered table-sm">
       <thead>
-        <tr className="table-secondary">
+        <tr style={{ backgroundColor: "#2461A7", color: "white" }}>
           <th scope="col">Item Code</th>
           <th scope="col">Item Type</th>
           <th scope="col">Category</th>
@@ -29,14 +29,20 @@ const Table = ({ filteredItems, onItemDelete }) => {
             <td>{i.iAddedDate}</td>
             <td>
               <button
-                onClick={() => onItemDelete(i)}
-                className="btn btn-success btn-sm"
+                className="btn-sm"
+                style={{ backgroundColor: "#2461A7", color: "white" }}
               >
-                Delete
+                Edit
               </button>
             </td>
             <td>
-              <button className="btn btn-success btn-sm">Edit</button>
+              <button
+                onClick={() => onSet(i)}
+                className="btn-sm"
+                style={{ backgroundColor: "#BA0D32 ", color: "white" }}
+              >
+                Delete
+              </button>
             </td>
           </tr>
         ))}

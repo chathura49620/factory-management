@@ -10,12 +10,12 @@ router.route("/").get((req, res) => {
 });
 
 router.route("/add/record").post((req, res) => {
-  const iCode = req.body.iCode;
-  const iType = req.body.iType;
-  const iCategory = req.body.iCategory;
-  const iQuantity = Number(req.body.iQuantity);
-  const iSupplier = req.body.iSupplier;
-  const iAddedDate = Date.parse(req.body.iAddedDate);
+  const iCode = req.body.Code;
+  const iType = req.body.Type;
+  const iCategory = req.body.Category;
+  const iQuantity = Number(req.body.Quantity);
+  const iSupplier = req.body.Supplier;
+  const iAddedDate = req.body.AddedDate;
 
   const newItemRecord = new ItemRecord({
     iCode,
@@ -33,12 +33,12 @@ router.route("/add/record").post((req, res) => {
 });
 
 router.route("/add").post((req, res) => {
-  const iCode = req.body.iCode;
-  const iType = req.body.iType;
-  const iCategory = req.body.iCategory;
-  let iQuantity = Number(req.body.iQuantity);
-  const iSupplier = req.body.iSupplier;
-  const iAddedDate = Date.parse(req.body.iAddedDate);
+  const iCode = req.body.Code;
+  const iType = req.body.Type;
+  const iCategory = req.body.Category;
+  let iQuantity = Number(req.body.Quantity);
+  const iSupplier = req.body.Supplier;
+  const iAddedDate = req.body.AddedDate;
   const q = iQuantity;
   iQuantity = 1;
 
@@ -60,7 +60,7 @@ router.route("/add").post((req, res) => {
 
 //delete item record according to date time(multiple documents)
 router.route("/record/:date").delete((req, res) => {
-  const date = Date.parse(req.params.date);
+  const date = req.params.date;
 
   Item.deleteMany({ iAddedDate: date })
     .then((result) => res.json("deleted"))
@@ -69,7 +69,7 @@ router.route("/record/:date").delete((req, res) => {
 
 //delete item record according to date time(multiple documents) on ItemRecord Collection
 router.route("/multiplerecords/:date").delete((req, res) => {
-  const date = Date.parse(req.params.date);
+  const date = req.params.date;
 
   ItemRecord.deleteMany({ iAddedDate: date })
     .then((result) => res.json("deleted"))
@@ -138,7 +138,7 @@ router.route("/update/:id").post((req, res) => {
         iCategory: req.body.iCategory,
         iQuantity: Number(req.body.iQuantity),
         iSupplier: req.body.iSupplier,
-        iAddedDate: Date.parse(req.body.iAddedDate),
+        iAddedDate: req.body.iAddedDate,
       },
     }
   )
@@ -148,7 +148,7 @@ router.route("/update/:id").post((req, res) => {
 
 //updating multiple documents
 router.route("/update/record/:date").post((req, res) => {
-  const date = Date.parse(req.params.date);
+  const date = req.params.date;
 
   Item.updateMany(
     { iAddedDate: date },
@@ -188,6 +188,15 @@ router.route("/object/data/:supplier/:date").get((req, res) => {
 
   ItemRecord.findOne({ iAddedDate: addedDate, iSupplier: supplier })
     .then((result) => res.json(result))
+    .catch((err) => res.status(400).json(err.message));
+});
+
+router.route("/object/data/:supplier/:date").delete((req, res) => {
+  const supplier = req.params.supplier;
+  const addedDate = req.params.date;
+
+  ItemRecord.deleteOne({ iAddedDate: addedDate, iSupplier: supplier })
+    .then((result) => res.json("deleted one"))
     .catch((err) => res.status(400).json(err.message));
 });
 
