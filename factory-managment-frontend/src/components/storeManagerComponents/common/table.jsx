@@ -4,7 +4,7 @@ const Table = ({ filteredItems, onItemDelete, onSet }) => {
   return (
     <table className="table table-bordered table-sm">
       <thead>
-        <tr style={{ backgroundColor: "#2461A7", color: "white" }}>
+        <tr style={{ backgroundColor: "#7121AD", color: "white" }}>
           <th scope="col">Item Code</th>
           <th scope="col">Item Type</th>
           <th scope="col">Category</th>
@@ -16,21 +16,28 @@ const Table = ({ filteredItems, onItemDelete, onSet }) => {
       </thead>
       <tbody>
         {filteredItems.map((i) => (
-          <tr
-            key={i._id}
-            className={
-              i.iType === "Material" ? "table-success" : "table-primary"
-            }
-          >
+          <tr key={i._id}>
             <td>{i.iCode}</td>
-            <td>{i.iType}</td>
+            <td
+              className={
+                i.iType === "Material" ? "table-success" : "table-primary"
+              }
+              style={{
+                border:
+                  i.iType === "Material"
+                    ? "1px solid black"
+                    : "1px solid black",
+              }}
+            >
+              {i.iType}
+            </td>
             <td>{i.iCategory}</td>
             <td>1</td>
             <td>{i.iAddedDate}</td>
             <td>
               <button
                 className="btn-sm"
-                style={{ backgroundColor: "#2461A7", color: "white" }}
+                style={{ backgroundColor: "#7121AD", color: "white" }}
               >
                 Edit
               </button>
