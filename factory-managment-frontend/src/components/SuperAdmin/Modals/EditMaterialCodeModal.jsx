@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import { Modal, Button, Row, Col, Form, FormGroup } from 'react-bootstrap';
+import swal from 'sweetalert';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
-import swal from 'sweetalert';
-import { Redirect } from 'react-router-dom';
 
-
-export class AddMaterialCodeModal extends Component {
+export class EditMaterialCodeModal extends Component {
     constructor(props) {
         super(props);
         this.state = { snackbaropen: false, snackbarmsg: '' };
@@ -17,27 +15,28 @@ export class AddMaterialCodeModal extends Component {
         this.setState({ snackbaropen: false });
     };
 
-    handleSubmit(event) {
-
+    handleSubmit(event, props) {
         event.preventDefault();
-        alert(event.target.name.value);
+        //alert(event.target.name.value);
+
         fetch('http://localhost:5000/api/meterial-code/', {
-            method: 'POST',
+            method: 'PUT',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
                 'username': 'chathura'
             },
             body: JSON.stringify({
-                materialName: event.target.materialName.value,
-                materialCode: event.target.materialCode.value,
-                status: event.target.status.value
+                id: event.target.id.value,
+                materialName: event.target.matName.value,
+                materialCode: event.target.matCode.value,
+                status: event.target.status.value,
             })
         })
             .then(res => res.json())
             .then((result) => {
                 swal({
-                    title: "Material Code Added Succesfully",
+                    title: "Metirial Code Updated Succesfully",
                     icon: "success",
                     button: "Done",
                   });
@@ -48,34 +47,28 @@ export class AddMaterialCodeModal extends Component {
             )
     }
 
-    //   handleSubmit = (event) => {
-
-    //       return <Redirect to='/login' />
-
-    //   }
-
     render() {
         return (
             <div className="container">
 
-                <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+                <Snackbar anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
                     open={this.state.snackbaropen}
                     autoHideDuration={6000}
                     onClose={this.snackbarClose}
                     message={<span id="message-id">{this.state.snackbarmsg}</span>}
                     action={[
-                        <IconButton key="close" aria-label="Close" color="danger" onClick={this.snackbarClose}></IconButton>
+                        <IconButton key="close" aria-label="Close" color="inherit" onClick={this.snackbarClose}></IconButton>
                     ]}
                 />
                 <Modal
                     {...this.props}
                     size="lg"
                     aria-labelledby="contained-modal-title-vcenter"
-                //centered
+
                 >
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title-vcenter">
-                            Add Material Code
+                            Edit Matirial COde
               </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
@@ -83,24 +76,30 @@ export class AddMaterialCodeModal extends Component {
                         <Row>
                             <Col sm={6}>
                                 <Form onSubmit={this.handleSubmit}>
+                                    <Form.Group controlId="id">
+                                        <Form.Label>ID</Form.Label>
+                                        <Form.Control type="text" name="id" required disabled defaultValue={this.props.id} />
+                                    </Form.Group>
+                                    
                                     <Form.Group controlId="name">
                                         <Form.Label>Material Name</Form.Label>
-                                        <Form.Control type="text" name="materialName" required placeholder="Material Name" />
+                                        <Form.Control type="text" name="matName" required placeholder="Material Name" defaultValue={this.props.matirialName} />
                                     </Form.Group>
                                     <Form.Group controlId="name">
                                         <Form.Label>Material Code</Form.Label>
-                                        <Form.Control type="text" name="materialCode" required placeholder="Material Name" />
+                                        <Form.Control type="text" name="matCode" required placeholder="Material Code" defaultValue={this.props.materialCode} />
                                     </Form.Group>
                                     <Form.Group>
                                         <Form.Label>Status</Form.Label>
-                                        <Form.Control as="select" required name="status">
-                                            <option selected>ACTIVE</option>
+                                        <Form.Control as="select" required name="status" defaultValue={this.props.status}>
+                                            <option selected disabled>{this.props.status}</option>
+                                            <option>ACTIVE</option>
                                             <option>INACTIVE</option>
                                         </Form.Control>
                                     </Form.Group>
                                     <Form.Group>
                                         <Button variant="primary" type="submit" >
-                                            Add Material Code
+                                            Edit Matirial Code
                                         </Button>
                                     </Form.Group>
                                 </Form>

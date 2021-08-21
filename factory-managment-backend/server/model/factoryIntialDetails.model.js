@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 var schema = new mongoose.Schema({
-    companyName:{
+    companyName:{ 
         type:String,
         required:true
     },
@@ -15,7 +15,6 @@ var schema = new mongoose.Schema({
     },
     companyLogo:{
         type:String,
-        required:true
     },
     mainProduct:{
         type:String,
@@ -23,7 +22,6 @@ var schema = new mongoose.Schema({
     },
     br:{
         type:String,
-        required:true
     },
     startDate:{
         type:String,

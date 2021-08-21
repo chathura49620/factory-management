@@ -6,7 +6,7 @@ import swal from 'sweetalert';
 import { Redirect } from 'react-router-dom';
 
 
-export class AddMaterialCodeModal extends Component {
+export class AddFactoryDetailsModal extends Component {
     constructor(props) {
         super(props);
         this.state = { snackbaropen: false, snackbarmsg: '' };
@@ -20,8 +20,8 @@ export class AddMaterialCodeModal extends Component {
     handleSubmit(event) {
 
         event.preventDefault();
-        alert(event.target.name.value);
-        fetch('http://localhost:5000/api/meterial-code/', {
+
+        fetch('http://localhost:5000/api/factory-details', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -29,18 +29,25 @@ export class AddMaterialCodeModal extends Component {
                 'username': 'chathura'
             },
             body: JSON.stringify({
-                materialName: event.target.materialName.value,
-                materialCode: event.target.materialCode.value,
-                status: event.target.status.value
+                companyName: event.target.companyName.value,
+                companyAddress: event.target.companyAddress.value,
+                ownerName: event.target.ownerName.value,
+                mainProduct: event.target.mainProduct.value,
+                startDate: event.target.startDate.value,
+                is_added:1
+                // companyName: event.target.companyName.value,
+                // companyName: event.target.companyName.value,
             })
         })
             .then(res => res.json())
             .then((result) => {
+                console.log(result);
                 swal({
-                    title: "Material Code Added Succesfully",
+                    title: "Factory Details Added Succesfully",
                     icon: "success",
                     button: "Done",
-                  });
+                  }); 
+                  
             }, (error) => {
                 this.setState({ snackbaropen: true, snackbarmsg: 'Failed' })
             }
@@ -75,7 +82,7 @@ export class AddMaterialCodeModal extends Component {
                 >
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title-vcenter">
-                            Add Material Code
+                            Add Factory Details
               </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
@@ -83,24 +90,37 @@ export class AddMaterialCodeModal extends Component {
                         <Row>
                             <Col sm={6}>
                                 <Form onSubmit={this.handleSubmit}>
-                                    <Form.Group controlId="name">
-                                        <Form.Label>Material Name</Form.Label>
-                                        <Form.Control type="text" name="materialName" required placeholder="Material Name" />
+                                    <Form.Group controlId="companyName">
+                                        <Form.Label>Company Name</Form.Label>
+                                        <Form.Control type="text" name="companyName" required placeholder="Company Name" />
                                     </Form.Group>
-                                    <Form.Group controlId="name">
-                                        <Form.Label>Material Code</Form.Label>
-                                        <Form.Control type="text" name="materialCode" required placeholder="Material Name" />
+                                    <Form.Group controlId="companyAddress">
+                                        <Form.Label>Company Address</Form.Label>
+                                        <Form.Control type="text" name="companyAddress" required placeholder="Company Address" />
+                                    </Form.Group>
+                                    <Form.Group controlId="ownerName">
+                                        <Form.Label>Owner Name</Form.Label>
+                                        <Form.Control type="text" name="ownerName" required placeholder="Owner Name" />
+                                    </Form.Group>
+                                    {/* <Form.Group controlId="companyLogo">
+                                        <Form.Label>Company Logo</Form.Label>
+                                        <Form.Control type="file" name="companyLogo" required placeholder="Category Name" />
+                                    </Form.Group> */}
+                                    <Form.Group controlId="mainProduct">
+                                        <Form.Label>Main Product</Form.Label>
+                                        <Form.Control type="text" name="mainProduct" required placeholder="Main Product" />
+                                    </Form.Group>
+                                    {/* <Form.Group controlId="br">
+                                        <Form.Label>br</Form.Label>
+                                        <Form.Control type="file" name="br" required placeholder="Category Name" />
+                                    </Form.Group> */}
+                                    <Form.Group controlId="startDate">
+                                        <Form.Label>startDate</Form.Label>
+                                        <Form.Control type="date" name="startDate" required placeholder="Start Date" />
                                     </Form.Group>
                                     <Form.Group>
-                                        <Form.Label>Status</Form.Label>
-                                        <Form.Control as="select" required name="status">
-                                            <option selected>ACTIVE</option>
-                                            <option>INACTIVE</option>
-                                        </Form.Control>
-                                    </Form.Group>
-                                    <Form.Group>
-                                        <Button variant="primary" type="submit" >
-                                            Add Material Code
+                                        <Button  variant="primary" type="submit" >
+                                            Add Factory Details
                                         </Button>
                                     </Form.Group>
                                 </Form>

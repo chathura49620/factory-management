@@ -8,6 +8,7 @@ import UserList from './pages/SuperAdmin/UserList';
 import Categories from './pages/SuperAdmin/Categories';
 import ProductCodes from './pages/SuperAdmin/ProductCodes';
 import MaterialCodes from './pages/SuperAdmin/MaterialCodes';
+import SuperAdminDashboard from './pages/SuperAdmin/Dashboard';
 // import NotFound from "./components/notfound";
 // import SMDashBoard from "./components/sm_dashboard";
 // import NewItemForm from "./components/newitemform";
@@ -43,6 +44,7 @@ function App() {
             {/* <NavBar /> */}
     <main className="container">
       <Switch>
+          <Route path='/super-admin-dashboard' exact component={SuperAdminDashboard} />
           <Route path='/basic-info' exact component={BasicInfo} />
           <Route path='/user-roles' exact component={UserRoles} />
           <Route path='/user-list' exact component={UserList} />
