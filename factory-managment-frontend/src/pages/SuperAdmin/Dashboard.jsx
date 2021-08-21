@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Table, Button, ButtonToolbar } from 'react-bootstrap';
+import Chart from "../charts/chart";
+import "./dashboard.css";
+import hello from "../assets/hello.png";
+import clock from "../assets/clock.png";
 import { AddFactoryDetailsModal } from '../../components/SuperAdmin/Modals/AddFactoryDetailsModal';
 
 class Dashboard extends Component {
@@ -33,7 +37,108 @@ class Dashboard extends Component {
                         onHide={AddModelClose}
                     />
           </ButtonToolbar>
-        <h1 className="mb-5">Dashboard</h1>
+          <main>
+            <div className="main__container">
+              {/* <!-- MAIN TITLE STARTS HERE --> */}
+
+              <div className="main__title">
+              <img src={hello} alt="hello" />
+                <div className="main__greeting">
+                  <h1>Hello, Chathura Prabath.</h1>
+                  <p>Welcome to your profile.</p>
+                </div>
+              </div>
+
+              <div className="charts">
+                <div className="charts__left">
+                  <div className="charts__left__title">
+                    <div>
+                      <h1>Date and Time</h1>
+                    </div>
+                    <i className="fa fa-usd" aria-hidden="true"></i>
+                  </div>
+                  <div className="row mt-5">
+                    <div className="col-md-6">
+                      <img src={clock} alt="clock" />
+                    </div>
+                    <div className="col-md-6">
+                      <h4>Tuesday,july 25th,2021</h4><br />
+                      <h1>16:19:55</h1>
+                    </div>
+                  </div>
+                 
+                </div>
+
+                <div className="charts__right">
+                  <div className="charts__right__title">
+                    <div>
+                      <h1>Report Genaration</h1>
+                    </div>
+                    <i className="fa fa-usd" aria-hidden="true"></i>
+                  </div>
+
+                  <div className="charts__right__cards">
+                 
+                 
+                      <div className="card1">
+                      <h1>Profit Report</h1>
+                    </div>
+                    
+                   
+                      <div className="card2">
+                      <h1>User Report</h1>
+                    </div>
+                     
+                     
+                        <div className="card3">
+                        <h1>Cost Report</h1>
+                        </div>
+                       
+                  
+                  </div>
+                </div>
+              </div>
+              
+              {/* <!-- MAIN TITLE ENDS HERE --> */}
+
+              {/* <!-- MAIN CARDS STARTS HERE --> */}
+              <div className="main__cards">
+
+                
+                <div className="carda">
+                  <div className="card_inner">
+                    <p className="text-primary-p">Number of Users</p>
+                    <span className="font-bold text-title">578</span>
+                  </div>
+                </div>
+                
+                <div className="cardd">
+                  <div className="card_inner">
+                    <p className="text-primary-p">No of Categories</p>
+                    <span className="font-bold text-title">645</span>
+                  </div>
+                </div>
+                <div className="carda">
+                  <div className="card_inner">
+                    <p className="text-primary-p">Number of Product Codes</p>
+                    <span className="font-bold text-title">578</span>
+                  </div>
+                </div>
+                
+                <div className="cardd">
+                  <div className="card_inner">
+                    <p className="text-primary-p">No of Metirial Codes</p>
+                    <span className="font-bold text-title">645</span>
+                  </div>
+                </div>
+              </div>
+              {/* <!-- MAIN CARDS ENDS HERE --> */}
+
+              {/* <!-- CHARTS STARTS HERE --> */}
+              
+              {/* <!-- CHARTS ENDS HERE --> */}
+            </div>
+          </main>
       </React.Fragment>
     );
   }
