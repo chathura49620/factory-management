@@ -1,12 +1,49 @@
-import React, { Component } from "react";
-import {EditEmployeeModal} from '../Modals/EditEmployeeModal';import { Table, Button, ButtonToolbar } from 'react-bootstrap';
+import React, { Component } from "react"; 
+import {EditEmployeeModal} from '../Modals/EditEmployeeModal';
+import { Table, Button, ButtonToolbar } from 'react-bootstrap';
+import swal from 'sweetalert';
 
 
 
 export class LeaveTable extends Component{
   constructor(props) {
     super(props);
-    this.state = { editModalShow: false }
+    this.state = { editModelShow: false }
+  }
+
+  deleteleave(id){
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this Recode!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        fetch('http://localhost:5000/api/leave-details', {
+            method: 'DELETE',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'username': 'chathura'
+            },
+            body: JSON.stringify({
+                id: id
+               
+            })
+        }).then(res => res.json())
+        .then((result) => {
+          swal({
+            title: "Employee Leave Deleted Succesfully",
+            icon: "success",
+            button: "Done",
+          }); 
+      });
+      } else {
+        swal("Your imaginary file is safe!");
+      }
+    });
   }
   render(){
     const {id, refno, reasonforleave, date } = this.state;
@@ -14,8 +51,9 @@ export class LeaveTable extends Component{
   return (
     <React.Fragment>
        <ButtonToolbar>
-  <EditEmployeeModal
+                  <EditEmployeeModal
                       show={this.state.editModelShow}
+                      onHide={EditModelClose}
                       empleave= {this.state.empLeave}
                       id={id}
                       refno={refno}
@@ -41,10 +79,11 @@ export class LeaveTable extends Component{
         <td>{leave.reasonforleave}</td>
         <td>{leave.date}</td>
         <td>
-            <button onClick={() => this.setState({ editModalShow: true, id: leave._id, refno: leave.refno, reasonforleave: leave.reasonforleave, date: leave.date })} 
+            <button 
                     style={{ backgroundColor: "#7121AD", color: "white" }} className="btn" 
-                        >Edit</button>
-            <button style={{ backgroundColor: "#BA0D32 ", color: "white" }} className="btn" >Delete</button>
+                    onClick={() => this.setState({ editModelShow: true, id: leave._id, refno: leave.refno, reasonforleave: leave.reasonforleave, date: leave.date })} >Edit</button>
+            <button style={{ backgroundColor: "#BA0D32 ", color: "white" }} className="btn" 
+            onClick={() => this.deleteleave(leave._id)}>Delete</button>
         </td>
 
       </tr>              

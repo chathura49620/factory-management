@@ -55,11 +55,6 @@ handleLeaveDelete = (leave) => {
 
   render(){
     let AddModelClose = () => this.setState({ addModalShow: false })
-
-    console.log(this.state.empLeave);
-
-    // let EditModelClose = () => this.setState({editModelShow: false})
-
   return (
     <React.Fragment>
 
@@ -75,19 +70,13 @@ handleLeaveDelete = (leave) => {
                         onHide={AddModelClose}
                         
                     />
-
-                    {/* <EditEmployeeModal
-                      show={this.state.editModelShow}
-                      empleave= {this.state.empLeave}
-                      // onHide={EditModelClose}
-                    /> */}
           </ButtonToolbar>
             <br></br><br></br>
 
         <div className="row">
           <div className="col-1"></div>
               <div className="col">
-            <LeaveTable onDelete={this.handleLeaveDelete} filteredItems={this.state.Leave} onSet = {this.setEditPopup} />
+            <LeaveTable filteredItems={this.state.Leave}  />
           </div>
         </div>
       </React.Fragment>

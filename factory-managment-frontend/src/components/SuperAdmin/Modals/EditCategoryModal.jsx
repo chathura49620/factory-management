@@ -11,14 +11,9 @@ export class EditCategoryModal extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    snackbarClose = (event) => {
-        this.setState({ snackbaropen: false });
-    };
 
     handleSubmit(event, props) {
         event.preventDefault();
-        //alert(event.target.name.value);
-
         fetch('http://localhost:5000/api/categories/', {
             method: 'PUT',
             headers: {
@@ -40,7 +35,7 @@ export class EditCategoryModal extends Component {
                     button: "Done",
                   });
             }, (error) => {
-                this.setState({ snackbaropen: true, snackbarmsg: 'Failed' })
+                
             }
 
             )

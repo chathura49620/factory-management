@@ -1,63 +1,50 @@
 import React, { Component } from 'react';
 import { Modal, Button, Row, Col, Form, FormGroup } from 'react-bootstrap';
+import swal from 'sweetalert';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
-import axios from 'axios';
 
 export class EditEmployeeModal extends Component {
-   
     constructor(props) {
-        console.log("Constrctor");
         super(props);
-        this.state = { snackbaropen: false, snackbarmsg: '' }; 
+        this.state = { snackbaropen: false, snackbarmsg: '' };
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-
-
-
-componentDidMount() {
-    console.log("Edit Modal");
-
-}
-
-    onChangerefno = ({ currentTarget }) => {
-        this.setState({refno: currentTarget.value});
-
-    } 
-
-    onChangereasonforleave = ({ currentTarget }) => {
-        this.setState({reasonforleave: currentTarget.value});
-
-    } 
-
-    onChangedate = ({ currentTarget }) => {
-        this.setState({date: currentTarget.value});
-
-    } 
-
- 
 
     snackbarClose = (event) => {
         this.setState({ snackbaropen: false });
     };
 
-
-
     handleSubmit(event, props) {
         event.preventDefault();
         //alert(event.target.name.value);
 
-        const jsonob = {id: this.state.id, 
-                        refno: this.state.refno,
-                        reasonforleave: this.state.reasonforleave,
-                        date: this.state.date
-        }
-       axios.put("http://localhost:5000/api/leave-details", jsonob).then(result => console.log("updated")).catch(err => console.log(err.message)); 
+        fetch('http://localhost:5000/api/leave-details/', {
+            method: 'PUT',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'username': 'chathura'
+            },
+            body: JSON.stringify({
+                id: event.target.id.value,
+                refno: event.target.refno.value,
+                reasonforleave: event.target.reasonforleave.value,
+                date: event.target.date.value,
+            })
+        })
+            .then(res => res.json())
+            .then((result) => {
+                swal({
+                    title: "Employee Leave Updated Succesfully",
+                    icon: "success",
+                    button: "Done",
+                  });
+            }, (error) => {
+                this.setState({ snackbaropen: true, snackbarmsg: 'Failed' })
+            }
 
-
-            
-
-       
+            )
     }
 
     render() {
@@ -81,41 +68,37 @@ componentDidMount() {
                 >
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title-vcenter">
-                            Edit Leave Request
+                            Edit Category
               </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
 
                         <Row>
                             <Col sm={6}>
+                            <Form onSubmit={this.handleSubmit}>      
+                                <Form.Group controlId="id">
+                                    <Form.Label>ID</Form.Label>
+                                    <Form.Control type="text" name="id" required disabled  defaultValue={this.props.id}/>
+                                </Form.Group>
 
+                                <Form.Group controlId="name">
+                                    <Form.Label>Reference No</Form.Label>  
+                                    <Form.Control  value= {this.state.refno} type="text" name="refno" required placeholder="Reference Number" defaultValue={this.props.refno} />
+                                </Form.Group>
+                                <Form.Group controlId="name">
+                                    <Form.Label>Reason for Leave</Form.Label>
+                                    <Form.Control  value= {this.state.reasonforleave} type="text" name="reasonforleave" required placeholder="Reason for Leave" defaultValue={this.props.reasonforleave} />
+                                </Form.Group>
+                                <Form.Group controlId="name">
+                                    <Form.Label>Date</Form.Label>
+                                    <Form.Control  value= {this.state.date} type="text" name="date" required placeholder="Date" defaultValue={this.props.date} />
+                                </Form.Group>
 
-                                <Form onSubmit={this.handleSubmit}>
-
-                                   
-                                    <Form.Group controlId="id">
-                                        <Form.Label>ID</Form.Label>
-                                        <Form.Control value={"Sheikha"} type="text" name="id" required disabled  />
-                                    </Form.Group>
-
-                                    <Form.Group controlId="name">
-                                        <Form.Label>Reference No</Form.Label>  
-                                        <Form.Control onChange= {this.onChangerefno}  value= {this.state.refno} type="text" name="refno" required placeholder="Reference Number" defaultValue={this.props.refno} />
-                                    </Form.Group>
-                                    <Form.Group controlId="name">
-                                        <Form.Label>Reason for Leave</Form.Label>
-                                        <Form.Control onChange= {this.onChangereasonforleave} value= {this.state.reasonforleave} type="text" name="reasonforleave" required placeholder="Reason for Leave" defaultValue={this.props.reasonforleave} />
-                                    </Form.Group>
-                                    <Form.Group controlId="name">
-                                        <Form.Label>Date</Form.Label>
-                                        <Form.Control onChange= {this.onChangedate} value= {this.state.date} type="text" name="date" required placeholder="Date" defaultValue={this.props.date} />
-                                    </Form.Group>
-                                    
-                                    <Form.Group>
-                                        <Button style={{ backgroundColor: "#7121AD", color: "white" }} className="table table-bordered table-sm my-2" type="submit" >
-                                            Edit Leave Request
-                                        </Button>
-                                    </Form.Group>
+                                <Form.Group>
+                                    <Button style={{ backgroundColor: "#7121AD", color: "white" }} className="table table-bordered table-sm my-2" type="submit" >
+                                        Edit Leave Request
+                                    </Button>
+                                </Form.Group>
                                 </Form>
                             </Col>
                         </Row>
