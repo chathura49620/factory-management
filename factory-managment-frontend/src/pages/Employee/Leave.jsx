@@ -1,21 +1,22 @@
 import React, { Component } from "react";
 import axios from "axios";
-
-import LeaveTable from "../../components/SuperAdmin/Tables/LeaveTable";
+import { AddEmployeeModal } from "../../components/SuperAdmin/Modals/AddEmployeeModal";
+import { EditEmployeeModal } from "../../components/SuperAdmin/Modals/EditEmployeeModal";
+import {LeaveTable} from "../../components/SuperAdmin/Tables/LeaveTable";
+import { Table, Button, ButtonToolbar } from 'react-bootstrap';
+import { computeStyles } from "@popperjs/core";
 
 class Leave extends Component {
   state = {
     Leave: [],
-    currentPage: 1,
-    pageSize: 4,
-    genres: ["All", "Product", "Material"], //array of genre
-    categories: ["clothes", "plastic", "anything"],
-    selectedGenre: "All",
-    searchQuery: "",
-    selectedCategory: "",
+    addModalShow: false,
+    editModelShow: false,
+    empLeave:{}, 
+    id: ""
   };
 
-  componentDidMount() {
+  componentDidMount()  {
+
     axios
       .get("http://localhost:5000/api/leave-details")
       .then((result) => {
@@ -27,55 +28,66 @@ class Leave extends Component {
       .catch((err) => console.log(err.message));
   }
 
+setNewDetails = (leave) => {
+  
+  
+  this.setState({addModalShow: true, empLeave: leave});
+
+
+}
+
+setEditPopup = (leave) => {
+
+  console.log(leave);
+  this.setState({editModelShow: true, empLeave: leave});
+
+}
+
 handleLeaveDelete = (leave) => {
   // console.log("Delete");
   const Leave = this.state.Leave.filter(l => l._id !== leave._id );
   this.setState({Leave:Leave});
+
+
 }
 
 
 
   render(){
+    let AddModelClose = () => this.setState({ addModalShow: false })
+
+    console.log(this.state.empLeave);
+
+    // let EditModelClose = () => this.setState({editModelShow: false})
+
   return (
     <React.Fragment>
 
-        {/* <div className="row">
-          <div className="col">
-            <ListGroup
-              genres={this.state.genres}
-              onGenreSelect={this.handleGenreSelect}
-              selectedGenre={this.state.selectedGenre}
-            />
-          </div>
-          <div className="col">
-            <SelectSearch
-              categories={this.state.categories}
-              onChange={this.handleSelectChange}
-              categoryValue={this.state.selectedCategory}
-            />
-          </div>
-          <div className="col">
-            <SearchBox
-              onChange={this.handleSearch}
-              value={this.state.searchQuery}
-              placeHolder="Search date and time"
-            />
-          </div>
-          <div className="col">
-            <Link to="/items/new" className="btn btn-primary mt-2">
-              New Item
-            </Link>
-          </div>
-        </div> */}
         <h1 className="mb-5">Leave Requests</h1>
-            <button class="btn btn-info">Add a New Leave Request</button>
+        <ButtonToolbar>
+                    <button style={{ backgroundColor: "#7121AD", color: "white" }}
+                    className="btn btn-lg"
+                    onClick={() => this.setState({ addModalShow: true })}
+                    >Add Leave Request
+                    </button>
+                    <AddEmployeeModal
+                        show={this.state.addModalShow}
+                        onHide={AddModelClose}
+                        
+                    />
 
+                    {/* <EditEmployeeModal
+                      show={this.state.editModelShow}
+                      empleave= {this.state.empLeave}
+                      // onHide={EditModelClose}
+                    /> */}
+          </ButtonToolbar>
             <br></br><br></br>
 
         <div className="row">
           <div className="col-1"></div>
               <div className="col">
-            <LeaveTable onDelete={this.handleLeaveDelete} filteredItems={this.state.Leave} />
+            <LeaveTable onDelete={this.handleLeaveDelete} filteredItems={this.state.Leave} onSet = {this.setEditPopup} />
           </div>
         </div>
       </React.Fragment>
