@@ -29,7 +29,7 @@ class MaterialCodes extends Component {
         <ButtonToolbar>
                     <Button variant='primary'
                         onClick={() => this.setState({ addModalShow: true })}
-                    >Add Category
+                    >Add Material Code
                     </Button>
                     <AddMaterialCodeModal
                         show={this.state.addModalShow}

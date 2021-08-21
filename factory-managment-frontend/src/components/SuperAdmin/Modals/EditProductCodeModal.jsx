@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Modal, Button, Row, Col, Form, FormGroup } from 'react-bootstrap';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
+import swal from 'sweetalert';
 import axios from "axios";
 
 export class EditProductCodeModal extends Component {
@@ -46,7 +47,11 @@ export class EditProductCodeModal extends Component {
         })
             .then(res => res.json())
             .then((result) => {
-                alert("Success");
+                swal({
+                    title: "Product Code Updated Succesfully",
+                    icon: "success",
+                    button: "Done",
+                  });
             }, (error) => {
                 this.setState({ snackbaropen: true, snackbarmsg: 'Failed' })
             }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Modal, Button, Row, Col, Form, FormGroup } from 'react-bootstrap';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
+import swal from 'sweetalert';
 import { Redirect } from 'react-router-dom';
 
 
@@ -35,8 +36,11 @@ export class AddMaterialCodeModal extends Component {
         })
             .then(res => res.json())
             .then((result) => {
-                alert("Success");
-                console.log("result" , result)
+                swal({
+                    title: "Material Code Added Succesfully",
+                    icon: "success",
+                    button: "Done",
+                  });
             }, (error) => {
                 this.setState({ snackbaropen: true, snackbarmsg: 'Failed' })
             }

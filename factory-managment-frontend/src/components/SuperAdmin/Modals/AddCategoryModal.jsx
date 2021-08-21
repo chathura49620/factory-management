@@ -39,7 +39,7 @@ export class AddCategoryModal extends Component {
                     title: "Category Added Succesfully",
                     icon: "success",
                     button: "Done",
-                  });
+                  }); 
                   
             }, (error) => {
                 this.setState({ snackbaropen: true, snackbarmsg: 'Failed' })

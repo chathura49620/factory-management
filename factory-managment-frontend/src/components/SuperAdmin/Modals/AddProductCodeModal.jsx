@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from "axios";
+import swal from 'sweetalert';
 import { Modal, Button, Row, Col, Form, FormGroup } from 'react-bootstrap';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -47,8 +48,11 @@ export class AddProductCodeModal extends Component {
         })
             .then(res => res.json())
             .then((result) => {
-                alert("Success");
-                console.log("result" , result)
+                swal({
+                    title: "Product Code Added Succesfully",
+                    icon: "success",
+                    button: "Done",
+                  });
             }, (error) => {
                 this.setState({ snackbaropen: true, snackbarmsg: 'Failed' })
             }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Modal, Button, Row, Col, Form, FormGroup } from 'react-bootstrap';
+import swal from 'sweetalert';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 
@@ -33,7 +34,11 @@ export class EditCategoryModal extends Component {
         })
             .then(res => res.json())
             .then((result) => {
-                alert("Success");
+                swal({
+                    title: "Category Updated Succesfully",
+                    icon: "success",
+                    button: "Done",
+                  });
             }, (error) => {
                 this.setState({ snackbaropen: true, snackbarmsg: 'Failed' })
             }
