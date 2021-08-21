@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Table, Button, ButtonToolbar } from 'react-bootstrap';
+import swal from 'sweetalert';
 import { EditProductCodeModal } from '../Modals/EditProductCodeModal';
 
 
@@ -9,6 +10,40 @@ export class ProductCodesTable extends Component {
     this.state = { cate: [], editModalShow: false }
   }
 
+  deleteProCode(id){
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this Recode!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        fetch('http://localhost:5000/api/product-code', {
+            method: 'DELETE',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'username': 'chathura'
+            },
+            body: JSON.stringify({
+                id: id
+               
+            })
+        }).then(res => res.json())
+        .then((result) => {
+          swal({
+            title: "Product Code Deleted Succesfully",
+            icon: "success",
+            button: "Done",
+          }); 
+      });
+      } else {
+        swal("Your imaginary file is safe!");
+      }
+    });
+  }
 
   render(){
     const {id, productCode, productCategory, status } = this.state;
@@ -51,7 +86,7 @@ export class ProductCodesTable extends Component {
             >Edit</button> 
             <button 
             className="btn btn-warning btn-sm" 
-            >Delete</button></td>
+            onClick={() => this.deleteProCode(i._id)}>Delete</button></td>
           </tr>
         ))}
       </tbody>

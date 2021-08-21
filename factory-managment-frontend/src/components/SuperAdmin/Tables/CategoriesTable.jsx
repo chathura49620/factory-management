@@ -1,11 +1,47 @@
 import React, { Component } from "react";
 import { Table, Button, ButtonToolbar } from 'react-bootstrap';
+import swal from 'sweetalert';
 import { EditCategoryModal } from '../Modals/EditCategoryModal';
 
 export class CategoriesTable extends Component {
   constructor(props) {
     super(props);
     this.state = { cate: [], editModalShow: false }
+  }
+
+  deleteCat(id){
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this Recode!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        fetch('http://localhost:5000/api/categories', {
+            method: 'DELETE',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'username': 'chathura'
+            },
+            body: JSON.stringify({
+                id: id
+               
+            })
+        }).then(res => res.json())
+        .then((result) => {
+          swal({
+            title: "Category Deleted Succesfully",
+            icon: "success",
+            button: "Done",
+          }); 
+      });
+      } else {
+        swal("Your imaginary file is safe!");
+      }
+    });
   }
 
   render() {
@@ -47,7 +83,7 @@ export class CategoriesTable extends Component {
             >Edit</button> 
             <button 
             className="btn btn-warning btn-sm" 
-            onClick={() => this.deleteCat(i.id)}>Delete</button></td>
+            onClick={() => this.deleteCat(i._id)}>Delete</button></td>
           </tr>
         ))}
       </tbody>
