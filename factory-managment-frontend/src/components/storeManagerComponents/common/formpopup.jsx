@@ -15,12 +15,10 @@ const FormPopup = ({ title, children, openPopup, onClose }) => {
       >
         <DialogTitle
           style={{
-            backgroundColor: "#2461A7",
-            color: "white",
             height: 56,
           }}
         >
-          <div style={{ display: "flex" }}>
+          <div style={{ display: "flex", textAlign: "center" }}>
             <h5 style={{ flexGrow: 1 }}>Edit My Profile</h5>
             <button onClick={() => onClose()} style={{ color: "#0E0104" }}>
               X

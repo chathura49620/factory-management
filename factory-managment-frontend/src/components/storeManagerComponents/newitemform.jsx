@@ -68,6 +68,21 @@ class NewItemForm extends FormSuper {
     });
   };
 
+  filteredData() {
+    const { searchQuery, materialCodeObjects, selectedGenre } = this.state;
+
+    let filtered = [];
+    if (searchQuery) {
+      filtered = materialCodeObjects.filter((m) =>
+        m.materialName.toLowerCase().startsWith(searchQuery.toLowerCase())
+      );
+    } else {
+      filtered = materialCodeObjects;
+    }
+
+    return filtered;
+  }
+
   doSubmit() {
     // console.log("submitted", this.state.data);
     const jsonOb = this.state.data;
@@ -84,9 +99,11 @@ class NewItemForm extends FormSuper {
   }
 
   render() {
+    const filtered = this.filteredData();
     return (
       <React.Fragment>
         <div className="row">
+          <div className="col-2"></div>
           <div className="col">
             <h1>New Item</h1>
             <form onSubmit={this.handleSubmit}>
@@ -100,7 +117,7 @@ class NewItemForm extends FormSuper {
               {this.renderInput("Quantity", "Item Quantity")}
               {this.renderInput("Supplier", "Supplier Name")}
               {this.renderInput("AddedDate", "Received date", "date")}
-              {this.renderButton("Submit")}
+              {this.renderButton("ADD")}
             </form>
           </div>
 
@@ -122,7 +139,7 @@ class NewItemForm extends FormSuper {
               </div>
             </div>
 
-            <ItemCodeTable materialCodeObs={this.state.materialCodeObjects} />
+            <ItemCodeTable materialCodeObs={filtered} />
           </div>
         </div>
       </React.Fragment>

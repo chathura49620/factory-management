@@ -14,6 +14,7 @@ const Input = ({ name, label, value, onChange, error, type }) => {
         name={name}
         autoComplete="off"
         onChange={onChange}
+        style={{ border: "1px solid #050139" }}
       />
       {error && (
         <div className="alert alert-danger" style={{ padding: 3 }}>

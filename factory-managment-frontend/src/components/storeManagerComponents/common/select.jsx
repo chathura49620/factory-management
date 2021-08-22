@@ -6,7 +6,13 @@ const Select = ({ name, label, options, error, ...rest }) => {
       <label style={{ fontWeight: "bold" }} htmlFor={name}>
         {label}
       </label>
-      <select name={name} id={name} {...rest} className="form-control">
+      <select
+        name={name}
+        id={name}
+        {...rest}
+        className="form-control"
+        style={{ border: "1px solid #050139" }}
+      >
         <option value="" />
 
         {options.map((opt) => (

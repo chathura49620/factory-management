@@ -2,15 +2,13 @@ import React, { Component } from "react";
 
 const ListGroup = ({ genres, onGenreSelect, selectedGenre }) => {
   return (
-    <ul className="list-group list-group-horizontal m-2">
+    <ul className="list-group list-group-horizontal my-4">
       {genres.map((g) => (
         <li
           onClick={() => onGenreSelect(g)}
           key={g}
+          style={{ backgroundColor: g === selectedGenre ? "#7121AD" : "white" }}
           className="list-group-item"
-          className={
-            g === selectedGenre ? "list-group-item active" : "list-group-item"
-          }
         >
           {g}
         </li>
