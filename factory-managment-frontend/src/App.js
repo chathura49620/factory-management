@@ -37,6 +37,11 @@ import MyProfile from "./components/storeManagerComponents/myprofile";
 import NavBar from "./components/storeManagerComponents/navbar";
 import Item from "./components/storeManagerComponents/items";
 
+
+
+// import AddNewProductionRound from "./pages/ProductionManager/AddNewProductionRound";
+// import VIewNewProductionRound from "./pages/ProductionManager/VIewNewProductionRound";
+
 function App() {
   return (
     <Router>
@@ -58,7 +63,7 @@ function App() {
           <Route path="/itemsrecords" component={ItemRecord}></Route>
           {/* <Route path="/notfound" component={NotFound}></Route> */}
 
-          //employee routes
+          {/* employee routes */}
           <Route path= '/employee-dashboard' exact component={EmployeeDashboard} />
           <Route path= '/assignments' exact component={Assignments}/>
           <Route path= '/calendar' exact component={Calendar}/>
@@ -66,6 +71,13 @@ function App() {
           <Route path= '/payments' exact component={Payments}/>
 
           <Route path= '/leave' exact component={Leave}/>
+
+
+          {/* production manager routers */}
+          {/* <Route path= '/add-new-production-round' exact component={AddNewProductionRound} />
+          <Route path= '/view-production-rounds' exact component={VIewNewProductionRound}/> */}
+
+
          
        
 

@@ -44,7 +44,8 @@ route.delete('/api/leave-details/',contoller.leaveDetails.delete);
 
 //New Production Round Details APIs
 route.post('/api/newProRound-details/',contoller.newProductionRoundDetails.create);
- //route.get('/api/newProRound-details/',contoller.newProductionRoundDetails.find);
-// route.delete('/api/newProRound-details/',contoller.lnewProductionRoundDetails.delete);
+route.get('/api/newProRound-details/',contoller.newProductionRoundDetails.find);
+route.put('/api/newProRound-details/',contoller.newProductionRoundDetails.update);
+route.delete('/api/newProRound-details/',contoller.newProductionRoundDetails.delete);
 
 module.exports =route;
