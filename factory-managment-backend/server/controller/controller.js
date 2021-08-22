@@ -5,4 +5,5 @@ exports.productcode= require('./productCode.controller');
 exports.factoryDetails= require('./factoryDetails.controller');
 exports.userRole= require('./userRole.controller');
 exports.leaveDetails= require('./employeeLeave.controller');
+exports.newProductionRoundDetails= require('./newProductionRound.controller');
 

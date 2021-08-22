@@ -11,11 +11,13 @@ route.get('/api/categories',contoller.category.find);
 route.put('/api/categories/',contoller.category.update);
 route.delete('/api/categories/',contoller.category.delete);
 
+
 // Super Admin Metirial Code APIs
 route.post('/api/meterial-code/',contoller.materialCode.create);
 route.get('/api/meterial-code/',contoller.materialCode.find);
 route.put('/api/meterial-code/',contoller.materialCode.update);
 route.delete('/api/meterial-code/',contoller.materialCode.delete);
+
 
 // Super Admin Product Code APIs
 route.post('/api/product-code/',contoller.productcode.create);
@@ -39,5 +41,10 @@ route.post('/api/leave-details/',contoller.leaveDetails.create);
 route.get('/api/leave-details/',contoller.leaveDetails.find);
 route.put('/api/leave-details/',contoller.leaveDetails.update);
 route.delete('/api/leave-details/',contoller.leaveDetails.delete);
+
+//New Production Round Details APIs
+route.post('/api/newProRound-details/',contoller.newProductionRoundDetails.create);
+ //route.get('/api/newProRound-details/',contoller.newProductionRoundDetails.find);
+// route.delete('/api/newProRound-details/',contoller.lnewProductionRoundDetails.delete);
 
 module.exports =route;
