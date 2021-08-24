@@ -50,7 +50,7 @@ main {
     height: 70px;
     padding: 25px;
     border-radius: 5px;
-    background: #43BFC7;
+    background: #F67280;
     box-shadow: 5px 5px 13px #ededed, -5px -5px 13px #ffffff;
   }
 
@@ -63,7 +63,7 @@ main {
     height: 70px;
     padding: 25px;
     border-radius: 5px;
-    background: #58F52D;
+    background: #43BFC7;
     box-shadow: 5px 5px 13px #ededed, -5px -5px 13px #ffffff;
   }
 
@@ -76,7 +76,7 @@ main {
     height: 70px;
     padding: 25px;
     border-radius: 5px;
-    background: #FF5F1F;
+    background: #F67280;
     box-shadow: 5px 5px 13px #ededed, -5px -5px 13px #ffffff;
   }
 
@@ -89,7 +89,7 @@ main {
     height: 70px;
     padding: 25px;
     border-radius: 5px;
-    background: #E41B17;
+    background: #43BFC7;
     box-shadow: 5px 5px 13px #ededed, -5px -5px 13px #ffffff;
   }
   

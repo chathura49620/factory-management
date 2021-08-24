@@ -38,6 +38,12 @@ route.delete('/api/factory-details/',contoller.factoryDetails.delete);
 route.post('/api/leave-details/',contoller.leaveDetails.create);
 route.get('/api/leave-details/',contoller.leaveDetails.find);
 route.put('/api/leave-details/',contoller.leaveDetails.update);
-route.delete('/api/leave-details/',contoller.leaveDetails.delete);
+route.delete('/api/leave-details/',contoller.leaveDetails.delete); 
 
-module.exports =route;
+//employee assignment APIs
+route.post('/api/assignment-details/',contoller.assignmentDetails.create);
+route.get('/api/assignment-details/',contoller.assignmentDetails.find);
+route.put('/api/assignment-details/',contoller.assignmentDetails.update);
+route.delete('/api/assignment-details/',contoller.assignmentDetails.delete);
+
+module.exports = route;

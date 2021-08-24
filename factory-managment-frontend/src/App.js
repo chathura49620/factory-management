@@ -64,7 +64,6 @@ function App() {
           <Route path= '/calendar' exact component={Calendar}/>
           <Route path= '/profile' exact component={Profile}/>
           <Route path= '/payments' exact component={Payments}/>
-
           <Route path= '/leave' exact component={Leave}/>
          
        

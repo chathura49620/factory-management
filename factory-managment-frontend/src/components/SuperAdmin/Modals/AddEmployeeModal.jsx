@@ -59,6 +59,7 @@ export class AddEmployeeModal extends Component {
         return (
             <div className="container">
 
+
                 <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
                     open={this.state.snackbaropen}
                     autoHideDuration={6000}
@@ -96,9 +97,9 @@ export class AddEmployeeModal extends Component {
                                         <Form.Label>Date</Form.Label>
                                         <Form.Control type="text" name="date" required placeholder="Date" />
                                     </Form.Group>
-                                    
+                                    <br></br>
                                     <Form.Group>
-                                        <Button variant="primary" type="submit" >
+                                        <Button  style={{ backgroundColor: "#7121AD", color: "white" }} className="btn"  type="submit" >
                                             Submit Leave Request
                                         </Button>
                                     </Form.Group>

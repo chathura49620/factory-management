@@ -83,8 +83,8 @@ class EmployeeDashboard extends Component {
           <div className="charts__right">
             <div className="charts__right__title">
               <div>
-                <h1>Stats Reports</h1>
-                <p>Cupertino, California, USA</p>
+                <h1>Your Stats</h1>
+                <p>As of 2nd July 2021</p> 
               </div>
               <i className="fa fa-usd" aria-hidden="true"></i>
             </div>
