@@ -6,7 +6,8 @@ import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import { EmpSidebarData } from './EmpSidebarData';
 
-// import SubMenu from './SubMenu';
+
+import SubMenu from './SubMenu';
 import { IconContext } from 'react-icons/lib';
 
 const Nav = styled.div`
@@ -34,7 +35,7 @@ const SidebarNav = styled.nav`
   justify-content: center;
   position: fixed;
   top: 0;
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 1920px) {
     left: ${({ sidebar }) => (sidebar ? '0' : '-100%')};
   }
   left: 0;
@@ -64,9 +65,9 @@ const Sidebar = () => {
             <NavIcon to='#'>
               <AiIcons.AiOutlineClose onClick={showSidebar} />
             </NavIcon>
-            {/* {EmpSidebarData.map((item, index) => {
+            {EmpSidebarData.map((item, index) => {
               return <SubMenu item={item} key={index} />;
-            })} */}
+            })}
           </SidebarWrap>
         </SidebarNav>
       </IconContext.Provider>

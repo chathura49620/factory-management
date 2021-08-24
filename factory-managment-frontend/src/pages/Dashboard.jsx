@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import SuperAdminSideNav from '../components/SuperAdmin/sideNav/Sidebar';
-// import EmpsideNav from '../components/Employee/EmpsideNav/EmpSidebar';
+import EmpsideNav from '../components/Employee/EmpsideNav/EmpSidebar';
 import SuperAdminDashboard from './SuperAdmin/Dashboard'
 import EmployeeDashboard from './Employee/EmployeeDashboard'
 
@@ -18,7 +18,7 @@ import  login  from './SuperAdmin/login';
 //employee routes
 import Assignments from './Employee/Assignments';
 import Calendar from './Employee/Calendar';
-// import Leave from './pages/Employee/Leave';
+import Leave from './Employee/Leave';
 import Profile from './Employee/Profile';
 import Payments from './Employee/Payments';
 
@@ -48,7 +48,7 @@ class Dashboard extends Component {
         const user_role = localStorage.getItem('user_role')
         if(user_role == 'employee'){
             return (
-                <h1></h1>   
+                <EmpsideNav/>   
             );
         }
         if(user_role == 'stock member'){
@@ -90,6 +90,7 @@ class Dashboard extends Component {
                     <Route path= '/calendar' exact component={Calendar}/>
                     <Route path= '/profile' exact component={Profile}/>
                     <Route path= '/payments' exact component={Payments}/> 
+                    <Route path= '/leave' exact component={Leave}/> 
                 </div>
             );
         }if(user_role == 'Super Admin'){
@@ -133,7 +134,8 @@ class Dashboard extends Component {
 
     render(){
        return(
-           <div>  
+           <div>
+                
                  {this.renderSideNavigation()}
                  {this.renderDashboard()}
            </div> 
