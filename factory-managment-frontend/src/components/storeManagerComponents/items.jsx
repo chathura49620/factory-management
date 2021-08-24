@@ -21,6 +21,7 @@ class Item extends Component {
     selectedCategory: "",
     showTaskDialog: false,
     wannaDeleteItem: {},
+    categoryObjects: [],
   };
 
   //get all the item details including nexted documents
@@ -30,7 +31,15 @@ class Item extends Component {
       .then((result) => {
         const items = result.data;
 
-        this.setState({ items: items });
+        axios.get("http://localhost:5000/category/").then((result) => {
+          const categoryObjs = result.data;
+          console.log(categoryObjs);
+          //this.setState({categoryObjects: categoryObjs});
+          this.setState({
+            items: items,
+            categoryObjects: categoryObjs,
+          });
+        });
       })
       .catch((err) => console.log(err.message));
   }
@@ -115,10 +124,16 @@ class Item extends Component {
   };
 
   filteredData() {
-    const { searchQuery, items, selectedGenre } = this.state;
+    const { searchQuery, items, selectedGenre, selectedCategory } = this.state;
 
     let filtered = [];
-    if (searchQuery) {
+    if (selectedCategory) {
+      if (selectedCategory === "first") {
+        filtered = items;
+      } else {
+        filtered = items.filter((i) => i.iCategory === selectedCategory);
+      }
+    } else if (searchQuery) {
       filtered = items.filter((i) =>
         i.iAddedDate.toLowerCase().startsWith(searchQuery.toLowerCase())
       );
@@ -146,6 +161,7 @@ class Item extends Component {
           deleteOrNot={this.deleteOrNot}
         />
         <div className="row">
+          <div className="col-2"></div>
           <div className="col">
             <ListGroup
               genres={this.state.genres}
@@ -155,7 +171,7 @@ class Item extends Component {
           </div>
           <div className="col">
             <SelectSearch
-              categories={this.state.categories}
+              categories={this.state.categoryObjects}
               onChange={this.handleSelectChange}
               categoryValue={this.state.selectedCategory}
             />
@@ -171,8 +187,8 @@ class Item extends Component {
           <div className="col">
             <Link
               to="/items/new"
-              className="btn  mt-2"
-              style={{ backgroundColor: "#2461A7", color: "white" }}
+              className="btn  my-4"
+              style={{ backgroundColor: "#7121AD", color: "white" }}
             >
               New Item
             </Link>
@@ -180,7 +196,7 @@ class Item extends Component {
         </div>
 
         <div className="row">
-          <div className="col-1"></div>
+          <div className="col-2"></div>
           <div className="col">
             <Table
               filteredItems={filtered}

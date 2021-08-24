@@ -6,41 +6,43 @@ const TableVertilcle = ({ records, handleDelete, onSet }) => {
       {records.map((r) => (
         <table key={r._id} className="table table-bordered table-sm m-2">
           <tbody key={r._id}>
-            <tr style={{ backgroundColor: "#2461A7", color: "white" }}>
+            <tr style={{ backgroundColor: "#7121AD", color: "white" }}>
               <th scope="col">Record</th>
               <th scope="col">details</th>
             </tr>
 
             <tr>
-              <td>Item Code</td>
+              <td style={{ fontWeight: "bold" }}>Item Code</td>
               <td>{r.iCode}</td>
             </tr>
             <tr>
-              <td>Type</td>
+              <td style={{ fontWeight: "bold" }}>Type</td>
               <td>{r.iType}</td>
             </tr>
             <tr>
-              <td>Category</td>
+              <td style={{ fontWeight: "bold" }}>Category</td>
               <td>{r.iCategory}</td>
             </tr>
             <tr>
-              <td>quantity</td>
+              <td style={{ fontWeight: "bold" }}>quantity</td>
               <td>{r.iQuantity}</td>
             </tr>
             <tr>
-              <td>Supplier Name</td>
+              <td style={{ fontWeight: "bold" }}>Supplier Name</td>
               <td>{r.iSupplier}</td>
             </tr>
             <tr>
-              <td>Received date</td>
+              <td style={{ fontWeight: "bold" }}>Received date</td>
               <td>{r.iAddedDate}</td>
             </tr>
 
-            <tr className="table-primary">
-              <th scope="col">Actions</th>
+            <tr>
+              <th scope="col" style={{ fontWeight: "bold" }}>
+                Actions
+              </th>
               <td>
                 <button
-                  style={{ backgroundColor: "#2461A7", color: "white" }}
+                  style={{ backgroundColor: "#7121AD", color: "white" }}
                   className="btn-sm mx-2"
                 >
                   Edit

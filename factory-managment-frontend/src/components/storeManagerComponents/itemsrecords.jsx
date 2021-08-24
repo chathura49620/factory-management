@@ -6,6 +6,8 @@ import { result } from "lodash";
 import DialogBox from "./common/dialogbox";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Notice from "./common/notice";
+import { Link } from "react-router-dom";
 
 class ItemRecord extends Component {
   state = {
@@ -86,6 +88,44 @@ class ItemRecord extends Component {
     //console.log(this.state.itemRecords);
     //console.log(this.state.itemQuantity);
     //const { itemQuantity } = this.state;
+    const count = this.state.itemRecords.length;
+
+    if (count === 0) {
+      return (
+        <React.Fragment>
+          <ToastContainer />
+          <DialogBox
+            show={this.state.showTaskDialog}
+            deleteOrNot={this.deleteOrNot}
+          />
+          <div className="row">
+            <div className="col-4"></div>
+            <div className="col">
+              <SearchBox
+                onChange={this.handleSearch}
+                value={this.state.searchQuery}
+                placeHolder="Search Records ex:2021-01-01"
+              />
+            </div>
+            <div className="col">
+              <button
+                onClick={this.onSearch}
+                className="btn  my-4"
+                style={{ backgroundColor: "#7121AD", color: "white" }}
+              >
+                Search
+              </button>
+            </div>
+          </div>
+          <div className="row m-4">
+            <div className="col-2"></div>
+            <div className="col">
+              <Notice />
+            </div>
+          </div>
+        </React.Fragment>
+      );
+    }
 
     return (
       <React.Fragment>
@@ -94,23 +134,23 @@ class ItemRecord extends Component {
           show={this.state.showTaskDialog}
           deleteOrNot={this.deleteOrNot}
         />
-        <div className="row my-3">
+        <div className="row">
           <div className="col-4"></div>
           <div className="col">
             <SearchBox
               onChange={this.handleSearch}
               value={this.state.searchQuery}
-              placeHolder="Search Records"
+              placeHolder="Search Records ex:2021-01-01"
             />
           </div>
           <div className="col">
-            <button
+            <Link
               onClick={this.onSearch}
-              className="btn  my-2"
-              style={{ backgroundColor: "#2461A7", color: "white" }}
+              className="btn my-4"
+              style={{ backgroundColor: "#7121AD", color: "white" }}
             >
               Search
-            </button>
+            </Link>
           </div>
         </div>
         <div className="row">

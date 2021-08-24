@@ -5,13 +5,14 @@ const SelectSearch = ({ categories, categoryValue, onChange }) => {
     <select
       value={categoryValue}
       onChange={(e) => onChange(e.currentTarget.value)}
-      className="form-select form-select-sm my-3"
+      style={{ border: "2px solid #050139" }}
+      className="form-select form-select-sm my-4"
       aria-label=".form-select-sm example"
     >
-      <option>Open the category menu</option>
+      <option value={"first"}>Open the category menu</option>
       {categories.map((cat) => (
-        <option key={cat} value={cat}>
-          {cat}
+        <option key={cat._id} value={cat.categoryName}>
+          {cat.categoryName}
         </option>
       ))}
     </select>
