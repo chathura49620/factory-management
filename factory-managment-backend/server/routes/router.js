@@ -25,9 +25,12 @@ route.get('/api/product-code/',contoller.productcode.find);
 route.put('/api/product-code/',contoller.productcode.update);
 route.delete('/api/product-code/',contoller.productcode.delete);
 
-//Super Admin Metirial Code APIs
+//Super Admin User Role APIs
 route.get('/api/user-roles/',contoller.userRole.find);
 route.post('/api/user-roles/',contoller.userRole.create);
+
+//login APIs
+route.get('/api/login/',contoller.login.find);
 
 
 //Super Admin Factory Details APIs

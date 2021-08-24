@@ -7,4 +7,6 @@ exports.userRole= require('./userRole.controller');
 exports.leaveDetails= require('./employeeLeave.controller');
 exports.newProductionRoundDetails= require('./newProductionRound.controller');
 exports.orderDetails= require('./orderDetails.controller');
+exports.login= require('./login.controller');
+
 
