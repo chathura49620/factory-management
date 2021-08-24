@@ -39,8 +39,8 @@ import Item from "./components/storeManagerComponents/items";
 
 
 
-// import AddNewProductionRound from "./pages/ProductionManager/AddNewProductionRound";
-// import VIewNewProductionRound from "./pages/ProductionManager/VIewNewProductionRound";
+import AddNewProductionRound from "./pages/ProductionManager/AddNewProductionRound";
+import VIewNewProductionRound from "./pages/ProductionManager/VIewNewProductionRound";
 
 function App() {
   return (
@@ -73,9 +73,9 @@ function App() {
           <Route path= '/leave' exact component={Leave}/>
 
 
-          {/* production manager routers */}
-          {/* <Route path= '/add-new-production-round' exact component={AddNewProductionRound} />
-          <Route path= '/view-production-rounds' exact component={VIewNewProductionRound}/> */}
+           {/* production manager routes */}
+           <Route path= '/add-new-production-round' exact component={AddNewProductionRound} />
+          <Route path= '/view-production-rounds' exact component={VIewNewProductionRound}/> 
 
 
          

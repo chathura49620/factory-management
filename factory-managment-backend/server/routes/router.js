@@ -48,4 +48,10 @@ route.get('/api/newProRound-details/',contoller.newProductionRoundDetails.find);
 route.put('/api/newProRound-details/',contoller.newProductionRoundDetails.update);
 route.delete('/api/newProRound-details/',contoller.newProductionRoundDetails.delete);
 
+//Order Details APIs
+route.post('/api/order-details/',contoller.orderDetails.create);
+route.get('/api/order-details/',contoller.orderDetails.find);
+route.put('/api/order-details/',contoller.orderDetails.update);
+route.delete('/api/order-details/',contoller.orderDetails.delete);
+
 module.exports =route;

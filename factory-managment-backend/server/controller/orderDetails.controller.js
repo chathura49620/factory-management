@@ -1,6 +1,6 @@
-var newProductionRoundDetails = require('../model/newProductionRound.model');
+var orderDetails = require('../model/orderDetails.model');
 
-// create and save new production round details
+// create and save new order details
 exports.create = (req,res)=>{
     // validate request
     if(!req.body){
@@ -9,26 +9,27 @@ exports.create = (req,res)=>{
     }
 
     
-    // new production round details
+    // order details
     
-    const newProductionRoundDet = new newProductionRoundDetails({
-        productId : req.body.productId,
+    const orderDet = new orderDetails({
+        orderId : req.body.orderId,
+        buyerName : req.body.buyerName,
+        email : req.body.email,
         productCategory : req.body.productCategory,
         quantity : Number(req.body.quantity),
-        esDays : Number(req.body.esDays),
-        esEmployees : Number(req.body.esEmployees),
+        paymentMethode : req.body.paymentMethode,
         status : req.body.status
     })
 
     // save new production round details in the database
-    newProductionRoundDet
-        .save(newProductionRoundDet)
+    orderDet
+        .save(orderDet)
         .then(data => {
             res.send(data)
         })
         .catch(err =>{
             res.status(500).send({
-                message : err.message || "Error: Could not add new production round details."
+                message : err.message || "Error: Could not add order details."
             });
         });
 
@@ -39,24 +40,24 @@ exports.find = (req,res) =>{
     if(req.query.id){
         const id  = req.query.id;
 
-        newProductionRoundDetails.findById(id)
+        orderDetails.findById(id)
         .then(data =>{
             if(!data){
-                res.status(404).send({message:"Could not find new production details with ID" + id});
+                res.status(404).send({message:"Could not find order details with ID" + id});
             }else{
                 res.send(data);
             }
         })
         .catch(err =>{
-            res.status(500).send({message:"Error while retrieving new production round Details with ID" +id})
+            res.status(500).send({message:"Error while retrieving order details with ID" +id})
         })
     }else{
-        newProductionRoundDetails.find()
+        orderDetails.find()
         .then(matCode => {
             res.send(matCode)
         })
         .catch(err =>{
-            res.status(500).send({message:err.message || "Error: Cannot retrieve New Production Round Details"})
+            res.status(500).send({message:err.message || "Error: Cannot Retrieve Order Details"})
         })
     }
 }
@@ -70,10 +71,10 @@ exports.update = (req,res) => {
     }
 
     const id  = req.body.id;
-    newProductionRoundDetails.findByIdAndUpdate(id, req.body,{useFindAndModify:false})
+    orderDetails.findByIdAndUpdate(id, req.body,{useFindAndModify:false})
     .then(data =>{
         if(!data){
-            res.status(400).send({message:"New Production Round Details is not found"});
+            res.status(400).send({message:"Order Details is not found"});
         }else{
             res.send(data);
         }
@@ -87,13 +88,13 @@ exports.update = (req,res) => {
 exports.delete = (req,res) => {
     const id  = req.body.id;
 
-    newProductionRoundDetails.findByIdAndDelete(id)
+    orderDetails.findByIdAndDelete(id)
     .then(data=>{
         if(!data){
-            res.status(400).send({message:`Cannot delete production details with $(id).`});
+            res.status(400).send({message:`Cannot delete order details with $(id).`});
         }
         else{
-            res.send({message:"New Production Round  Details was deleted"});
+            res.send({message:"Order Details was deleted"});
         }
     })
     .catch(err =>{
