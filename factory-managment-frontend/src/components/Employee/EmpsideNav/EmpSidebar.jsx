@@ -64,9 +64,9 @@ const Sidebar = () => {
             <NavIcon to='#'>
               <AiIcons.AiOutlineClose onClick={showSidebar} />
             </NavIcon>
-            {EmpSidebarData.map((item, index) => {
+            {/* {EmpSidebarData.map((item, index) => {
               return <SubMenu item={item} key={index} />;
-            })}
+            })} */}
           </SidebarWrap>
         </SidebarNav>
       </IconContext.Provider>
