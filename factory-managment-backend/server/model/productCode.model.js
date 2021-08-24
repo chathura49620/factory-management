@@ -9,6 +9,9 @@ var schema = new mongoose.Schema({
         type:String,
         required:true
     },
+    stockCount:{
+        type:String,
+    },
     status:String,
 })
 

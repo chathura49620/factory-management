@@ -46,6 +46,10 @@ class login extends Component {
                     this.props.history.push('/employee-dashboard');
                     window.location.reload();
                 }
+                if(user_role == 'production team member'){
+                  this.props.history.push('/production-manager-dashboard');
+                  window.location.reload();
+              }
                 
             }
         }

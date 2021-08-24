@@ -45,20 +45,22 @@ export class ProductonRoundTable extends Component {
   }
 
   render() {
-    // const {id, name, status, version } = this.state;
-    // let EditModelClose = () => this.setState({ editModalShow: false })
+    const {id, productCategory, quantity, esDays, esEmployees } = this.state;
+    let EditModelClose = () => this.setState({ editModalShow: false })
   return (
     <div>
-       {/* <ButtonToolbar>
+       <ButtonToolbar>
 
         <EditProductionRoundDetailsModal
             show={this.state.editModalShow}
             onHide={EditModelClose}
             id={id}
-            name={name}
-            status={status}
+            productCategory={productCategory}
+            quantity={quantity}
+            esDays={esDays}
+            esEmployees={esEmployees}
         />
-        </ButtonToolbar> */}
+        </ButtonToolbar>
     <table className="table table-bordered table-sm m-2">
       <thead>
         <tr className="table-secondary">
@@ -87,7 +89,7 @@ export class ProductonRoundTable extends Component {
             <td>{i.status}</td>
             <td><button 
             className="btn btn-success btn-sm"
-            onClick={() => this.setState({ editModalShow: true, id: i._id, name: i.categoryName, status: i.status })}
+            onClick={() => this.setState({ editModalShow: true, id: i._id, productCategory: i.productCategory, quantity: i.quantity, esDays: i.esDays,esEmployees: i.esEmployees })}
             >Edit</button> 
             <button 
             className="btn btn-warning btn-sm" 

@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import SuperAdminSideNav from '../components/SuperAdmin/sideNav/Sidebar';
 import EmpsideNav from '../components/Employee/EmpsideNav/EmpSidebar';
+import ProManagerNav from '../components/ProductionManager/ProManagersideNav/EmpSidebar';
+
 import SuperAdminDashboard from './SuperAdmin/Dashboard'
 import EmployeeDashboard from './Employee/EmployeeDashboard'
 
@@ -35,6 +37,7 @@ import Item from "../components/storeManagerComponents/items";
 //production manager routes
 import AddNewProductionRound from "./ProductionManager/AddNewProductionRound";
 import VIewNewProductionRound from "./ProductionManager/VIewNewProductionRound";
+import ViewProductList from "./ProductionManager/ViewProductList";
 
 
 class Dashboard extends Component {
@@ -61,7 +64,7 @@ class Dashboard extends Component {
         }
         if(user_role == 'production team member'){
             return (
-                <h1></h1>
+                <ProManagerNav />
             );
         }
         if(user_role == 'Super Admin'){
@@ -114,6 +117,7 @@ class Dashboard extends Component {
                     <div>
                         <Route path= '/add-new-production-round' exact component={AddNewProductionRound} />
                         <Route path= '/view-production-rounds' exact component={VIewNewProductionRound}/>
+                        <Route path= '/view-product-list' exact component={ViewProductList}/>
                     </div>
                 </div>
             );
