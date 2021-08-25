@@ -6,10 +6,15 @@ import "./dashboard.css";
 import hello from "../assets/hello.png";
 import clock from "../assets/clock.png";
 import { AddFactoryDetailsModal } from '../../components/SuperAdmin/Modals/AddFactoryDetailsModal';
+import Clock from "../../components/ProductionManager/common/clock";
 
 class Dashboard extends Component {
   state = {
     factoryDetails: [],
+    category:[],
+    matCode:[],
+    proCode:[],
+    users:[],
     user_name:'',
     addModalShow: true
   };
@@ -26,6 +31,42 @@ class Dashboard extends Component {
 
     const user_name = localStorage.getItem("user_full_name");
     this.setState({ user_name: user_name });
+
+    axios
+    .get("http://localhost:5000/api/categories")
+    .then((result) => {
+      const category = result.data;
+
+      this.setState({ category: category });
+    })
+    .catch((err) => console.log(err.message));
+
+    axios
+    .get("http://localhost:5000/api/meterial-code")
+    .then((result) => {
+      const matCode = result.data;
+
+      this.setState({ matCode: matCode });
+    })
+    .catch((err) => console.log(err.message));
+
+    axios
+    .get("http://localhost:5000/api/product-code")
+    .then((result) => {
+      const proCode = result.data;
+
+      this.setState({ proCode: proCode });
+    })
+    .catch((err) => console.log(err.message));
+
+    axios
+    .get("http://localhost:5000/users")
+    .then((result) => {
+      const users = result.data;
+
+      this.setState({ users: users });
+    })
+    .catch((err) => console.log(err.message));
 
   }
 
@@ -67,8 +108,7 @@ class Dashboard extends Component {
                       <img src={clock} alt="clock" />
                     </div>
                     <div className="col-md-6">
-                      <h4>Tuesday,july 25th,2021</h4><br />
-                      <h1>16:19:55</h1>
+                      <Clock />
                     </div>
                   </div>
                  
@@ -113,27 +153,27 @@ class Dashboard extends Component {
                 <div className="carda">
                   <div className="card_inner">
                     <p className="text-primary-p">Number of Users</p>
-                    <span className="font-bold text-title">578</span>
+                    <span className="font-bold text-title">{this.state.users.length}</span>
                   </div>
                 </div>
                 
                 <div className="cardd">
                   <div className="card_inner">
                     <p className="text-primary-p">No of Categories</p>
-                    <span className="font-bold text-title">645</span>
+                    <span className="font-bold text-title">{this.state.category.length}</span>
                   </div>
                 </div>
                 <div className="carda">
                   <div className="card_inner">
                     <p className="text-primary-p">Number of Product Codes</p>
-                    <span className="font-bold text-title">578</span>
+                    <span className="font-bold text-title">{this.state.proCode.length}</span>
                   </div>
                 </div>
                 
                 <div className="cardd">
                   <div className="card_inner">
                     <p className="text-primary-p">No of Metirial Codes</p>
-                    <span className="font-bold text-title">645</span>
+                    <span className="font-bold text-title">{this.state.matCode.length}</span>
                   </div>
                 </div>
               </div>
