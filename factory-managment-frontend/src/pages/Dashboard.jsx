@@ -4,7 +4,11 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import SuperAdminSideNav from '../components/SuperAdmin/sideNav/Sidebar';
 import EmpsideNav from '../components/Employee/EmpsideNav/EmpSidebar';
 import ProManagerNav from '../components/ProductionManager/ProManagersideNav/EmpSidebar';
+
+import ProductionManagerDashboard from './ProductionManager/ProManagerDashboard'
+
 import Sidebar from "../components/storeManagerComponents/sideNavigation/Sidebar";
+
 
 import SuperAdminDashboard from './SuperAdmin/Dashboard'
 import EmployeeDashboard from './Employee/EmployeeDashboard'
@@ -121,6 +125,7 @@ class Dashboard extends Component {
                 return (
                     <div>
                         <div>
+                           <Route path= '/' exact component={ProductionManagerDashboard}/>
                             <Route path= '/add-new-production-round' exact component={AddNewProductionRound} />
                             <Route path= '/view-production-rounds' exact component={VIewNewProductionRound}/>
                             <Route path= '/view-product-list' exact component={ViewProductList}/>
