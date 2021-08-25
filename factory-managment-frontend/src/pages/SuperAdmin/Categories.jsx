@@ -29,7 +29,8 @@ class Categories extends Component {
       <React.Fragment>
         <h1 className="mb-5">Categories</h1>
         <ButtonToolbar>
-                    <Button variant='primary'
+                    <Button style={{ backgroundColor: "#7121AD", color: "white" }}
+                    className="btn btn-lg"
                         onClick={() => this.setState({ addModalShow: true })}
                     >Add Category
                     </Button>

@@ -114,7 +114,7 @@ export class EditProductCodeModal extends Component {
                                     </Form.Group>
                                     
                                     <Form.Group>
-                                        <Button variant="primary" type="submit" >
+                                        <Button style={{ backgroundColor: "#7121AD", color: "white" }} variant="primary" type="submit" >
                                             Edit Product Code
                                         </Button>
                                     </Form.Group>

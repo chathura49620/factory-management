@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 const UserRolesTable = ({ filteredItems}) => {
   return (
-    <table className="table table-bordered table-sm m-2">
+    <table className="table table-bordered table-sm m-2" style={{width:"1000px"}}>
       <thead>
-        <tr className="table-secondary">
+        <tr style={{ backgroundColor: "#7121AD", color: "white" } }>
           <th scope="col">Id</th>
           <th scope="col">User Role</th>
           <th scope="col">Status</th>
@@ -13,9 +13,7 @@ const UserRolesTable = ({ filteredItems}) => {
         {filteredItems.map((i) => (
           <tr
             key={i._id}
-            className={
-              "table-succes table-primary"
-            }
+           
           >
             <td>{i.userRoleNo}</td>
             <td>{i.userRole}</td>

@@ -133,8 +133,9 @@ export class AddMaterialCodeModal extends Component {
                                             <option>INACTIVE</option>
                                         </Form.Control>
                                     </Form.Group>
+                                    <br />
                                     <Form.Group>
-                                        <Button variant="primary" type="submit" >
+                                        <Button  style={{ backgroundColor: "#7121AD", color: "white" }} variant="primary" type="submit" >
                                             Add Material Code
                                         </Button>
                                     </Form.Group>

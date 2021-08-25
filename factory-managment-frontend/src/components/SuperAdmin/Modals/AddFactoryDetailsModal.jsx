@@ -173,8 +173,9 @@ export class AddFactoryDetailsModal extends Component {
                                         <Form.Control type="date" name="startDate" required placeholder="Start Date" />
                                         <div style={{background:"#f8d7da"}}>{this.state.startDate}</div>
                                     </Form.Group>
+                                    <br />
                                     <Form.Group>
-                                        <Button  variant="primary" type="submit" >
+                                        <Button  style={{ backgroundColor: "#7121AD", color: "white" }} variant="primary" type="submit" >
                                             Add Factory Details
                                         </Button>
                                     </Form.Group>

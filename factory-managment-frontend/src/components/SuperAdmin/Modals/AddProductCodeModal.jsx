@@ -153,9 +153,9 @@ export class AddProductCodeModal extends Component {
                                             <option>INACTIVE</option>
                                         </Form.Control>
                                     </Form.Group>
-                                    
+                                    <br />
                                     <Form.Group>
-                                        <Button variant="primary" type="submit" >
+                                        <Button style={{ backgroundColor: "#7121AD", color: "white" }} variant="primary" type="submit" >
                                             Add Product Code
                                         </Button>
                                     </Form.Group>

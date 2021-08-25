@@ -87,8 +87,9 @@ export class EditCategoryModal extends Component {
                                             <option>INACTIVE</option>
                                         </Form.Control>
                                     </Form.Group>
+                                    <br />
                                     <Form.Group>
-                                        <Button variant="primary" type="submit" >
+                                        <Button style={{ backgroundColor: "#7121AD", color: "white" }} variant="primary" type="submit" >
                                             Edit Category
                                         </Button>
                                     </Form.Group>

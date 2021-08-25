@@ -9,9 +9,9 @@ export class  ApprovedUsersTable  extends Component {
 
   render(){
   return (
-    <table className="table table-bordered table-sm m-2">
+    <table className="table table-bordered table-sm m-2" style={{width:"1000px"}}>
       <thead>
-        <tr className="table-secondary">
+        <tr style={{ backgroundColor: "#7121AD", color: "white" } }>
           <th scope="col">Id</th>
           <th scope="col">User Name</th>
           <th scope="col">Email</th>
@@ -22,9 +22,7 @@ export class  ApprovedUsersTable  extends Component {
         {this.props.filteredItems.map((i) => (
           <tr
             key={i._id}
-            className={
-              "table-succes table-primary"
-            }
+           
           >
             <td></td>
             <td>{i.fullName}</td>
