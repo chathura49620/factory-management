@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import SuperAdminSideNav from '../components/SuperAdmin/sideNav/Sidebar';
 import EmpsideNav from '../components/Employee/EmpsideNav/EmpSidebar';
 import ProManagerNav from '../components/ProductionManager/ProManagersideNav/EmpSidebar';
-
+import ProductionManagerDashboard from './ProductionManager/ProManagerDashboard'
 import SuperAdminDashboard from './SuperAdmin/Dashboard'
 import EmployeeDashboard from './Employee/EmployeeDashboard'
 
