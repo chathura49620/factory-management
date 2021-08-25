@@ -4,7 +4,12 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import SuperAdminSideNav from '../components/SuperAdmin/sideNav/Sidebar';
 import EmpsideNav from '../components/Employee/EmpsideNav/EmpSidebar';
 import ProManagerNav from '../components/ProductionManager/ProManagersideNav/EmpSidebar';
+
 import ProductionManagerDashboard from './ProductionManager/ProManagerDashboard'
+
+import Sidebar from "../components/storeManagerComponents/sideNavigation/Sidebar";
+
+
 import SuperAdminDashboard from './SuperAdmin/Dashboard'
 import EmployeeDashboard from './Employee/EmployeeDashboard'
 
@@ -63,7 +68,7 @@ class Dashboard extends Component {
             }
             if(user_role == 'stock member'){
                 return (
-                    <h1></h1>
+                    <Sidebar />
                 );
             }
             if(user_role == 'production team member'){

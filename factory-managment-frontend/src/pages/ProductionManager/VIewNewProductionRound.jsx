@@ -27,7 +27,8 @@ class VIewNewProductionRound extends Component {
     let AddModelClose = () => this.setState({ addModalShow: false })
     return (
       <React.Fragment>
-        <h1 className="mb-5">View Production Rounds</h1>
+        <h1 className="mb-5">View Production Round Details</h1>
+        
         <ButtonToolbar>
                     <Button variant='primary'
                     >Add New Production Round

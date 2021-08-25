@@ -62,7 +62,7 @@ componentDidMount() {
       <React.Fragment>
         <div className="row">
           <div className="col">
-            <h1>Basic Info</h1>
+            <h1>Add New Production Round Details</h1>
         
             <Form onSubmit={this.handleSubmit} >
                                     <Form.Group>
@@ -79,7 +79,7 @@ componentDidMount() {
                                         </Form.Control>  
                                     </Form.Group>
                                     <Form.Group controlId="quntity">
-                                        <Form.Label>Quntity</Form.Label>
+                                        <Form.Label>Quantity</Form.Label>
                                         <Form.Control type="text" name="quntity" required placeholder="Quntity"  />
                                     </Form.Group>
                                     <Form.Group controlId="estDays">
@@ -94,7 +94,7 @@ componentDidMount() {
                                         <Form.Label>Status</Form.Label>
                                         <Form.Control as="select" required name="status">
                                             <option selected>PENDING</option>
-                                            <option>ACTIVE</option>
+                                            <option>Completed</option>
                                         </Form.Control>
                                     </Form.Group>
                                     <Form.Group>
