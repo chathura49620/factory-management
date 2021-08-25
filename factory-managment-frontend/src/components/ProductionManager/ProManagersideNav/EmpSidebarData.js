@@ -7,13 +7,13 @@ import * as RiIcons from 'react-icons/ri';
 export const EmpSidebarData = [
   {
     title: 'Dashboard',
-    path: '/production-manager-dashboard',
+    path: '/',
     icon: <AiIcons.AiFillHome />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
   },
   {
-    title: 'View PRoduct List',
+    title: 'View Product List',
     path: '/view-product-list',
     icon: <AiIcons.AiFillHome />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
@@ -21,7 +21,7 @@ export const EmpSidebarData = [
   },
 
   {
-    title: 'Add New PRoduction ROund',
+    title: 'Add New Production Round',
     path: '/add-new-production-round',
     icon: <FaIcons.FaEnvelopeOpenText />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
@@ -37,7 +37,7 @@ export const EmpSidebarData = [
   },
 
   {
-    title: 'mONITOR pREVIOUS pRODUCTION ROUND',
+    title: 'Monitor Previous Production Round',
     path: '/leave',
     icon: <FaIcons.FaEnvelopeOpenText />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
@@ -52,7 +52,7 @@ export const EmpSidebarData = [
     iconOpened: <RiIcons.RiArrowUpSFill />,
   },
   {
-    title: 'FeedBack',
+    title: 'Feedback',
     path: '/support',
     icon: <IoIcons.IoMdHelpCircle />
   },

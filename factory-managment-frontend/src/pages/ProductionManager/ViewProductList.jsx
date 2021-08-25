@@ -26,8 +26,25 @@ class ViewProductList extends Component {
   render() {
     return (
       <React.Fragment>
-        <h1 className="mb-5">View Producti List</h1>
-            <ProductListTable ProductList={this.state.ProductList} />
+
+
+<div className="row">
+  <div className="col-4"></div>
+  <div className="col">
+  <h1>View Product List</h1>
+  </div>
+</div>
+        <div className="row">
+          <div className="col-2">
+
+          </div>
+          <div className="col">
+ <ProductListTable ProductList={this.state.ProductList} />
+
+          </div>
+        </div>
+       
+           
       </React.Fragment>
     );
   }

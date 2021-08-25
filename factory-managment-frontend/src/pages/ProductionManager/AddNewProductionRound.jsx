@@ -60,18 +60,31 @@ componentDidMount() {
   render() {
     return (
       <React.Fragment>
+
         <div className="row">
+          <div className="col-4"></div>
           <div className="col">
-            <h1>Add New Production Round Details</h1>
+          <h1>Add New Production Round Details</h1>
+          </div>
+          
+        </div>
+
+        <div className="row">
+
+
+          <div className="col-3"></div>
+
+          <div className="col" >
+          
         
-            <Form onSubmit={this.handleSubmit} >
+            <Form onSubmit={this.handleSubmit}  >
                                     <Form.Group>
                                     <Form.Group controlId="proId">
-                                        <Form.Label>Product Id</Form.Label>
-                                        <Form.Control type="text" name="proId" required placeholder="PRoduct Id"  />
+                                        <Form.Label style={{fontWeight:"bold"}}>Product Id</Form.Label>
+                                        <Form.Control style={{ border: "1px solid #050139" }}  type="text" name="proId" required placeholder="Product Id"  />
                                     </Form.Group>
-                                        <Form.Label>Product Category</Form.Label>
-                                        <Form.Control as="select" required name="productCategory">
+                                        <Form.Label style={{fontWeight:"bold"}}>Product Category</Form.Label>
+                                        <Form.Control style={{ border: "1px solid #050139" }} as="select" required name="productCategory">
                                         {this.state.categories.map((i) => (
                                             <option key={i._id}
                                                     >{i.categoryName}</option>
@@ -79,32 +92,34 @@ componentDidMount() {
                                         </Form.Control>  
                                     </Form.Group>
                                     <Form.Group controlId="quntity">
-                                        <Form.Label>Quantity</Form.Label>
-                                        <Form.Control type="text" name="quntity" required placeholder="Quntity"  />
+                                        <Form.Label style={{fontWeight:"bold"}}>Quantity</Form.Label>
+                                        <Form.Control style={{ border: "1px solid #050139" }} type="text" name="quntity" required placeholder="Quantity"  />
                                     </Form.Group>
                                     <Form.Group controlId="estDays">
-                                        <Form.Label>Estimated Days</Form.Label>
-                                        <Form.Control type="text" name="estDays" required placeholder="Estimated Days" />
+                                        <Form.Label style={{fontWeight:"bold"}}>Estimated Days</Form.Label>
+                                        <Form.Control style={{ border: "1px solid #050139" }} type="text" name="estDays" required placeholder="Estimated Days" />
                                     </Form.Group>
                                     <Form.Group controlId="estEmp">
-                                        <Form.Label>Estimated Employees</Form.Label>
-                                        <Form.Control type="text" name="estEmp" required placeholder="Estimated Employees"  />
+                                        <Form.Label style={{fontWeight:"bold"}}>Estimated Employees</Form.Label>
+                                        <Form.Control style={{ border: "1px solid #050139" }} type="text" name="estEmp" required placeholder="Estimated Employees"  />
                                     </Form.Group>
                                     <Form.Group>
-                                        <Form.Label>Status</Form.Label>
-                                        <Form.Control as="select" required name="status">
-                                            <option selected>PENDING</option>
+                                        <Form.Label style={{fontWeight:"bold"}}>Status</Form.Label>
+                                        <Form.Control style={{ border: "1px solid #050139" }} as="select" required name="status">
+                                            <option selected>Pending</option>
                                             <option>Completed</option>
                                         </Form.Control>
                                     </Form.Group>
                                     <Form.Group>
-                                        <Button  variant="primary" type="submit" >
-                                            Add New Production Round
+                                        <Button className="my-1" style={{ backgroundColor: "#7121AD", color: "white", }}  type="submit" >
+                                            Add Production Round
                                         </Button>
                                     </Form.Group>
               </Form>
 
           </div>
+
+          <div className="col-1"></div>
 
           
 

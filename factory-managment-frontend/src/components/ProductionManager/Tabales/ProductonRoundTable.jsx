@@ -61,9 +61,9 @@ export class ProductonRoundTable extends Component {
             esEmployees={esEmployees}
         />
         </ButtonToolbar>
-    <table className="table table-bordered table-sm m-2">
+    <table className="table table-bordered table-sm" style={{width:"1200px"}}>
       <thead>
-        <tr className="table-secondary">
+        <tr style={{ backgroundColor: "#7121AD", color: "white" }}>
           <th scope="col">Id</th>
           <th scope="col">Product Category</th>
           <th scope="col">Quntity</th>
@@ -88,11 +88,13 @@ export class ProductonRoundTable extends Component {
             <td>{i.esEmployees}</td>
             <td>{i.status}</td>
             <td><button 
-            className="btn btn-success btn-sm"
+            className="btn-sm"
+            style={{ backgroundColor: "#7121AD", color: "white", marginRight:"4px" }}
             onClick={() => this.setState({ editModalShow: true, id: i._id, productCategory: i.productCategory, quantity: i.quantity, esDays: i.esDays,esEmployees: i.esEmployees })}
             >Edit</button> 
             <button 
-            className="btn btn-warning btn-sm" 
+            className="btn-sm"
+            style={{ backgroundColor: "#BA0D32 ", color: "white" }} 
             onClick={() => this.deleteCat(i._id)}>Delete</button></td>
           </tr>
         ))}
