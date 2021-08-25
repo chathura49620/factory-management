@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import FormSuper from "./common/formsuper";
 import Joi, { join } from "joi-browser";
 import axios from "axios";
+import swal from "sweetalert";
+import Radio from "./common/radio";
 
 class FormProfileEdit extends FormSuper {
   state = {
@@ -29,7 +31,7 @@ class FormProfileEdit extends FormSuper {
     _id: Joi.string(),
     FullName: Joi.string().required(),
     BirthDate: Joi.date().required(),
-    Email: Joi.string().required(),
+    Email: Joi.string().required().email(),
     Contact: Joi.string().required(),
     Age: Joi.number().required(),
     Gender: Joi.string().required(),
@@ -58,6 +60,12 @@ class FormProfileEdit extends FormSuper {
       .post("http://localhost:5000/users/update/" + jsonOb._id, jsonOb)
       .then((result) => console.log(result.data));
 
+    swal({
+      text: "Profile updated successfully.",
+      icon: "success",
+      timer: "1500",
+    });
+
     this.props.onSetAndClose(jsonOb);
     //axios
     //  .post("http://localhost:5000/items/add/record", jsonOb)
@@ -66,6 +74,13 @@ class FormProfileEdit extends FormSuper {
     //this.props.history.push("/items");
     // window.location = "/myprofile";
   }
+
+  handleGenderChange = ({ currentTarget }) => {
+    const data = { ...this.state.data };
+    data[currentTarget.name] = currentTarget.value;
+
+    this.setState({ data: data });
+  };
 
   render() {
     return (
@@ -76,7 +91,10 @@ class FormProfileEdit extends FormSuper {
           {this.renderInput("Email", "Email")}
           {this.renderInput("Contact", "Contact Number")}
           {this.renderInput("Age", "Age")}
-          {this.renderInput("Gender", "Gender")}
+          <Radio
+            rValue={this.state.data["Gender"]}
+            onChange={this.handleGenderChange}
+          />
           {this.renderInput("Address", "Address")}
           {this.renderInput("Designation", "Designation")}
           {this.renderInput("BankName", "Bank name")}
@@ -84,7 +102,8 @@ class FormProfileEdit extends FormSuper {
           {this.renderInput("Branch", "Branch")}
           {this.renderInput("BranchCode", "Branch Code")}
           {this.renderInput("NumberOfFamilyMembers", "Number of family")}
-          {this.renderButton("Submit")}
+
+          {this.renderButton("Edit Profile")}
         </form>
       </React.Fragment>
     );

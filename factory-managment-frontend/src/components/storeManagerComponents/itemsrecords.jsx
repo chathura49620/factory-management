@@ -8,6 +8,9 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Notice from "./common/notice";
 import { Link } from "react-router-dom";
+import swal from "sweetalert";
+import Pagination from "./common/pagination";
+import { paginate } from "./utils/paginate";
 
 class ItemRecord extends Component {
   state = {
@@ -16,6 +19,8 @@ class ItemRecord extends Component {
     previousSearch: "",
     showTaskDialog: false,
     wannaDeleteRecord: {},
+    currentPage: 1,
+    pageSize: 1,
   };
 
   componentDidMount() {}
@@ -38,30 +43,50 @@ class ItemRecord extends Component {
     }
   };
 
-  handleDelete = () => {
-    const record = this.state.wannaDeleteRecord;
-    console.log(record._id);
+  handleDelete = (record) => {
+    //const record = this.state.wannaDeleteRecord;
+    //console.log(record._id);
 
-    const itemRecords = this.state.itemRecords.filter(
-      (r) => r._id !== record._id
-    );
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((result) => {
+      if (result) {
+        const itemRecords = this.state.itemRecords.filter(
+          (r) => r._id !== record._id
+        );
 
-    toast("deleted successfully.");
-    this.setState({ itemRecords: itemRecords, showTaskDialog: false });
-    //const { previousSearch: d } = this.state;
+        // toast("deleted successfully.");
+        this.setState({ itemRecords: itemRecords, showTaskDialog: false });
+        //const { previousSearch: d } = this.state;
 
-    axios
-      .delete("http://localhost:5000/items/records/specific/" + record._id)
-      .then((result) => console.log(result));
+        axios
+          .delete("http://localhost:5000/items/records/specific/" + record._id)
+          .then((result) => console.log(result));
 
-    axios
-      .delete(
-        "http://localhost:5000/items/specific/" +
-          record.iSupplier +
-          "/" +
-          record.iAddedDate
-      )
-      .then((result) => console.log(result));
+        axios
+          .delete(
+            "http://localhost:5000/items/specific/" +
+              record.iSupplier +
+              "/" +
+              record.iAddedDate
+          )
+          .then((result) => console.log(result));
+
+        swal({
+          text: "Record Deleted Succesfully",
+          icon: "success",
+          timer: "1500",
+        });
+      }
+    });
+  };
+
+  handlePage = (page) => {
+    this.setState({ currentPage: page });
   };
 
   onSearch = () => {
@@ -89,6 +114,18 @@ class ItemRecord extends Component {
     //console.log(this.state.itemQuantity);
     //const { itemQuantity } = this.state;
     const count = this.state.itemRecords.length;
+    const { itemRecords, currentPage, pageSize } = this.state;
+
+    const pgData = paginate(itemRecords, currentPage, pageSize);
+    const pageItems = pgData.it;
+
+    console.log(pageItems);
+
+    if (pgData.nw === 0) {
+      ////
+    } else {
+      currentPage = pgData.nw;
+    }
 
     if (count === 0) {
       return (
@@ -157,9 +194,21 @@ class ItemRecord extends Component {
           <div className="col-2"></div>
           <div className="col">
             <TableVertilcle
-              records={this.state.itemRecords}
+              records={pageItems}
               handleDelete={this.handleDelete}
               onSet={this.setConfirmDialog}
+            />
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="col-2"></div>
+          <div className="col">
+            <Pagination
+              itemsCount={count}
+              pageSize={pageSize}
+              onPageChange={this.handlePage}
+              currentPage={currentPage}
             />
           </div>
         </div>

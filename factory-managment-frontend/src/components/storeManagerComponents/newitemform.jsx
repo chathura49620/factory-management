@@ -5,6 +5,7 @@ import axios from "axios";
 import ItemCodeTable from "./common/itemcodestable";
 import SearchBox from "./common/searchBox";
 import ListGroup from "./common/listgroup";
+import swal from "sweetalert";
 
 class NewItemForm extends FormSuper {
   state = {
@@ -17,7 +18,10 @@ class NewItemForm extends FormSuper {
       AddedDate: "",
     },
     categories: ["category1", "category2", "category3"],
-    types: [{ categoryName: "Product" }, { categoryName: "Material" }],
+    types: [
+      { _id: "123", categoryName: "Product" },
+      { _id: "143", categoryName: "Material" },
+    ],
     iCodes: [],
     genres: ["All", "Product", "Material"],
     searchQuery: "",
@@ -76,10 +80,14 @@ class NewItemForm extends FormSuper {
       filtered = materialCodeObjects.filter((m) =>
         m.materialName.toLowerCase().startsWith(searchQuery.toLowerCase())
       );
-    } else {
+    } else if (selectedGenre === "All") {
       filtered = materialCodeObjects;
+    } else if (selectedGenre === "Material") {
+      filtered = materialCodeObjects;
+    } else {
+      filtered = [];
     }
-
+    //finish it
     return filtered;
   }
 
@@ -117,7 +125,7 @@ class NewItemForm extends FormSuper {
               {this.renderInput("Quantity", "Item Quantity")}
               {this.renderInput("Supplier", "Supplier Name")}
               {this.renderInput("AddedDate", "Received date", "date")}
-              {this.renderButton("ADD")}
+              {this.renderButton("Add Item")}
             </form>
           </div>
 

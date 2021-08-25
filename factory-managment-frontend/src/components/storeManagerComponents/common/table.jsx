@@ -44,7 +44,7 @@ const Table = ({ filteredItems, onItemDelete, onSet }) => {
             </td>
             <td>
               <button
-                onClick={() => onSet(i)}
+                onClick={() => onItemDelete(i)}
                 className="btn-sm"
                 style={{ backgroundColor: "#BA0D32 ", color: "white" }}
               >

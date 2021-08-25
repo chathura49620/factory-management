@@ -7,7 +7,7 @@ import * as RiIcons from "react-icons/ri";
 export const SidebarData = [
   {
     title: "Dashboard",
-    path: "/super-admin-dashboard",
+    path: "/smdashboard",
     icon: <AiIcons.AiFillHome />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
@@ -41,34 +41,22 @@ export const SidebarData = [
       },
     ],
   },
+
+  {
+    title: "Returned Items",
+    path: "/smdashboard",
+    icon: <IoIcons.IoIosPaper />,
+  },
+
+  {
+    title: "Wsated Items",
+    path: "/smdashboard",
+    icon: <IoIcons.IoIosPaper />,
+  },
+
   {
     title: "My Profile",
     path: "/myprofile",
     icon: <FaIcons.FaCartPlus />,
-  },
-  {
-    title: "Codes",
-    icon: <FaIcons.FaEnvelopeOpenText />,
-
-    iconClosed: <RiIcons.RiArrowDownSFill />,
-    iconOpened: <RiIcons.RiArrowUpSFill />,
-
-    subNav: [
-      {
-        title: "Product Codes",
-        path: "product-codes",
-        icon: <IoIcons.IoIosPaper />,
-      },
-      {
-        title: "Metirial Codes",
-        path: "metirial-codes",
-        icon: <IoIcons.IoIosPaper />,
-      },
-    ],
-  },
-  {
-    title: "Support",
-    path: "/support",
-    icon: <IoIcons.IoMdHelpCircle />,
   },
 ];
