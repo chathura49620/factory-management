@@ -38,18 +38,18 @@ class login extends Component {
                 localStorage.setItem('user_full_name', user_full_name);
                 localStorage.setItem('user_email', element.email);
                 localStorage.setItem('is_login', "1");
-                if(user_role == 'Super Admin'){
-                    this.props.history.push('/super-admin-dashboard');
-                    window.location.reload();
-                }
-                if(user_role == 'employee'){
-                    this.props.history.push('/employee-dashboard');
-                    window.location.reload();
-                }
-                if(user_role == 'production team member'){
-                  this.props.history.push('/production-manager-dashboard');
-                  window.location.reload();
-              }
+              //   if(user_role == 'Super Admin'){
+              //       this.props.history.push('/super-admin-dashboard');
+              //       window.location.reload();
+              //   }
+              //   if(user_role == 'employee'){
+              //       this.props.history.push('/employee-dashboard');
+              //       window.location.reload();
+              //   }
+              //   if(user_role == 'production team member'){
+              //     this.props.history.push('/production-manager-dashboard');
+              //     window.location.reload();
+              // }
                 
             }
         }

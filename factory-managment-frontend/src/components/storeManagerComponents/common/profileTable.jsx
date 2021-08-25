@@ -3,7 +3,7 @@ import React, { useState } from "react";
 const ProfileTable = ({ userOb, onSetPopup }) => {
   return (
     <React.Fragment>
-      <table className="table table-bordered table-sm m-4">
+      <table className="table table-bordered table-sm my-2">
         <thead>
           <tr style={{ backgroundColor: "#7121AD", color: "white" }}>
             <th
@@ -84,7 +84,7 @@ const ProfileTable = ({ userOb, onSetPopup }) => {
         <div className="col">
           <button
             onClick={() => onSetPopup()}
-            className=" btn mx-2"
+            className=" btn m-1"
             style={{ backgroundColor: "#7121AD", color: "white" }}
           >
             Edit Profile

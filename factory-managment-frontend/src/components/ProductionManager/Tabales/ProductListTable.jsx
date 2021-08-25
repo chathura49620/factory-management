@@ -9,9 +9,9 @@ export class ProductListTable extends Component {
   render() {
   return (
     <div>
-    <table className="table table-bordered table-sm m-2">
+    <table className="table table-bordered table-sm m-2" style={{width:"1200px"}}>
       <thead>
-        <tr className="table-secondary">
+        <tr  style={{ backgroundColor: "#7121AD", color: "white" } }>
           <th scope="col">Product Id</th>
           <th scope="col">Product Category</th>
           <th scope="col">Stock Count</th>

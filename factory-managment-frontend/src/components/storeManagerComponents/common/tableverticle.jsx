@@ -4,7 +4,7 @@ const TableVertilcle = ({ records, handleDelete, onSet }) => {
   return (
     <div>
       {records.map((r) => (
-        <table key={r._id} className="table table-bordered table-sm m-2">
+        <table key={r._id} className="table table-bordered table-sm">
           <tbody key={r._id}>
             <tr style={{ backgroundColor: "#7121AD", color: "white" }}>
               <th scope="col">Record</th>
@@ -48,7 +48,7 @@ const TableVertilcle = ({ records, handleDelete, onSet }) => {
                   Edit
                 </button>
                 <button
-                  onClick={() => onSet(r)}
+                  onClick={() => handleDelete(r)}
                   style={{ backgroundColor: "#BA0D32 ", color: "white" }}
                   className="btn-sm"
                 >

@@ -1,5 +1,5 @@
 const router = require("express").Router();
-// let Category = require("../model/cate.model");
+let Category = require("../model/cate.model");
 
 //get all the category list as a complex object(json) List
 router.route("/").get((req, res) => {

@@ -27,13 +27,42 @@ class VIewNewProductionRound extends Component {
     let AddModelClose = () => this.setState({ addModalShow: false })
     return (
       <React.Fragment>
-        <h1 className="mb-5">View Production Rounds</h1>
-        <ButtonToolbar>
-                    <Button variant='primary'
-                    >Add New Production Round
+
+        <div className="row">
+
+<div className="col-4 my-2">
+
+</div>
+<div className="col">
+<h1 >View Production Round Details</h1>
+
+</div>
+        </div>
+        
+        
+        <div className="row">
+          
+         <div className="col-10"></div>
+         <div className="col">
+           <ButtonToolbar>
+                    <Button 
+                    className="btn my-1"
+                    style={{ backgroundColor: "#7121AD", color: "white"}}
+                    >Add New
                     </Button>
           </ButtonToolbar>
-            <ProductonRoundTable productionRound={this.state.productionRound} />
+         </div>
+        </div >
+
+        <div className="row">
+          <div className="col-2"></div>
+          <div className="col">
+          <ProductonRoundTable productionRound={this.state.productionRound} />
+
+          </div>
+        </div>
+        
+           
       </React.Fragment>
     );
   }

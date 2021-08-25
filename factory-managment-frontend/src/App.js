@@ -24,9 +24,6 @@ import SuperAdminSideNav from './components/SuperAdmin/sideNav/Sidebar';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 
-import AddNewProductionRound from "./pages/ProductionManager/AddNewProductionRound";
-import VIewNewProductionRound from "./pages/ProductionManager/VIewNewProductionRound";
-
 function App() {
   return (
     <Router>

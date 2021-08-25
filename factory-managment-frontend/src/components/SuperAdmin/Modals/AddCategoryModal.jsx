@@ -9,7 +9,12 @@ import { Redirect } from 'react-router-dom';
 export class AddCategoryModal extends Component {
     constructor(props) {
         super(props);
-        this.state = { snackbaropen: false, snackbarmsg: '' };
+        this.state = {
+            snackbaropen: false, 
+            snackbarmsg: '',
+            CategoryNameError:''
+             
+        };
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -18,41 +23,51 @@ export class AddCategoryModal extends Component {
     };
 
     handleSubmit(event) {
-
         event.preventDefault();
-
-        fetch('http://localhost:5000/api/categories', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'username': 'chathura'
-            },
-            body: JSON.stringify({
-                categoryName: event.target.categoryName.value,
-                status: event.target.status.value
+        const isValid = this.validate();
+        if(isValid){
+            fetch('http://localhost:5000/api/categories', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'username': 'chathura'
+                },
+                body: JSON.stringify({
+                    categoryName: event.target.categoryName.value,
+                    status: event.target.status.value
+                })
             })
-        })
-            .then(res => res.json())
-            .then((result) => {
-                swal({
-                    title: "Category Added Succesfully",
-                    icon: "success",
-                    button: "Done",
-                  }); 
-                  
-            }, (error) => {
-                this.setState({ snackbaropen: true, snackbarmsg: 'Failed' })
-            }
+                .then(res => res.json())
+                .then((result) => {
+                    swal({
+                        title: "Category Added Succesfully",
+                        icon: "success",
+                        button: "Done",
+                    }); 
+                    this.setState({CategoryNameError:''})
+                }, (error) => {
+                    this.setState({ snackbaropen: true, snackbarmsg: 'Failed' })
+                }
 
-            )
+                )
+        }
     }
 
-    //   handleSubmit = (event) => {
+    validate(){
+        let CategoryNameError = "";
 
-    //       return <Redirect to='/login' />
+        if(!this.state.CategoryNameError){
+            CategoryNameError = "Category Name Cannot Be Blank"
+        }
 
-    //   }
+        if(CategoryNameError){
+            this.setState({CategoryNameError:CategoryNameError})
+            return false;
+        }
+
+        return true;
+    }
 
     render() {
         return (
@@ -85,7 +100,8 @@ export class AddCategoryModal extends Component {
                                 <Form onSubmit={this.handleSubmit}>
                                     <Form.Group controlId="name">
                                         <Form.Label>Name</Form.Label>
-                                        <Form.Control type="text" name="categoryName" required placeholder="Category Name" />
+                                        <Form.Control type="text" name="categoryName"  placeholder="Category Name" />
+                                         <div style={{background:"#f8d7da"}}>{this.state.CategoryNameError}</div>
                                     </Form.Group>
                                     <Form.Group>
                                         <Form.Label>Status</Form.Label>
