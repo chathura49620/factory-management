@@ -10,7 +10,13 @@ import { Redirect } from 'react-router-dom';
 export class AddProductCodeModal extends Component {
     constructor(props) {
         super(props);
-        this.state = { snackbaropen: false, snackbarmsg: '',categories: [] };
+        this.state = { 
+            snackbaropen: false, 
+            snackbarmsg: '',
+            categories: [],
+            productCodeError:'',
+            productCategoryError:''
+         };
         this.handleSubmit = this.handleSubmit.bind(this);
         
     }
@@ -32,39 +38,69 @@ export class AddProductCodeModal extends Component {
     handleSubmit(event) {
 
         event.preventDefault();
-        alert(event.target.name.value);
-        fetch('http://localhost:5000/api/product-code/', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'username': 'chathura'
-            },
-            body: JSON.stringify({
-                productCode: event.target.productCode.value,
-                productCategory: event.target.productCategory.value,
-                status: event.target.status.value
+        const isValid = this.validate(event);
+        if(isValid){
+            fetch('http://localhost:5000/api/product-code/', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'username': 'chathura'
+                },
+                body: JSON.stringify({
+                    productCode: event.target.productCode.value,
+                    productCategory: event.target.productCategory.value,
+                    status: event.target.status.value
+                })
             })
-        })
-            .then(res => res.json())
-            .then((result) => {
-                swal({
-                    title: "Product Code Added Succesfully",
-                    icon: "success",
-                    button: "Done",
-                  });
-            }, (error) => {
-                this.setState({ snackbaropen: true, snackbarmsg: 'Failed' })
-            }
+                .then(res => res.json())
+                .then((result) => {
+                    swal({
+                        title: "Product Code Added Succesfully",
+                        icon: "success",
+                        button: "Done",
+                    });
+                    this.setState({
+                        productCodeError:'',
+                        productCategoryError:''
+                    })
+                    setTimeout(function() {
+                        window.location.reload(); 
+                      }.bind(this), 1500);
+                }, (error) => {
+                    this.setState({ snackbaropen: true, snackbarmsg: 'Failed' })
+                }
 
-            )
+                )
+        }
     }
 
-    //   handleSubmit = (event) => {
+    validate(event){
+        let productCodeError = "";
+        let productCategoryError = "";
+      
+       
+        if(!event.target.productCode.value){
+            productCodeError = "Product Code Cannot Be Blank"
+        }
+        if(!event.target.productCategory.value){
+            productCategoryError = "Please Select Product Category"
+        }
+        
+       
 
-    //       return <Redirect to='/login' />
+        if(productCodeError){
+            this.setState({
+                productCodeError:productCodeError,
+                productCategoryError:productCategoryError
+            })
+            return false;
+        }else{
+            return true;
+        }
 
-    //   }
+        
+    }
 
     render() {
         return (
@@ -97,7 +133,8 @@ export class AddProductCodeModal extends Component {
                                 <Form onSubmit={this.handleSubmit}>
                                     <Form.Group controlId="name">
                                         <Form.Label>Product Code</Form.Label>
-                                        <Form.Control type="text" name="productCode" required placeholder="Product Code" />
+                                        <Form.Control type="text" name="productCode"  placeholder="Product Code" />
+                                        <div style={{background:"#f8d7da"}}>{this.state.productCodeError}</div>
                                     </Form.Group>
                                     <Form.Group>
                                         <Form.Label>Product Category</Form.Label>
@@ -107,10 +144,11 @@ export class AddProductCodeModal extends Component {
                                                     >{i.categoryName}</option>
                                         ))}
                                         </Form.Control>  
+                                        <div style={{background:"#f8d7da"}}>{this.state.productCategoryError}</div>
                                     </Form.Group>
                                     <Form.Group>
                                         <Form.Label>Status</Form.Label>
-                                        <Form.Control as="select" required name="status">
+                                        <Form.Control as="select"  name="status">
                                             <option selected>ACTIVE</option>
                                             <option>INACTIVE</option>
                                         </Form.Control>

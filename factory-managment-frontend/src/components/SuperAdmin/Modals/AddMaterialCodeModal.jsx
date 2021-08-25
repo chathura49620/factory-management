@@ -6,10 +6,16 @@ import swal from 'sweetalert';
 import { Redirect } from 'react-router-dom';
 
 
+
 export class AddMaterialCodeModal extends Component {
     constructor(props) {
         super(props);
-        this.state = { snackbaropen: false, snackbarmsg: '' };
+        this.state = {
+            snackbaropen: false, 
+            snackbarmsg: '',
+            materialNameError:'',
+            materialCodeError:''
+        };
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -18,41 +24,68 @@ export class AddMaterialCodeModal extends Component {
     };
 
     handleSubmit(event) {
-
         event.preventDefault();
-        alert(event.target.name.value);
-        fetch('http://localhost:5000/api/meterial-code/', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'username': 'chathura'
-            },
-            body: JSON.stringify({
-                materialName: event.target.materialName.value,
-                materialCode: event.target.materialCode.value,
-                status: event.target.status.value
+        const isValid = this.validate(event);
+        if(isValid){
+            fetch('http://localhost:5000/api/meterial-code/', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'username': 'chathura'
+                },
+                body: JSON.stringify({
+                    materialName: event.target.materialName.value,
+                    materialCode: event.target.materialCode.value,
+                    status: event.target.status.value
+                })
             })
-        })
-            .then(res => res.json())
-            .then((result) => {
-                swal({
-                    title: "Material Code Added Succesfully",
-                    icon: "success",
-                    button: "Done",
-                  });
-            }, (error) => {
-                this.setState({ snackbaropen: true, snackbarmsg: 'Failed' })
-            }
+                .then(res => res.json())
+                .then((result) => {
+                    swal({
+                        title: "Material Code Added Succesfully",
+                        icon: "success",
+                        button: "Done",
+                    });
+                    this.setState({
+                        materialNameError: '',
+                        materialCodeError:''
+        
+                    }) 
+                    setTimeout(function() {
+                        window.location.reload(); 
+                    }.bind(this), 1500); 
+                }, (error) => {
+                    this.setState({ snackbaropen: true, snackbarmsg: 'Failed' })
+                }
 
-            )
+                )
+        }
     }
 
-    //   handleSubmit = (event) => {
+    validate(event){
+        let materialNameError = '';
+        let materialCodeError = '';
+        
+        if(!event.target.materialName.value){
+            materialNameError = "Material Name  Cannot Be Blank"
+        }
+        if(!event.target.materialCode.value){
+            materialCodeError = "Material Code Cannot Be Blank"
+        }
+        
 
-    //       return <Redirect to='/login' />
+        if(materialNameError || materialCodeError){
+         
+            this.setState({
+                materialNameError: materialNameError,
+                materialCodeError:materialCodeError
 
-    //   }
+            })
+            return false;
+        }
+        return true;
+    }
 
     render() {
         return (
@@ -85,11 +118,13 @@ export class AddMaterialCodeModal extends Component {
                                 <Form onSubmit={this.handleSubmit}>
                                     <Form.Group controlId="name">
                                         <Form.Label>Material Name</Form.Label>
-                                        <Form.Control type="text" name="materialName" required placeholder="Material Name" />
+                                        <Form.Control type="text" name="materialName"  placeholder="Material Name" />
+                                        <div style={{background:"#f8d7da"}}>{this.state.materialNameError}</div>
                                     </Form.Group>
                                     <Form.Group controlId="name">
                                         <Form.Label>Material Code</Form.Label>
-                                        <Form.Control type="text" name="materialCode" required placeholder="Material Name" />
+                                        <Form.Control type="text" name="materialCode"  placeholder="Material Name" />
+                                        <div style={{background:"#f8d7da"}}>{this.state.materialCodeError}</div>
                                     </Form.Group>
                                     <Form.Group>
                                         <Form.Label>Status</Form.Label>

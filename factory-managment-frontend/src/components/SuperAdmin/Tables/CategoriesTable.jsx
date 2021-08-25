@@ -37,6 +37,9 @@ export class CategoriesTable extends Component {
             icon: "success",
             button: "Done",
           }); 
+          setTimeout(function() {
+            window.location.reload(); 
+          }.bind(this), 1500);
       });
       } else {
         swal("Your imaginary file is safe!");

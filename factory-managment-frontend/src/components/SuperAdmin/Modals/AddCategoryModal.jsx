@@ -46,6 +46,9 @@ export class AddCategoryModal extends Component {
                         button: "Done",
                     }); 
                     this.setState({CategoryNameError:''})
+                    setTimeout(function() {
+                        window.location.reload(); 
+                      }.bind(this), 1000);
                 }, (error) => {
                     this.setState({ snackbaropen: true, snackbarmsg: 'Failed' })
                 }
@@ -101,7 +104,7 @@ export class AddCategoryModal extends Component {
                                     <Form.Group controlId="name">
                                         <Form.Label>Name</Form.Label>
                                         <Form.Control type="text" name="categoryName"  placeholder="Category Name" />
-                                         <div style={{background:"#f8d7da"}}>{this.state.CategoryNameError}</div>
+                                          <div style={{background:"#f8d7da"}}>{this.state.CategoryNameError}</div>
                                     </Form.Group>
                                     <Form.Group>
                                         <Form.Label>Status</Form.Label>
