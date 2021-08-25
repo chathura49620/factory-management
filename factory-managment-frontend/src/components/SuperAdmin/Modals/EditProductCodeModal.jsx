@@ -80,7 +80,7 @@ export class EditProductCodeModal extends Component {
                 >
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title-vcenter">
-                            Edit Matirial COde
+                            Edit Product Code
               </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
@@ -90,7 +90,7 @@ export class EditProductCodeModal extends Component {
                             <Form onSubmit={this.handleSubmit}>
                                     <Form.Group controlId="id">
                                         <Form.Label>ID</Form.Label>
-                                        <Form.Control type="text" name="id" required disabled defaultValue={this.props.id} />
+                                        <Form.Control type="text" name="id" required disabled defaultValue={this.props.id} hidden/>
                                     </Form.Group>
                                     <Form.Group controlId="name">
                                         <Form.Label>Product Code</Form.Label>
@@ -112,7 +112,7 @@ export class EditProductCodeModal extends Component {
                                             <option>INACTIVE</option>
                                         </Form.Control>
                                     </Form.Group>
-                                    
+                                    <br />
                                     <Form.Group>
                                         <Button style={{ backgroundColor: "#7121AD", color: "white" }} variant="primary" type="submit" >
                                             Edit Product Code

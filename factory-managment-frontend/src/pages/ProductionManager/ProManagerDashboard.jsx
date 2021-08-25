@@ -30,7 +30,12 @@ class Dashboard extends Component {
 //   }
 
 
-
+// logout(){
+//   localStorage.removeItem('user_full_name');
+//   localStorage.removeItem('user_email');
+//   localStorage.removeItem('is_login');
+//   window.location.reload();
+// }
 
   render() {
     let AddModelClose = () => this.setState({ addModalShow: false })
@@ -52,6 +57,7 @@ class Dashboard extends Component {
                   <h1>Hello, {this.state.user_name}</h1>
                   <p>Welcome to your profile.</p>
                 </div>
+                {/* <button style={{ backgroundColor: "#7121AD", color: "white" ,width:"100px"}} onClick={this.logout}>Log Out</button> */}
               </div>
 
               <div className="charts">

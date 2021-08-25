@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
-
+import img1 from './fac1.jpeg'
+import img2 from './signIn1.webp'
 
 
 class login extends Component {
@@ -62,9 +63,10 @@ class login extends Component {
       <React.Fragment>
         <div className="row mt-5">
             <div className="col-md-4">
+            <img src={img1} alt="img1" />
             </div>
             <div className="col-md-4">
-            <form  onSubmit={this.login} >
+            <form  onSubmit={this.login} style={{ marginTop:"150px"}}>
                         <h3>Sign In</h3>
 
                         <div className="form-group">
@@ -84,17 +86,16 @@ class login extends Component {
                             </div>
                         </div>
 
-                        <button type="submit" className="btn btn-primary btn-block">Submit</button>
+                        <button style={{ backgroundColor: "#7121AD", color: "white" ,width:"330px"}} type="submit" className="btn btn-primary btn-block">Log In</button>
                         <p className="forgot-password text-right">
                             Forgot <a href="#">password?</a>
                         </p>
                 </form>
             </div>
             <div className="col-md-4">
+            <img src={img2} alt="img1" style={{marginTop:"450px"}}/>
             </div>
         </div>
-        
-    
       </React.Fragment>
     );
   }

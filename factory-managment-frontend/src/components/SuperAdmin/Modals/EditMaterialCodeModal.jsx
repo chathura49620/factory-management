@@ -78,7 +78,7 @@ export class EditMaterialCodeModal extends Component {
                                 <Form onSubmit={this.handleSubmit}>
                                     <Form.Group controlId="id">
                                         <Form.Label>ID</Form.Label>
-                                        <Form.Control type="text" name="id" required disabled defaultValue={this.props.id} />
+                                        <Form.Control type="text" name="id" required disabled defaultValue={this.props.id} hidden/>
                                     </Form.Group>
                                     
                                     <Form.Group controlId="name">
