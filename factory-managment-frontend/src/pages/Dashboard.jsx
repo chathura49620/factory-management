@@ -64,7 +64,7 @@ class Dashboard extends Component {
             }
             if(user_role == 'stock member'){
                 return (
-                    <Sidebar />
+                    <NavBar />
                 );
             }
             if(user_role == 'production team member'){
@@ -131,7 +131,7 @@ class Dashboard extends Component {
                 return (
                     <div>
                         <div>
-                        <Route path="/smdashboard" component={SMDashBoard}></Route>
+                        <Route path="/" component={SMDashBoard}></Route>
                         <Route path="/myprofile" component={MyProfile}></Route>
                         <Route path="/items/:id" component={NewItemForm}></Route>
                         <Route path="/items" component={Item}></Route>
@@ -149,7 +149,6 @@ class Dashboard extends Component {
     render(){
        return(
            <div>
-                
                  {this.renderSideNavigation()}
                  {this.renderDashboard()}
            </div> 
