@@ -20,7 +20,7 @@ export class AssignmentTable extends Component{
     this.state = { editModelShow: false }
   }
 
-  deleteleave(id){
+  deleteassignment(id){
     swal({
       title: "Are you sure?",
       text: "Once deleted, you will not be able to recover this record.",
@@ -50,12 +50,12 @@ export class AssignmentTable extends Component{
           }); 
       });
       } else {
-        swal("assignment was not submitted.");
+        swal("Assignment was not submitted.");
       }
     });
   }
   render(){
-    const {documentid, supervisor, description, status } = this.state;
+    const {id, documentid, supervisor, description, status } = this.state;
     let EditModelClose = () => this.setState({ editModalShow: false })
   return (
     <React.Fragment>
@@ -65,7 +65,8 @@ export class AssignmentTable extends Component{
                   <EditAssignmentModal
                       show={this.state.editModelShow}
                       onHide={EditModelClose}
-                      empAss= {this.state.empAss}
+                      empass= {this.state.empass}
+                      id={id}
                       documentid={documentid}
                       supervisor={supervisor}
                       description={description}
@@ -96,8 +97,9 @@ export class AssignmentTable extends Component{
             <button 
                     style={{ backgroundColor: "#7121AD", color: "white" }} className="btn" 
                     onClick={() => this.setState({ editModelShow: true, id: assignment._id, documentid: assignment.documentid, supervisor: assignment.supervisor, description: assignment.description, status : assignment.status })} >Edit</button>
-            <button style={{ backgroundColor: "#BA0D32 ", color: "white" }} className="btn" 
-            onClick={() => this.deleteleave(assignment._id)}>Delete</button>
+            <button 
+                    style={{ backgroundColor: "#BA0D32 ", color: "white" }} className="btn" 
+                    onClick={() => this.deleteassignment(assignment._id)}>Delete</button>
         </td>
 
       </tr>              

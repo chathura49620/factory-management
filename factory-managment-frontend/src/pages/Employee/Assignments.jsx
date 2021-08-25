@@ -11,7 +11,7 @@ class Assignment extends Component {
     Assignment: [],
     addModalShow: false,
     editModelShow: false,
-    empAss:{}, 
+    empass:{}, 
     id: ""
   };
 
@@ -31,7 +31,7 @@ class Assignment extends Component {
 setNewDetails = (assignment) => {
   
   
-  this.setState({addModalShow: true, empAss: assignment});
+  this.setState({addModalShow: true, empass: assignment});
 
 
 }
@@ -39,13 +39,13 @@ setNewDetails = (assignment) => {
 setEditPopup = (assignment) => {
 
   console.log(assignment);
-  this.setState({editModelShow: true, empAss: assignment});
+  this.setState({editModelShow: true, empass: assignment});
 
 }
 
-handleLeaveDelete = (assignment) => {
+handleAssignmentDelete = (assignment) => {
   // console.log("Delete");
-  const Leave = this.state.Assignment.filter(l => l._id !== assignment._id );
+  const Assignment = this.state.Assignment.filter(l => l._id !== assignment._id );
   this.setState({Assignment:Assignment});
 
 
