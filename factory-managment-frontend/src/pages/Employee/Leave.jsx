@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { AddEmployeeModal } from "../../components/SuperAdmin/Modals/AddEmployeeModal";
-import { EditEmployeeModal } from "../../components/SuperAdmin/Modals/EditEmployeeModal";
-import {LeaveTable} from "../../components/SuperAdmin/Tables/LeaveTable";
+import { AddEmployeeModal } from "../../components/Employee/Modals/AddEmployeeModal";
+import { EditEmployeeModal } from "../../components/Employee/Modals/EditEmployeeModal";
+import {LeaveTable} from "../../components/Employee/Tables/LeaveTable";
 import { Table, Button, ButtonToolbar } from 'react-bootstrap';
 import { computeStyles } from "@popperjs/core";
 

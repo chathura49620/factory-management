@@ -5,7 +5,7 @@ import IconButton from '@material-ui/core/IconButton';
 import { Redirect } from 'react-router-dom';
 
 
-export class AddEmployeeModal extends Component {
+export class AddAssignmentModal extends Component {
     constructor(props) {
 
         console.log("Run");
@@ -25,7 +25,7 @@ export class AddEmployeeModal extends Component {
 
         event.preventDefault();
         alert(event.target.name.value);
-        fetch('http://localhost:5000/api/leave-details/', {
+        fetch('http://localhost:5000/api/assignment-details/', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -33,9 +33,11 @@ export class AddEmployeeModal extends Component {
                 
             },
             body: JSON.stringify({
-                refno: event.target.refno.value,
-                reasonforleave: event.target.reasonforleave.value,
-                date: event.target.date.value
+                id: event.target.id.value,
+                documentid: event.target.documentid.value,
+                supervisor: event.target.supervisor.value,
+                description: event.target.description.value,
+                status: event.target.status.value
             })
         })
             .then(res => res.json())
@@ -86,21 +88,25 @@ export class AddEmployeeModal extends Component {
                             <Col sm={6}>
                                 <Form onSubmit={this.handleSubmit}>
                                     <Form.Group controlId="name">
-                                        <Form.Label>Reference Number</Form.Label>
-                                        <Form.Control type="text" name="refno" required placeholder="Reference No" />
+                                        <Form.Label>Document ID</Form.Label>
+                                        <Form.Control type="text" name="documentid" required placeholder="Enter a Document Number" />
                                     </Form.Group>
                                     <Form.Group controlId="name">
-                                        <Form.Label>Reason for leave</Form.Label>
-                                        <Form.Control type="text" name="reasonforleave" required placeholder="Reason for leave" />
+                                        <Form.Label>Supervisor name</Form.Label>
+                                        <Form.Control type="text" name="supervisor" required placeholder="supervisor" />
                                     </Form.Group>
                                     <Form.Group controlId="name">
-                                        <Form.Label>Date</Form.Label>
-                                        <Form.Control type="text" name="date" required placeholder="Date" />
+                                        <Form.Label>Description</Form.Label>
+                                        <Form.Control type="text" name="description" required placeholder="Description" />
+                                    </Form.Group>
+                                    <Form.Group controlId="name">
+                                        <Form.Label>Status</Form.Label>
+                                        <Form.Control type="text" name="status" required placeholder="status" />
                                     </Form.Group>
                                     <br></br>
                                     <Form.Group>
-                                        <Button  style={{ backgroundColor: "#7121AD", color: "white" }} className="btn"  type="submit" >
-                                            Submit Leave Request
+                                        <Button style={{ backgroundColor: "#7121AD", color: "white" }} className="btn"  type="submit" >
+                                            Submit Assignment Request
                                         </Button>
                                     </Form.Group>
                                 </Form>
