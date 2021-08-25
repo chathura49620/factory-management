@@ -23,11 +23,15 @@ componentDidMount() {
 
 
   handleSubmit(event, props) {
+   
+       
       console.log(event);
+      const isValid = this.validate();
     event.preventDefault();
     //alert(event.target.name.value);
 
-    fetch('http://localhost:5000/api/newProRound-details', {
+    if(isValid){
+      fetch('http://localhost:5000/api/newProRound-details', {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -56,6 +60,23 @@ componentDidMount() {
 
         )
 }
+    }
+    
+
+validate(){
+  let validationError = "";
+
+  if(!this.state.validationError){
+    validationError = "This Field Cannot Be Blank"
+  }
+
+  if(validationError){
+      this.setState({validationError:validationError})
+      return false;
+  }
+
+  return true;
+}
 
   render() {
     return (
@@ -81,10 +102,12 @@ componentDidMount() {
                                     <Form.Group>
                                     <Form.Group controlId="proId">
                                         <Form.Label style={{fontWeight:"bold"}}>Product Id</Form.Label>
-                                        <Form.Control style={{ border: "1px solid #050139" }}  type="text" name="proId" required placeholder="Product Id"  />
+                                        <Form.Control style={{ border: "1px solid #050139" }}  type="text" name="proId"  placeholder="Product Id"  />
+                                        <div style={{background:"#f8d7da"}}>{this.state.validationError}</div>
                                     </Form.Group>
                                         <Form.Label style={{fontWeight:"bold"}}>Product Category</Form.Label>
-                                        <Form.Control style={{ border: "1px solid #050139" }} as="select" required name="productCategory">
+                                        <Form.Control style={{ border: "1px solid #050139" }} as="select"  name="productCategory">
+                                        <div style={{background:"#f8d7da"}}>{this.state.validationError}</div>
                                         {this.state.categories.map((i) => (
                                             <option key={i._id}
                                                     >{i.categoryName}</option>
@@ -93,19 +116,23 @@ componentDidMount() {
                                     </Form.Group>
                                     <Form.Group controlId="quntity">
                                         <Form.Label style={{fontWeight:"bold"}}>Quantity</Form.Label>
-                                        <Form.Control style={{ border: "1px solid #050139" }} type="text" name="quntity" required placeholder="Quantity"  />
+                                        <Form.Control style={{ border: "1px solid #050139" }} type="text" name="quntity"  placeholder="Quantity"  />
+                                        <div style={{background:"#f8d7da"}}>{this.state.validationError}</div>
                                     </Form.Group>
                                     <Form.Group controlId="estDays">
                                         <Form.Label style={{fontWeight:"bold"}}>Estimated Days</Form.Label>
-                                        <Form.Control style={{ border: "1px solid #050139" }} type="text" name="estDays" required placeholder="Estimated Days" />
+                                        <Form.Control style={{ border: "1px solid #050139" }} type="text" name="estDays"  placeholder="Estimated Days" />
+                                        <div style={{background:"#f8d7da"}}>{this.state.validationError}</div>
                                     </Form.Group>
                                     <Form.Group controlId="estEmp">
                                         <Form.Label style={{fontWeight:"bold"}}>Estimated Employees</Form.Label>
-                                        <Form.Control style={{ border: "1px solid #050139" }} type="text" name="estEmp" required placeholder="Estimated Employees"  />
+                                        <Form.Control style={{ border: "1px solid #050139" }} type="text" name="estEmp"  placeholder="Estimated Employees"  />
+                                        <div style={{background:"#f8d7da"}}>{this.state.validationError}</div>
                                     </Form.Group>
                                     <Form.Group>
                                         <Form.Label style={{fontWeight:"bold"}}>Status</Form.Label>
-                                        <Form.Control style={{ border: "1px solid #050139" }} as="select" required name="status">
+                                        <Form.Control style={{ border: "1px solid #050139" }} as="select"  name="status">
+                                        <div style={{background:"#f8d7da"}}>{this.state.validationError}</div>
                                             <option selected>Pending</option>
                                             <option>Completed</option>
                                         </Form.Control>
