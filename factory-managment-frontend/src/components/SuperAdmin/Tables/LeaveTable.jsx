@@ -2,7 +2,16 @@ import React, { Component } from "react";
 import {EditEmployeeModal} from '../Modals/EditEmployeeModal';
 import { Table, Button, ButtonToolbar } from 'react-bootstrap';
 import swal from 'sweetalert';
+import { ToastContainer, toast, Zoom, Bounce, Flip } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 
+toast.success("Welcome to your leave requests.", {
+  position: toast.POSITION.TOP_RIGHT,
+  draggable: true,
+  transition: Flip,
+  autoClose: 5000,
+  closeOnClick: true
+});
 
 
 export class LeaveTable extends Component{
@@ -14,7 +23,7 @@ export class LeaveTable extends Component{
   deleteleave(id){
     swal({
       title: "Are you sure?",
-      text: "Once deleted, you will not be able to recover this Recode!",
+      text: "Once deleted, you will not be able to recover this record.",
       icon: "warning",
       buttons: true,
       dangerMode: true,
@@ -41,7 +50,7 @@ export class LeaveTable extends Component{
           }); 
       });
       } else {
-        swal("Your imaginary file is safe!");
+        swal("Record was not submitted.");
       }
     });
   }
@@ -50,6 +59,8 @@ export class LeaveTable extends Component{
     let EditModelClose = () => this.setState({ editModalShow: false })
   return (
     <React.Fragment>
+
+      <ToastContainer draggable={false} transition={Zoom} autoClose={8000} newestOnTop />
        <ButtonToolbar>
                   <EditEmployeeModal
                       show={this.state.editModelShow}

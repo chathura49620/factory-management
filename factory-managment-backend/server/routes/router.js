@@ -11,11 +11,13 @@ route.get('/api/categories',contoller.category.find);
 route.put('/api/categories/',contoller.category.update);
 route.delete('/api/categories/',contoller.category.delete);
 
+
 // Super Admin Metirial Code APIs
 route.post('/api/meterial-code/',contoller.materialCode.create);
 route.get('/api/meterial-code/',contoller.materialCode.find);
 route.put('/api/meterial-code/',contoller.materialCode.update);
 route.delete('/api/meterial-code/',contoller.materialCode.delete);
+
 
 // Super Admin Product Code APIs
 route.post('/api/product-code/',contoller.productcode.create);
@@ -23,9 +25,12 @@ route.get('/api/product-code/',contoller.productcode.find);
 route.put('/api/product-code/',contoller.productcode.update);
 route.delete('/api/product-code/',contoller.productcode.delete);
 
-//Super Admin Metirial Code APIs
+//Super Admin User Role APIs
 route.get('/api/user-roles/',contoller.userRole.find);
 route.post('/api/user-roles/',contoller.userRole.create);
+
+//login APIs
+route.get('/api/login/',contoller.login.find);
 
 
 //Super Admin Factory Details APIs
@@ -38,6 +43,25 @@ route.delete('/api/factory-details/',contoller.factoryDetails.delete);
 route.post('/api/leave-details/',contoller.leaveDetails.create);
 route.get('/api/leave-details/',contoller.leaveDetails.find);
 route.put('/api/leave-details/',contoller.leaveDetails.update);
-route.delete('/api/leave-details/',contoller.leaveDetails.delete);
+route.delete('/api/leave-details/',contoller.leaveDetails.delete); 
+
+//employee assignment APIs
+route.post('/api/assignment-details/',contoller.assignmentDetails.create);
+route.get('/api/assignment-details/',contoller.assignmentDetails.find);
+route.put('/api/assignment-details/',contoller.assignmentDetails.update);
+route.delete('/api/assignment-details/',contoller.assignmentDetails.delete);
+
+module.exports = route;
+//New Production Round Details APIs
+route.post('/api/newProRound-details/',contoller.newProductionRoundDetails.create);
+route.get('/api/newProRound-details/',contoller.newProductionRoundDetails.find);
+route.put('/api/newProRound-details/',contoller.newProductionRoundDetails.update);
+route.delete('/api/newProRound-details/',contoller.newProductionRoundDetails.delete);
+
+//Order Details APIs
+route.post('/api/order-details/',contoller.orderDetails.create);
+route.get('/api/order-details/',contoller.orderDetails.find);
+route.put('/api/order-details/',contoller.orderDetails.update);
+route.delete('/api/order-details/',contoller.orderDetails.delete);
 
 module.exports =route;

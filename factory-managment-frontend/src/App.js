@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import "./App.css";
 import SuperAdminSideNav from "./components/SuperAdmin/sideNav/Sidebar";
 import Sidebar from "./components/storeManagerComponents/sideNavigation/Sidebar";
@@ -9,12 +10,28 @@ import Categories from "./pages/SuperAdmin/Categories";
 import ProductCodes from "./pages/SuperAdmin/ProductCodes";
 import MaterialCodes from "./pages/SuperAdmin/MaterialCodes";
 import NotFound from "./components/storeManagerComponents/notfound";
+=======
+
+import './App.css';
+import login from './pages/SuperAdmin/login';
+
+
+import EmployeeDashboard from './pages/Employee/EmployeeDashboard';
+
+
+
+
+
+// import routes from './route'
+// import NotFound from "./components/storeManagerComponents/notfound";
+>>>>>>> 44d1cc879bb7210493967a8bfbc4ab5594a6e995
 import SMDashBoard from "./components/storeManagerComponents/sm_dashboard";
 import NewItemForm from "./components/storeManagerComponents/newitemform";
 import ItemRecord from "./components/storeManagerComponents/itemsrecords";
 import MyProfile from "./components/storeManagerComponents/myprofile";
 import NavBar from "./components/storeManagerComponents/navbar";
 import Item from "./components/storeManagerComponents/items";
+<<<<<<< HEAD
 import EmployeeDashboard from "./pages/Employee/EmployeeDashboard";
 import Assignments from "./pages/Employee/Assignments";
 import Calendar from "./pages/Employee/Calendar";
@@ -57,6 +74,21 @@ function App() {
       </main>
     </Router>
   );
+=======
+import Dashboard from "./pages/Dashboard";
+
+
+
+import AddNewProductionRound from "./pages/ProductionManager/AddNewProductionRound";
+import VIewNewProductionRound from "./pages/ProductionManager/VIewNewProductionRound";
+
+
+function App() {
+  return (
+      <Dashboard />
+   );
+  
+>>>>>>> 44d1cc879bb7210493967a8bfbc4ab5594a6e995
 }
 
 export default App;

@@ -10,6 +10,7 @@ import { AddFactoryDetailsModal } from '../../components/SuperAdmin/Modals/AddFa
 class Dashboard extends Component {
   state = {
     factoryDetails: [],
+    user_name:'',
     addModalShow: true
   };
 
@@ -22,6 +23,10 @@ class Dashboard extends Component {
       this.setState({ factoryDetails: factoryDetails });
     })
     .catch((err) => console.log(err.message));
+
+    const user_name = localStorage.getItem("user_full_name");
+    this.setState({ user_name: user_name });
+
   }
 
 
@@ -44,7 +49,7 @@ class Dashboard extends Component {
               <div className="main__title">
               <img src={hello} alt="hello" />
                 <div className="main__greeting">
-                  <h1>Hello, Chathura Prabath.</h1>
+                  <h1>Hello, {this.state.user_name}</h1>
                   <p>Welcome to your profile.</p>
                 </div>
               </div>
