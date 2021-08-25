@@ -30,7 +30,8 @@
     "styled-components": "^5.2.1",
     "sweetalert": "^2.1.2",
     "sweetalert2": "^11.1.4",
-    "web-vitals": "^1.1.2"
+    "web-vitals": "^1.1.2",
+    "react-vis": "^1.11.7"
   },
   "scripts": {
     "start": "react-scripts start",
