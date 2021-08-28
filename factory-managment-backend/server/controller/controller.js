@@ -10,4 +10,6 @@ exports.newProductionRoundDetails= require('./newProductionRound.controller');
 exports.orderDetails= require('./orderDetails.controller');
 exports.login= require('./login.controller');
 
+exports.billType= require('./billType.controller');
+
 

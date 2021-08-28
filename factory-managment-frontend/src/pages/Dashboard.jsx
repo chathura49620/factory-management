@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import SuperAdminSideNav from '../components/SuperAdmin/sideNav/Sidebar';
 import EmpsideNav from '../components/Employee/EmpsideNav/EmpSidebar';
 import ProManagerNav from '../components/ProductionManager/ProManagersideNav/EmpSidebar';
+import FinanceTeamMemberSideNav from '../components/FinanceTeamMember/sideNav/Sidebar';
 
 import ProductionManagerDashboard from './ProductionManager/ProManagerDashboard'
 
@@ -45,6 +46,10 @@ import VIewNewProductionRound from "./ProductionManager/VIewNewProductionRound";
 import ViewProductList from "./ProductionManager/ViewProductList";
 
 
+//finance team member routers
+import BillType from "./FinanceTeamMember/BillType";
+
+
 class Dashboard extends Component {
     constructor(props) {
         super(props);   
@@ -79,6 +84,10 @@ class Dashboard extends Component {
             if(user_role == 'Super Admin'){
                 return (
                     <SuperAdminSideNav/> 
+                );
+            }if(user_role == 'finance team member'){
+                return (
+                    <FinanceTeamMemberSideNav/>   
                 );
             }else{
                 return false;
@@ -121,7 +130,14 @@ class Dashboard extends Component {
                         <Route path='/metirial-codes' exact component={MaterialCodes} />
                     </div>
                 );
-            }if(user_role == 'production team member'){
+                }if(user_role == 'finance team member'){
+                    return (
+                        <div>
+                            <Route path='/bill-types' exact component={BillType} />
+                           
+                        </div>
+                    );
+                }if(user_role == 'production team member'){
                 return (
                     <div>
                         <div>
