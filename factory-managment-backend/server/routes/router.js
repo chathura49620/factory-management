@@ -33,6 +33,13 @@ route.put('/api/bill-type/',contoller.billType.update);
 route.delete('/api/bill-type/',contoller.billType.delete);
 
 
+// Super Admin Bills APIs
+route.post('/api/bills/',contoller.bills.create);
+route.get('/api/bills/',contoller.bills.find);
+route.put('/api/bills/',contoller.bills.update);
+route.delete('/api/bills/',contoller.bills.delete);
+
+
 //Super Admin User Role APIs
 route.get('/api/user-roles/',contoller.userRole.find);
 route.post('/api/user-roles/',contoller.userRole.create);

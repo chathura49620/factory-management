@@ -48,6 +48,7 @@ import ViewProductList from "./ProductionManager/ViewProductList";
 
 //finance team member routers
 import BillType from "./FinanceTeamMember/BillType";
+import Bills from "./FinanceTeamMember/Bills";
 
 
 class Dashboard extends Component {
@@ -134,6 +135,7 @@ class Dashboard extends Component {
                     return (
                         <div>
                             <Route path='/bill-types' exact component={BillType} />
+                            <Route path='/bills' exact component={Bills} />
                            
                         </div>
                     );

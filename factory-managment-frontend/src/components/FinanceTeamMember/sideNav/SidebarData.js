@@ -50,7 +50,7 @@ export const SidebarData = [
       },
       {
         title: 'Bills',
-        path: '',
+        path: '/bills',
         icon: <IoIcons.IoIosPaper />,
         cName: 'sub-nav'
       },
