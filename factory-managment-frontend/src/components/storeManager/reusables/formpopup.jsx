@@ -21,7 +21,7 @@ const FormPopup = ({ title, children, openPopup, onClose }) => {
           <div
             style={{ display: "flex", textAlign: "center", color: "#7121AD" }}
           >
-            <h5 style={{ flexGrow: 1 }}>Edit My Profile</h5>
+            <h5 style={{ flexGrow: 1 }}>{title}</h5>
             <button onClick={() => onClose()} style={{ color: "#0E0104" }}>
               X
             </button>

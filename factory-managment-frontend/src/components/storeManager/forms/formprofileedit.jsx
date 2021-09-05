@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import FormSuper from "./common/formsuper";
+import FormSuper from "../reusables/formsuper";
 import Joi, { join } from "joi-browser";
 import axios from "axios";
 import swal from "sweetalert";
-import Radio from "./common/radio";
+import Radio from "../reusables/radio";
 
 class FormProfileEdit extends FormSuper {
   state = {
