@@ -7,7 +7,7 @@ import * as RiIcons from "react-icons/ri";
 export const SidebarData = [
   {
     title: "Dashboard",
-    path: "/smdashboard",
+    path: "/",
     icon: <AiIcons.AiFillHome />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
@@ -49,7 +49,7 @@ export const SidebarData = [
   },
 
   {
-    title: "Wsated Items",
+    title: "Wasted Items",
     path: "/smdashboard",
     icon: <IoIcons.IoIosPaper />,
   },

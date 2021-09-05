@@ -1,16 +1,17 @@
 import React, { Component } from "react";
-import TableVertilcle from "./common/tableverticle";
-import SearchBox from "./common/searchBox";
+import TableVertilcle from "../../components/storeManager/tables/tableverticle";
+import SearchBox from "../../components/storeManager/reusables/searchBox";
 import axios from "axios";
 import { result } from "lodash";
-import DialogBox from "./common/dialogbox";
+import DialogBox from "../../components/storeManager/reusables/dialogbox";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Notice from "./common/notice";
+import Notice from "../../components/storeManager/reusables/notice";
 import { Link } from "react-router-dom";
 import swal from "sweetalert";
-import Pagination from "./common/pagination";
-import { paginate } from "./utils/paginate";
+import Pagination from "../../components/storeManager/reusables/pagination";
+import { paginate } from "../../components/storeManager/utils/paginate";
+import FormPopup from "../../components/storeManager/reusables/formpopup";
 
 class ItemRecord extends Component {
   state = {
@@ -21,9 +22,23 @@ class ItemRecord extends Component {
     wannaDeleteRecord: {},
     currentPage: 1,
     pageSize: 1,
+    openPopup: false,
   };
 
   componentDidMount() {}
+
+  setOpenPopup = () => {
+    this.setState({ openPopup: true });
+  };
+
+  closeOpenPopup = () => {
+    this.setState({ openPopup: false });
+  };
+
+  closePopAndSetState = (jsonOb) => {
+    //console.log("close and set", jsonOb);
+    this.setState({ user: jsonOb, openPopup: false });
+  };
 
   handleSearch = (query) => {
     this.setState({
@@ -130,7 +145,44 @@ class ItemRecord extends Component {
     if (count === 0) {
       return (
         <React.Fragment>
-          <ToastContainer />
+          <div style={{ marginLeft: "50px" }}>
+            <DialogBox
+              show={this.state.showTaskDialog}
+              deleteOrNot={this.deleteOrNot}
+            />
+            <div className="row">
+              <div className="col-4"></div>
+              <div className="col">
+                <SearchBox
+                  onChange={this.handleSearch}
+                  value={this.state.searchQuery}
+                  placeHolder="Search Records ex:2021-01-01"
+                />
+              </div>
+              <div className="col">
+                <button
+                  onClick={this.onSearch}
+                  className="btn  my-4"
+                  style={{ backgroundColor: "#7121AD", color: "white" }}
+                >
+                  Search
+                </button>
+              </div>
+            </div>
+            <div className="row m-4">
+              <div className="col-2"></div>
+              <div className="col">
+                <Notice />
+              </div>
+            </div>
+          </div>
+        </React.Fragment>
+      );
+    }
+
+    return (
+      <React.Fragment>
+        <div style={{ marginLeft: "40px" }}>
           <DialogBox
             show={this.state.showTaskDialog}
             deleteOrNot={this.deleteOrNot}
@@ -145,71 +197,37 @@ class ItemRecord extends Component {
               />
             </div>
             <div className="col">
-              <button
+              <Link
                 onClick={this.onSearch}
-                className="btn  my-4"
+                className="btn my-4"
                 style={{ backgroundColor: "#7121AD", color: "white" }}
               >
                 Search
-              </button>
+              </Link>
             </div>
           </div>
-          <div className="row m-4">
+          <div className="row">
+            <div className="col-3"></div>
+            <div className="col">
+              <TableVertilcle
+                records={pageItems}
+                handleDelete={this.handleDelete}
+                onSet={this.setConfirmDialog}
+                onSetPopup={this.setOpenPopup}
+              />
+            </div>
+          </div>
+
+          <div className="row">
             <div className="col-2"></div>
             <div className="col">
-              <Notice />
+              <Pagination
+                itemsCount={count}
+                pageSize={pageSize}
+                onPageChange={this.handlePage}
+                currentPage={currentPage}
+              />
             </div>
-          </div>
-        </React.Fragment>
-      );
-    }
-
-    return (
-      <React.Fragment>
-        <ToastContainer />
-        <DialogBox
-          show={this.state.showTaskDialog}
-          deleteOrNot={this.deleteOrNot}
-        />
-        <div className="row">
-          <div className="col-4"></div>
-          <div className="col">
-            <SearchBox
-              onChange={this.handleSearch}
-              value={this.state.searchQuery}
-              placeHolder="Search Records ex:2021-01-01"
-            />
-          </div>
-          <div className="col">
-            <Link
-              onClick={this.onSearch}
-              className="btn my-4"
-              style={{ backgroundColor: "#7121AD", color: "white" }}
-            >
-              Search
-            </Link>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-2"></div>
-          <div className="col">
-            <TableVertilcle
-              records={pageItems}
-              handleDelete={this.handleDelete}
-              onSet={this.setConfirmDialog}
-            />
-          </div>
-        </div>
-
-        <div className="row">
-          <div className="col-2"></div>
-          <div className="col">
-            <Pagination
-              itemsCount={count}
-              pageSize={pageSize}
-              onPageChange={this.handlePage}
-              currentPage={currentPage}
-            />
           </div>
         </div>
       </React.Fragment>

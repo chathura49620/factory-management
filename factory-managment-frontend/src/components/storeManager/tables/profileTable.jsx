@@ -1,9 +1,13 @@
 import React, { useState } from "react";
+import userPic from "../../../pages/assets/pem56.png";
 
 const ProfileTable = ({ userOb, onSetPopup }) => {
   return (
     <React.Fragment>
-      <table className="table table-bordered table-sm my-2">
+      <table
+        className="table table-bordered table-sm my-3"
+        style={{ width: "1000px" }}
+      >
         <thead>
           <tr style={{ backgroundColor: "#7121AD", color: "white" }}>
             <th
