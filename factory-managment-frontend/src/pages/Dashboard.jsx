@@ -1,16 +1,12 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-<<<<<<< HEAD
+
 import SuperAdminSideNav from '../components/SuperAdmin/sideNav/Sidebar';
 import EmpsideNav from '../components/Employee/EmpsideNav/EmpSidebar';
 import ProManagerNav from '../components/ProductionManager/ProManagersideNav/EmpSidebar';
 import FinanceTeamMemberSideNav from '../components/FinanceTeamMember/sideNav/Sidebar';
-=======
-import SuperAdminSideNav from "../components/SuperAdmin/sideNav/Sidebar";
-import EmpsideNav from "../components/Employee/EmpsideNav/EmpSidebar";
-import ProManagerNav from "../components/ProductionManager/ProManagersideNav/EmpSidebar";
->>>>>>> sprint1
+
 
 import ProductionManagerDashboard from "./ProductionManager/ProManagerDashboard";
 
