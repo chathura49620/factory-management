@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Table, Button, ButtonToolbar } from "react-bootstrap";
 import Chart from "../charts/chart";
+import { Table, Button, ButtonToolbar } from "react-bootstrap";
 import "../SuperAdmin/dashboard.css";
 import hello from "../assets/hello.png";
 import clock from "../assets/clock.png";
+import Clock from "../../components/ProductionManager/common/clock";
 
 class Dashboard extends Component {
   state = {
@@ -27,6 +28,12 @@ class Dashboard extends Component {
   //     this.setState({ user_name: user_name });
 
   //   }
+  // logout(){
+  //   localStorage.removeItem('user_full_name');
+  //   localStorage.removeItem('user_email');
+  //   localStorage.removeItem('is_login');
+  //   window.location.reload();
+  // }
 
   render() {
     let AddModelClose = () => this.setState({ addModalShow: false });
@@ -58,16 +65,13 @@ class Dashboard extends Component {
                   <div>
                     <h1>Date and Time</h1>
                   </div>
-                  <i className="fa fa-usd" aria-hidden="true"></i>
-                </div>
-                <div className="row mt-5">
-                  <div className="col-md-6">
-                    <img src={clock} alt="clock" />
-                  </div>
-                  <div className="col-md-6">
-                    <h4>Tuesday,july 25th,2021</h4>
-                    <br />
-                    <h1>16:19:55</h1>
+                  <div className="row mt-5">
+                    <div className="col-md-6">
+                      <img src={clock} alt="clock" />
+                    </div>
+                    <div className="col-md-6">
+                      <Clock />
+                    </div>
                   </div>
                 </div>
               </div>

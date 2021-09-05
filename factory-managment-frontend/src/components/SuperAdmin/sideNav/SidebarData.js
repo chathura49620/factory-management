@@ -7,7 +7,7 @@ import * as RiIcons from 'react-icons/ri';
 export const SidebarData = [
   {
     title: 'Dashboard',
-    path: '/super-admin-dashboard',
+    path: '/',
     icon: <AiIcons.AiFillHome />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,

@@ -36,8 +36,12 @@ export class MaterialCodeTable extends Component {
             title: "Material Code Deleted Succesfully",
             icon: "success",
             button: "Done",
-          }); 
+          });
+          setTimeout(function() {
+            window.location.reload(); 
+          }.bind(this), 1500);
       });
+      
       } else {
         swal("Your imaginary file is safe!");
       }
@@ -59,9 +63,9 @@ export class MaterialCodeTable extends Component {
           status={status}
       />
       </ButtonToolbar>
-    <table className="table table-bordered table-sm m-2">
+    <table className="table table-bordered table-sm m-2" style={{width:"1000px"}}>
       <thead>
-        <tr className="table-secondary">
+        <tr style={{ backgroundColor: "#7121AD", color: "white" } }>
           <th scope="col">Id</th>
           <th scope="col">Material Name</th>
           <th scope="col">Material Code</th>
@@ -72,19 +76,18 @@ export class MaterialCodeTable extends Component {
         {this.props.filteredItems.map((i) => (
           <tr
             key={i._id}
-            className={
-              "table-succes table-primary"
-            }
           >
             <td>1</td>
             <td>{i.materialName}</td>
             <td>{i.materialCode}</td>
             <td><button 
-            className="btn btn-success btn-sm"
+            className="btn-sm"
+            style={{ backgroundColor: "#7121AD", color: "white", marginRight:"4px" }}
             onClick={() => this.setState({ editModalShow: true, id: i._id, matirialName: i.materialName, materialCode: i.materialCode, status: i.status })}
             >Edit</button> 
             <button 
-            className="btn btn-warning btn-sm" 
+            className="btn-sm"
+            style={{ backgroundColor: "#BA0D32 ", color: "white" }} 
             onClick={() => this.deleteMatCode(i._id)}>Delete</button></td>
           </tr>
         ))}

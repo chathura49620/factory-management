@@ -4,7 +4,7 @@ import swal from 'sweetalert';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 
-export class EditMaterialCodeModal extends Component {
+export class EditAssignmentModal extends Component {
     constructor(props) {
         super(props);
         this.state = { snackbaropen: false, snackbarmsg: '' };
@@ -19,7 +19,7 @@ export class EditMaterialCodeModal extends Component {
         event.preventDefault();
         //alert(event.target.name.value);
 
-        fetch('http://localhost:5000/api/meterial-code/', {
+        fetch('http://localhost:5000/api/assignment-details/', {
             method: 'PUT',
             headers: {
                 'Accept': 'application/json',
@@ -28,15 +28,16 @@ export class EditMaterialCodeModal extends Component {
             },
             body: JSON.stringify({
                 id: event.target.id.value,
-                materialName: event.target.matName.value,
-                materialCode: event.target.matCode.value,
-                status: event.target.status.value,
+                documentid: event.target.documentid.value,
+                supervisor: event.target.supervisor.value,
+                description: event.target.description.value,
+                status: event.target.status.value
             })
         })
             .then(res => res.json())
             .then((result) => {
                 swal({
-                    title: "Metirial Code Updated Succesfully",
+                    title: "Assignment Updated Succesfully",
                     icon: "success",
                     button: "Done",
                   });
@@ -68,41 +69,41 @@ export class EditMaterialCodeModal extends Component {
                 >
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title-vcenter">
-                            Edit Matirial COde
+                            Edit Category
               </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
 
                         <Row>
                             <Col sm={6}>
-                                <Form onSubmit={this.handleSubmit}>
-                                    <Form.Group controlId="id">
-                                        <Form.Label>ID</Form.Label>
-                                        <Form.Control type="text" name="id" required disabled defaultValue={this.props.id} hidden/>
-                                    </Form.Group>
-                                    
-                                    <Form.Group controlId="name">
-                                        <Form.Label>Material Name</Form.Label>
-                                        <Form.Control type="text" name="matName" required placeholder="Material Name" defaultValue={this.props.matirialName} />
-                                    </Form.Group>
-                                    <Form.Group controlId="name">
-                                        <Form.Label>Material Code</Form.Label>
-                                        <Form.Control type="text" name="matCode" required placeholder="Material Code" defaultValue={this.props.materialCode} />
-                                    </Form.Group>
-                                    <Form.Group>
-                                        <Form.Label>Status</Form.Label>
-                                        <Form.Control as="select" required name="status" defaultValue={this.props.status}>
-                                            <option selected disabled>{this.props.status}</option>
-                                            <option>ACTIVE</option>
-                                            <option>INACTIVE</option>
-                                        </Form.Control>
-                                    </Form.Group>
-                                    <br />
-                                    <Form.Group>
-                                        <Button style={{ backgroundColor: "#7121AD", color: "white" }} variant="primary" type="submit" >
-                                            Edit Matirial Code
-                                        </Button>
-                                    </Form.Group>
+                            <Form onSubmit={this.handleSubmit}>      
+                                <Form.Group controlId="id">
+                                    <Form.Label>ID</Form.Label>
+                                    <Form.Control type="text" name="id" required disabled  defaultValue={this.props.id}/>
+                                </Form.Group>
+
+                                <Form.Group controlId="name">
+                                    <Form.Label>Document ID</Form.Label>  
+                                    <Form.Control  value= {this.state.documentid} type="text" name="documentid" required placeholder="Reference Number" defaultValue={this.props.documentid} />
+                                </Form.Group>
+                                <Form.Group controlId="name">
+                                    <Form.Label>Supervisor</Form.Label>
+                                    <Form.Control  value= {this.state.supervisor} type="text" name="supervisor" required placeholder="Reason for Leave" defaultValue={this.props.supervisor} />
+                                </Form.Group>
+                                <Form.Group controlId="name">
+                                    <Form.Label>Description</Form.Label>
+                                    <Form.Control  value= {this.state.description} type="text" name="description" required placeholder="Date" defaultValue={this.props.description} />
+                                </Form.Group>
+                                <Form.Group controlId="name">
+                                    <Form.Label>Status</Form.Label>
+                                    <Form.Control  value= {this.state.status} type="text" name="status" required placeholder="Date" defaultValue={this.props.status} />
+                                </Form.Group>
+
+                                <Form.Group>
+                                    <Button style={{ backgroundColor: "#7121AD", color: "white" }} className="table table-bordered table-sm my-2" type="submit" >
+                                        Edit Assignment
+                                    </Button>
+                                </Form.Group>
                                 </Form>
                             </Col>
                         </Row>

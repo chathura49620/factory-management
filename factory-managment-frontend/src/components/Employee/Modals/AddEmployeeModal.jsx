@@ -1,68 +1,83 @@
 import React, { Component } from 'react';
 import { Modal, Button, Row, Col, Form, FormGroup } from 'react-bootstrap';
-import swal from 'sweetalert';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
+import { Redirect } from 'react-router-dom';
 
-export class EditCategoryModal extends Component {
+
+export class AddEmployeeModal extends Component {
     constructor(props) {
+
+        console.log("Run");
         super(props);
         this.state = { snackbaropen: false, snackbarmsg: '' };
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    
 
-    handleSubmit(event, props) {
+
+    snackbarClose = (event) => {
+        this.setState({ snackbaropen: false });
+    };
+
+    handleSubmit(event) {
+
         event.preventDefault();
-        fetch('http://localhost:5000/api/categories/', {
-            method: 'PUT',
+        alert(event.target.name.value);
+        fetch('http://localhost:5000/api/leave-details/', {
+            method: 'POST',
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'username': 'chathura'
+                'Content-Type': 'application/json'
+                
             },
             body: JSON.stringify({
-                id: event.target.id.value,
-                categoryName: event.target.name.value,
-                status: event.target.status.value,
+                refno: event.target.refno.value,
+                reasonforleave: event.target.reasonforleave.value,
+                date: event.target.date.value
             })
         })
             .then(res => res.json())
             .then((result) => {
-                swal({
-                    title: "Category Updated Succesfully",
-                    icon: "success",
-                    button: "Done",
-                  });
+                alert("Success");
+                console.log("result" , result)
             }, (error) => {
-                
+                this.setState({ snackbaropen: true, snackbarmsg: 'Failed' })
             }
 
             )
     }
 
+    //   handleSubmit = (event) => {
+
+    //       return <Redirect to='/login' />
+
+    //   }
+
     render() {
         return (
             <div className="container">
 
-                <Snackbar anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+
+                <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
                     open={this.state.snackbaropen}
                     autoHideDuration={6000}
                     onClose={this.snackbarClose}
                     message={<span id="message-id">{this.state.snackbarmsg}</span>}
                     action={[
-                        <IconButton key="close" aria-label="Close" color="inherit" onClick={this.snackbarClose}></IconButton>
+                        <IconButton key="close" aria-label="Close" color="danger" onClick={this.snackbarClose}></IconButton>
                     ]}
                 />
                 <Modal
                     {...this.props}
                     size="lg"
                     aria-labelledby="contained-modal-title-vcenter"
-
+                //centered
                 >
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title-vcenter">
-                            Edit Category
+                            Add a Leave Request 
               </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
@@ -70,27 +85,22 @@ export class EditCategoryModal extends Component {
                         <Row>
                             <Col sm={6}>
                                 <Form onSubmit={this.handleSubmit}>
-                                    <Form.Group controlId="id">
-                                        <Form.Label>ID</Form.Label>
-                                        <Form.Control type="text" name="id" required disabled defaultValue={this.props.id} hidden/>
-                                    </Form.Group>
-
                                     <Form.Group controlId="name">
-                                        <Form.Label>Name</Form.Label>
-                                        <Form.Control type="text" name="name" required placeholder="Category Name" defaultValue={this.props.name} />
+                                        <Form.Label>Reference Number</Form.Label>
+                                        <Form.Control type="text" name="refno" required placeholder="Enter a reference ID" />
                                     </Form.Group>
-                                    <Form.Group>
-                                        <Form.Label>Status</Form.Label>
-                                        <Form.Control as="select" required name="status" defaultValue={this.props.status}>
-                                            <option selected disabled>{this.props.status}</option>
-                                            <option>ACTIVE</option>
-                                            <option>INACTIVE</option>
-                                        </Form.Control>
+                                    <Form.Group controlId="name">
+                                        <Form.Label>Reason for leave</Form.Label>
+                                        <Form.Control type="text" name="reasonforleave" required placeholder="Make your reason descriptive.." />
                                     </Form.Group>
-                                    <br />
+                                    <Form.Group controlId="name">
+                                        <Form.Label>Date</Form.Label>
+                                        <Form.Control type="text" name="date" required placeholder="Enter a date or number of days..." />
+                                    </Form.Group>
+                                    <br></br>
                                     <Form.Group>
-                                        <Button style={{ backgroundColor: "#7121AD", color: "white" }} variant="primary" type="submit" >
-                                            Edit Category
+                                        <Button  style={{ backgroundColor: "#7121AD", color: "white" }} className="btn"  type="submit" >
+                                            Submit Leave Request
                                         </Button>
                                     </Form.Group>
                                 </Form>

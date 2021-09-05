@@ -28,7 +28,8 @@ class ProductCodes extends Component {
     <React.Fragment>
         <h1 className="mb-5">Product Codes</h1>
         <ButtonToolbar>
-                    <Button variant='primary'
+                    <Button style={{ backgroundColor: "#7121AD", color: "white" }}
+                    className="btn btn-lg"
                         onClick={() => this.setState({ addModalShow: true })}
                     >Add Product Code
                     </Button>
