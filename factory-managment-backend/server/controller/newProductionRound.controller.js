@@ -28,7 +28,7 @@ exports.create = (req,res)=>{
         })
         .catch(err =>{
             res.status(500).send({
-                message : err.message || "Error: Could not add new production round details."
+                message : err.message || "Error: Could Not Add New Production Round Details."
             });
         });
 
@@ -42,13 +42,13 @@ exports.find = (req,res) =>{
         newProductionRoundDetails.findById(id)
         .then(data =>{
             if(!data){
-                res.status(404).send({message:"Could not find new production details with ID" + id});
+                res.status(404).send({message:"Could Not Find New Production Round Details With ID" + id});
             }else{
                 res.send(data);
             }
         })
         .catch(err =>{
-            res.status(500).send({message:"Error while retrieving new production round Details with ID" +id})
+            res.status(500).send({message:"Error While Retrieving New Production Round Details With ID" +id})
         })
     }else{
         newProductionRoundDetails.find()
@@ -56,7 +56,7 @@ exports.find = (req,res) =>{
             res.send(matCode)
         })
         .catch(err =>{
-            res.status(500).send({message:err.message || "Error: Cannot retrieve New Production Round Details"})
+            res.status(500).send({message:err.message || "Error: Cannot Retrieve New Production Round Details"})
         })
     }
 }
