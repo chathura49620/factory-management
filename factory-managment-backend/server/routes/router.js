@@ -70,12 +70,14 @@ module.exports = route;
 
 
 //New Production Round Details APIs
+
 route.post('/api/newProRound-details/',contoller.newProductionRoundDetails.create);
 route.get('/api/newProRound-details/',contoller.newProductionRoundDetails.find);
 route.put('/api/newProRound-details/',contoller.newProductionRoundDetails.update);
 route.delete('/api/newProRound-details/',contoller.newProductionRoundDetails.delete);
 
 //Order Details APIs
+
 route.post('/api/order-details/',contoller.orderDetails.create);
 route.get('/api/order-details/',contoller.orderdetails.find);
 route.put('/api/order-details/',contoller.orderDetails.update);
