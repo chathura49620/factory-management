@@ -21,7 +21,7 @@ exports.create = (req,res)=>{
         status : req.body.status
     })
 
-    // save new production round details in the database
+    // save order details in the database
     orderDet
         .save(orderDet)
         .then(data => {
@@ -34,7 +34,7 @@ exports.create = (req,res)=>{
         });
 
 }
-//retrive and return all new production round details/retrieve a single production round details
+//retrive and return all new order details/retrieve a single order detail
 exports.find = (req,res) =>{
 
     if(req.query.id){
