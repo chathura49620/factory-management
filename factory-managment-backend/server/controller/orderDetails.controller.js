@@ -94,14 +94,14 @@ exports.delete = (req,res) => {
     orderDetails.findByIdAndDelete(id)
     .then(data=>{
         if(!data){
-            res.status(400).send({message:`Cannot delete order details with $(id).`});
+            res.status(400).send({message:`Can Not Delete Order Details With $(id).`});
         }
         else{
-            res.send({message:"Order Details was deleted"});
+            res.send({message:"Order Details Was Deleted"});
         }
     })
     .catch(err =>{
-        res.status(500).send({message:"Error while Deleting."})
+        res.status(500).send({message:"Error While Deleting Order Details."})
     })
 
 }
