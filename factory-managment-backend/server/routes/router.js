@@ -67,6 +67,8 @@ route.put('/api/assignment-details/',contoller.assignmentDetails.update);
 route.delete('/api/assignment-details/',contoller.assignmentDetails.delete);
 
 module.exports = route;
+
+
 //New Production Round Details APIs
 route.post('/api/newProRound-details/',contoller.newProductionRoundDetails.create);
 route.get('/api/newProRound-details/',contoller.newProductionRoundDetails.find);
