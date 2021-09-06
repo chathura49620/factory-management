@@ -45,13 +45,13 @@ exports.find = (req,res) =>{
         orderDetails.findById(id)
         .then(data =>{
             if(!data){
-                res.status(404).send({message:"Could Not Find Order Details with ID" + id});
+                res.status(404).send({message:"Could Not Find Order Details With ID" + id});
             }else{
                 res.send(data);
             }
         })
         .catch(err =>{
-            res.status(500).send({message:"Error While retrieving order details with ID" +id})
+            res.status(500).send({message:"Error While Retrieving Order Details With ID" +id})
         })
     }else{
         orderDetails.find()
@@ -63,6 +63,7 @@ exports.find = (req,res) =>{
         })
     }
 }
+
 
 //update order details 
 exports.update = (req,res) => {
