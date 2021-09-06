@@ -200,4 +200,23 @@ router.route("/object/data/:supplier/:date").delete((req, res) => {
     .catch((err) => res.status(400).json(err.message));
 });
 
+//new Addition not in controllers
+router.route("/update/unique/record/:id").post((req, res) => {
+  ItemRecord.updateOne(
+    { _id: req.params.id },
+    {
+      $set: {
+        iCode: req.body.iCode,
+        iType: req.body.iType,
+        iCategory: req.body.iCategory,
+        iQuantity: Number(req.body.iQuantity),
+        iSupplier: req.body.iSupplier,
+        iAddedDate: req.body.iAddedDate,
+      },
+    }
+  )
+    .then((result) => res.json("Updated"))
+    .catch((err) => res.status(400).json(err.message));
+});
+
 module.exports = router;

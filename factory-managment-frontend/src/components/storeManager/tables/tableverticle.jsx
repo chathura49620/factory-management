@@ -47,7 +47,7 @@ const TableVertilcle = ({ records, handleDelete, onSet, onSetPopup }) => {
               <td>
                 <button
                   style={{ backgroundColor: "#7121AD", color: "white" }}
-                  onClick={() => onSetPopup()}
+                  onClick={() => onSetPopup(r._id)}
                   className="btn-sm mx-2"
                 >
                   Edit

@@ -2,14 +2,13 @@ import React, { Component } from "react";
 import FormSuper from "../reusables/formsuper";
 import Joi, { join } from "joi-browser";
 import axios from "axios";
-import ItemCodeTable from "../tables/itemcodestable";
-import SearchBox from "../reusables/searchBox";
-import ListGroup from "../reusables/listgroup";
 import swal from "sweetalert";
+import { Link } from "react-router-dom";
 
-class NewItemForm extends FormSuper {
+class EditItemRecordForm extends FormSuper {
   state = {
     data: {
+      _id: "",
       Code: "",
       Type: "",
       Category: "",
@@ -32,6 +31,7 @@ class NewItemForm extends FormSuper {
   };
 
   schema = {
+    _id: Joi.string(),
     Code: Joi.string().required(),
     Type: Joi.string().required(),
     Category: Joi.string().required(),
@@ -41,6 +41,16 @@ class NewItemForm extends FormSuper {
   };
 
   componentDidMount() {
+    const ob = {
+      _id: this.props.itemRecordOb._id,
+      Code: this.props.itemRecordOb.iCode,
+      Type: this.props.itemRecordOb.iType,
+      Category: this.props.itemRecordOb.iCategory,
+      Quantity: this.props.itemRecordOb.iQuantity,
+      Supplier: this.props.itemRecordOb.iSupplier,
+      AddedDate: this.props.itemRecordOb.iAddedDate,
+    };
+
     //take the category set from db
     //take the Material codes from db
     axios.get("http://localhost:5000/codes/material/").then((result) => {
@@ -51,6 +61,7 @@ class NewItemForm extends FormSuper {
         console.log(categoryObjs);
         //this.setState({categoryObjects: categoryObjs});
         this.setState({
+          data: ob,
           materialCodeObjects: materialCodesObjs,
           categoryObjects: categoryObjs,
         });
@@ -61,75 +72,41 @@ class NewItemForm extends FormSuper {
     //and put them into single array name iCodes after put them into codes table after set search and fiter them and put again
   }
 
-  handleGenreSelect = (g) => {
-    this.setState({ selectedGenre: g, searchQuery: "" });
-  };
-
-  handleSearch = (query) => {
-    this.setState({
-      searchQuery: query,
-      selectedGenre: "All",
-    });
-  };
-
-  filteredData() {
-    const { searchQuery, materialCodeObjects, selectedGenre } = this.state;
-
-    let filtered = [];
-    if (searchQuery) {
-      filtered = materialCodeObjects.filter((m) =>
-        m.materialName.toLowerCase().startsWith(searchQuery.toLowerCase())
-      );
-    } else if (selectedGenre === "All") {
-      filtered = materialCodeObjects;
-    } else if (selectedGenre === "Material") {
-      filtered = materialCodeObjects;
-    } else {
-      filtered = [];
-    }
-    //finish it
-    return filtered;
-  }
-
   doSubmit() {
-    // console.log("submitted", this.state.data);
-    const jsonOb = this.state.data;
+    const { data } = this.state;
 
+    const jsonOb = {
+      _id: data._id,
+      iCode: data.Code,
+      iType: data.Type,
+      iCategory: data.Category,
+      iQuantity: data.Quantity,
+      iSupplier: data.Supplier,
+      iAddedDate: data.AddedDate,
+    };
+
+    //update in database
     axios
-      .post("http://localhost:5000/items/add/record", jsonOb)
-      .then((result) => console.log(result.data));
-    axios
-      .post("http://localhost:5000/items/add", jsonOb)
-      .then((result) => console.log(result.data));
+      .post(
+        "http://localhost:5000/items/update/unique/record/" + data._id,
+        jsonOb
+      )
+      .then((result) => console.log("updated"));
 
     swal({
-      text: "Item added successfully.",
+      text: "Item updated successfully.",
       icon: "success",
       timer: "1500",
     });
 
-    const resetOb = {
-      Code: "",
-      Type: "",
-      Category: "",
-      Quantity: "",
-      Supplier: "",
-      AddedDate: "",
-    };
-
-    this.setState({ data: resetOb });
-    //this.props.history.push("/items");
-    // window.location = "/items";
+    this.props.onSetAndClose(jsonOb);
   }
 
   render() {
-    const filtered = this.filteredData();
     return (
       <React.Fragment>
         <div className="row">
-          <div className="col-2"></div>
           <div className="col">
-            <h1>New Item</h1>
             <form onSubmit={this.handleSubmit}>
               {this.renderInput("Code", "Item Code")}
               {this.renderSelect("Type", "Item Type", this.state.types)}
@@ -141,30 +118,15 @@ class NewItemForm extends FormSuper {
               {this.renderInput("Quantity", "Item Quantity")}
               {this.renderInput("Supplier", "Supplier Name")}
               {this.renderInput("AddedDate", "Received date", "date")}
-              {this.renderButton("Add Item")}
+              {this.renderButton("Update Item")}
+              <Link
+                to="/it/new/myItem"
+                className="btn  my-4"
+                style={{ backgroundColor: "#7121AD", color: "white" }}
+              >
+                Add as Wasted
+              </Link>
             </form>
-          </div>
-
-          <div className="col">
-            <div className="row">
-              <div className="col">
-                <ListGroup
-                  genres={this.state.genres}
-                  onGenreSelect={this.handleGenreSelect}
-                  selectedGenre={this.state.selectedGenre}
-                />
-              </div>
-              <div className="col">
-                <SearchBox
-                  onChange={this.handleSearch}
-                  value={this.state.searchQuery}
-                  placeHolder="Search codes..."
-                />
-              </div>
-              <div className="col-2"></div>
-            </div>
-
-            <ItemCodeTable materialCodeObs={filtered} />
           </div>
         </div>
       </React.Fragment>
@@ -172,4 +134,4 @@ class NewItemForm extends FormSuper {
   }
 }
 
-export default NewItemForm;
+export default EditItemRecordForm;

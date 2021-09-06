@@ -12,6 +12,7 @@ import swal from "sweetalert";
 import Pagination from "../../components/storeManager/reusables/pagination";
 import { paginate } from "../../components/storeManager/utils/paginate";
 import FormPopup from "../../components/storeManager/reusables/formpopup";
+import EditItemRecordForm from "../../components/storeManager/forms/edititemrecordform";
 
 class ItemRecord extends Component {
   state = {
@@ -23,12 +24,19 @@ class ItemRecord extends Component {
     currentPage: 1,
     pageSize: 1,
     openPopup: false,
+    itemRecord: {},
   };
 
   componentDidMount() {}
 
-  setOpenPopup = () => {
-    this.setState({ openPopup: true });
+  setOpenPopup = (id) => {
+    const { itemRecords } = this.state;
+    const records = itemRecords.filter((record) => record._id === id);
+    const editRecord = records[0];
+
+    console.log(editRecord);
+
+    this.setState({ openPopup: true, itemRecord: editRecord });
   };
 
   closeOpenPopup = () => {
@@ -37,7 +45,19 @@ class ItemRecord extends Component {
 
   closePopAndSetState = (jsonOb) => {
     //console.log("close and set", jsonOb);
-    this.setState({ user: jsonOb, openPopup: false });
+
+    const ItemRecords = [...this.state.itemRecords];
+
+    const record = ItemRecords.filter((rc) => rc._id === jsonOb._id);
+    const editedRecord = record[0];
+
+    const index = ItemRecords.indexOf(editedRecord);
+    ItemRecords[index] = { ...ItemRecords[index] };
+    ItemRecords[index] = jsonOb;
+
+    console.log(ItemRecords);
+
+    this.setState({ openPopup: false, itemRecords: ItemRecords });
   };
 
   handleSearch = (query) => {
@@ -122,16 +142,16 @@ class ItemRecord extends Component {
     const count = this.state.itemRecords.length;
     const { itemRecords, currentPage, pageSize } = this.state;
 
-    const pgData = paginate(itemRecords, currentPage, pageSize);
-    const pageItems = pgData.it;
+    // const pgData = paginate(itemRecords, currentPage, pageSize);
+    // const pageItems = pgData.it;
 
-    console.log(pageItems);
+    // console.log(pageItems);
 
-    if (pgData.nw === 0) {
-      ////
-    } else {
-      currentPage = pgData.nw;
-    }
+    // if (pgData.nw === 0) {
+    //   ////
+    // } else {
+    //   currentPage = pgData.nw;
+    // }
 
     if (count === 0) {
       return (
@@ -201,7 +221,7 @@ class ItemRecord extends Component {
             <div className="col-3"></div>
             <div className="col">
               <TableVertilcle
-                records={pageItems}
+                records={itemRecords}
                 handleDelete={this.handleDelete}
                 onSet={this.setConfirmDialog}
                 onSetPopup={this.setOpenPopup}
@@ -209,7 +229,7 @@ class ItemRecord extends Component {
             </div>
           </div>
 
-          <div className="row">
+          {/* <div className="row">
             <div className="col-2"></div>
             <div className="col">
               <Pagination
@@ -219,8 +239,19 @@ class ItemRecord extends Component {
                 currentPage={currentPage}
               />
             </div>
-          </div>
+          </div> */}
         </div>
+
+        <FormPopup
+          openPopup={this.state.openPopup}
+          onClose={this.closeOpenPopup}
+          title="Edit Items Record"
+        >
+          <EditItemRecordForm
+            itemRecordOb={this.state.itemRecord}
+            onSetAndClose={this.closePopAndSetState}
+          />
+        </FormPopup>
       </React.Fragment>
     );
   }
