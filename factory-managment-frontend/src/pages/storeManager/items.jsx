@@ -120,44 +120,6 @@ class Item extends Component {
           .delete("http://localhost:5000/items/" + i._id)
           .then((result) => console.log(result.data));
 
-        axios
-          .get(
-            "http://localhost:5000/items/object/data/" +
-              i.iSupplier +
-              "/" +
-              i.iAddedDate
-          )
-          .then((result) => {
-            console.log(result.data._id);
-
-            const id = result.data._id;
-            let q = result.data.iQuantity;
-            let quantity = q - 1;
-
-            if (quantity === 0) {
-              axios
-                .delete(
-                  "http://localhost:5000/items/object/data/" +
-                    i.iSupplier +
-                    "/" +
-                    i.iAddedDate
-                )
-                .then((result) => console.log(result.data));
-            } else {
-              axios
-                .post(
-                  "http://localhost:5000/items/update/quantity/itemRecord",
-                  {
-                    id,
-                    quantity,
-                  }
-                )
-                .then((result) => console.log(result));
-            }
-
-            //const wantedOb = {};
-          });
-
         swal({
           text: "Item deleted successfully.",
           icon: "success",

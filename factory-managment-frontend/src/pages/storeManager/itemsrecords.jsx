@@ -82,15 +82,6 @@ class ItemRecord extends Component {
           .delete("http://localhost:5000/items/records/specific/" + record._id)
           .then((result) => console.log(result));
 
-        axios
-          .delete(
-            "http://localhost:5000/items/specific/" +
-              record.iSupplier +
-              "/" +
-              record.iAddedDate
-          )
-          .then((result) => console.log(result));
-
         swal({
           text: "Record Deleted Succesfully",
           icon: "success",
