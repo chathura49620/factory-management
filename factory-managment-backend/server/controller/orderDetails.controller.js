@@ -29,7 +29,7 @@ exports.create = (req,res)=>{
         })
         .catch(err =>{
             res.status(500).send({
-                message : err.message || "Error: Could not add order details."
+                message : err.message || "Error: Could Not Add Order Details."
             });
         });
 
@@ -45,13 +45,13 @@ exports.find = (req,res) =>{
         orderDetails.findById(id)
         .then(data =>{
             if(!data){
-                res.status(404).send({message:"Could not find order details with ID" + id});
+                res.status(404).send({message:"Could Not Find Order Details with ID" + id});
             }else{
                 res.send(data);
             }
         })
         .catch(err =>{
-            res.status(500).send({message:"Error while retrieving order details with ID" +id})
+            res.status(500).send({message:"Error While retrieving order details with ID" +id})
         })
     }else{
         orderDetails.find()
