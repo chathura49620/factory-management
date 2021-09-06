@@ -90,14 +90,14 @@ exports.delete = (req,res) => {
     newProductionRoundDetails.findByIdAndDelete(id)
     .then(data=>{
         if(!data){
-            res.status(400).send({message:`Cannot delete production details with $(id).`});
+            res.status(400).send({message:`Can Not Delete Production Round Details With $(id).`});
         }
         else{
-            res.send({message:"New Production Round  Details was deleted"});
+            res.send({message:"New Production Round  Details Was Deleted"});
         }
     })
     .catch(err =>{
-        res.status(500).send({message:"Error while Deleting."})
+        res.status(500).send({message:"Error While Deleting."})
     })
 
 }
