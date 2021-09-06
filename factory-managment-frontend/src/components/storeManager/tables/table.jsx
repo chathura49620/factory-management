@@ -40,7 +40,7 @@ const Table = ({ filteredItems, onItemDelete, onSet, onSetPopup }) => {
             <td>
               <button
                 className="btn-sm"
-                onClick={() => onSetPopup()}
+                onClick={() => onSetPopup(i._id)}
                 style={{ backgroundColor: "#7121AD", color: "white" }}
               >
                 Edit

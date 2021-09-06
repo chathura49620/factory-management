@@ -12,6 +12,7 @@ import swal from "sweetalert";
 import { paginate } from "../../components/storeManager/utils/paginate";
 import Pagination from "../../components/storeManager/reusables/pagination";
 import FormPopup from "./../../components/storeManager/reusables/formpopup";
+import EditItemForm from "./../../components/storeManager/forms/edititemform";
 
 class Item extends Component {
   state = {
@@ -27,6 +28,7 @@ class Item extends Component {
     wannaDeleteItem: {},
     categoryObjects: [],
     openPopup: false,
+    item: {},
   };
 
   //get all the item details including nexted documents
@@ -49,8 +51,14 @@ class Item extends Component {
       .catch((err) => console.log(err.message));
   }
 
-  setOpenPopup = () => {
-    this.setState({ openPopup: true });
+  setOpenPopup = (id) => {
+    const { items } = this.state;
+    const item = items.filter((item) => item._id === id);
+    const editItem = item[0];
+
+    console.log(editItem);
+
+    this.setState({ openPopup: true, item: editItem });
   };
 
   closeOpenPopup = () => {
@@ -59,7 +67,19 @@ class Item extends Component {
 
   closePopAndSetState = (jsonOb) => {
     //console.log("close and set", jsonOb);
-    this.setState({ user: jsonOb, openPopup: false });
+
+    const items = [...this.state.items];
+
+    const item = items.filter((it) => it._id === jsonOb._id);
+    const editedItem = item[0];
+
+    const index = items.indexOf(editedItem);
+    items[index] = { ...items[index] };
+    items[index] = jsonOb;
+
+    console.log(items);
+
+    this.setState({ openPopup: false, items: items });
   };
 
   handleGenreSelect = (g) => {
@@ -279,6 +299,17 @@ class Item extends Component {
             </div>
           </div>
         </div>
+
+        <FormPopup
+          openPopup={this.state.openPopup}
+          onClose={this.closeOpenPopup}
+          title="Edit Item"
+        >
+          <EditItemForm
+            itemOb={this.state.item}
+            onSetAndClose={this.closePopAndSetState}
+          />
+        </FormPopup>
       </React.Fragment>
     );
   }
