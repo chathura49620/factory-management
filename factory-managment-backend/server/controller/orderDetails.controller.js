@@ -34,6 +34,8 @@ exports.create = (req,res)=>{
         });
 
 }
+
+
 //retrive and return all new order details/retrieve a single order detail
 exports.find = (req,res) =>{
 
@@ -62,7 +64,7 @@ exports.find = (req,res) =>{
     }
 }
 
-//update a new Production ROund 
+//update order details 
 exports.update = (req,res) => {
     if(!req.body){
         return res
@@ -84,7 +86,7 @@ exports.update = (req,res) => {
     })
 }
 
-//Delete a leave request  with specified leave details id in the request
+//Delete a order details with a requested order id
 exports.delete = (req,res) => {
     const id  = req.body.id;
 
