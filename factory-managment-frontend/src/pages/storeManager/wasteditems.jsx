@@ -11,10 +11,11 @@ import "react-toastify/dist/ReactToastify.css";
 import swal from "sweetalert";
 import { paginate } from "../../components/storeManager/utils/paginate";
 import Pagination from "../../components/storeManager/reusables/pagination";
+import WastedItemTable from "./../../components/storeManager/tables/wasteditemtable";
 
 class WastedItem extends Component {
   state = {
-    items: [],
+    wastedItems: [],
     currentPage: 1,
     pageSize: 10,
     genres: ["All", "Product", "Material"], //array of genre
@@ -31,16 +32,16 @@ class WastedItem extends Component {
   componentDidMount() {
     //getting data from db at first time
     axios
-      .get("http://localhost:5000/items/")
+      .get("http://localhost:5000/wasted/")
       .then((result) => {
-        const items = result.data;
+        const wastedItems = result.data;
 
         axios.get("http://localhost:5000/category/").then((result) => {
           const categoryObjs = result.data;
           console.log(categoryObjs);
           //this.setState({categoryObjects: categoryObjs});
           this.setState({
-            items: items,
+            wastedItems: wastedItems,
             categoryObjects: categoryObjs,
           });
         });
@@ -78,51 +79,15 @@ class WastedItem extends Component {
       dangerMode: true,
     }).then((result) => {
       if (result) {
-        const items = this.state.items.filter((item) => item._id !== i._id);
+        const wastedItems = this.state.wastedItems.filter(
+          (item) => item._id !== i._id
+        );
         //toast("deleted successfully.");
-        this.setState({ items, showTaskDialog: false });
+        this.setState({ wastedItems, showTaskDialog: false });
 
         axios
-          .delete("http://localhost:5000/items/" + i._id)
+          .delete("http://localhost:5000/wastedItems/" + i._id)
           .then((result) => console.log(result.data));
-
-        axios
-          .get(
-            "http://localhost:5000/items/object/data/" +
-              i.iSupplier +
-              "/" +
-              i.iAddedDate
-          )
-          .then((result) => {
-            console.log(result.data._id);
-
-            const id = result.data._id;
-            let q = result.data.iQuantity;
-            let quantity = q - 1;
-
-            if (quantity === 0) {
-              axios
-                .delete(
-                  "http://localhost:5000/items/object/data/" +
-                    i.iSupplier +
-                    "/" +
-                    i.iAddedDate
-                )
-                .then((result) => console.log(result.data));
-            } else {
-              axios
-                .post(
-                  "http://localhost:5000/items/update/quantity/itemRecord",
-                  {
-                    id,
-                    quantity,
-                  }
-                )
-                .then((result) => console.log(result));
-            }
-
-            //const wantedOb = {};
-          });
 
         swal({
           text: "Item deleted successfully.",
@@ -131,7 +96,6 @@ class WastedItem extends Component {
         });
       } //end of if
     });
-    //const i = this.state.wannaDeleteItem;
   };
 
   handleSearch = (query) => {
@@ -156,23 +120,24 @@ class WastedItem extends Component {
   };
 
   filteredData() {
-    const { searchQuery, items, selectedGenre, selectedCategory } = this.state;
+    const { searchQuery, wastedItems, selectedGenre, selectedCategory } =
+      this.state;
 
     let filtered = [];
     if (selectedCategory) {
       if (selectedCategory === "first") {
-        filtered = items;
+        filtered = wastedItems;
       } else {
-        filtered = items.filter((i) => i.iCategory === selectedCategory);
+        filtered = wastedItems.filter((i) => i.iCategory === selectedCategory);
       }
     } else if (searchQuery) {
-      filtered = items.filter((i) =>
+      filtered = wastedItems.filter((i) =>
         i.iAddedDate.toLowerCase().startsWith(searchQuery.toLowerCase())
       );
     } else if (selectedGenre === "All") {
-      filtered = items;
+      filtered = wastedItems;
     } else if (selectedGenre) {
-      filtered = items.filter((i) => i.iType === selectedGenre);
+      filtered = wastedItems.filter((i) => i.iType === selectedGenre);
     }
 
     return filtered;
@@ -183,15 +148,15 @@ class WastedItem extends Component {
     const { pageSize } = this.state;
     // alert();
     let currentPage = this.state.currentPage;
-    //if (count === 0) return <p>There are no Items in the stock</p>;
+    //if (count === 0) return <p>There are no wastedItems in the stock</p>;
 
     const filtered = this.filteredData();
 
-    //const pageItems = paginate(filtered, currentPage, pageSize);
+    //const pagewastedItems = paginate(filtered, currentPage, pageSize);
     const pgData = paginate(filtered, currentPage, pageSize);
-    const pageItems = pgData.it;
+    const pagewastedItems = pgData.it;
 
-    console.log(pageItems);
+    console.log(pagewastedItems);
 
     if (pgData.nw === 0) {
       ////
@@ -244,8 +209,14 @@ class WastedItem extends Component {
           <div className="row">
             <div className="col-2"></div>
             <div className="col">
-              <Table
-                filteredItems={pageItems}
+              {/* <Table
+                filteredwastedItems={pagewastedItems}
+                onItemDelete={this.handleDelete}
+                onSet={this.setConfirmDialog}
+              /> */}
+
+              <WastedItemTable
+                filteredItems={pagewastedItems}
                 onItemDelete={this.handleDelete}
                 onSet={this.setConfirmDialog}
               />

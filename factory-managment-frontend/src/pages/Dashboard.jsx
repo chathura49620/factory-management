@@ -9,6 +9,7 @@ import NewItemForm from "../components/storeManager/forms/newitemform";
 import ItemRecord from "./storeManager/itemsrecords";
 import MyProfile from "./storeManager/myprofile";
 import Item from "./storeManager/items";
+import WastedItem from "./storeManager/wasteditems";
 
 class Dashboard extends Component {
   constructor(props) {
@@ -117,6 +118,7 @@ class Dashboard extends Component {
               <Route path="/myprofile" component={MyProfile}></Route>
               <Route path="/it/new/myItem" component={NewItemForm}></Route>
               <Route path="/items/:id" component={NewItemForm}></Route>
+              <Route path="/it/new/wasted/item" component={WastedItem} />
               <Route path="/items" component={Item}></Route>
               <Route path="/itemsrecords" component={ItemRecord}></Route>
               {/* <Route path="/notfound" component={NotFound}></Route> */}

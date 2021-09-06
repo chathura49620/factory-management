@@ -50,7 +50,7 @@ export const SidebarData = [
 
   {
     title: "Wasted Items",
-    path: "/smdashboard",
+    path: "/it/new/wasted/item",
     icon: <IoIcons.IoIosPaper />,
   },
 

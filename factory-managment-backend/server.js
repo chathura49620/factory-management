@@ -18,6 +18,7 @@ const itemsRouter = require("./server/routes/items");
 const usersRouter = require("./server/routes/users");
 const codesRouter = require("./server/routes/codes");
 const cateRouter = require("./server/routes/categories");
+const wastedItemRouter = require("./server/routes/wasteditems");
 
 //load routers
 app.use("/items", itemsRouter);
@@ -26,6 +27,7 @@ app.use("/", require("./server/routes/router"));
 app.use("/users", usersRouter);
 app.use("/codes", codesRouter);
 app.use("/category", cateRouter);
+app.use("/wasted", wastedItemRouter);
 
 app.listen(port, () => {
   console.log(`Server is Running on port: ${port}`);
