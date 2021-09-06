@@ -13,6 +13,7 @@ import { paginate } from "../../components/storeManager/utils/paginate";
 import Pagination from "../../components/storeManager/reusables/pagination";
 import FormPopup from "./../../components/storeManager/reusables/formpopup";
 import EditItemForm from "./../../components/storeManager/forms/edititemform";
+import NewWastedItemForm from "../../components/storeManager/forms/newWastedItemForm";
 
 class Item extends Component {
   state = {
@@ -29,6 +30,8 @@ class Item extends Component {
     categoryObjects: [],
     openPopup: false,
     item: {},
+    openWastedPopup: false,
+    wastedItem: {},
   };
 
   //get all the item details including nexted documents
@@ -80,6 +83,23 @@ class Item extends Component {
     console.log(items);
 
     this.setState({ openPopup: false, items: items });
+  };
+
+  setWastedOpenPopup = (id) => {
+    const { items } = this.state;
+
+    const wasteditem = items.filter((item) => item._id === id);
+    const wItem = wasteditem[0];
+
+    this.setState({
+      openWastedPopup: true,
+      wastedItem: wItem,
+      openPopup: false,
+    });
+  };
+
+  closeOpenWastedPopup = () => {
+    this.setState({ openWastedPopup: false });
   };
 
   handleGenreSelect = (g) => {
@@ -245,6 +265,7 @@ class Item extends Component {
                 onItemDelete={this.handleDelete}
                 onSet={this.setConfirmDialog}
                 onSetPopup={this.setOpenPopup}
+                onSetWastedPop={this.setWastedOpenPopup}
               />
             </div>
           </div>
@@ -271,6 +292,14 @@ class Item extends Component {
             itemOb={this.state.item}
             onSetAndClose={this.closePopAndSetState}
           />
+        </FormPopup>
+
+        <FormPopup
+          openPopup={this.state.openWastedPopup}
+          onClose={this.closeOpenWastedPopup}
+          title="Add Wasted"
+        >
+          <NewWastedItemForm wastedOb={this.state.wastedItem} />
         </FormPopup>
       </React.Fragment>
     );

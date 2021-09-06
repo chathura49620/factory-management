@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 
-const Table = ({ filteredItems, onItemDelete, onSet, onSetPopup }) => {
+const Table = ({
+  filteredItems,
+  onItemDelete,
+  onSet,
+  onSetPopup,
+  onSetWastedPop,
+}) => {
   return (
     <table
       className="table table-bordered table-sm"
@@ -13,6 +19,7 @@ const Table = ({ filteredItems, onItemDelete, onSet, onSetPopup }) => {
           <th scope="col">Category</th>
           <th scope="col">Quantity</th>
           <th scope="col">Receive date</th>
+          <th scope="col">Handle</th>
           <th scope="col">Handle</th>
           <th scope="col">Handle</th>
         </tr>
@@ -53,6 +60,16 @@ const Table = ({ filteredItems, onItemDelete, onSet, onSetPopup }) => {
                 style={{ backgroundColor: "#BA0D32 ", color: "white" }}
               >
                 Delete
+              </button>
+            </td>
+
+            <td>
+              <button
+                onClick={() => onSetWastedPop(i._id)}
+                className="btn-sm"
+                style={{ backgroundColor: "#BA0D32 ", color: "white" }}
+              >
+                Wasted
               </button>
             </td>
           </tr>
