@@ -1,37 +1,31 @@
 import React, { Component } from 'react';
 import { Modal, Button, Row, Col, Form, FormGroup } from 'react-bootstrap';
-import Snackbar from '@material-ui/core/Snackbar';
-import IconButton from '@material-ui/core/IconButton';
 import swal from 'sweetalert';
 import axios from "axios";
+import Snackbar from '@material-ui/core/Snackbar';
+import IconButton from '@material-ui/core/IconButton';
 
-export class EditProductCodeModal extends Component {
+export class EditBillModal extends Component {
     constructor(props) {
         super(props);
-        this.state = { snackbaropen: false, snackbarmsg: '', categories:[] };
+        this.state = { snackbaropen: false, snackbarmsg: '',  BillType:[]};
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    snackbarClose = (event) => {
-        this.setState({ snackbaropen: false });
-    };
-
     componentDidMount() {
         axios
-          .get("http://localhost:5000/api/categories")
+          .get("http://localhost:5000/api/bill-type")
           .then((result) => {
-            const categories = result.data;
+            const BillType = result.data;
     
-            this.setState({ categories: categories });
+            this.setState({ BillType: BillType });
           })
           .catch((err) => console.log(err.message));
       }
 
     handleSubmit(event, props) {
         event.preventDefault();
-        //alert(event.target.name.value);
-
-        fetch('http://localhost:5000/api/product-code/', { 
+        fetch('http://localhost:5000/api/bill-type/', {
             method: 'PUT',
             headers: {
                 'Accept': 'application/json',
@@ -40,20 +34,21 @@ export class EditProductCodeModal extends Component {
             },
             body: JSON.stringify({
                 id: event.target.id.value,
-                productCode: event.target.productCode.value,
-                productCategory: event.target.productCategory.value,
-                status: event.target.status.value,
+                billNo: event.target.billNo.value,
+                billType: event.target.billType.value,
+                amount: event.target.amount.value,
+                billDate: event.target.billDate.value
             })
         })
             .then(res => res.json())
             .then((result) => {
                 swal({
-                    title: "Product Code Updated Succesfully",
+                    title: "Bill Type Updated Succesfully",
                     icon: "success",
                     button: "Done",
                   });
             }, (error) => {
-                this.setState({ snackbaropen: true, snackbarmsg: 'Failed' })
+                
             }
 
             )
@@ -80,42 +75,47 @@ export class EditProductCodeModal extends Component {
                 >
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title-vcenter">
-                            Edit Product Code
+                            Edit Bill
               </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
 
                         <Row>
                             <Col sm={6}>
-                            <Form onSubmit={this.handleSubmit}>
+                                <Form onSubmit={this.handleSubmit}>
                                     <Form.Group controlId="id">
                                         <Form.Label>ID</Form.Label>
                                         <Form.Control type="text" name="id" required disabled defaultValue={this.props.id} hidden/>
                                     </Form.Group>
+
                                     <Form.Group controlId="name">
-                                        <Form.Label>Product Code</Form.Label>
-                                        <Form.Control type="text" name="productCode" required placeholder="Product Code" defaultValue={this.props.productCode} />
+                                        <Form.Label>Bill No</Form.Label>
+                                        <Form.Control type="text" name="billNo" required placeholder="Bill No"  defaultValue={this.props.billNo}/>
+                                          <div style={{background:"#f8d7da"}}>{this.state.CategoryNameError}</div>
                                     </Form.Group>
                                     <Form.Group>
-                                        <Form.Label>Product Category</Form.Label>
-                                        <Form.Control as="select" required name="productCategory" defaultValue={this.props.productCategory}>
-                                        {this.state.categories.map((i) => (
+                                        <Form.Label>Bill Type</Form.Label>
+                                        <Form.Control as="select" required name="billType" defaultValue={this.props.billType}>
+                                        {this.state.BillType.map((i) => (
                                             <option key={i._id}
-                                                    >{i.categoryName}</option>
+                                                    >{i.billType}</option>
                                         ))}
-                                        </Form.Control>  
-                                    </Form.Group>
-                                    <Form.Group>
-                                        <Form.Label>Status</Form.Label>
-                                        <Form.Control as="select" required name="status" defaultValue={this.props.status}>
-                                            <option selected>ACTIVE</option>
-                                            <option>INACTIVE</option>
                                         </Form.Control>
                                     </Form.Group>
-                                    <br />
+                                    <Form.Group controlId="name">
+                                        <Form.Label>Amount</Form.Label>
+                                        <Form.Control type="text" name="amount" required placeholder="Amount"  defaultValue={this.props.amount}/>
+                                          <div style={{background:"#f8d7da"}}>{this.state.CategoryNameError}</div>
+                                    </Form.Group>
+                                    <Form.Group controlId="startDate">
+                                        <Form.Label>Date</Form.Label>
+                                        <Form.Control type="date" name="billDate" required placeholder="Bill Date" defaultValue={this.props.billDate}/>
+                                        <div style={{background:"#f8d7da"}}>{this.state.startDate}</div>
+                                    </Form.Group>
+                                    <br></br>
                                     <Form.Group>
                                         <Button style={{ backgroundColor: "#7121AD", color: "white" }} variant="primary" type="submit" >
-                                            Edit Product Code
+                                            Edit Bill
                                         </Button>
                                     </Form.Group>
                                 </Form>

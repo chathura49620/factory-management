@@ -1,23 +1,23 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Table, Button, ButtonToolbar } from 'react-bootstrap';
-import { AddCategoryModal } from '../../components/SuperAdmin/Modals/AddCategoryModal';
-import {CategoriesTable} from "../../components/SuperAdmin/Tables/CategoriesTable";
+import { AddNewBillModal } from '../../components/FinanceTeamMember/Modals/AddNewBillModal';
+import {BillTables} from "../../components/FinanceTeamMember/Tables/BillTables";
 
 
-class Categories extends Component {
+class Bills extends Component {
   state = {
-    categories: [],
+    bill: [],
     addModalShow: false
   };
 
   componentDidMount() {
     axios
-      .get("http://localhost:5000/api/categories")
+      .get("http://localhost:5000/api/bills")
       .then((result) => {
-        const categories = result.data;
+        const bill = result.data;
 
-        this.setState({ categories: categories });
+        this.setState({ bill: bill });
       })
       .catch((err) => console.log(err.message));
   }
@@ -27,22 +27,22 @@ class Categories extends Component {
     let AddModelClose = () => this.setState({ addModalShow: false })
     return (
       <React.Fragment>
-        <h1 className="mb-5">Categories</h1>
+        <h1 className="mb-5">Bill</h1>
         <ButtonToolbar>
                     <Button style={{ backgroundColor: "#7121AD", color: "white" }}
                     className="btn btn-lg"
                         onClick={() => this.setState({ addModalShow: true })}
-                    >Add Category
+                    >Add Bill
                     </Button>
-                    <AddCategoryModal
+                    <AddNewBillModal
                         show={this.state.addModalShow}
                         onHide={AddModelClose}
                     />
           </ButtonToolbar>
-            <CategoriesTable filteredItems={this.state.categories} />
+            <BillTables filteredItems={this.state.bill} />
       </React.Fragment>
     );
   }
 };
 
-export default Categories;
+export default Bills;

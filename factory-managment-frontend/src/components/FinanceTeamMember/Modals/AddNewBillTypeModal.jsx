@@ -6,7 +6,7 @@ import swal from 'sweetalert';
 import { Redirect } from 'react-router-dom';
 
 
-export class AddCategoryModal extends Component {
+export class AddNewBillTypeModal extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -25,8 +25,8 @@ export class AddCategoryModal extends Component {
     handleSubmit(event) {
         event.preventDefault();
         const isValid = this.validate();
-        if(isValid){
-            fetch('http://localhost:5000/api/categories', {
+        // if(isValid){
+            fetch('http://localhost:5000/api/bill-type', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -34,14 +34,14 @@ export class AddCategoryModal extends Component {
                     'username': 'chathura'
                 },
                 body: JSON.stringify({
-                    categoryName: event.target.categoryName.value,
+                    billType: event.target.billType.value,
                     status: event.target.status.value
                 })
             })
                 .then(res => res.json())
                 .then((result) => {
                     swal({
-                        title: "Category Added Succesfully",
+                        title: "Bill Type Added Succesfully",
                         icon: "success",
                         button: "Done",
                     }); 
@@ -54,10 +54,23 @@ export class AddCategoryModal extends Component {
                 }
 
                 )
-        }
+        // }
     }
 
-  
+    validate(){
+        let CategoryNameError = "";
+
+        if(!this.state.CategoryNameError){
+            CategoryNameError = "Category Name Cannot Be Blank"
+        }
+
+        if(CategoryNameError){
+            this.setState({CategoryNameError:CategoryNameError})
+            return false;
+        }
+
+        return true;
+    }
 
     render() {
         return (
@@ -80,7 +93,7 @@ export class AddCategoryModal extends Component {
                 >
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title-vcenter">
-                            Add Category
+                            Add Bill Type
               </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
@@ -89,8 +102,9 @@ export class AddCategoryModal extends Component {
                             <Col sm={6}>
                                 <Form onSubmit={this.handleSubmit}>
                                     <Form.Group controlId="name">
-                                        <Form.Label>Name</Form.Label>
-                                        <Form.Control type="text" name="categoryName"  placeholder="Category Name" />
+                                        <Form.Label>Bill Type</Form.Label>
+                                        <Form.Control type="text" name="billType" required placeholder="Bill Type"  />
+                                          <div style={{background:"#f8d7da"}}>{this.state.CategoryNameError}</div>
                                     </Form.Group>
                                     <Form.Group>
                                         <Form.Label>Status</Form.Label>
@@ -102,7 +116,7 @@ export class AddCategoryModal extends Component {
                                     <br></br>
                                     <Form.Group>
                                         <Button  style={{ backgroundColor: "#7121AD", color: "white" }} variant="primary" type="submit" >
-                                            Add Category
+                                            Add Bill Type
                                         </Button>
                                     </Form.Group>
                                 </Form>

@@ -10,9 +10,9 @@ export class UserListTable  extends Component {
 
   render(){
   return (
-    <table className="table table-bordered table-sm m-2">
+    <table className="table table-bordered table-sm m-2" style={{width:"1000px"}}>
       <thead>
-        <tr className="table-secondary">
+        <tr style={{ backgroundColor: "#7121AD", color: "white" } }>
           <th scope="col">Id</th>
           <th scope="col">User Name</th>
           <th scope="col">Email</th>
@@ -24,19 +24,19 @@ export class UserListTable  extends Component {
         {this.props.filteredItems.map((i) => (
           <tr
             key={i._id}
-            className={
-              "table-succes table-primary"
-            }
+           
           >
             <td></td>
             <td>{i.fullName}</td>
             <td>{i.email}</td> 
             <td>{i.userRole}</td>
             <td><button 
-            className="btn btn-success btn-sm"
+              className="btn-sm"
+              style={{ backgroundColor: "#7121AD", color: "white", marginRight:"4px" }}
             >Approve</button> 
             <button 
-            className="btn btn-warning btn-sm" 
+             className="btn-sm"
+             style={{ backgroundColor: "#BA0D32 ", color: "white" }} 
             >Reject</button></td>
           </tr>
         ))}

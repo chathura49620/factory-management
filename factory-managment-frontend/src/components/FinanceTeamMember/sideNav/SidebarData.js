@@ -13,14 +13,7 @@ export const SidebarData = [
     iconOpened: <RiIcons.RiArrowUpSFill />,
   },
   {
-    title: 'Basic Info',
-    path: '/basic-info',
-    icon: <AiIcons.AiFillHome />,
-    iconClosed: <RiIcons.RiArrowDownSFill />,
-    iconOpened: <RiIcons.RiArrowUpSFill />,
-  },
-  {
-    title: 'Users',
+    title: 'Costing',
     icon: <IoIcons.IoIosPaper />,
 
     iconClosed: <RiIcons.RiArrowDownSFill />,
@@ -28,43 +21,51 @@ export const SidebarData = [
 
     subNav: [
       {
-        title: 'User Roles',
-        path: 'user-roles',
+        title: 'Material Cost',
+        path: '',
         icon: <IoIcons.IoIosPaper />,
         cName: 'sub-nav'
       },
       {
-        title: 'User Lists',
-        path: 'user-list',
+        title: 'Salaries',
+        path: '',
         icon: <IoIcons.IoIosPaper />,
         cName: 'sub-nav'
       },
     ]
   },
   {
-    title: 'Categories',
-    path: '/categories',
-    icon: <FaIcons.FaCartPlus />
-  },
-  {
-    title: 'Codes',
-    icon: <FaIcons.FaEnvelopeOpenText />,
+    title: 'Sales',
+    icon: <IoIcons.IoIosPaper />,
 
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
 
     subNav: [
       {
-        title: 'Product Codes',
-        path: 'product-codes',
-        icon: <IoIcons.IoIosPaper />
+        title: 'Bill Types',
+        path: 'bill-types',
+        icon: <IoIcons.IoIosPaper />,
+        cName: 'sub-nav'
       },
       {
-        title: 'Metirial Codes',
-        path: 'metirial-codes',
-        icon: <IoIcons.IoIosPaper />
-      }
+        title: 'Bills',
+        path: '/bills',
+        icon: <IoIcons.IoIosPaper />,
+        cName: 'sub-nav'
+      },
+      {
+        title: 'Sales Reports',
+        path: '',
+        icon: <IoIcons.IoIosPaper />,
+        cName: 'sub-nav'
+      },
     ]
+  },
+  {
+    title: 'Profit',
+    path: '',
+    icon: <FaIcons.FaCartPlus />
   },
   {
     title: 'Support',

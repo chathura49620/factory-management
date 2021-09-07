@@ -1,23 +1,23 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Table, Button, ButtonToolbar } from 'react-bootstrap';
-import { AddCategoryModal } from '../../components/SuperAdmin/Modals/AddCategoryModal';
-import {CategoriesTable} from "../../components/SuperAdmin/Tables/CategoriesTable";
+import { AddNewBillTypeModal } from '../../components/FinanceTeamMember/Modals/AddNewBillTypeModal';
+import {BillTypesTable} from "../../components/FinanceTeamMember/Tables/BillTypesTable";
 
 
-class Categories extends Component {
+class BillType extends Component {
   state = {
-    categories: [],
+    BillType: [],
     addModalShow: false
   };
 
   componentDidMount() {
     axios
-      .get("http://localhost:5000/api/categories")
+      .get("http://localhost:5000/api/bill-type")
       .then((result) => {
-        const categories = result.data;
+        const BillType = result.data;
 
-        this.setState({ categories: categories });
+        this.setState({ BillType: BillType });
       })
       .catch((err) => console.log(err.message));
   }
@@ -27,22 +27,22 @@ class Categories extends Component {
     let AddModelClose = () => this.setState({ addModalShow: false })
     return (
       <React.Fragment>
-        <h1 className="mb-5">Categories</h1>
+        <h1 className="mb-5">Bill Types</h1>
         <ButtonToolbar>
                     <Button style={{ backgroundColor: "#7121AD", color: "white" }}
                     className="btn btn-lg"
                         onClick={() => this.setState({ addModalShow: true })}
-                    >Add Category
+                    >Add Bill Type
                     </Button>
-                    <AddCategoryModal
+                    <AddNewBillTypeModal
                         show={this.state.addModalShow}
                         onHide={AddModelClose}
                     />
           </ButtonToolbar>
-            <CategoriesTable filteredItems={this.state.categories} />
+            <BillTypesTable filteredItems={this.state.BillType} />
       </React.Fragment>
     );
   }
 };
 
-export default Categories;
+export default BillType;
