@@ -42,4 +42,23 @@ router.route("/:id").delete((req, res) => {
     .catch((err) => res.status(400).json(err.message));
 });
 
+router.route("/update/:id").post((req, res) => {
+  WastedItem.updateOne(
+    { _id: req.params.id },
+    {
+      $set: {
+        wCode: req.body.wCode,
+        wType: req.body.wType,
+        wCategory: req.body.wCategory,
+        wQuantity: Number(req.body.wQuantity),
+        wSupplier: req.body.wSupplier,
+        wDate: req.body.wDate,
+        wReason: req.body.wReason,
+      },
+    }
+  )
+    .then((result) => res.json("Updated"))
+    .catch((err) => res.status(400).json(err.message));
+});
+
 module.exports = router;

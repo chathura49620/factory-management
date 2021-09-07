@@ -12,6 +12,8 @@ import swal from "sweetalert";
 import { paginate } from "../../components/storeManager/utils/paginate";
 import Pagination from "../../components/storeManager/reusables/pagination";
 import WastedItemTable from "./../../components/storeManager/tables/wasteditemtable";
+import FormPopup from "./../../components/storeManager/reusables/formpopup";
+import EditWastedItemForm from "./../../components/storeManager/forms/editWastedItemForm";
 
 class WastedItem extends Component {
   state = {
@@ -26,6 +28,8 @@ class WastedItem extends Component {
     showTaskDialog: false,
     wannaDeleteItem: {},
     categoryObjects: [],
+    openPopup: false,
+    wastedItem: {},
   };
 
   //get all the item details including nexted documents
@@ -48,6 +52,33 @@ class WastedItem extends Component {
       })
       .catch((err) => console.log(err.message));
   }
+
+  setOpenPopup = (id) => {
+    const { wastedItems } = this.state;
+    const wastedItem = wastedItems.filter((item) => item._id === id);
+    const editItem = wastedItem[0];
+
+    console.log(editItem);
+
+    this.setState({ openPopup: true, wastedItem: editItem });
+  };
+
+  closePopAndSetState = (jsonOb) => {
+    //console.log("close and set", jsonOb);
+
+    const wastedItems = [...this.state.wastedItems];
+
+    const wastedItem = wastedItems.filter((it) => it._id === jsonOb._id);
+    const editedItem = wastedItem[0];
+
+    const index = wastedItems.indexOf(editedItem);
+    wastedItems[index] = { ...wastedItems[index] };
+    wastedItems[index] = jsonOb;
+
+    console.log(wastedItems);
+
+    this.setState({ openPopup: false, wastedItems: wastedItems });
+  };
 
   handleGenreSelect = (g) => {
     this.setState({
@@ -211,6 +242,7 @@ class WastedItem extends Component {
                 filteredItems={pagewastedItems}
                 onItemDelete={this.handleDelete}
                 onSet={this.setConfirmDialog}
+                onSetPopup={this.setOpenPopup}
               />
             </div>
           </div>
@@ -227,6 +259,13 @@ class WastedItem extends Component {
             </div>
           </div>
         </div>
+
+        <FormPopup openPopup={this.state.openPopup} title="Edit Wasted Item">
+          <EditWastedItemForm
+            onSetAndClose={this.closePopAndSetState}
+            wastedOb={this.state.wastedItem}
+          />
+        </FormPopup>
       </React.Fragment>
     );
   }
