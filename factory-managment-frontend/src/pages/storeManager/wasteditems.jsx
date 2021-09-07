@@ -70,7 +70,7 @@ class WastedItem extends Component {
     }
   };
 
-  handleDelete = (i) => {
+  handleDelete = (w) => {
     swal({
       title: "Are you sure?",
       text: "Once deleted, you will not be able to recover this!",
@@ -80,13 +80,13 @@ class WastedItem extends Component {
     }).then((result) => {
       if (result) {
         const wastedItems = this.state.wastedItems.filter(
-          (item) => item._id !== i._id
+          (wItem) => wItem._id !== w._id
         );
         //toast("deleted successfully.");
         this.setState({ wastedItems, showTaskDialog: false });
 
         axios
-          .delete("http://localhost:5000/wastedItems/" + i._id)
+          .delete("http://localhost:5000/wasted/" + w._id)
           .then((result) => console.log(result.data));
 
         swal({
@@ -128,16 +128,16 @@ class WastedItem extends Component {
       if (selectedCategory === "first") {
         filtered = wastedItems;
       } else {
-        filtered = wastedItems.filter((i) => i.iCategory === selectedCategory);
+        filtered = wastedItems.filter((w) => w.wCategory === selectedCategory);
       }
     } else if (searchQuery) {
-      filtered = wastedItems.filter((i) =>
-        i.iAddedDate.toLowerCase().startsWith(searchQuery.toLowerCase())
+      filtered = wastedItems.filter((w) =>
+        w.wDate.toLowerCase().startsWith(searchQuery.toLowerCase())
       );
     } else if (selectedGenre === "All") {
       filtered = wastedItems;
     } else if (selectedGenre) {
-      filtered = wastedItems.filter((i) => i.iType === selectedGenre);
+      filtered = wastedItems.filter((w) => w.wType === selectedGenre);
     }
 
     return filtered;
@@ -195,15 +195,7 @@ class WastedItem extends Component {
                 placeHolder="Search date and time"
               />
             </div>
-            <div className="col">
-              <Link
-                to="/it/new/myItem"
-                className="btn  my-4"
-                style={{ backgroundColor: "#7121AD", color: "white" }}
-              >
-                New Item
-              </Link>
-            </div>
+            <div className="col"></div>
           </div>
 
           <div className="row">

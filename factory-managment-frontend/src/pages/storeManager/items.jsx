@@ -102,6 +102,16 @@ class Item extends Component {
     this.setState({ openWastedPopup: false });
   };
 
+  deleteItemAndClose = (w) => {
+    const items = this.state.items.filter((item) => item._id !== w._id);
+    //toast("deleted successfully.");
+    this.setState({ items, openWastedPopup: false });
+
+    axios
+      .delete("http://localhost:5000/items/" + w._id)
+      .then((result) => console.log(result.data));
+  };
+
   handleGenreSelect = (g) => {
     this.setState({
       selectedGenre: g,
@@ -299,7 +309,10 @@ class Item extends Component {
           onClose={this.closeOpenWastedPopup}
           title="Add Wasted"
         >
-          <NewWastedItemForm wastedOb={this.state.wastedItem} />
+          <NewWastedItemForm
+            wastedOb={this.state.wastedItem}
+            onClose={this.deleteItemAndClose}
+          />
         </FormPopup>
       </React.Fragment>
     );

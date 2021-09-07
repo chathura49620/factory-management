@@ -48,16 +48,18 @@ class NewWastedItemForm extends FormSuper {
       Reason: "",
     };
 
+    this.setState({ data: wOb });
     console.log(wOb);
   }
 
   doSubmit() {
     // console.log("submitted", this.state.data);
     const jsonOb = this.state.data;
+    console.log(jsonOb);
 
-    // axios
-    //   .post("http://localhost:5000/items/add/record", jsonOb)
-    //   .then((result) => console.log(result.data));
+    axios
+      .post("http://localhost:5000/wasted/add", jsonOb)
+      .then((result) => console.log(result.data));
     // axios
     //   .post("http://localhost:5000/items/add", jsonOb)
     //   .then((result) => console.log(result.data));
@@ -67,6 +69,8 @@ class NewWastedItemForm extends FormSuper {
       icon: "success",
       timer: "1500",
     });
+
+    this.props.onClose(jsonOb);
   }
 
   render() {
