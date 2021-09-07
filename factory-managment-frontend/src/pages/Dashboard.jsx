@@ -10,6 +10,8 @@ import ItemRecord from "./storeManager/itemsrecords";
 import MyProfile from "./storeManager/myprofile";
 import Item from "./storeManager/items";
 import WastedItem from "./storeManager/wasteditems";
+import ReturnedProduct from "./storeManager/returnedproducts";
+import NewReturnedItemForm from "./../components/storeManager/forms/newreturneditemform";
 
 class Dashboard extends Component {
   constructor(props) {
@@ -116,9 +118,22 @@ class Dashboard extends Component {
             <div>
               <Route path="/" exact component={SMDashBoard}></Route>
               <Route path="/myprofile" component={MyProfile}></Route>
-              <Route path="/it/new/myItem" component={NewItemForm}></Route>
+              <Route
+                path="/it/new/myItem"
+                exact
+                component={NewItemForm}
+              ></Route>
+              <Route
+                path="/it/new/myItem/returned"
+                exact
+                component={NewReturnedItemForm}
+              ></Route>
               <Route path="/items/:id" component={NewItemForm}></Route>
               <Route path="/it/new/wasted/item" component={WastedItem} />
+              <Route
+                path="/it/new/returned/product"
+                component={ReturnedProduct}
+              />
               <Route path="/items" component={Item}></Route>
               <Route path="/itemsrecords" component={ItemRecord}></Route>
               {/* <Route path="/notfound" component={NotFound}></Route> */}

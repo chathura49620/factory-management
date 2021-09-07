@@ -56,6 +56,10 @@ class EditWastedItemForm extends FormSuper {
       Reason: this.props.wastedOb.wReason,
     };
 
+    console.log(ob.WastedDate);
+
+    this.setState({ data: ob });
+
     axios.get("http://localhost:5000/codes/material/").then((result) => {
       const materialCodesObjs = result.data;
       console.log(materialCodesObjs);
@@ -66,7 +70,6 @@ class EditWastedItemForm extends FormSuper {
         this.setState({
           materialCodeObjects: materialCodesObjs,
           categoryObjects: categoryObjs,
-          data: ob,
         });
       });
     });

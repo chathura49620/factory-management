@@ -19,6 +19,7 @@ const usersRouter = require("./server/routes/users");
 const codesRouter = require("./server/routes/codes");
 const cateRouter = require("./server/routes/categories");
 const wastedItemRouter = require("./server/routes/wasteditems");
+const returnedProductRouter = require("./server/routes/returnedproducts");
 
 //load routers
 app.use("/items", itemsRouter);
@@ -28,6 +29,7 @@ app.use("/users", usersRouter);
 app.use("/codes", codesRouter);
 app.use("/category", cateRouter);
 app.use("/wasted", wastedItemRouter);
+app.use("/returned", returnedProductRouter);
 
 app.listen(port, () => {
   console.log(`Server is Running on port: ${port}`);

@@ -2,9 +2,6 @@ import React, { Component } from "react";
 import FormSuper from "../reusables/formsuper";
 import Joi, { join } from "joi-browser";
 import axios from "axios";
-import ItemCodeTable from "../tables/itemcodestable";
-import SearchBox from "../reusables/searchBox";
-import ListGroup from "../reusables/listgroup";
 import swal from "sweetalert";
 
 class NewWastedItemForm extends FormSuper {

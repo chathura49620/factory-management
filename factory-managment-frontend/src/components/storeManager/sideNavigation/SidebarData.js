@@ -44,7 +44,7 @@ export const SidebarData = [
 
   {
     title: "Returned Items",
-    path: "/smdashboard",
+    path: "/it/new/returned/product",
     icon: <IoIcons.IoIosPaper />,
   },
 

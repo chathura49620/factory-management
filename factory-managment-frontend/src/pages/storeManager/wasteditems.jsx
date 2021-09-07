@@ -63,6 +63,10 @@ class WastedItem extends Component {
     this.setState({ openPopup: true, wastedItem: editItem });
   };
 
+  closeOpenPopup = () => {
+    this.setState({ openPopup: false });
+  };
+
   closePopAndSetState = (jsonOb) => {
     //console.log("close and set", jsonOb);
 
@@ -260,7 +264,11 @@ class WastedItem extends Component {
           </div>
         </div>
 
-        <FormPopup openPopup={this.state.openPopup} title="Edit Wasted Item">
+        <FormPopup
+          openPopup={this.state.openPopup}
+          onClose={this.closeOpenPopup}
+          title="Edit Wasted Item"
+        >
           <EditWastedItemForm
             onSetAndClose={this.closePopAndSetState}
             wastedOb={this.state.wastedItem}
