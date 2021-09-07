@@ -3,6 +3,7 @@ import { Modal, Button, Row, Col, Form, FormGroup } from 'react-bootstrap';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import { Redirect } from 'react-router-dom';
+// import Cleave from 'cleave.js/react';
 
 
 export class AddEmployeeModal extends Component {
@@ -49,11 +50,25 @@ export class AddEmployeeModal extends Component {
             )
     }
 
-    //   handleSubmit = (event) => {
 
-    //       return <Redirect to='/login' />
 
-    //   }
+  validate(){
+        let LeaveError = "";
+
+        if(!this.state.LeaveError){
+            LeaveError = "This Cannot Be Blank"
+        }
+
+        if(LeaveError){
+            this.setState({LeaveError:LeaveError})
+            return false;
+        }
+
+        return true;
+    }
+
+   
+
 
     render() {
         return (
@@ -80,6 +95,10 @@ export class AddEmployeeModal extends Component {
                             Add a Leave Request 
               </Modal.Title>
                     </Modal.Header>
+
+                    <div class="alert alert-info" role="alert">
+                            Note: Your leave request will take a few days to be approved by the admin. 
+                    </div>
                     <Modal.Body>
 
                         <Row>
@@ -87,16 +106,21 @@ export class AddEmployeeModal extends Component {
                                 <Form onSubmit={this.handleSubmit}>
                                     <Form.Group controlId="name">
                                         <Form.Label>Reference Number</Form.Label>
-                                        <Form.Control type="text" name="refno" required placeholder="Enter a reference ID" />
+                                        <Form.Control type="text" name="refno" required placeholder="Enter a reference ID" className="form-field"/>
+                                        <div style={{background:"#f8d7da"}}>{this.state.LeaveError}</div>
                                     </Form.Group>
+                                    <br></br>
                                     <Form.Group controlId="name">
                                         <Form.Label>Reason for leave</Form.Label>
+                                        
                                         <Form.Control type="text" name="reasonforleave" required placeholder="Make your reason descriptive.." />
                                     </Form.Group>
+                                    <br></br>
                                     <Form.Group controlId="name">
                                         <Form.Label>Date</Form.Label>
                                         <Form.Control type="text" name="date" required placeholder="Enter a date or number of days..." />
                                     </Form.Group>
+                                    
                                     <br></br>
                                     <Form.Group>
                                         <Button  style={{ backgroundColor: "#7121AD", color: "white" }} className="btn"  type="submit" >

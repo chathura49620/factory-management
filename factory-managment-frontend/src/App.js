@@ -22,12 +22,12 @@ import Item from "./components/storeManagerComponents/items";
 import Dashboard from "./pages/Dashboard";
 import SuperAdminSideNav from './components/SuperAdmin/sideNav/Sidebar';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-
+import EmployeeSideNav from './components/Employee/EmpsideNav/EmpSidebar';
 
 function App() {
   return (
     <Router>
-            <SuperAdminSideNav />
+            <EmployeeSideNav />
             {/* <NavBar /> */}
     <main className="container">
       <Switch>

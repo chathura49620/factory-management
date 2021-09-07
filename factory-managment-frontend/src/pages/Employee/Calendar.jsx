@@ -1,11 +1,12 @@
 import React, { Component } from "react";
+import calendar from './calendar.png'
 
 class Calendar extends Component {
   render(){
   return (
     
     <div className='home'>
-      <h1>Calendar</h1>
+      <img src={calendar} alt="calendar"/>
     </div>
   );
   }

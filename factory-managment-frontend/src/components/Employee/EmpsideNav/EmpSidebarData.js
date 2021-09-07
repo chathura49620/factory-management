@@ -8,14 +8,14 @@ export const EmpSidebarData = [
   {
     title: 'Dashboard',
     path: '/employee-dashboard',
-    icon: <AiIcons.AiFillHome />,
+    icon: <AiIcons.AiOutlineHome />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
   },
   {
     title: 'Profile',
     path: '/profile',
-    icon: <AiIcons.AiFillHome />,
+    icon: <AiIcons.AiOutlineUser />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
   },
@@ -23,7 +23,7 @@ export const EmpSidebarData = [
   {
     title: 'Assignments',
     path: '/assignments',
-    icon: <FaIcons.FaEnvelopeOpenText />,
+    icon: <AiIcons.AiOutlineRead />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
   },
@@ -31,7 +31,7 @@ export const EmpSidebarData = [
   {
     title: 'Payments',
     path: '/payments',
-    icon: <FaIcons.FaEnvelopeOpenText />,
+    icon: <AiIcons.AiOutlineCreditCard />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
   },
@@ -39,7 +39,7 @@ export const EmpSidebarData = [
   {
     title: 'Leave',
     path: '/leave',
-    icon: <FaIcons.FaEnvelopeOpenText />,
+    icon: <AiIcons.AiOutlineSolution />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
   },
@@ -47,7 +47,7 @@ export const EmpSidebarData = [
   {
     title: 'Calendar',
     path: '/calendar',
-    icon: <FaIcons.FaEnvelopeOpenText />,
+    icon: <AiIcons.AiOutlineCalendar />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
   },

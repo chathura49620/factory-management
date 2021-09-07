@@ -68,7 +68,7 @@ export class EditEmployeeModal extends Component {
                 >
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title-vcenter">
-                            Edit Category
+                            Edit Leave Request
               </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>

@@ -93,8 +93,11 @@ export class LeaveTable extends Component{
             <button 
                     style={{ backgroundColor: "#7121AD", color: "white" }} className="btn" 
                     onClick={() => this.setState({ editModelShow: true, id: leave._id, refno: leave.refno, reasonforleave: leave.reasonforleave, date: leave.date })} >Edit</button>
-            <button style={{ backgroundColor: "#BA0D32 ", color: "white" }} className="btn" 
-            onClick={() => this.deleteleave(leave._id)}>Delete</button>
+            <button 
+                    style={{ backgroundColor: "#BA0D32 ", color: "white" }} className="btn" 
+                    onClick={() => this.deleteleave(leave._id)}>Delete</button>
+
+            
         </td>
 
       </tr>              

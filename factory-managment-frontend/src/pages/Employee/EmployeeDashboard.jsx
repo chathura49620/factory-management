@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-// import hello from "../../assets/hello.svg";
 import Chart from "../charts/chart";
-import "./dashboard.css";
+import "./dashboardelements.css";
 import hello from "../assets/hello.png";
 
 class EmployeeDashboard extends Component {
