@@ -13,6 +13,7 @@ import { paginate } from "../../components/storeManager/utils/paginate";
 import Pagination from "../../components/storeManager/reusables/pagination";
 import FormPopup from "./../../components/storeManager/reusables/formpopup";
 import ReturnedProductsTable from "../../components/storeManager/tables/returnedproductstable";
+import EditReturnedProductForm from "./../../components/storeManager/forms/editreturnedproductform";
 
 class ReturnedProduct extends Component {
   state = {
@@ -274,16 +275,16 @@ class ReturnedProduct extends Component {
           </div>
         </div>
 
-        {/* <FormPopup
+        <FormPopup
           openPopup={this.state.openPopup}
           onClose={this.closeOpenPopup}
-          title="Edit Wasted Item"
+          title="Edit Returned Product"
         >
-          <EditreturnedProductForm
+          <EditReturnedProductForm
             onSetAndClose={this.closePopAndSetState}
-            wastedOb={this.state.returnedProduct}
+            returnedOb={this.state.returnedProduct}
           />
-        </FormPopup> */}
+        </FormPopup>
       </React.Fragment>
     );
   }

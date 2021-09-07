@@ -42,4 +42,23 @@ router.route("/:id").delete((req, res) => {
     .catch((err) => res.status(400).json(err.message));
 });
 
+router.route("/update/:id").post((req, res) => {
+  ReturnedProduct.updateOne(
+    { _id: req.params.id },
+    {
+      $set: {
+        rCode: req.body.rCode,
+        rType: req.body.rType,
+        rCategory: req.body.rCategory,
+        rQuantity: Number(req.body.rQuantity),
+        rBuyer: req.body.rBuyer,
+        rDate: req.body.rDate,
+        rReason: req.body.rReason,
+      },
+    }
+  )
+    .then((result) => res.json("Updated"))
+    .catch((err) => res.status(400).json(err.message));
+});
+
 module.exports = router;
