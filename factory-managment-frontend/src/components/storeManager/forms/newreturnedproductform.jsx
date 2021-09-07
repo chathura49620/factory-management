@@ -7,7 +7,7 @@ import SearchBox from "../reusables/searchBox";
 import ListGroup from "../reusables/listgroup";
 import swal from "sweetalert";
 
-class NewReturnedItemForm extends FormSuper {
+class NewReturnedProductForm extends FormSuper {
   state = {
     data: {
       Code: "",
@@ -166,4 +166,4 @@ class NewReturnedItemForm extends FormSuper {
   }
 }
 
-export default NewReturnedItemForm;
+export default NewReturnedProductForm;

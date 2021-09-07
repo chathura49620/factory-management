@@ -233,7 +233,7 @@ class ReturnedProduct extends Component {
             </div>
             <div className="col">
               <Link
-                to="/it/new/myItem/returned"
+                to="/it/new/product/returned"
                 className="btn  my-4"
                 style={{ backgroundColor: "#7121AD", color: "white" }}
               >

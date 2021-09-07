@@ -43,7 +43,7 @@ export const SidebarData = [
   },
 
   {
-    title: "Returned Items",
+    title: "Returned Product",
     path: "/it/new/returned/product",
     icon: <IoIcons.IoIosPaper />,
   },
