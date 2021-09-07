@@ -1,10 +1,14 @@
 import React, { Component } from "react";
 
-const TableVertilcle = ({ records, handleDelete, onSet }) => {
+const TableVertilcle = ({ records, handleDelete, onSet, onSetPopup }) => {
   return (
     <div>
       {records.map((r) => (
-        <table key={r._id} className="table table-bordered table-sm">
+        <table
+          key={r._id}
+          className="table table-bordered table-sm"
+          style={{ width: "1000px" }}
+        >
           <tbody key={r._id}>
             <tr style={{ backgroundColor: "#7121AD", color: "white" }}>
               <th scope="col">Record</th>
@@ -43,6 +47,7 @@ const TableVertilcle = ({ records, handleDelete, onSet }) => {
               <td>
                 <button
                   style={{ backgroundColor: "#7121AD", color: "white" }}
+                  onClick={() => onSetPopup()}
                   className="btn-sm mx-2"
                 >
                   Edit

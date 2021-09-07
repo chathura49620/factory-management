@@ -2,9 +2,12 @@ import React, { Component } from "react";
 
 const ItemCodeTable = ({ materialCodeObs }) => {
   return (
-    <table className="table table-bordered table-sm m-2">
+    <table
+      className="table table-bordered table-sm my-1"
+      style={{ width: "550px" }}
+    >
       <thead>
-        <tr className="table-secondary">
+        <tr style={{ backgroundColor: "#7121AD", color: "white" }}>
           <th>Name</th>
           <th>Code</th>
         </tr>

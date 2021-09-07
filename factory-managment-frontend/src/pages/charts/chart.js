@@ -1,4 +1,4 @@
-import "../../../node_modules/react-vis/dist/style.css";
+/*import "../../../node_modules/react-vis/dist/style.css";
 import {
   XYPlot,
   LineSeries,
@@ -37,4 +37,4 @@ const Chart = () => {
   );
 };
 
-export default Chart;
+export default Chart;*/

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import FormSuper from "./common/formsuper";
+import FormSuper from "../reusables/formsuper";
 import Joi, { join } from "joi-browser";
 import axios from "axios";
-import ItemCodeTable from "./common/itemcodestable";
-import SearchBox from "./common/searchBox";
-import ListGroup from "./common/listgroup";
+import ItemCodeTable from "../tables/itemcodestable";
+import SearchBox from "../reusables/searchBox";
+import ListGroup from "../reusables/listgroup";
 import swal from "sweetalert";
 
 class NewItemForm extends FormSuper {
@@ -145,6 +145,7 @@ class NewItemForm extends FormSuper {
                   placeHolder="Search codes..."
                 />
               </div>
+              <div className="col-2"></div>
             </div>
 
             <ItemCodeTable materialCodeObs={filtered} />

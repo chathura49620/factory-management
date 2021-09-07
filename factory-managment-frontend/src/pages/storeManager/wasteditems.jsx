@@ -1,18 +1,18 @@
 import React, { Component, useState } from "react";
-import Table from "./common/table";
+import Table from "../../components/storeManager/tables/table";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import ListGroup from "./common/listgroup";
-import SearchBox from "./common/searchBox";
-import SelectSearch from "./common/selectsearch";
-import DialogBox from "./common/dialogbox";
+import ListGroup from "../../components/storeManager/reusables/listgroup";
+import SearchBox from "../../components/storeManager/reusables/searchBox";
+import SelectSearch from "../../components/storeManager/reusables/selectsearch";
+import DialogBox from "../../components/storeManager/reusables/dialogbox";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import swal from "sweetalert";
-import { paginate } from "./utils/paginate";
-import Pagination from "./common/pagination";
+import { paginate } from "../../components/storeManager/utils/paginate";
+import Pagination from "../../components/storeManager/reusables/pagination";
 
-class Item extends Component {
+class WastedItem extends Component {
   state = {
     items: [],
     currentPage: 1,
@@ -29,6 +29,7 @@ class Item extends Component {
 
   //get all the item details including nexted documents
   componentDidMount() {
+    //getting data from db at first time
     axios
       .get("http://localhost:5000/items/")
       .then((result) => {
@@ -200,66 +201,67 @@ class Item extends Component {
 
     return (
       <React.Fragment>
-        <ToastContainer />
-        <DialogBox
-          show={this.state.showTaskDialog}
-          deleteOrNot={this.deleteOrNot}
-        />
-        <div className="row">
-          <div className="col-2"></div>
-          <div className="col">
-            <ListGroup
-              genres={this.state.genres}
-              onGenreSelect={this.handleGenreSelect}
-              selectedGenre={this.state.selectedGenre}
-            />
-          </div>
-          <div className="col">
-            <SelectSearch
-              categories={this.state.categoryObjects}
-              onChange={this.handleSelectChange}
-              categoryValue={this.state.selectedCategory}
-            />
+        <div style={{ marginLeft: "30px" }}>
+          <DialogBox
+            show={this.state.showTaskDialog}
+            deleteOrNot={this.deleteOrNot}
+          />
+          <div className="row">
+            <div className="col-2"></div>
+            <div className="col">
+              <ListGroup
+                genres={this.state.genres}
+                onGenreSelect={this.handleGenreSelect}
+                selectedGenre={this.state.selectedGenre}
+              />
+            </div>
+            <div className="col">
+              <SelectSearch
+                categories={this.state.categoryObjects}
+                onChange={this.handleSelectChange}
+                categoryValue={this.state.selectedCategory}
+              />
+            </div>
+
+            <div className="col">
+              <SearchBox
+                onChange={this.handleSearch}
+                value={this.state.searchQuery}
+                placeHolder="Search date and time"
+              />
+            </div>
+            <div className="col">
+              <Link
+                to="/it/new/myItem"
+                className="btn  my-4"
+                style={{ backgroundColor: "#7121AD", color: "white" }}
+              >
+                New Item
+              </Link>
+            </div>
           </div>
 
-          <div className="col">
-            <SearchBox
-              onChange={this.handleSearch}
-              value={this.state.searchQuery}
-              placeHolder="Search date and time"
-            />
+          <div className="row">
+            <div className="col-2"></div>
+            <div className="col">
+              <Table
+                filteredItems={pageItems}
+                onItemDelete={this.handleDelete}
+                onSet={this.setConfirmDialog}
+              />
+            </div>
           </div>
-          <div className="col">
-            <Link
-              to="/items/new"
-              className="btn  my-4"
-              style={{ backgroundColor: "#7121AD", color: "white" }}
-            >
-              New Item
-            </Link>
-          </div>
-        </div>
 
-        <div className="row">
-          <div className="col-2"></div>
-          <div className="col">
-            <Table
-              filteredItems={pageItems}
-              onItemDelete={this.handleDelete}
-              onSet={this.setConfirmDialog}
-            />
-          </div>
-        </div>
-
-        <div className="row">
-          <div className="col-2"></div>
-          <div className="col">
-            <Pagination
-              itemsCount={filtered.length}
-              pageSize={pageSize}
-              onPageChange={this.handlePage}
-              currentPage={currentPage}
-            />
+          <div className="row">
+            <div className="col-2"></div>
+            <div className="col">
+              <Pagination
+                itemsCount={filtered.length}
+                pageSize={pageSize}
+                onPageChange={this.handlePage}
+                currentPage={currentPage}
+              />
+            </div>
           </div>
         </div>
       </React.Fragment>
@@ -267,4 +269,4 @@ class Item extends Component {
   }
 }
 
-export default Item;
+export default WastedItem;

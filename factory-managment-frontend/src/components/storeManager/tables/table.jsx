@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 
-const Table = ({ filteredItems, onItemDelete, onSet }) => {
+const Table = ({ filteredItems, onItemDelete, onSet, onSetPopup }) => {
   return (
-    <table className="table table-bordered table-sm">
+    <table
+      className="table table-bordered table-sm"
+      style={{ width: "1200px" }}
+    >
       <thead>
         <tr style={{ backgroundColor: "#7121AD", color: "white" }}>
           <th scope="col">Item Code</th>
@@ -37,6 +40,7 @@ const Table = ({ filteredItems, onItemDelete, onSet }) => {
             <td>
               <button
                 className="btn-sm"
+                onClick={() => onSetPopup()}
                 style={{ backgroundColor: "#7121AD", color: "white" }}
               >
                 Edit
