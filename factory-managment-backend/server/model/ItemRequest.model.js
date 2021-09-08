@@ -9,6 +9,7 @@ const itemRequestSchema = new Schema(
     reqCategory: { type: String, required: true },
     reqQuantity: { type: Number, required: true },
     reqDate: { type: String, required: true },
+    reqStatus: { type: String, required: true },
   },
   {
     timestamps: true,

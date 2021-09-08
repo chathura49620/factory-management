@@ -14,6 +14,7 @@ router.route("/add").post((req, res) => {
   const reqCategory = req.body.Category;
   const reqQuantity = Number(req.body.Quantity);
   const reqDate = req.body.RequestDate;
+  const reqStatus = req.body.Status;
 
   const request = new ItemRequest({
     reqCode,
@@ -21,6 +22,7 @@ router.route("/add").post((req, res) => {
     reqCategory,
     reqQuantity,
     reqDate,
+    reqStatus,
   });
 
   request
@@ -28,3 +30,14 @@ router.route("/add").post((req, res) => {
     .then((result) => res.json("Request added"))
     .catch((err) => res.status(400).json(err.message));
 });
+
+//delete one according to id
+router.route("/:id").delete((req, res) => {
+  const id = req.params.id;
+
+  ItemRequest.deleteOne({ _id: id })
+    .then((result) => res.json("deleted one"))
+    .catch((err) => res.status(400).json(err.message));
+});
+
+module.exports = router;

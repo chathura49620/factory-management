@@ -53,6 +53,11 @@ export const SidebarData = [
     path: "/it/new/wasted/item",
     icon: <IoIcons.IoIosPaper />,
   },
+  {
+    title: "Item Requests",
+    path: "/requests/for/items",
+    icon: <IoIcons.IoIosPaper />,
+  },
 
   {
     title: "My Profile",

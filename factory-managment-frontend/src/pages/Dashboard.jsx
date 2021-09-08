@@ -12,6 +12,7 @@ import Item from "./storeManager/items";
 import WastedItem from "./storeManager/wasteditems";
 import ReturnedProduct from "./storeManager/returnedproducts";
 import NewReturnedProductForm from "./../components/storeManager/forms/newreturnedproductform";
+import ItemRequest from "./storeManager/itemrequests";
 
 class Dashboard extends Component {
   constructor(props) {
@@ -134,6 +135,7 @@ class Dashboard extends Component {
                 path="/it/new/returned/product"
                 component={ReturnedProduct}
               />
+              <Route path="/requests/for/items" component={ItemRequest}></Route>
               <Route path="/items" component={Item}></Route>
               <Route path="/itemsrecords" component={ItemRecord}></Route>
               {/* <Route path="/notfound" component={NotFound}></Route> */}
