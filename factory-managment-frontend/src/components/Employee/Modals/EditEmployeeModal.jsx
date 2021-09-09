@@ -108,6 +108,7 @@ export class EditEmployeeModal extends Component {
                         <Button variant="danger" onClick={this.props.onHide}>Close</Button>
                     </Modal.Footer>
                 </Modal>
+                
             </div>
         );
     }
