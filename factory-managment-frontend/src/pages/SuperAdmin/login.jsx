@@ -11,13 +11,13 @@ class login extends Component {
         users: [], addModalShow: false
     }
     this.login = this.login.bind(this);
-}
-
+} 
+   
   componentDidMount() {
     axios
       .get("http://localhost:5000/api/login")
       .then((result) => {
-        const user = result.data;
+        const user = result.data; 
         
         this.setState({ users: user });
         // console.log(this.state.users.length);
