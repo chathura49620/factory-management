@@ -27,6 +27,7 @@ export const EmpSidebarData = [
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
   },
+  
 
   {
     title: 'View New Production Round',
@@ -36,6 +37,7 @@ export const EmpSidebarData = [
     iconOpened: <RiIcons.RiArrowUpSFill />,
   },
 
+
   {
     title: 'Monitor Previous Production Round',
     path: '/leave',
@@ -43,6 +45,7 @@ export const EmpSidebarData = [
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
   },
+
 
   {
     title: 'Manage Orders',
