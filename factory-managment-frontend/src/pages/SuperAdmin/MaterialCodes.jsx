@@ -8,8 +8,8 @@ class MaterialCodes extends Component {
   state = {
     MaterialCodes: [],
     addModalShow: false
-  };
-
+  }; 
+      
   componentDidMount() {
     axios
       .get("http://localhost:5000/api/meterial-code")
@@ -20,7 +20,7 @@ class MaterialCodes extends Component {
       })
       .catch((err) => console.log(err.message));
   }
-
+    
   render(){
     let AddModelClose = () => this.setState({ addModalShow: false })
   return (
@@ -47,5 +47,5 @@ class MaterialCodes extends Component {
   );
   }
 };
-
+    
 export default MaterialCodes;
