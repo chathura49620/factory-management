@@ -11,7 +11,7 @@ class VIewNewProductionRound extends Component {
     addModalShow: false
   };
 
-  componentDidMount() {
+componentDidMount() {
     axios
       .get("http://localhost:5000/api/newProRound-details")
       .then((result) => {
@@ -34,16 +34,15 @@ class VIewNewProductionRound extends Component {
 
 </div>
 <div className="col">
-<h1 >View Production Round Details</h1>
+<h1 >View New Production Round Details</h1>
 
 </div>
         </div>
         
         
         <div className="row">
-          
-         <div className="col-10"></div>
-         <div className="col">
+          <div className="col-10"></div>
+          <div className="col">
            <ButtonToolbar>
                     <Button 
                     className="btn my-1"

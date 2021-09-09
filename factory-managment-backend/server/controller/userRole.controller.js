@@ -18,7 +18,7 @@ exports.create = (req,res)=>{
 
     // save materialcode in the database
     uRoles
-        .save(uRoles)
+        .save(uRoles)   
         .then(data => {
             res.send(data)
         })

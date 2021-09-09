@@ -4,12 +4,12 @@ import { Table, Button, ButtonToolbar } from 'react-bootstrap';
 import {ProductListTable} from "../../components/ProductionManager/Tabales/ProductListTable";
 
 
-
 class ViewProductList extends Component {
   state = {
     ProductList: [],
     addModalShow: false
   };
+
 
   componentDidMount() {
     axios
@@ -21,7 +21,6 @@ class ViewProductList extends Component {
       })
       .catch((err) => console.log(err.message));
   }
-
 
   render() {
     return (
@@ -49,5 +48,6 @@ class ViewProductList extends Component {
     );
   }
 };
+
 
 export default ViewProductList;

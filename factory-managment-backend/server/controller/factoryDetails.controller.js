@@ -15,7 +15,7 @@ exports.create = (req,res)=>{
         companyAddress : req.body.companyAddress,
         ownerName : req.body.ownerName,
         companyLogo : req.body.companyLogo,
-        mainProduct : req.body.mainProduct,
+        mainProduct : req.body.mainProduct,   
         br : req.body.br, 
         startDate : req.body.startDate,
         is_added : req.body.is_added

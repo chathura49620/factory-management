@@ -28,7 +28,7 @@ exports.create = (req,res)=>{
         })
         .catch(err =>{
             res.status(500).send({
-                message : err.message || "Error: Could not add new production round details."
+                message : err.message || "Error: Could Not Add New Production Round Details."
             });
         });
 
@@ -42,13 +42,13 @@ exports.find = (req,res) =>{
         newProductionRoundDetails.findById(id)
         .then(data =>{
             if(!data){
-                res.status(404).send({message:"Could not find new production details with ID" + id});
+                res.status(404).send({message:"Could Not Find New Production Round Details With ID" + id});
             }else{
                 res.send(data);
             }
         })
         .catch(err =>{
-            res.status(500).send({message:"Error while retrieving new production round Details with ID" +id})
+            res.status(500).send({message:"Error While Retrieving New Production Round Details With ID" +id})
         })
     }else{
         newProductionRoundDetails.find()
@@ -56,7 +56,7 @@ exports.find = (req,res) =>{
             res.send(matCode)
         })
         .catch(err =>{
-            res.status(500).send({message:err.message || "Error: Cannot retrieve New Production Round Details"})
+            res.status(500).send({message:err.message || "Error: Cannot Retrieve New Production Round Details"})
         })
     }
 }
@@ -66,20 +66,20 @@ exports.update = (req,res) => {
     if(!req.body){
         return res
                 .status(400)
-                .send({message:"Data to update can not be empty"})
+                .send({message:"Data To Be Update Can Not Be Empty"})
     }
 
     const id  = req.body.id;
     newProductionRoundDetails.findByIdAndUpdate(id, req.body,{useFindAndModify:false})
     .then(data =>{
         if(!data){
-            res.status(400).send({message:"New Production Round Details is not found"});
+            res.status(400).send({message:"New Production Round Details Is Not Found"});
         }else{
             res.send(data);
         }
     })
-    .catch(err =>{
-        res.status(500).send({message:"Error while updateting"})
+    .catch(err =>{ 
+        res.status(500).send({message:"Error while Updateting Details"})
     })
 }
 
@@ -90,14 +90,14 @@ exports.delete = (req,res) => {
     newProductionRoundDetails.findByIdAndDelete(id)
     .then(data=>{
         if(!data){
-            res.status(400).send({message:`Cannot delete production details with $(id).`});
+            res.status(400).send({message:`Can Not Delete Production Round Details With $(id).`});
         }
         else{
-            res.send({message:"New Production Round  Details was deleted"});
+            res.send({message:"New Production Round  Details Was Deleted"});
         }
     })
     .catch(err =>{
-        res.status(500).send({message:"Error while Deleting."})
+        res.status(500).send({message:"Error While Deleting."})
     })
 
 }

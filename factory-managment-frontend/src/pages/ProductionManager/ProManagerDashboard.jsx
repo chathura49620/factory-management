@@ -84,30 +84,43 @@ class Dashboard extends Component {
                   <i className="fa fa-usd" aria-hidden="true"></i>
                 </div>
 
-                <div className="charts__right__cards">
-                  <div className="card1">
-                    <h1>Production Round Details Report</h1>
+                  <div className="charts__right__cards">
+                 
+                 
+                      <div className="card1">
+                      <h1>Production Round Details Report</h1>
+                    </div>
+                    
+                   
+                      <div className="card2">
+                      <h1>Accepted Order Details Report</h1>
+                    </div>
+                     
+                
+                        <div className="card3">
+                        <h1>Rejected Order Details Report</h1>
+                        </div> 
+                       
+                  
                   </div>
 
                   <div className="card2">
                     <h1>Accepted Order Details Report</h1>
                   </div>
 
-                  <div className="card3">
-                    <h1>Rejected Order Details Report</h1>
+                
+                <div className="carda">
+                  <div className="card_inner">
+                    <p className="text-primary-p">Number Of Orders</p>
+                    <span className="font-bold text-title">300</span>
                   </div>
                 </div>
-              </div>
-            </div>
-
-            {/* <!-- MAIN TITLE ENDS HERE --> */}
-
-            {/* <!-- MAIN CARDS STARTS HERE --> */}
-            <div className="main__cards">
-              <div className="carda">
-                <div className="card_inner">
-                  <p className="text-primary-p">Number of Orders</p>
-                  <span className="font-bold text-title">300</span>
+                
+                <div className="cardd">
+                  <div className="card_inner">
+                    <p className="text-primary-p">No Of Completed Production Rounds</p>
+                    <span className="font-bold text-title">445</span>
+                  </div>
                 </div>
               </div>
 

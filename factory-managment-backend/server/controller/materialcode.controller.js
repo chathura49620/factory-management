@@ -15,7 +15,7 @@ exports.create = (req,res)=>{
         materialCode : req.body.materialCode,
         status : req.body.status
     })
-
+   
     // save materialcode in the database
     matCode
         .save(matCode)

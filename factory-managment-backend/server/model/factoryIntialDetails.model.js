@@ -34,5 +34,5 @@ var schema = new mongoose.Schema({
 })
 
 const factoryDetails = mongoose.model('factoryDetails',schema);
-
+  
 module.exports = factoryDetails;      
