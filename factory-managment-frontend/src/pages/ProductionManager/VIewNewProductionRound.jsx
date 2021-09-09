@@ -42,9 +42,8 @@ class VIewNewProductionRound extends Component {
         
         
         <div className="row">
-          
-         <div className="col-10"></div>
-         <div className="col">
+          <div className="col-10"></div>
+          <div className="col">
            <ButtonToolbar>
                     <Button 
                     className="btn my-1"
