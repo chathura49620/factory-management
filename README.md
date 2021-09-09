@@ -1,5 +1,5 @@
 Group ID :2021S1_JUNE_WD_06
-Project Name :Factory Management System
+Project Name :Factory Management  System
 
 Member Details:
 Name                StudentID      Username
