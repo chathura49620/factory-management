@@ -31,7 +31,7 @@ handleSubmit(event, props) {
     //alert(event.target.name.value);
 
     if(isValid){
-      fetch('http://localhost:5000/api/newProRound-details', {
+      fetch('http://localhost:5000/api/order-details', {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
