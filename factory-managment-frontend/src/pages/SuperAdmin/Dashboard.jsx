@@ -7,8 +7,8 @@ import hello from "../assets/hello.png";
 import clock from "../assets/clock.png";
 import { AddFactoryDetailsModal } from '../../components/SuperAdmin/Modals/AddFactoryDetailsModal';
 import Clock from "../../components/ProductionManager/common/clock";
-
-class Dashboard extends Component {
+   
+class Dashboard extends Component {    
   state = {
     factoryDetails: [],
     category:[],
@@ -31,7 +31,7 @@ class Dashboard extends Component {
 
     const user_name = localStorage.getItem("user_full_name");
     this.setState({ user_name: user_name });
-
+   
     axios
     .get("http://localhost:5000/api/categories")
     .then((result) => {
@@ -49,7 +49,7 @@ class Dashboard extends Component {
       this.setState({ matCode: matCode });
     })
     .catch((err) => console.log(err.message));
-
+   
     axios
     .get("http://localhost:5000/api/product-code")
     .then((result) => {
@@ -70,7 +70,7 @@ class Dashboard extends Component {
 
   }
 
-
+   
   logout(){
     localStorage.removeItem('user_full_name');
     localStorage.removeItem('user_email');

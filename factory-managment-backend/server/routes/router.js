@@ -26,6 +26,8 @@ route.put('/api/product-code/',contoller.productcode.update);
 route.delete('/api/product-code/',contoller.productcode.delete);
 
 
+
+
 // Super Admin Bill Type APIs
 route.post('/api/bill-type/',contoller.billType.create);
 route.get('/api/bill-type/',contoller.billType.find);
@@ -40,13 +42,15 @@ route.put('/api/bills/',contoller.bills.update);
 route.delete('/api/bills/',contoller.bills.delete);
 
 
+
 //Super Admin User Role APIs
 route.get('/api/user-roles/',contoller.userRole.find);
 route.post('/api/user-roles/',contoller.userRole.create);
 
+
+
 //login APIs
 route.get('/api/login/',contoller.login.find);
-
 
 //Super Admin Factory Details APIs
 route.post('/api/factory-details/',contoller.factoryDetails.create);

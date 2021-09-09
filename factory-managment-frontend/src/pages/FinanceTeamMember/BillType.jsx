@@ -18,7 +18,7 @@ class BillType extends Component {
         const BillType = result.data;
 
         this.setState({ BillType: BillType });
-      })
+      })  
       .catch((err) => console.log(err.message));
   }
 

@@ -9,15 +9,15 @@ class BasicInfo extends Component  {
     super(props);
     this.state = { snackbaropen: false, snackbarmsg: '',  factoryDetails: [], };
     this.handleSubmit = this.handleSubmit.bind(this);
-}
+}  
 
   componentDidMount() {
     axios
-    .get("http://localhost:5000/api/factory-details")
+    .get("http://localhost:5000/api/factory-details")  
     .then((result) => {
       const factoryDetails = result.data;
       console.log(factoryDetails)
-
+  
       this.setState({ factoryDetails: factoryDetails });
     })
     .catch((err) => console.log(err.message));

@@ -14,8 +14,8 @@ class UserRoles extends Component {
     searchQuery: "",
     selectedCategory: "",
   };
-
-  componentDidMount() {
+   
+  componentDidMount() { 
     axios
       .get("http://localhost:5000/api/user-roles")
       .then((result) => {
@@ -25,7 +25,7 @@ class UserRoles extends Component {
       })
       .catch((err) => console.log(err.message));
   }
-
+    
   // handleGenreSelect = (g) => {
   //   this.setState({ selectedGenre: g, searchQuery: "", currentPage: 1 });
   // };
@@ -65,7 +65,7 @@ class UserRoles extends Component {
   // }
 
   render() {
-  
+       
 
     //if (count === 0) return <p>There are no Items in the stock</p>;
 

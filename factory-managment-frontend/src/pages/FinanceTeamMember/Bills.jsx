@@ -16,7 +16,7 @@ class Bills extends Component {
       .get("http://localhost:5000/api/bills")
       .then((result) => {
         const bill = result.data;
-
+  
         this.setState({ bill: bill });
       })
       .catch((err) => console.log(err.message));

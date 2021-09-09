@@ -6,9 +6,9 @@ export class UserListTable  extends Component {
   constructor(props) {
     super(props);
     this.state = { cate: [], editModalShow: false }
-  }
-
-  render(){
+  }   
+   
+  render(){  
   return (
     <table className="table table-bordered table-sm m-2" style={{width:"1000px"}}>
       <thead>
@@ -24,7 +24,7 @@ export class UserListTable  extends Component {
         {this.props.filteredItems.map((i) => (
           <tr
             key={i._id}
-           
+            
           >
             <td></td>
             <td>{i.fullName}</td>
@@ -43,7 +43,7 @@ export class UserListTable  extends Component {
       </tbody>
     </table>
   );
-  }
+  } 
 };
-
+ 
 export default UserListTable;
