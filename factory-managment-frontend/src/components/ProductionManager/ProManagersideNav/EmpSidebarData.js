@@ -27,7 +27,7 @@ export const EmpSidebarData = [
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
   },
-  
+
 
   {
     title: 'View New Production Round',
