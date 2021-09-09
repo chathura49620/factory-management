@@ -3,14 +3,14 @@ import axios from "axios";
 import { Table, Button, ButtonToolbar } from 'react-bootstrap';
 import { AddCategoryModal } from '../../components/SuperAdmin/Modals/AddCategoryModal';
 import {CategoriesTable} from "../../components/SuperAdmin/Tables/CategoriesTable";
-
+    
 
 class Categories extends Component {
   state = {
     categories: [],
     addModalShow: false
   };
-
+    
   componentDidMount() {
     axios
       .get("http://localhost:5000/api/categories")
