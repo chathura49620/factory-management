@@ -22,12 +22,9 @@ class ViewProductList extends Component {
       .catch((err) => console.log(err.message));
   }
 
-
-
   render() {
     return (
       <React.Fragment>
-
 
 
 <div className="row">
