@@ -45,7 +45,7 @@ class MaterialCodes extends Component {
         </div>
       </React.Fragment>
   );
-  }
+  }   
 };
     
 export default MaterialCodes;
