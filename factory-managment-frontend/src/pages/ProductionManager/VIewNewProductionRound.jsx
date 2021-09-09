@@ -11,7 +11,6 @@ class VIewNewProductionRound extends Component {
     addModalShow: false
   };
 
-
 componentDidMount() {
     axios
       .get("http://localhost:5000/api/newProRound-details")
