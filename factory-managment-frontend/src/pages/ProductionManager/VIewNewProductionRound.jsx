@@ -12,7 +12,7 @@ class VIewNewProductionRound extends Component {
   };
 
 
-  componentDidMount() {
+componentDidMount() {
     axios
       .get("http://localhost:5000/api/newProRound-details")
       .then((result) => {
