@@ -42,7 +42,7 @@ componentDidMount() {
         
         
         <div className="row">
-          {/* <div className="col-10"></div> */}
+          <div className="col-10"></div>
           <div className="col">
            <ButtonToolbar>
                     <Button 
