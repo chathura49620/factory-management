@@ -17,4 +17,4 @@ var schema = new mongoose.Schema({
 
 const productcode = mongoose.model('productcode',schema);
 
-module.exports = productcode;
+module.exports = productcode;      

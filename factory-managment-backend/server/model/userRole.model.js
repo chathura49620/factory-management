@@ -14,4 +14,4 @@ var schema = new mongoose.Schema({
 
 const userRole = mongoose.model('userRole',schema);
 
-module.exports = userRole;
+module.exports = userRole;     
