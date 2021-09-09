@@ -1,7 +1,7 @@
 var materialcode = require('../model/materialcode.model');
 
 // create and save new materialcode
-exports.create = (req,res)=>{
+exports.create = (req,res)=>{ 
     // validate request
     if(!req.body){
         res.status(400).send({ message : req.body});
@@ -10,7 +10,7 @@ exports.create = (req,res)=>{
 
     // new materialcode
     
-    const matCode = new materialcode({
+    const matCode = new materialcode({ 
         materialName : req.body.materialName,
         materialCode : req.body.materialCode,
         status : req.body.status
@@ -19,10 +19,10 @@ exports.create = (req,res)=>{
     // save materialcode in the database
     matCode
         .save(matCode)
-        .then(data => {
+        .then(data => { 
             res.send(data)
         })
-        .catch(err =>{
+        .catch(err =>{ 
             res.status(500).send({
                 message : err.message || "Some error occurred while creating a create material code operation"
             });
@@ -31,11 +31,11 @@ exports.create = (req,res)=>{
 }
 
 //retrive and return all materialcodes/retive a single materialcode'
-exports.find = (req,res) =>{
+exports.find = (req,res) =>{ 
 
     if(req.query.id){
         const id  = req.query.id;
-
+ 
         materialcode.findById(id)
         .then(data =>{
             if(!data){
@@ -44,22 +44,22 @@ exports.find = (req,res) =>{
                 res.send(data);
             }
         })
-        .catch(err =>{
+        .catch(err =>{ 
             res.status(500).send({message:"Error while retriving material code with id" +id})
         })
     }else{
         materialcode.find()
-        .then(matCode => {
+        .then(matCode => { 
             res.send(matCode)
         })
-        .catch(err =>{
+        .catch(err =>{ 
             res.status(500).send({message:err.message || "Error on retriving material code"})
         })
     }
 }
 
 //update a new identify materialcode by materialcode id
-exports.update = (req,res) => {
+exports.update = (req,res) => { 
     if(!req.body){
         return res
                 .status(400)
