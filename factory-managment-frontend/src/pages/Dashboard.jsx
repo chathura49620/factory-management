@@ -18,7 +18,7 @@ import EmployeeDashboard from './Employee/EmployeeDashboard'
 import BasicInfo from './SuperAdmin/BasicInfo';
 import UserRoles from './SuperAdmin/UserRoles';
 import UserList from './SuperAdmin/UserList';
-import Categories from './SuperAdmin/Categories';
+import Categories from './SuperAdmin/Categories';   
 import ProductCodes from './SuperAdmin/ProductCodes';
 import MaterialCodes from './SuperAdmin/MaterialCodes';
 import  login  from './SuperAdmin/login';
