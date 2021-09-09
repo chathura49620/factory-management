@@ -97,8 +97,7 @@ validate(){
 
           <div className="col" >
           
-        
-            <Form onSubmit={this.handleSubmit}  >
+          <Form onSubmit={this.handleSubmit}  >
                                     <Form.Group>
                                     <Form.Group controlId="proId">
                                         <Form.Label style={{fontWeight:"bold"}}>Order Id</Form.Label>
@@ -124,11 +123,6 @@ validate(){
                                         <Form.Control style={{ border: "1px solid #050139" }} type="text" name="estDays"  placeholder="Estimated Days" />
                                         <div style={{background:"#f8d7da"}}>{this.state.validationError}</div>
                                     </Form.Group>
-                                    <Form.Group controlId="estEmp">
-                                        <Form.Label style={{fontWeight:"bold"}}>Estimated Employees</Form.Label>
-                                        <Form.Control style={{ border: "1px solid #050139" }} type="text" name="estEmp"  placeholder="Estimated Employees"  />
-                                        <div style={{background:"#f8d7da"}}>{this.state.validationError}</div>
-                                    </Form.Group>
                                     <Form.Group>
                                         <Form.Label style={{fontWeight:"bold"}}>Status</Form.Label>
                                         <Form.Control style={{ border: "1px solid #050139" }} as="select"  name="status">
@@ -139,7 +133,7 @@ validate(){
                                     </Form.Group>
                                     <Form.Group>
                                         <Button className="my-1" style={{ backgroundColor: "#7121AD", color: "white", }}  type="submit" >
-                                            Add Production Round
+                                            Add Order
                                         </Button>
                                     </Form.Group>
               </Form>
