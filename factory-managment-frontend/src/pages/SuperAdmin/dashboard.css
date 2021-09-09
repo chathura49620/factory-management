@@ -23,7 +23,7 @@ main {
   font-size: 50px;
   color: #2e4a66;
   margin-bottom: 6px;
-  font-family:Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .main__greeting > p {
@@ -40,8 +40,6 @@ main {
   margin: 20px 0;
 }
 
-
-
 .carda {
   color: #ffffff;
   display: flex;
@@ -51,11 +49,10 @@ main {
   padding: 25px;
   /* padding-right: 200px; */
   border-radius: 5px;
-  background: #43BFC7;
+  background: #43bfc7;
   box-shadow: 5px 5px 13px #ededed, -5px -5px 13px #ffffff;
 }
 
-  
 .cardb {
   color: #ffffff;
   display: flex;
@@ -64,11 +61,10 @@ main {
   height: 70px;
   padding: 25px;
   border-radius: 5px;
-  background: #58F52D;
+  background: #58f52d;
   box-shadow: 5px 5px 13px #ededed, -5px -5px 13px #ffffff;
 }
 
-  
 .cardc {
   color: #ffffff;
   display: flex;
@@ -77,11 +73,10 @@ main {
   height: 70px;
   padding: 25px;
   border-radius: 5px;
-  background: #FF5F1F;
+  background: #ff5f1f;
   box-shadow: 5px 5px 13px #ededed, -5px -5px 13px #ffffff;
 }
 
-  
 .cardd {
   color: #ffffff;
   display: flex;
@@ -91,7 +86,7 @@ main {
   padding: 25px;
   /* padding-right: 200px; */
   border-radius: 5px;
-  background: #E41B17;
+  background: #e41b17;
   box-shadow: 5px 5px 13px #ededed, -5px -5px 13px #ffffff;
 }
 
@@ -116,7 +111,7 @@ main {
   padding: 25px;
   border-radius: 5px;
   background: #ffffff;
-  box-shadow: 5px 5px 13px #77BFC7, -5px -5px 13px #77BFC7;
+  box-shadow: 5px 5px 13px #77bfc7, -5px -5px 13px #77bfc7;
 }
 
 .charts__left__title {
@@ -152,7 +147,7 @@ main {
   padding: 20px;
   border-radius: 5px;
   background: #ffffff;
-  box-shadow: 5px 5px 13px #77BFC7, -5px -5px 13px #77BFC7;
+  box-shadow: 5px 5px 13px #77bfc7, -5px -5px 13px #77bfc7;
 }
 
 .charts__right__title {

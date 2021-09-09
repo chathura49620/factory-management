@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import Clock from "./common/clock";
+import Clock from "../../components/storeManager/reusables/clock";
 import axios from "axios";
+import hello from "../../pages/assets/hello.png";
 
 class SMDashBoard extends Component {
   state = {
@@ -27,14 +28,39 @@ class SMDashBoard extends Component {
   render() {
     return (
       <React.Fragment>
+        <div className="row">
+          <div className="col-2"></div>
+          <div className="col">
+            <div className="row">
+              <div className="col">
+                <img
+                  src={hello}
+                  alt="hello"
+                  style={{ width: "100px", height: "100px" }}
+                />
+              </div>
+              <div className="col">
+                <h1>Hello, {this.state.user_name}</h1>
+                <p style={{ color: "#16A085" }}>Welcome to your profile.</p>
+              </div>
+              <div className="col-9"></div>
+            </div>
+          </div>
+        </div>
         <div className="row my-2">
           <div className="col-2"></div>
           <div className="col">
-            <div className="row m-2" style={{ border: "3px solid #050139" }}>
+            <div
+              className="row m-2"
+              style={{
+                border: "3px solid white",
+                boxShadow: "1px 1px 1px #77BFC7, -5px -5px 13px #77BFC7",
+              }}
+            >
               <div
                 className="col-4"
                 style={{
-                  backgroundColor: "#6EEA65",
+                  backgroundColor: "white",
                   height: 170,
                   borderRight: "3px solid #050139",
                 }}
@@ -42,15 +68,16 @@ class SMDashBoard extends Component {
                 <Clock />
               </div>
 
-              <div className="col-8" style={{ backgroundColor: "#6E24A7" }}>
+              <div className="col-8" style={{ backgroundColor: "white" }}>
                 <div className="row">
                   <div
                     className="col-12 col--6"
                     style={{
-                      backgroundColor: "white",
+                      backgroundColor: "#F0B27A",
                       height: 70,
-                      fontSize: "20px",
-                      borderBottom: "3px solid #050139",
+                      fontSize: "30px",
+                      borderBottom: "3px solid #307eaf",
+                      color: "#307eaf",
                     }}
                   >
                     Requestions
@@ -63,17 +90,19 @@ class SMDashBoard extends Component {
                       className="col-11 col--6"
                       style={{ textAlign: "center" }}
                     >
-                      Generate Reports
+                      Report Generation
                     </div>
                   </div>
                   <div
                     className="col-4 col--6"
                     style={{
-                      backgroundColor: "white",
+                      backgroundColor: "#77BFC7",
                       height: 60,
                       borderTop: "3px solid #050139",
                       borderBottom: "3px solid #050139",
                       borderRight: "3px solid #050139",
+                      fontSize: "25px",
+                      color: "#307eaf",
                     }}
                   >
                     Daily reports
@@ -81,10 +110,12 @@ class SMDashBoard extends Component {
                   <div
                     className="col-4 col--6"
                     style={{
-                      backgroundColor: "white",
+                      backgroundColor: "#77BFC7",
                       borderTop: "3px solid #050139",
                       borderBottom: "3px solid #050139",
                       borderRight: "3px solid #050139",
+                      fontSize: "25px",
+                      color: "#307eaf",
                     }}
                   >
                     Monthly reports
@@ -92,10 +123,12 @@ class SMDashBoard extends Component {
                   <div
                     className="col-4 col--6"
                     style={{
-                      backgroundColor: "white",
+                      backgroundColor: "#77BFC7",
                       borderTop: "3px solid #050139",
                       borderRight: "3px solid #050139",
                       borderBottom: "3px solid #050139",
+                      fontSize: "25px",
+                      color: "#307eaf",
                     }}
                   >
                     Yearly reports
@@ -104,11 +137,16 @@ class SMDashBoard extends Component {
               </div>
             </div>
 
-            <div className="row m-2" style={{ border: "3px solid #050139" }}>
+            <div
+              className="row m-4"
+              style={{
+                border: "3px solid white",
+              }}
+            >
               <div
                 className="col-3"
                 style={{
-                  backgroundColor: "white",
+                  backgroundColor: "#EAEDED",
                   height: 130,
                   borderRight: "3px solid #050139",
                   display: "flex",
@@ -119,7 +157,7 @@ class SMDashBoard extends Component {
                 <div>Products</div>
                 <span
                   style={{
-                    backgroundColor: "blueviolet",
+                    backgroundColor: "#F0B27A",
                     display: "block",
                     width: "80px",
                     height: "80px",
@@ -128,6 +166,7 @@ class SMDashBoard extends Component {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
+                    fontSize: "20px",
                   }}
                 >
                   <div>{this.state.numOfProducts}</div>
@@ -136,7 +175,7 @@ class SMDashBoard extends Component {
               <div
                 className="col-3"
                 style={{
-                  backgroundColor: "white",
+                  backgroundColor: "#EAEDED",
                   borderRight: "3px solid #050139",
                   display: "flex",
                   alignItems: "center",
@@ -146,7 +185,7 @@ class SMDashBoard extends Component {
                 <div>Materials</div>
                 <span
                   style={{
-                    backgroundColor: "blueviolet",
+                    backgroundColor: "#F0B27A",
                     display: "block",
                     width: "80px",
                     height: "80px",
@@ -155,6 +194,7 @@ class SMDashBoard extends Component {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
+                    fontSize: "20px",
                   }}
                 >
                   {this.state.numOfMaterials}
@@ -163,7 +203,7 @@ class SMDashBoard extends Component {
               <div
                 className="col-3"
                 style={{
-                  backgroundColor: "white",
+                  backgroundColor: "#EAEDED",
                   borderRight: "3px solid #050139",
                   display: "flex",
                   alignItems: "center",
@@ -173,7 +213,7 @@ class SMDashBoard extends Component {
                 <div>Wasted Items</div>
                 <span
                   style={{
-                    backgroundColor: "blueviolet",
+                    backgroundColor: "#F0B27A",
                     display: "block",
                     width: "80px",
                     height: "80px",
@@ -182,6 +222,7 @@ class SMDashBoard extends Component {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
+                    fontSize: "20px",
                   }}
                 >
                   {this.state.numOfWastedItems}
@@ -190,7 +231,7 @@ class SMDashBoard extends Component {
               <div
                 className="col-3"
                 style={{
-                  backgroundColor: "white",
+                  backgroundColor: "#EAEDED",
                   display: "flex",
                   alignItems: "center",
                   flexDirection: "column",
@@ -199,7 +240,7 @@ class SMDashBoard extends Component {
                 <div> Returned products</div>
                 <span
                   style={{
-                    backgroundColor: "blueviolet",
+                    backgroundColor: "#F0B27A",
                     display: "block",
                     width: "80px",
                     height: "80px",
@@ -208,6 +249,7 @@ class SMDashBoard extends Component {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
+                    fontSize: "20px",
                   }}
                 >
                   {this.state.numOfReturnedItems}
@@ -219,9 +261,9 @@ class SMDashBoard extends Component {
               <div
                 className="col-12"
                 style={{
-                  backgroundColor: "#6EEA65",
+                  backgroundColor: "#F2F3F4",
                   height: 50,
-                  border: "3px solid #050139",
+                  border: "3px solid white",
                 }}
               >
                 Notifications
@@ -234,7 +276,8 @@ class SMDashBoard extends Component {
                 style={{
                   backgroundColor: "white",
                   height: 150,
-                  border: "3px solid #050139",
+                  border: "3px solid white",
+                  boxShadow: "1px 1px 1px #77BFC7, -5px -5px 13px #77BFC7",
                 }}
               >
                 Notifications

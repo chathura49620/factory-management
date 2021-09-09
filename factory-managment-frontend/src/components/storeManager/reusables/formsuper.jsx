@@ -54,6 +54,7 @@ class FormSuper extends Component {
       <button
         className="btn my-2"
         style={{ backgroundColor: "#7121AD", color: "white" }}
+        type="submit"
       >
         {label}
       </button>

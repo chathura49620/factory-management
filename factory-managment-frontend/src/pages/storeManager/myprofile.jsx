@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import ProfileTable from "./common/profileTable";
+import ProfileTable from "../../components/storeManager/tables/profileTable";
 import axios from "axios";
-import FormPopup from "./common/formpopup";
-import FormProfileEdit from "./formprofileedit";
+import FormPopup from "../../components/storeManager/reusables/formpopup";
+import FormProfileEdit from "../../components/storeManager/forms/formprofileedit";
+import userPic from "../../pages/assets/pem56.png";
 
 class MyProfile extends Component {
   state = {
@@ -88,24 +89,28 @@ class MyProfile extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className="row">
-          <div className="col-2"></div>
-          <div className="col">
-            <ProfileTable
-              userOb={this.state.user}
-              onSetPopup={this.setOpenPopup}
-            />
+        <div style={{ marginLeft: "120px" }}>
+          <div className="row">
+            <div className="col-2"></div>
+
+            <div className="col">
+              <ProfileTable
+                userOb={this.state.user}
+                onSetPopup={this.setOpenPopup}
+              />
+            </div>
           </div>
+          <FormPopup
+            openPopup={this.state.openPopup}
+            onClose={this.closeOpenPopup}
+            title="Edit My Profile"
+          >
+            <FormProfileEdit
+              userOb={this.state.user}
+              onSetAndClose={this.closePopAndSetState}
+            />
+          </FormPopup>
         </div>
-        <FormPopup
-          openPopup={this.state.openPopup}
-          onClose={this.closeOpenPopup}
-        >
-          <FormProfileEdit
-            userOb={this.state.user}
-            onSetAndClose={this.closePopAndSetState}
-          />
-        </FormPopup>
       </React.Fragment>
     );
   }
