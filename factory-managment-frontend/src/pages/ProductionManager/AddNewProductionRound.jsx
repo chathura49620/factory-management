@@ -103,7 +103,7 @@ validate(){
                                     <Form.Group controlId="proId">
                                         <Form.Label style={{fontWeight:"bold"}}>Product Id</Form.Label>
                                         <Form.Control style={{ border: "1px solid #050139" }}  type="text" name="proId"  placeholder="Product Id"  />
-                                        {/* <div style={{background:"#f8d7da"}}>{this.state.validationError}</div> */}
+                                        <div style={{background:"#f8d7da"}}>{this.state.validationError}</div>
                                     </Form.Group>
                                         <Form.Label style={{fontWeight:"bold"}}>Product Category</Form.Label>
                                         <Form.Control style={{ border: "1px solid #050139" }} as="select"  name="productCategory">
