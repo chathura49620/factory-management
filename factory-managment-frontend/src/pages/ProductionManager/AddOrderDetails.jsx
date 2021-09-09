@@ -67,7 +67,7 @@ validate(){
   let validationError = "";
 
   if(!this.state.validationError){
-    validationError = "This Field Cannot Be Blank"
+    validationError = "This Field Can Not Be Blank"
   }
 
   if(validationError){
@@ -101,7 +101,7 @@ validate(){
                                     <Form.Group>
                                     <Form.Group controlId="proId">
                                         <Form.Label style={{fontWeight:"bold"}}>Order Id</Form.Label>
-                                        <Form.Control style={{ border: "1px solid #050139" }}  type="text" name="proId"  placeholder="Product Id"  />
+                                        <Form.Control style={{ border: "1px solid #050139" }}  type="text" name="proId"  placeholder= " Order Id"  />
                                         <div style={{background:"#f8d7da"}}>{this.state.validationError}</div>
                                     </Form.Group>
                                         <Form.Label style={{fontWeight:"bold"}}>Product Category</Form.Label>
@@ -120,7 +120,7 @@ validate(){
                                     </Form.Group>
                                     <Form.Group controlId="estDays">
                                         <Form.Label style={{fontWeight:"bold"}}>Payment Methode</Form.Label>
-                                        <Form.Control style={{ border: "1px solid #050139" }} type="text" name="estDays"  placeholder="Estimated Days" />
+                                        <Form.Control style={{ border: "1px solid #050139" }} type="text" name="estDays"  placeholder="Payment Methode" />
                                         <div style={{background:"#f8d7da"}}>{this.state.validationError}</div>
                                     </Form.Group>
                                     <Form.Group>
