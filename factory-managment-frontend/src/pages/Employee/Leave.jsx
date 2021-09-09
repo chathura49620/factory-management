@@ -29,11 +29,7 @@ class Leave extends Component {
   }
 
 setNewDetails = (leave) => {
-  
-  
   this.setState({addModalShow: true, empLeave: leave});
-
-
 }
 
 setEditPopup = (leave) => {
@@ -47,11 +43,7 @@ handleLeaveDelete = (leave) => {
   // console.log("Delete");
   const Leave = this.state.Leave.filter(l => l._id !== leave._id );
   this.setState({Leave:Leave});
-
-
 }
-
-
 
   render(){
     let AddModelClose = () => this.setState({ addModalShow: false })
@@ -72,8 +64,6 @@ handleLeaveDelete = (leave) => {
                     />
           </ButtonToolbar>
             <br></br><br></br>
-
-
 
         <div className="row">
           <div className="col-1"></div>

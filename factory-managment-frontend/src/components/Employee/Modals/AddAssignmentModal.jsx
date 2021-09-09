@@ -42,7 +42,7 @@ export class AddAssignmentModal extends Component {
         })
             .then(res => res.json())
             .then((result) => {
-                alert("Success");
+                alert("Success!");
                 console.log("result" , result)
             }, (error) => {
                 this.setState({ snackbaropen: true, snackbarmsg: 'Failed' })

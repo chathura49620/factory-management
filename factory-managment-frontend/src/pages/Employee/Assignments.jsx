@@ -15,7 +15,6 @@ class Assignment extends Component {
     id: ""
   };
   
-
   componentDidMount()  {
 
     axios
@@ -29,11 +28,9 @@ class Assignment extends Component {
       .catch((err) => console.log(err.message));
   }
 
-setNewDetails = (assignment) => {
-  
+setNewDetails = (assignment) => {  
   
   this.setState({addModalShow: true, empass: assignment});
-
 
 }
 
@@ -49,10 +46,7 @@ handleAssignmentDelete = (assignment) => {
   const Assignment = this.state.Assignment.filter(l => l._id !== assignment._id );
   this.setState({Assignment:Assignment});
 
-
 }
-
-
 
   render(){
     let AddModelClose = () => this.setState({ addModalShow: false })

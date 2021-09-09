@@ -16,8 +16,6 @@ export class AddEmployeeModal extends Component {
     }
 
     
-
-
     snackbarClose = (event) => {
         this.setState({ snackbaropen: false });
     };
@@ -41,7 +39,7 @@ export class AddEmployeeModal extends Component {
         })
             .then(res => res.json())
             .then((result) => {
-                alert("Success");
+                alert("Success!");
                 console.log("result" , result)
             }, (error) => {
                 this.setState({ snackbaropen: true, snackbarmsg: 'Failed' })
@@ -56,7 +54,7 @@ export class AddEmployeeModal extends Component {
         let LeaveError = "";
 
         if(!this.state.LeaveError){
-            LeaveError = "This Cannot Be Blank"
+            LeaveError = "This Cannot Be Blank."
         }
 
         if(LeaveError){
