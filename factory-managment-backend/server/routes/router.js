@@ -12,8 +12,6 @@ route.put('/api/categories/',contoller.category.update);
 route.delete('/api/categories/',contoller.category.delete);
 
 
-
-
 // Super Admin Metirial Code APIs
 route.post('/api/meterial-code/',contoller.materialCode.create);
 route.get('/api/meterial-code/',contoller.materialCode.find);
@@ -26,6 +24,8 @@ route.post('/api/product-code/',contoller.productcode.create);
 route.get('/api/product-code/',contoller.productcode.find);
 route.put('/api/product-code/',contoller.productcode.update);
 route.delete('/api/product-code/',contoller.productcode.delete);
+
+
 
 
 // Super Admin Bill Type APIs
