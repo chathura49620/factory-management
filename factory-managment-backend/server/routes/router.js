@@ -47,9 +47,10 @@ route.delete('/api/bills/',contoller.bills.delete);
 route.get('/api/user-roles/',contoller.userRole.find);
 route.post('/api/user-roles/',contoller.userRole.create);
 
+
+
 //login APIs
 route.get('/api/login/',contoller.login.find);
-
 
 //Super Admin Factory Details APIs
 route.post('/api/factory-details/',contoller.factoryDetails.create);
