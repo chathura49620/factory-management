@@ -9,7 +9,7 @@ class Categories extends Component {
   state = {
     categories: [],
     addModalShow: false
-  };
+  };    
     
   componentDidMount() {
     axios
