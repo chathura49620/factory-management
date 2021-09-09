@@ -99,10 +99,10 @@ class Dashboard extends Component {
                       <h1>Accepted Order Details Report</h1>
                     </div>
                      
-                     
+{/*                      
                         <div className="card3">
                         <h1>Rejected Order Details Report</h1>
-                        </div>
+                        </div> */}
                        
                   
                   </div>
@@ -117,14 +117,14 @@ class Dashboard extends Component {
                 
                 <div className="carda">
                   <div className="card_inner">
-                    <p className="text-primary-p">Number of Orders</p>
+                    <p className="text-primary-p">Number Of Orders</p>
                     <span className="font-bold text-title">300</span>
                   </div>
                 </div>
                 
                 <div className="cardd">
                   <div className="card_inner">
-                    <p className="text-primary-p">No of Completed Production Rounds</p>
+                    <p className="text-primary-p">No Of Completed Production Rounds</p>
                     <span className="font-bold text-title">445</span>
                   </div>
                 </div>
