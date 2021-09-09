@@ -103,7 +103,9 @@ export class AddAssignmentModal extends Component {
                                         <Form.Label>Status</Form.Label>
                                         <Form.Control type="text" name="status" required placeholder="status" />
                                     </Form.Group>
+                                    
                                     <br></br>
+
                                     <Form.Group>
                                         <Button style={{ backgroundColor: "#7121AD", color: "white" }} className="btn"  type="submit" >
                                             Submit Assignment Request
