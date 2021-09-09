@@ -5,12 +5,12 @@ import { AddProductCodeModal } from '../../components/SuperAdmin/Modals/AddProdu
 import {ProductCodesTable} from "../../components/SuperAdmin/Tables/ProductCodesTable";
 
 
-class ProductCodes extends Component {
+class ProductCodes extends Component {   
   state = {
     ProductCodes: [],
     addModalShow: false
   };
-
+    
   componentDidMount() {
     axios
       .get("http://localhost:5000/api/product-code")
@@ -21,7 +21,7 @@ class ProductCodes extends Component {
       })
       .catch((err) => console.log(err.message));
   }
-
+    
   render(){
     let AddModelClose = () => this.setState({ addModalShow: false })
   return (
@@ -47,6 +47,6 @@ class ProductCodes extends Component {
       </React.Fragment>
   );
   }
-};
-
+}; 
+  
 export default ProductCodes;
