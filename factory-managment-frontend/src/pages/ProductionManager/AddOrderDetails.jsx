@@ -22,7 +22,7 @@ componentDidMount() {
   }
 
 
-  handleSubmit(event, props) {
+handleSubmit(event, props) {
    
        
       console.log(event);
@@ -50,7 +50,7 @@ componentDidMount() {
         .then(res => res.json())
         .then((result) => {
             swal({
-                title: "New Production Round Details Added Succesfully",
+                title: "Order Details Added Succesfully",
                 icon: "success",
                 button: "Done",
               });
