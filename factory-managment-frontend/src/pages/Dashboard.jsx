@@ -40,6 +40,9 @@ import ReturnedProduct from "./storeManager/returnedproducts";
 import NewReturnedProductForm from "./../components/storeManager/forms/newreturnedproductform";
 import ItemRequest from "./storeManager/itemrequests";
 
+//wholesalebuyer routes
+
+
 class Dashboard extends Component {
   constructor(props) {
     super(props);

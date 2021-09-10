@@ -122,4 +122,8 @@ route.get("/api/order-details/", contoller.orderdetails.find);
 route.put("/api/order-details/", contoller.orderDetails.update);
 route.delete("/api/order-details/", contoller.orderDetails.delete);
 
-module.exports = route;
+//Feedback Details APIs
+route.post('/api/feedback-details/',contoller.feedbackDetails.create);
+route.get('/apifeedback-details/',contoller.feedbackdetails.find);
+
+module.exports =route;
