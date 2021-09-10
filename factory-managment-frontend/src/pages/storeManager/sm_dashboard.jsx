@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Clock from "../../components/storeManager/reusables/clock";
 import axios from "axios";
 import hello from "../../pages/assets/hello.png";
+import * as IoIcons from "react-icons/io";
 
 class SMDashBoard extends Component {
   state = {
@@ -106,6 +107,7 @@ class SMDashBoard extends Component {
                     }}
                   >
                     Daily reports
+                    <IoIcons.IoIosPaper />
                   </div>
                   <div
                     className="col-4 col--6"
@@ -119,6 +121,7 @@ class SMDashBoard extends Component {
                     }}
                   >
                     Monthly reports
+                    <IoIcons.IoIosPaper />
                   </div>
                   <div
                     className="col-4 col--6"
@@ -132,6 +135,7 @@ class SMDashBoard extends Component {
                     }}
                   >
                     Yearly reports
+                    <IoIcons.IoIosPaper />
                   </div>
                 </div>
               </div>
