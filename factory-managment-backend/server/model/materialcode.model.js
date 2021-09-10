@@ -14,8 +14,4 @@ var schema = new mongoose.Schema({
 
 const materialcode = mongoose.model('materialcode',schema);
 
-<<<<<<< HEAD
-module.exports = materialcode;        
-=======
 module.exports = materialcode;       
->>>>>>> IT19048338

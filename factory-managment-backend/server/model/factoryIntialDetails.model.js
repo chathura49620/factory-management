@@ -34,10 +34,5 @@ var schema = new mongoose.Schema({
 })
 
 const factoryDetails = mongoose.model('factoryDetails',schema);
-<<<<<<< HEAD
-  
-module.exports = factoryDetails;      
-=======
 
 module.exports = factoryDetails;        
->>>>>>> IT19048338
