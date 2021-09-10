@@ -146,7 +146,7 @@ class SMDashBoard extends Component {
               <div
                 className="col-3"
                 style={{
-                  backgroundColor: "#EAEDED",
+                  backgroundColor: "#F0B27A",
                   height: 130,
                   borderRight: "3px solid #050139",
                   display: "flex",
@@ -157,7 +157,6 @@ class SMDashBoard extends Component {
                 <div>Products</div>
                 <span
                   style={{
-                    backgroundColor: "#F0B27A",
                     display: "block",
                     width: "80px",
                     height: "80px",
@@ -175,7 +174,7 @@ class SMDashBoard extends Component {
               <div
                 className="col-3"
                 style={{
-                  backgroundColor: "#EAEDED",
+                  backgroundColor: "#06846C",
                   borderRight: "3px solid #050139",
                   display: "flex",
                   alignItems: "center",
@@ -185,7 +184,6 @@ class SMDashBoard extends Component {
                 <div>Materials</div>
                 <span
                   style={{
-                    backgroundColor: "#F0B27A",
                     display: "block",
                     width: "80px",
                     height: "80px",
@@ -203,7 +201,7 @@ class SMDashBoard extends Component {
               <div
                 className="col-3"
                 style={{
-                  backgroundColor: "#EAEDED",
+                  backgroundColor: "#F0B27A",
                   borderRight: "3px solid #050139",
                   display: "flex",
                   alignItems: "center",
@@ -213,7 +211,6 @@ class SMDashBoard extends Component {
                 <div>Wasted Items</div>
                 <span
                   style={{
-                    backgroundColor: "#F0B27A",
                     display: "block",
                     width: "80px",
                     height: "80px",
@@ -231,7 +228,7 @@ class SMDashBoard extends Component {
               <div
                 className="col-3"
                 style={{
-                  backgroundColor: "#EAEDED",
+                  backgroundColor: "#06846C",
                   display: "flex",
                   alignItems: "center",
                   flexDirection: "column",
@@ -240,7 +237,6 @@ class SMDashBoard extends Component {
                 <div> Returned products</div>
                 <span
                   style={{
-                    backgroundColor: "#F0B27A",
                     display: "block",
                     width: "80px",
                     height: "80px",
