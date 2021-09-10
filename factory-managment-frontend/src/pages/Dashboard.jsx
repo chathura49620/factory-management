@@ -51,6 +51,9 @@ import BillType from "./FinanceTeamMember/BillType";
 import Bills from "./FinanceTeamMember/Bills";
 
 
+//wholesalebuyer routes
+
+
 class Dashboard extends Component {
     constructor(props) {
         super(props);   
