@@ -21,7 +21,7 @@ class BillType extends Component {
       })  
       .catch((err) => console.log(err.message));
   }
-
+    
 
   render() {
     let AddModelClose = () => this.setState({ addModalShow: false })
