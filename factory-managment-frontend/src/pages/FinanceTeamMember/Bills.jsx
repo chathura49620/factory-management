@@ -43,6 +43,6 @@ class Bills extends Component {
       </React.Fragment>
     );
   }
-};
+};     
 
 export default Bills;
