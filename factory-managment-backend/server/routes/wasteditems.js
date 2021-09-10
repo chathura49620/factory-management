@@ -33,7 +33,7 @@ router.route("/add").post((req, res) => {
     .catch((err) => res.status(400).json(err.message));
 });
 
-//delete one according to id
+//delete one according to id of particular wasted item
 router.route("/:id").delete((req, res) => {
   const id = req.params.id;
 
