@@ -71,7 +71,7 @@ class Dashboard extends Component {
         return false;
       }
     }
-
+  }
     renderSideNavigation(){
         const user_role = localStorage.getItem('user_role');
         const is_login = localStorage.getItem('is_login');
@@ -188,16 +188,7 @@ class Dashboard extends Component {
            </div> 
        );
     }
-  }
-
-  render() {
-    return (
-      <div>
-        {this.renderSideNavigation()}
-        {this.renderDashboard()}
-      </div>
-    );
-  }
+  
 }
 
 export default Dashboard;
