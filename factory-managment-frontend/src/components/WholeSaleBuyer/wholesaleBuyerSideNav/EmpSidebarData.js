@@ -46,7 +46,7 @@ export const EmpSidebarData = [
     iconOpened: <RiIcons.RiArrowUpSFill />,
   },
 
-  {
+   {
     title: 'Feedback',
     path: '/support',
     icon: <IoIcons.IoMdHelpCircle />
