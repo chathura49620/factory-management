@@ -14,7 +14,7 @@ class login extends Component {
 } 
    
   componentDidMount() {
-    axios
+    axios   
       .get("http://localhost:5000/api/login")
       .then((result) => {
         const user = result.data; 

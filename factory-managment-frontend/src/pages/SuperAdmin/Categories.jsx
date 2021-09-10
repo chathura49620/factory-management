@@ -6,7 +6,7 @@ import {CategoriesTable} from "../../components/SuperAdmin/Tables/CategoriesTabl
     
 
 class Categories extends Component {
-  state = {
+  state = {  
     categories: [],
     addModalShow: false
   };    
