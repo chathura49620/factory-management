@@ -1,10 +1,6 @@
 var category = require('../model/category.model');
 
-
-
-
-
-// create and save new user
+// create and save new category
 exports.create = (req,res)=>{
     // validate request
     if(!req.body){
@@ -12,31 +8,28 @@ exports.create = (req,res)=>{
         return;
     }
 
-    // new user
+    // new category
     
-    const user = new category({
-        name : req.body.name,
-        email : req.body.email,
-        gender: req.body.gender,
+    const cat = new category({
+        categoryName : req.body.categoryName,
         status : req.body.status
     })
 
-    // save user in the database
-    user
-        .save(user)
+    // save category in the database
+    cat
+        .save(cat)
         .then(data => {
-            // res.send(data)
-            res.redirect('/');
+            res.send(data)
         })
         .catch(err =>{
             res.status(500).send({
-                message : err.message || "Some error occurred while creating a create operation"
+                message : err.message || "Some error occurred while creating a create category operation"
             });
         });
 
 }
 
-//retrive and return all users/retive a single user'
+//retrive and return all categories/retive a single category'
 exports.find = (req,res) =>{
 
     if(req.query.id){
@@ -55,8 +48,8 @@ exports.find = (req,res) =>{
         })
     }else{
         category.find()
-        .then(user => {
-            res.send(user)
+        .then(cat => {
+            res.send(cat)
         })
         .catch(err =>{
             res.status(500).send({message:err.message || "Error on retriving user"})
@@ -72,11 +65,11 @@ exports.update = (req,res) => {
                 .send({message:"Data to update can not be empty"})
     }
 
-    const id  = req.params.id;
+    const id  = req.body.id;
     category.findByIdAndUpdate(id, req.body,{useFindAndModify:false})
     .then(data =>{
         if(!data){
-            res.status(400).send({message:`cannot Update user with $(id). Maybe user not found`});
+            res.status(400).send({message:"category is not found"});
         }else{
             res.send(data);
         }
@@ -84,25 +77,22 @@ exports.update = (req,res) => {
     .catch(err =>{
         res.status(500).send({message:"Error while updateting"})
     })
-
-
 }
 
 //Delete a user with specified user id in the request
 exports.delete = (req,res) => {
-    const id  = req.params.id;
+    const id  = req.body.id;
 
     category.findByIdAndDelete(id)
     .then(data=>{
         if(!data){
-            res.status(400).send({message:`cannot Delete user with $(id). Maybe user not found`});
+            res.status(400).send({message:`cannot Delete Category with $(id). Maybe Category not found`});
         }
         else{
-            res.send({message:"USER WAS DELETED"});
+            res.send({message:"Category was deleted"});
         }
     })
-    .catch(err =>{
-        res.status(500).send({message:"Error while Deleting"})
-    })
-
-}
+    .catch((err) => {
+      res.status(500).send({ message: "Error while Deleting" });
+    });
+};

@@ -1,0 +1,47 @@
+import React, { Component } from "react";
+import { Dialog, DialogTitle, DialogContent } from "@material-ui/core";
+import { red } from "@material-ui/core/colors";
+
+const FormPopup = ({ title, children, openPopup, onClose }) => {
+  return (
+    <div>
+      <Dialog
+        open={openPopup}
+        fullWidth="200"
+        style={{
+          maxHeight: 1000,
+          overflow: "hidden",
+        }}
+      >
+        <DialogTitle
+          style={{
+            height: 56,
+          }}
+        >
+          <div
+            style={{ display: "flex", textAlign: "center", color: "#7121AD" }}
+          >
+            <h5 style={{ flexGrow: 1 }}>{title}</h5>
+            <button
+              onClick={() => onClose()}
+              style={{
+                color: "white",
+                backgroundColor: "#BA0D32",
+                borderRadius: "2px",
+                padding: "2px",
+              }}
+            >
+              close
+            </button>
+          </div>
+        </DialogTitle>
+
+        <DialogContent dividers>
+          <div>{children}</div>
+        </DialogContent>
+      </Dialog>
+    </div>
+  );
+};
+
+export default FormPopup;
