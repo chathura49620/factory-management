@@ -276,7 +276,27 @@ class SMDashBoard extends Component {
                   boxShadow: "1px 1px 1px #77BFC7, -5px -5px 13px #77BFC7",
                 }}
               >
-                Notifications
+                <ol>
+                  <li>
+                    parm Lorem ipsum dolor sit amet consectetur adipisicing
+                    elit. Omnis, blanditiis nobis sequi, pariatur dolores iure
+                    laboriosam rem corporis repellat fuga harum saepe voluptatem
+                    ipsa doloremque aliquam quidem expedita vel unde. loremm
+                  </li>
+                  <li>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Minima delectus dicta culpa deserunt veritatis laboriosam
+                    aspernatur nihil placeat, praesentium voluptatum repellendus
+                    nisi fuga voluptates, sapiente sunt! Nulla quia deleniti
+                    nesciunt.
+                  </li>
+                  <li>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Quia assumenda aliquam, id illum facere tempora provident
+                    temporibus molestias repellat nobis dicta unde, veritatis,
+                    eos cum. Reprehenderit consectetur iusto quos neque.
+                  </li>
+                </ol>
               </div>
             </div>
           </div>
