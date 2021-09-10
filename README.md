@@ -1,2 +1,2 @@
 # factory-management
-run npm install in both folders
+Store Manager Functions and User Profile Management Functions
