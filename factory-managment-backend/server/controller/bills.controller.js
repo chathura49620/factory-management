@@ -7,7 +7,7 @@ exports.create = (req,res)=>{
         res.status(400).send({ message : req.body});
         return;
     }
-
+   
     // new category
     
     const bill = new bills({

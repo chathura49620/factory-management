@@ -8,7 +8,7 @@ exports.find = (req,res) =>{
 
         user.findById(id)
         .then(data =>{
-            if(!data){
+             if(!data){
                 res.status(404).send({message:"not found query with id" + id});
             }else{
                 res.send(data);

@@ -10,7 +10,7 @@ export class BillTypesTable extends Component {
   }
 
   deleteBillType(id){
-    swal({
+    swal({ 
       title: "Are you sure?",
       text: "Once deleted, you will not be able to recover this Recode!",
       icon: "warning",

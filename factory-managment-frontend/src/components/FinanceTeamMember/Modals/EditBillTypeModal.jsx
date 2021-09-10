@@ -10,7 +10,7 @@ export class EditBillTypeModal extends Component {
         this.state = { snackbaropen: false, snackbarmsg: '' };
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-
+ 
 
     handleSubmit(event, props) {
         event.preventDefault();

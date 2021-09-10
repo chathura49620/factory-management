@@ -9,7 +9,7 @@ exports.create = (req,res)=>{
     }
 
     // new Employee Assignment Request
-    
+     
     const assignmentDetails = new employeeAssignmentDetails({
         documentid : req.body.documentid,
         supervisor : req.body.supervisor,

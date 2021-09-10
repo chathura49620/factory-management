@@ -11,7 +11,7 @@ export class EditCategoryModal extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-
+ 
     handleSubmit(event, props) {
         event.preventDefault();
         fetch('http://localhost:5000/api/categories/', {

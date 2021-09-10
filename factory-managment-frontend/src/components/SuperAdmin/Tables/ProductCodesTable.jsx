@@ -12,7 +12,7 @@ export class ProductCodesTable extends Component {
 
   deleteProCode(id){
     swal({
-      title: "Are you sure?",
+      title: "Are you sure?", 
       text: "Once deleted, you will not be able to recover this Recode!",
       icon: "warning",
       buttons: true,

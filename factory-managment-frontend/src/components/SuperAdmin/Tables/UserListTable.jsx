@@ -41,7 +41,7 @@ export class UserListTable  extends Component {
           </tr>
         ))}
       </tbody>
-    </table>
+    </table> 
   );
   } 
 };

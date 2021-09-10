@@ -10,7 +10,7 @@ export const SidebarData = [
     path: '/',
     icon: <AiIcons.AiFillHome />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
-    iconOpened: <RiIcons.RiArrowUpSFill />,
+    iconOpened: <RiIcons.RiArrowUpSFill />, 
   },
   {
     title: 'Costing',

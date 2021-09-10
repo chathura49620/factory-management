@@ -11,7 +11,7 @@ export class AddMaterialCodeModal extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            snackbaropen: false, 
+            snackbaropen: false,  
             snackbarmsg: '',
             materialNameError:'',
             materialCodeError:''

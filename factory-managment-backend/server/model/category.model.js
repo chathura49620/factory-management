@@ -8,7 +8,7 @@ var schema = new mongoose.Schema({
     status:String,
 })
 
-
+  
 const category = mongoose.model("categories", schema);
 
 module.exports = category;

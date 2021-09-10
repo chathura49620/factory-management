@@ -14,4 +14,4 @@ var schema = new mongoose.Schema({
 
 const materialcode = mongoose.model('materialcode',schema);
 
-module.exports = materialcode;      
+module.exports = materialcode;       

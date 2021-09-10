@@ -8,7 +8,7 @@ import {BillTypesTable} from "../../components/FinanceTeamMember/Tables/BillType
 class BillType extends Component {
   state = {
     BillType: [],
-    addModalShow: false
+    addModalShow: false 
   };
 
   componentDidMount() {

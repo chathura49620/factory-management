@@ -11,7 +11,7 @@ export class EditMaterialCodeModal extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    snackbarClose = (event) => {
+    snackbarClose = (event) => { 
         this.setState({ snackbaropen: false });
     };
 

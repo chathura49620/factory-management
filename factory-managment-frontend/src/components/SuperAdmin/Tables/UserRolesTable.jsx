@@ -11,7 +11,7 @@ const UserRolesTable = ({ filteredItems}) => {
       </thead>
       <tbody>
         {filteredItems.map((i) => (
-          <tr
+          <tr 
             key={i._id}
            
           >

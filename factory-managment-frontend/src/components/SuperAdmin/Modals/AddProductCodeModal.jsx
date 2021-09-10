@@ -10,7 +10,7 @@ import { Redirect } from 'react-router-dom';
 export class AddProductCodeModal extends Component {
     constructor(props) {
         super(props);
-        this.state = { 
+        this.state = {  
             snackbaropen: false, 
             snackbarmsg: '',
             categories: [],

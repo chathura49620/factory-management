@@ -10,7 +10,7 @@ export class AddCategoryModal extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            snackbaropen: false, 
+            snackbaropen: false,  
             snackbarmsg: '',
             CategoryNameError:''
              

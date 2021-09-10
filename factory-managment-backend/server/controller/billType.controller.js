@@ -8,7 +8,7 @@ exports.create = (req,res)=>{
         return;
     }
 
-    // new category
+    // new category    
     
     const billT = new billType({
         billType : req.body.billType,

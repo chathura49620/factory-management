@@ -138,7 +138,7 @@ class Dashboard extends Component {
                             <Route path='/bills' exact component={Bills} />
                            
                         </div>
-                    );
+                    ); 
                 }if(user_role == 'production team member'){
                 return (
                     <div>

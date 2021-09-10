@@ -10,7 +10,7 @@ export class EditBillModal extends Component {
         super(props);
         this.state = { snackbaropen: false, snackbarmsg: '',  BillType:[]};
         this.handleSubmit = this.handleSubmit.bind(this);
-    }
+    } 
 
     componentDidMount() {
         axios

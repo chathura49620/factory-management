@@ -34,7 +34,7 @@ class Bills extends Component {
                         onClick={() => this.setState({ addModalShow: true })}
                     >Add Bill
                     </Button>
-                    <AddNewBillModal
+                    <AddNewBillModal 
                         show={this.state.addModalShow}
                         onHide={AddModelClose}
                     />

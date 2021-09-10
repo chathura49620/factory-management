@@ -9,7 +9,7 @@ import { Redirect } from 'react-router-dom';
 export class AddNewBillTypeModal extends Component {
     constructor(props) {
         super(props);
-        this.state = {
+        this.state = { 
             snackbaropen: false, 
             snackbarmsg: '',
             CategoryNameError:''

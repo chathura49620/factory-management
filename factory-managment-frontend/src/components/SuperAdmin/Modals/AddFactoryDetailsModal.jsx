@@ -12,7 +12,7 @@ export class AddFactoryDetailsModal extends Component {
         this.state = { 
             snackbaropen: false, 
             snackbarmsg: '',
-            companyNameError:'',
+            companyNameError:'', 
             companyAddressError:'',
             ownerNameError:'',
             mainProductError:'',
