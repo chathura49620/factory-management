@@ -9,7 +9,7 @@ exports.create = (req,res)=>{
     }
 
     // new factoryDetails
-    
+       
     const facDetails = new factoryDetails({ 
         companyName : req.body.companyName,
         companyAddress : req.body.companyAddress,

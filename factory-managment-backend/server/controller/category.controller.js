@@ -9,7 +9,7 @@ exports.create = (req,res)=>{
     }   
 
     // new category
-    
+       
     const cat = new category({  
         categoryName : req.body.categoryName,
         status : req.body.status

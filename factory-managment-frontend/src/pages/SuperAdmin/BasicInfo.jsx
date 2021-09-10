@@ -11,7 +11,7 @@ class BasicInfo extends Component  {
     this.handleSubmit = this.handleSubmit.bind(this);
 }  
 
-  componentDidMount() {
+  componentDidMount() { 
     axios
     .get("http://localhost:5000/api/factory-details")  
     .then((result) => {

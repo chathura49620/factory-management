@@ -1,26 +1,20 @@
 import React, { Component } from 'react';
 import { Modal, Button, Row, Col, Form, FormGroup } from 'react-bootstrap';
-import axios from "axios";
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import swal from 'sweetalert';
 import { Redirect } from 'react-router-dom';
 
+ 
 
-<<<<<<< HEAD
-export class AddNewBillModal extends Component {      
+export class AddMaterialCodeModal extends Component {
     constructor(props) {
-=======
-export class AddNewBillModal extends Component {   
-    constructor(props) { 
->>>>>>> IT19048338
         super(props);
         this.state = {
-            snackbaropen: false, 
+            snackbaropen: false,  
             snackbarmsg: '',
-            CategoryNameError:'',
-            BillType:[],
-             
+            materialNameError:'',
+            materialCodeError:''
         };
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -29,22 +23,11 @@ export class AddNewBillModal extends Component {
         this.setState({ snackbaropen: false });
     };
 
-    componentDidMount() {
-        axios
-          .get("http://localhost:5000/api/bill-type")
-          .then((result) => {
-            const BillType = result.data;
-    
-            this.setState({ BillType: BillType });
-          })
-          .catch((err) => console.log(err.message));
-      }         
-
     handleSubmit(event) {
         event.preventDefault();
-        const isValid = this.validate();
-        // if(isValid){
-            fetch('http://localhost:5000/api/bills', {
+        const isValid = this.validate(event);
+        if(isValid){
+            fetch('http://localhost:5000/api/meterial-code/', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -52,43 +35,55 @@ export class AddNewBillModal extends Component {
                     'username': 'chathura'
                 },
                 body: JSON.stringify({
-                    billNo: event.target.billNo.value,
-                    billType: event.target.billType.value,
-                    amount: event.target.amount.value,
-                    billDate: event.target.billDate.value
+                    materialName: event.target.materialName.value,
+                    materialCode: event.target.materialCode.value,
+                    status: event.target.status.value
                 })
             })
                 .then(res => res.json())
                 .then((result) => {
                     swal({
-                        title: "Bill  Added Succesfully",
+                        title: "Material Code Added Succesfully",
                         icon: "success",
                         button: "Done",
-                    }); 
-                    this.setState({CategoryNameError:''})
+                    });
+                    this.setState({
+                        materialNameError: '',
+                        materialCodeError:''
+        
+                    }) 
                     setTimeout(function() {
                         window.location.reload(); 
-                      }.bind(this), 1000);
+                    }.bind(this), 1500); 
                 }, (error) => {
                     this.setState({ snackbaropen: true, snackbarmsg: 'Failed' })
                 }
 
                 )
-        // }
+        }
     }
 
-    validate(){
-        let CategoryNameError = "";
-
-        if(!this.state.CategoryNameError){
-            CategoryNameError = "Category Name Cannot Be Blank"
+    validate(event){
+        let materialNameError = '';
+        let materialCodeError = '';
+        
+        if(!event.target.materialName.value){
+            materialNameError = "Material Name  Cannot Be Blank"
         }
+        if(!event.target.materialCode.value){
+            materialCodeError = "Material Code Cannot Be Blank"
+        }
+        
 
-        if(CategoryNameError){
-            this.setState({CategoryNameError:CategoryNameError})
+        if(materialNameError || materialCodeError){
+         
+            this.setState({
+                materialNameError: materialNameError,
+                materialCodeError:materialCodeError
+
+            })
             return false;
         }
-
         return true;
     }
 
@@ -113,7 +108,7 @@ export class AddNewBillModal extends Component {
                 >
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title-vcenter">
-                            Add Bill 
+                            Add Material Code
               </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
@@ -122,33 +117,26 @@ export class AddNewBillModal extends Component {
                             <Col sm={6}>
                                 <Form onSubmit={this.handleSubmit}>
                                     <Form.Group controlId="name">
-                                        <Form.Label>Bill No</Form.Label>
-                                        <Form.Control type="text" name="billNo" required placeholder="Bill No"  />
-                                          <div style={{background:"#f8d7da"}}>{this.state.CategoryNameError}</div>
-                                    </Form.Group>
-                                    <Form.Group>
-                                        <Form.Label>Bill Type</Form.Label>
-                                        <Form.Control as="select" required name="billType">
-                                        {this.state.BillType.map((i) => (
-                                            <option key={i._id}
-                                                    >{i.billType}</option>
-                                        ))}
-                                        </Form.Control>
+                                        <Form.Label>Material Name</Form.Label>
+                                        <Form.Control type="text" name="materialName"  placeholder="Material Name" />
+                                        <div style={{background:"#f8d7da"}}>{this.state.materialNameError}</div>
                                     </Form.Group>
                                     <Form.Group controlId="name">
-                                        <Form.Label>Amount</Form.Label>
-                                        <Form.Control type="text" name="amount" required placeholder="Amount"  />
-                                          <div style={{background:"#f8d7da"}}>{this.state.CategoryNameError}</div>
+                                        <Form.Label>Material Code</Form.Label>
+                                        <Form.Control type="text" name="materialCode"  placeholder="Material Name" />
+                                        <div style={{background:"#f8d7da"}}>{this.state.materialCodeError}</div>
                                     </Form.Group>
-                                    <Form.Group controlId="startDate">
-                                        <Form.Label>Date</Form.Label>
-                                        <Form.Control type="date" name="billDate" required placeholder="Bill Date" />
-                                        <div style={{background:"#f8d7da"}}>{this.state.startDate}</div>
+                                    <Form.Group>
+                                        <Form.Label>Status</Form.Label>
+                                        <Form.Control as="select" required name="status">
+                                            <option selected>ACTIVE</option>
+                                            <option>INACTIVE</option>
+                                        </Form.Control>
                                     </Form.Group>
-                                    <br></br>
+                                    <br />
                                     <Form.Group>
                                         <Button  style={{ backgroundColor: "#7121AD", color: "white" }} variant="primary" type="submit" >
-                                            Add Bill
+                                            Add Material Code
                                         </Button>
                                     </Form.Group>
                                 </Form>

@@ -43,7 +43,7 @@ class ProductCodes extends Component {
           <div className="col">
             <ProductCodesTable filteredItems={this.state.ProductCodes} />
           </div>
-        </div>
+        </div> 
       </React.Fragment>
   );
   }

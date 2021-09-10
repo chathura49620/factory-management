@@ -47,5 +47,5 @@ class MaterialCodes extends Component {
   );
   }   
 };
-    
+     
 export default MaterialCodes;

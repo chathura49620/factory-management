@@ -10,8 +10,12 @@ var schema = new mongoose.Schema({
         type:String,
         required:true
     },
+<<<<<<< HEAD
 
     email:{
+=======
+    email:{ 
+>>>>>>> IT19048338
         type:String,
         required:true
     },

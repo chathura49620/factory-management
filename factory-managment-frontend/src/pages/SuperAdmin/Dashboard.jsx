@@ -77,7 +77,7 @@ class Dashboard extends Component {
     localStorage.removeItem('is_login');
     window.location.reload();
   }
-
+ 
   render() {
     let AddModelClose = () => this.setState({ addModalShow: false })
     return (

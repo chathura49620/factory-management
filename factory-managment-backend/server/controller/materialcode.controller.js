@@ -9,7 +9,7 @@ exports.create = (req,res)=>{
     }
 
     // new materialcode
-    
+       
     const matCode = new materialcode({ 
         materialName : req.body.materialName,
         materialCode : req.body.materialCode,
