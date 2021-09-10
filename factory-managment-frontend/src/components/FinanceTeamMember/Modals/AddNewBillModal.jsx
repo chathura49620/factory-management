@@ -7,7 +7,7 @@ import swal from 'sweetalert';
 import { Redirect } from 'react-router-dom';
 
 
-export class AddNewBillModal extends Component {
+export class AddNewBillModal extends Component {   
     constructor(props) {
         super(props);
         this.state = {
