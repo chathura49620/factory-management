@@ -21,7 +21,7 @@ exports.create = (req,res)=>{
         status : req.body.status
     })
 
-    // save new production round details in the database
+    // save order details in the database
     orderDet
         .save(orderDet)
         .then(data => {
@@ -29,12 +29,14 @@ exports.create = (req,res)=>{
         })
         .catch(err =>{
             res.status(500).send({
-                message : err.message || "Error: Could not add order details."
+                message : err.message || "Error: Could Not Add Order Details."
             });
         });
 
 }
-//retrive and return all new production round details/retrieve a single production round details
+
+
+//retrive and return all new order details/retrieve a single order detail
 exports.find = (req,res) =>{
 
     if(req.query.id){
@@ -43,13 +45,13 @@ exports.find = (req,res) =>{
         orderDetails.findById(id)
         .then(data =>{
             if(!data){
-                res.status(404).send({message:"Could not find order details with ID" + id});
+                res.status(404).send({message:"Could Not Find Order Details With ID" + id});
             }else{
                 res.send(data);
             }
         })
         .catch(err =>{
-            res.status(500).send({message:"Error while retrieving order details with ID" +id})
+            res.status(500).send({message:"Error While Retrieving Order Details With ID" +id})
         })
     }else{
         orderDetails.find()
@@ -62,43 +64,44 @@ exports.find = (req,res) =>{
     }
 }
 
-//update a new Production ROund 
+
+//update order details 
 exports.update = (req,res) => {
     if(!req.body){
         return res
                 .status(400)
-                .send({message:"Data to update can not be empty"})
+                .send({message:"Data To Update Can Not Be Empty"})
     }
 
     const id  = req.body.id;
     orderDetails.findByIdAndUpdate(id, req.body,{useFindAndModify:false})
     .then(data =>{
         if(!data){
-            res.status(400).send({message:"Order Details is not found"});
+            res.status(400).send({message:"Order Details Are Not Found"});
         }else{
             res.send(data);
         }
     })
     .catch(err =>{
-        res.status(500).send({message:"Error while updateting"})
+        res.status(500).send({message:"Error While Order Details Updateting"})
     })
 }
 
-//Delete a leave request  with specified leave details id in the request
+//Delete a order details with a requested order id
 exports.delete = (req,res) => {
     const id  = req.body.id;
 
     orderDetails.findByIdAndDelete(id)
     .then(data=>{
         if(!data){
-            res.status(400).send({message:`Cannot delete order details with $(id).`});
+            res.status(400).send({message:`Can Not Delete Order Details With $(id).`});
         }
         else{
-            res.send({message:"Order Details was deleted"});
+            res.send({message:"Order Details Was Deleted"});
         }
     })
     .catch(err =>{
-        res.status(500).send({message:"Error while Deleting."})
+        res.status(500).send({message:"Error While Deleting Order Details."})
     })
 
 }

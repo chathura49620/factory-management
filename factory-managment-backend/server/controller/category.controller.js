@@ -1,16 +1,16 @@
 var category = require('../model/category.model');
 
 // create and save new category
-exports.create = (req,res)=>{
+exports.create = (req,res)=>{  
     // validate request
-    if(!req.body){
+    if(!req.body){  
         res.status(400).send({ message : req.body});
         return;
-    }
+    }   
 
     // new category
     
-    const cat = new category({
+    const cat = new category({  
         categoryName : req.body.categoryName,
         status : req.body.status
     })
@@ -18,7 +18,7 @@ exports.create = (req,res)=>{
     // save category in the database
     cat
         .save(cat)
-        .then(data => {
+        .then(data => {  
             res.send(data)
         })
         .catch(err =>{
@@ -27,27 +27,27 @@ exports.create = (req,res)=>{
             });
         });
 
-}
+}   
 
 //retrive and return all categories/retive a single category'
 exports.find = (req,res) =>{
 
-    if(req.query.id){
-        const id  = req.query.id;
+    if(req.query.id){  
+        const id  = req.query.id;  
 
         category.findById(id)
-        .then(data =>{
+        .then(data =>{  
             if(!data){
                 res.status(404).send({message:"not found user with id" + id});
             }else{
                 res.send(data);
             }
         })
-        .catch(err =>{
+        .catch(err =>{  
             res.status(500).send({message:"Error while retriving user with id" +id})
         })
     }else{
-        category.find()
+        category.find()  
         .then(cat => {
             res.send(cat)
         })
@@ -56,12 +56,12 @@ exports.find = (req,res) =>{
         })
     }
 }
-
+   
 //update a new identify user by user id
-exports.update = (req,res) => {
-    if(!req.body){
-        return res
-                .status(400)
+exports.update = (req,res) => {  
+    if(!req.body){    
+        return res 
+                .status(400) 
                 .send({message:"Data to update can not be empty"})
     }
 
@@ -96,3 +96,4 @@ exports.delete = (req,res) => {
       res.status(500).send({ message: "Error while Deleting" });
     });
 };
+      

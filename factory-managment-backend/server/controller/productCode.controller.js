@@ -8,18 +8,18 @@ exports.create = (req,res)=>{
         return;
     }
 
-    // new productcode
+    // new productcode 
     
-    const proCode = new productcode({
+    const proCode = new productcode({ 
         productCode : req.body.productCode,
         productCategory : req.body.productCategory,
         status : req.body.status
     })
 
     // save productcode in the database
-    proCode
+    proCode 
         .save(proCode)
-        .then(data => {
+        .then(data => { 
             res.send(data)
         })
         .catch(err =>{
@@ -32,11 +32,11 @@ exports.create = (req,res)=>{
 
 //retrive and return all productcodes/retive a single productcode'
 exports.find = (req,res) =>{
-
+ 
     if(req.query.id){
         const id  = req.query.id;
 
-        productcode.findById(id)
+        productcode.findById(id) 
         .then(data =>{
             if(!data){
                 res.status(404).send({message:"not found product code with id" + id});
@@ -44,12 +44,12 @@ exports.find = (req,res) =>{
                 res.send(data);
             }
         })
-        .catch(err =>{
+        .catch(err =>{ 
             res.status(500).send({message:"Error while retriving product code with id" +id})
         })
     }else{
-        productcode.find()
-        .then(matCode => {
+        productcode.find() 
+        .then(matCode => { 
             res.send(matCode)
         })
         .catch(err =>{
@@ -59,9 +59,9 @@ exports.find = (req,res) =>{
 }
 
 //update a new identify productcode by productcode id
-exports.update = (req,res) => {
+exports.update = (req,res) => { 
     if(!req.body){
-        return res
+        return res 
                 .status(400)
                 .send({message:"Data to update can not be empty"})
     }
@@ -74,7 +74,7 @@ exports.update = (req,res) => {
         }else{
             res.send(data);
         }
-    })
+    }) 
     .catch(err =>{
         res.status(500).send({message:"Error while updateting"})
     })
@@ -91,7 +91,7 @@ exports.delete = (req,res) => {
         }
         else{
             res.send({message:"product code was deleted"});
-        }
+        } 
     })
     .catch(err =>{
         res.status(500).send({message:"Error while Deleting"})
