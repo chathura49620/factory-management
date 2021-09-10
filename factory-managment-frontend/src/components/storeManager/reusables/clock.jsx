@@ -13,7 +13,7 @@ const Clock = () => {
   const date = new Date();
   return (
     <React.Fragment>
-      <div style={{ fontSize: "55px" }}>{clockState}</div>
+      <div style={{ fontSize: "55px", color: "#06846C" }}>{clockState}</div>
       <div style={{ fontSize: "20px" }}>{date.toLocaleDateString()}</div>
     </React.Fragment>
   );
