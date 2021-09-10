@@ -57,20 +57,7 @@ export class AddCategoryModal extends Component {
         }
     }
 
-    validate(){
-        let CategoryNameError = "";
-
-        if(!this.state.CategoryNameError){
-            CategoryNameError = "Category Name Cannot Be Blank"
-        }
-
-        if(CategoryNameError){
-            this.setState({CategoryNameError:CategoryNameError})
-            return false;
-        }
-
-        return true;
-    }
+  
 
     render() {
         return (
@@ -104,7 +91,6 @@ export class AddCategoryModal extends Component {
                                     <Form.Group controlId="name">
                                         <Form.Label>Name</Form.Label>
                                         <Form.Control type="text" name="categoryName"  placeholder="Category Name" />
-                                          <div style={{background:"#f8d7da"}}>{this.state.CategoryNameError}</div>
                                     </Form.Group>
                                     <Form.Group>
                                         <Form.Label>Status</Form.Label>
