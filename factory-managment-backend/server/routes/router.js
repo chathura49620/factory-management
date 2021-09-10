@@ -84,7 +84,6 @@ route.put('/api/order-details/',contoller.orderDetails.update);
 route.delete('/api/order-details/',contoller.orderDetails.delete);
 
 //Feedback Details APIs
-
 route.post('/api/feedback-details/',contoller.feedbackDetails.create);
 route.get('/apifeedback-details/',contoller.feedbackdetails.find);
 
