@@ -1,2 +1,5 @@
 # factory-management
-run npm install in both folders
+
+Branch - IT19189086
+Name - Rahman S.H.
+Function - Employee Management
