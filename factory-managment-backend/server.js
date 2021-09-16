@@ -26,6 +26,7 @@ app.use("/items", itemsRouter);
 app.use("/users", usersRouter);
 app.use("/codes", codesRouter);
 app.use("/category", cateRouter);
+app.use("/api/calendar", require("./server/controller/CalendarController"));
 
 
 
