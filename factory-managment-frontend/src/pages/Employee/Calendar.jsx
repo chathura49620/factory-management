@@ -1,15 +1,23 @@
 import React, { Component } from "react";
-import calendar from './calendar.png'
+import FullCalendar from '@fullcalendar/react' // must go before plugins
+import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
 
-class Calendar extends Component {
-  render(){
+// eslint-disable-next-line import/no-anonymous-default-export
+export default function () {
   return (
-    
-    <div className='home'>
-      <img src={calendar} alt="calendar"/>
-    </div>
-  );
-  }
-};
 
-export default Calendar;
+    
+    <section>
+
+      
+          <FullCalendar
+        plugins={[ dayGridPlugin ]}
+        initialView="dayGridMonth"
+      />
+
+    </section>
+  )
+
+}
+
+

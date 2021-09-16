@@ -2,6 +2,9 @@
 import './App.css';
 import login from './pages/SuperAdmin/login';
 
+import Modal from 'react-modal';
+
+
 
 import EmployeeDashboard from './pages/Employee/EmployeeDashboard';
 import Assignments from './pages/Employee/Assignments';
@@ -23,6 +26,9 @@ import Dashboard from "./pages/Dashboard";
 import SuperAdminSideNav from './components/SuperAdmin/sideNav/Sidebar';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import EmployeeSideNav from './components/Employee/EmpsideNav/EmpSidebar';
+
+
+Modal.setAppElement('#root')
 
 function App() {
   return (
@@ -48,11 +54,12 @@ function App() {
           //employee routes
           <Route path= '/employee-dashboard' exact component={EmployeeDashboard} />
           <Route path= '/assignments' exact component={Assignments}/>
-          <Route path= '/calendar' exact component={Calendar}/>
+          <Route path="/calendar" exact component={Calendar}/>
+          
           <Route path= '/profile' exact component={Profile}/>
           <Route path= '/payments' exact component={Payments}/>
           <Route path= '/leave' exact component={Leave}/>
-         
+          <Calendar/>
        
 
            {/* <Redirect to="/notfound"></Redirect> */}
