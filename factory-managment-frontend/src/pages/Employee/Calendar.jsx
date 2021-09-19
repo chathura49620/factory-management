@@ -64,7 +64,7 @@ export default function () {
             plugins={[ dayGridPlugin ]}
             initialView="dayGridMonth"
             eventAdd={event => handleEventAdd(event)}
-            dateSet={(date) => handleDataSet(date)}
+            dataSet={(date) => handleDataSet(date)}
         />
         </div>
 
