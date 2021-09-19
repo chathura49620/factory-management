@@ -28,7 +28,7 @@ export const SidebarData = [
       },
       {
         title: 'Salaries',
-        path: '',
+        path: '/salaries',
         icon: <IoIcons.IoIosPaper />,
         cName: 'sub-nav'
       },

@@ -48,6 +48,7 @@ import ViewProductList from "./ProductionManager/ViewProductList";
 
 //finance team member routers
 import BillType from "./FinanceTeamMember/BillType";
+import Salaries from "./FinanceTeamMember/Salaries";
 import Bills from "./FinanceTeamMember/Bills";
 import MaterialCost from "./FinanceTeamMember/MaterialCost";
 
@@ -134,6 +135,7 @@ class Dashboard extends Component {
                 }if(user_role == 'finance team member'){
                     return (
                         <div>
+                            <Route path='/salaries' exact component={Salaries} />
                             <Route path='/material-cost' exact component={MaterialCost} />
                             <Route path='/bill-types' exact component={BillType} />
                             <Route path='/bills' exact component={Bills} />
