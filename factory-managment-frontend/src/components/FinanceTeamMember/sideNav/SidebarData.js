@@ -22,7 +22,7 @@ export const SidebarData = [
     subNav: [
       {
         title: 'Material Cost',
-        path: '',
+        path: '/material-cost',
         icon: <IoIcons.IoIosPaper />,
         cName: 'sub-nav'
       },
