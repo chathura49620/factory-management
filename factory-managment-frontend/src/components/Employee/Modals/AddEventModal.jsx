@@ -39,7 +39,7 @@ export default function ({isOpen, onClose, onEventAdded}) {
                     <Datetime value={end} onChange={date => setEnd(date)} />
                 </div>
 
-                <div class="alert alert-info" role="alert">
+                <div className="alert alert-info" role="alert">
                            Make sure to recheck your date values.  
                 </div>
 
