@@ -46,6 +46,10 @@ route.post('/api/material-cost/',contoller.materialCost.create);
 route.get('/api/material-cost/',contoller.materialCost.find);
 route.put('/api/material-cost/',contoller.materialCost.update);
 route.delete('/api/material-cost/',contoller.materialCost.delete);
+
+// Financial Team Member Temp Salaries APIs
+route.post('/api/temp-salaries/',contoller.tempSalaries.create);
+route.get('/api/temp-salaries/',contoller.tempSalaries.find);
    
 
 //Super Admin User Role APIs
