@@ -33,7 +33,8 @@ export class EditMaterialCostBillModal extends Component {
                 'username': 'chathura'
             },
             body: JSON.stringify({
-                matirialCode: event.target.materialcode.value,
+                    id: this.props.id,
+                    matirialCode: event.target.materialcode.value,
                     matirialBillNo: event.target.billno.value,
                     date: event.target.billdate.value,
                     amount: event.target.amount.value,
