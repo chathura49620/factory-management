@@ -28,19 +28,24 @@ route.delete('/api/product-code/',contoller.productcode.delete);
 
 
 
-// Super Admin Bill Type APIs
+//Financial Team Member Bill Type APIs
 route.post('/api/bill-type/',contoller.billType.create);
 route.get('/api/bill-type/',contoller.billType.find);
 route.put('/api/bill-type/',contoller.billType.update);
 route.delete('/api/bill-type/',contoller.billType.delete);
 
 
-// Super Admin Bills APIs
+// Financial Team Member Bills APIs
 route.post('/api/bills/',contoller.bills.create);
 route.get('/api/bills/',contoller.bills.find);
 route.put('/api/bills/',contoller.bills.update);
 route.delete('/api/bills/',contoller.bills.delete);
 
+// Financial Team Member Bills APIs
+route.post('/api/material-cost/',contoller.materialCost.create);
+route.get('/api/material-cost/',contoller.materialCost.find);
+route.put('/api/material-cost/',contoller.materialCost.update);
+route.delete('/api/material-cost/',contoller.materialCost.delete);
    
 
 //Super Admin User Role APIs

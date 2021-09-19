@@ -1,26 +1,25 @@
 const mongoose = require("mongoose");
 
 var schema = new mongoose.Schema({
-    billNo:{
+    matirialCode:{
         type:String,
         required:true
     },
-    billType:{
+    matirialBillNo:{
         type:String,
         required:true
     },   
+    date:{
+        type:String,
+        required:true
+    },
     amount:{
         type:String,
         required:true
     },
-    billDate:{
-        type:Date,
-        required:true
-    },
-    status:String,
 })
 
 
-const bills = mongoose.model("bills", schema);
+const matirialCost = mongoose.model("matirialCost", schema);
 
-module.exports = bills;
+module.exports = matirialCost;
