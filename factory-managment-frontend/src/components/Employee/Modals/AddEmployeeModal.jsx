@@ -91,7 +91,7 @@ export class AddEmployeeModal extends Component {
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title-vcenter">
                             Add a Leave Request 
-              </Modal.Title>
+                        </Modal.Title>
                     </Modal.Header>
 
                     <div class="alert alert-info" role="alert">
