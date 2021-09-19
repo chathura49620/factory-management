@@ -53,7 +53,7 @@ export default function () {
             className="btn btn-lg"
             type="button" 
             onClick={() => setModalOpen(true)}>
-                Add Event
+                Add an Event
         </button>
       </ButtonToolbar>
         
