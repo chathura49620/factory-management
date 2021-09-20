@@ -36,6 +36,13 @@ export const EmpSidebarData = [
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
   },
+  {
+    title: 'Add Previous Production Round',
+    path: '/view-production-rounds',
+    icon: <FaIcons.FaEnvelopeOpenText />,
+    iconClosed: <RiIcons.RiArrowDownSFill />,
+    iconOpened: <RiIcons.RiArrowUpSFill />,
+  },
 
 
   {

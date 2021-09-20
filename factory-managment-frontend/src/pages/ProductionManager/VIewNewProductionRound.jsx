@@ -2,13 +2,15 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Table, Button, ButtonToolbar } from 'react-bootstrap';
 import {ProductonRoundTable} from "../../components/ProductionManager/Tabales/ProductonRoundTable";
+import SearchBox from "../../components/ProductionManager/common/searchBox";
 
 
 
 class VIewNewProductionRound extends Component {
   state = {
     productionRound: [],
-    addModalShow: false
+    addModalShow: false,
+    searchQuery: "",
   };
 
 componentDidMount() {
@@ -23,7 +25,45 @@ componentDidMount() {
   }
 
 
+
+  handleSearch = (query) => {
+    this.setState({
+      searchQuery: query,
+      
+    });
+  };
+
+  filteredData() {
+    const { searchQuery, productionRound } = this.state;
+
+    let filtered = [];
+
+    if(searchQuery){
+ filtered = productionRound.filter(r => (
+
+  r.productCategory.toLowerCase().startsWith(searchQuery.toLowerCase())
+
+    ))
+
+    }else{
+
+
+      filtered = productionRound
+    }
+
+   
+   
+
+    return filtered;
+  }
+
   render() {
+
+//take the filtered list
+let filtered = this.filteredData()
+
+console.log(filtered);
+
     let AddModelClose = () => this.setState({ addModalShow: false })
     return (
       <React.Fragment>
@@ -41,6 +81,11 @@ componentDidMount() {
         
         
         <div className="row">
+          <div className="row">
+            <div className="col-4"></div>
+            <div className="col"><SearchBox onChange={this.handleSearch} placeHolder="hhhhhy"/></div>
+            <div className="col-3"></div>
+          </div>
           <div className="col-10"></div>
           <div className="col">
            <ButtonToolbar>
@@ -56,7 +101,8 @@ componentDidMount() {
         <div className="row">
           <div className="col-2"></div>
           <div className="col">
-          <ProductonRoundTable productionRound={this.state.productionRound} />
+            {/**pass the filtered data */}
+          <ProductonRoundTable productionRound={filtered} />
 
           </div>
         </div>
