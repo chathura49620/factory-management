@@ -21,7 +21,7 @@ connectDB();
 
 
 // //load routers
-// app.use("/", require("./server/routes/router"));
+app.use("/", require("./server/routes/router"));
 // app.use("/items", itemsRouter);
 // app.use("/users", usersRouter);
 // app.use("/codes", codesRouter);

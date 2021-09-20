@@ -19,8 +19,8 @@ exports.create = (req,res)=>{
     })
 
     // save feedback details in the database
-    orderDet
-        .save(orderDet)
+    feedDet
+        .save(feedDet)
         .then(data => {
             res.send(data)
         })
