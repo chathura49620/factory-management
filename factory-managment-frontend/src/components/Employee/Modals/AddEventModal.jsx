@@ -3,6 +3,8 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
 import Datetime from "react-datetime";
+import { ButtonToolbar } from 'react-bootstrap';
+
 
 export default function ({isOpen, onClose, onEventAdded}) {
 
@@ -26,25 +28,47 @@ export default function ({isOpen, onClose, onEventAdded}) {
         <Modal isOpen={isOpen} onRequestClose={onClose}>
             <form onSubmit={onSubmit}>
 
-                
-                <input placeholder="Title" value={title} onChange={ e => setTitle(e.target.value)}/>
+                <div>
+                    <h2 class="font-weight-bold">
+                        Add an Event to your Calendar 
+                    </h2>
+                </div>
+
+
+
+                <div>
+                    <label>Event Name</label>
+                    <input class="form-control" type="text" placeholder="Your Event Title" name="title" value={title} required onChange={ e => setTitle(e.target.value)}/>
+                </div>
+
+                <br></br>
 
                 <div>
                      <label>Start Date</label>
-                    <Datetime value={start} onChange={date => setStart(date)} />
+                    <Datetime value={start} name="start" required onChange={date => setStart(date)} />
                 </div>
+
+                <br></br>
 
                 <div>
                      <label>End Date</label>
-                    <Datetime value={end} onChange={date => setEnd(date)} />
+                    <Datetime value={end} name="end" required onChange={date => setEnd(date)} />
                 </div>
+
+                <br></br>
 
                 <div className="alert alert-info" role="alert">
-                           Make sure to recheck your date values.  
+                           Make sure to recheck your event values.  
                 </div>
 
-                <button type="submit">Add Event</button>
-
+                <ButtonToolbar>
+                    <button 
+                        type="submit"
+                        style={{ backgroundColor: "#7121AD", color: "white" }}
+                        className="btn btn-lg">
+                            Add Event
+                    </button>
+                </ButtonToolbar>
 
                 
             </form>

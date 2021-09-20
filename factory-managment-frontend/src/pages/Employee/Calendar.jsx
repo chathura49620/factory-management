@@ -46,10 +46,10 @@ export default function () {
     
     <section>
      
-      
+    <br></br>
      <ButtonToolbar>
         <button 
-            style={{ backgroundColor: "#7121AD", color: "white" }}
+            style={{ backgroundColor: "#7121AD", color: "white"}}
             className="btn btn-lg"
             type="button" 
             onClick={() => setModalOpen(true)}>
