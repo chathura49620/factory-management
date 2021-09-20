@@ -66,6 +66,13 @@ route.get('/api/assignment-details/',contoller.assignmentDetails.find);
 route.put('/api/assignment-details/',contoller.assignmentDetails.update);
 route.delete('/api/assignment-details/',contoller.assignmentDetails.delete);
 
+//employee payment APIs
+route.post('/api/payment-details/',contoller.paymentDetails.create);
+route.get('/api/payment-details/',contoller.paymentDetails.find);
+route.put('/api/payment-details/',contoller.paymentDetails.update);
+route.delete('/api/payment-details/',contoller.paymentDetails.delete);
+
+
 module.exports = route;
 //New Production Round Details APIs
 route.post('/api/newProRound-details/',contoller.newProductionRoundDetails.create);
