@@ -53,7 +53,7 @@ handlePaymentsDelete = (payments) => {
         
 
         <br></br>
-        <h2 className="heading">My Payments</h2>
+        <h2 className="heading">My Saved Bank Details</h2>
 
         {/* <div className="center">
             <img src={leavepic} alt="leavepic"/>

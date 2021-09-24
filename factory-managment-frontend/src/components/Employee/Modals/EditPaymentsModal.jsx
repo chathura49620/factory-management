@@ -37,7 +37,7 @@ export class EditPaymentsModal extends Component {
             .then(res => res.json())
             .then((result) => {
                 swal({
-                    title: "Employee Leave Updated Succesfully",
+                    title: "Bank Details Updated Succesfully",
                     icon: "success",
                     button: "Done",
                   });

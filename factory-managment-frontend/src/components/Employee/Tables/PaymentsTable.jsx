@@ -44,7 +44,7 @@ export class PaymentsTable extends Component{
         }).then(res => res.json())
         .then((result) => {
           swal({
-            title: "Employee Leave Deleted Succesfully",
+            title: "Bank Details Deleted Succesfully",
             icon: "success",
             button: "Done",
           }); 
