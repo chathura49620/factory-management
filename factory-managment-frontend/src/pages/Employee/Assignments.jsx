@@ -5,6 +5,8 @@ import { EditAssignmentModal } from "../../components/Employee/Modals/EditAssign
 import { AssignmentTable } from "../../components/Employee/Tables/AssignmentTable";
 import { Table, Button, ButtonToolbar } from 'react-bootstrap';
 import { computeStyles } from "@popperjs/core";
+import "./styles.css"
+import assignmentpic from "../../pages/assets/assignmentpic.jpg"
 
 class Assignment extends Component {
   state = {
@@ -53,12 +55,19 @@ handleAssignmentDelete = (assignment) => {
   return (
     <React.Fragment>
 
-        <h1 className="mb-5">Assignments Requests</h1>
-        <ButtonToolbar>
+        <br></br>
+
+        <h2 className="heading">My Submitted Assignments</h2>
+
+        <div className="center">
+            <img src={assignmentpic} alt="assignmentpic"/>
+         </div>
+
+          <ButtonToolbar>
                     <button style={{ backgroundColor: "#7121AD", color: "white" }}
                     className="btn btn-lg"
                     onClick={() => this.setState({ addModalShow: true })}
-                    >Add Assignment Request
+                    >Add a Complete Assignment 
                     </button>
                     <AddAssignmentModal
                         show={this.state.addModalShow}

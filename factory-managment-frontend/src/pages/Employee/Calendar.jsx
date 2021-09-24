@@ -8,6 +8,8 @@ import AddEventModal from "../../components/Employee/Modals/AddEventModal";
 import { ButtonToolbar } from 'react-bootstrap';
 import axios from "axios";
 import moment from "moment"
+import "./styles.css"
+import calendarpic from "../../pages/assets/calendarpic.jpg"
 
 
 export default function () {
@@ -39,12 +41,17 @@ export default function () {
     
   }
 
-
-
   return (
 
     
     <section>
+      <br></br>
+
+      <h2 className="heading">My Events</h2>
+
+        <div className="center">
+            <img src={calendarpic} alt="calendarpic"/>
+        </div>
      
     <br></br>
      <ButtonToolbar>
@@ -56,6 +63,8 @@ export default function () {
                 Add an Event
         </button>
       </ButtonToolbar>
+
+      <br></br>
         
         <div style={{position: "relative", zIndex: 0}}>
         <FullCalendar

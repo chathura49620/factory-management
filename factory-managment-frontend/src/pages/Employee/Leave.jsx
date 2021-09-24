@@ -3,6 +3,8 @@ import axios from "axios";
 import { AddEmployeeModal } from "../../components/Employee/Modals/AddEmployeeModal";
 import {LeaveTable} from "../../components/Employee/Tables/LeaveTable";
 import { ButtonToolbar } from 'react-bootstrap';
+import leavepic from "../../pages/assets/leavepic.jpg"
+import "./styles.css"
 
 class Leave extends Component {
   state = {
@@ -48,19 +50,27 @@ handleLeaveDelete = (leave) => {
   return (
     <React.Fragment>
 
-        <h1 className="mb-5">Leave Requests</h1>
+        
+
+        <br></br>
+        <h2 className="heading">My Leave Requests</h2>
+
+        <div className="center">
+            <img src={leavepic} alt="leavepic"/>
+         </div>
+        
         <ButtonToolbar>
                     <button style={{ backgroundColor: "#7121AD", color: "white" }}
-                    className="btn btn-lg"
-                    onClick={() => this.setState({ addModalShow: true })}
-                    >Add Leave Request
+                            className="btn btn-lg"
+                            onClick={() => this.setState({ addModalShow: true })}
+                    >       Add your Leave Request.
                     </button>
                     <AddEmployeeModal
                         show={this.state.addModalShow}
                         onHide={AddModelClose}
                         
                     />
-          </ButtonToolbar>
+        </ButtonToolbar>
             <br></br><br></br>
 
         <div className="row">
