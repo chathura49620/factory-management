@@ -40,13 +40,13 @@ class Item extends Component {
       .get("http://localhost:5000/items/")
       .then((result) => {
         const items = result.data;
-
+        this.setState({ items: items });
+        console.log(items);
         axios.get("http://localhost:5000/category/").then((result) => {
           const categoryObjs = result.data;
           console.log(categoryObjs);
           //this.setState({categoryObjects: categoryObjs});
           this.setState({
-            items: items,
             categoryObjects: categoryObjs,
           });
         });
@@ -228,10 +228,6 @@ class Item extends Component {
     return (
       <React.Fragment>
         <div style={{ marginLeft: "30px" }}>
-          <DialogBox
-            show={this.state.showTaskDialog}
-            deleteOrNot={this.deleteOrNot}
-          />
           <div className="row">
             <div className="col-2"></div>
             <div className="col">
@@ -259,7 +255,7 @@ class Item extends Component {
             <div className="col">
               <Link
                 to="/it/new/myItem"
-                className="btn  my-4"
+                className="btn mt-3 mb-1"
                 style={{ backgroundColor: "#7121AD", color: "white" }}
               >
                 New Item
@@ -270,6 +266,7 @@ class Item extends Component {
           <div className="row">
             <div className="col-2"></div>
             <div className="col">
+              <h2 className="mt-3">Items</h2>
               <Table
                 filteredItems={pageItems}
                 onItemDelete={this.handleDelete}
@@ -296,7 +293,7 @@ class Item extends Component {
         <FormPopup
           openPopup={this.state.openPopup}
           onClose={this.closeOpenPopup}
-          title="Edit Item"
+          title="Update Item"
         >
           <EditItemForm
             itemOb={this.state.item}

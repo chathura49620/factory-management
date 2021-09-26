@@ -53,18 +53,14 @@ class EditItemForm extends FormSuper {
       AddedDate: this.props.itemOb.iAddedDate,
     };
 
-    axios.get("http://localhost:5000/codes/material/").then((result) => {
-      const materialCodesObjs = result.data;
-      console.log(materialCodesObjs);
-      axios.get("http://localhost:5000/category/").then((result) => {
-        const categoryObjs = result.data;
-        console.log(categoryObjs);
-        //this.setState({categoryObjects: categoryObjs});
-        this.setState({
-          materialCodeObjects: materialCodesObjs,
-          categoryObjects: categoryObjs,
-          data: ob,
-        });
+    this.setState({ data: ob });
+
+    axios.get("http://localhost:5000/category/").then((result) => {
+      const categoryObjs = result.data;
+      console.log(categoryObjs);
+      //this.setState({categoryObjects: categoryObjs});
+      this.setState({
+        categoryObjects: categoryObjs,
       });
     });
 

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 const ListGroup = ({ genres, onGenreSelect, selectedGenre }) => {
   return (
-    <ul className="list-group list-group-horizontal my-4">
+    <ul className="list-group list-group-horizontal mt-3">
       {genres.map((g) => (
         <li
           onClick={() => onGenreSelect(g)}

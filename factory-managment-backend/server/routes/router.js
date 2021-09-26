@@ -2,7 +2,6 @@ const express = require("express");
 const route = express.Router();
 
 const contoller = require("../controller/controller");
-const router = require("./items");
 
 //store Manager APIs
 route.get("/", contoller.items.findAllItems);
@@ -11,31 +10,29 @@ route.post("/add", contoller.items.addNewItems);
 route.delete("/record/:date", contoller.items.deleteItemRecords);
 route.delete("/multiplerecords/:date", contoller.items.deleteMultipleRecords);
 route.delete("/:id", contoller.items.deleteOneOfId);
-router.delete(
+route.delete(
   "/records/specific/:id",
   contoller.items.deleteOneOfIdFromItemRecords
 );
-router.delete(
+route.delete(
   "/specific/:supplier/:date",
   contoller.items.deleteAccordingToSNameAndDate
 );
-router.get("/:id", contoller.items.getSpecificItem);
-router.get("/record/:date", contoller.items.getAllDataOfSpecificDate);
-router.get(
-  "/multiplerecords/:date",
-  contoller.items.getAllDataOfDateOnIRecords
-);
-router.post("/update/:id", contoller.items.updateOneItem);
-router.post("/update/record/:date", contoller.items.updateMultipleOfDate);
-router.post("/update/quantity/itemRecord", contoller.items.updateOneOnIRecords);
-router.get(
+route.get("/:id", contoller.items.getSpecificItem);
+route.get("/record/:date", contoller.items.getAllDataOfSpecificDate);
+route.get("/multiplerecords/:date", contoller.items.getAllDataOfDateOnIRecords);
+route.post("/update/:id", contoller.items.updateOneItem);
+route.post("/update/record/:date", contoller.items.updateMultipleOfDate);
+route.post("/update/quantity/itemRecord", contoller.items.updateOneOnIRecords);
+route.get(
   "/object/data/:supplier/:date",
   contoller.items.findOneAccordingToDateAndSupplier
 );
-router.delete(
+route.delete(
   "/object/data/:supplier/:date",
   contoller.items.deleteOneAccordingToDateAndSup
 );
+route.post("/update/unique/record/:id", contoller.items.updateItemRecord);
 
 //Super Admin Category APIs
 route.post("/api/categories", contoller.category.create);

@@ -1,26 +1,21 @@
 import React, { useState } from "react";
 import userPic from "../../../pages/assets/pem56.png";
 
-const ProfileTable = ({ userOb, onSetPopup }) => {
+const ProfileTable = ({ userOb, onSetPopup, onSetReasonDeletePopup }) => {
   return (
     <React.Fragment>
       <table
         className="table table-bordered table-sm my-3"
         style={{ width: "1000px" }}
       >
-        <thead>
-          <tr style={{ backgroundColor: "#7121AD", color: "white" }}>
-            <th
-              scope="col"
-              colSpan="2"
-              style={{ textAlign: "center", fontSize: 20 }}
-            >
-              User Profile
-            </th>
-          </tr>
-        </thead>
+        <thead></thead>
 
         <tbody>
+          <tr>
+            <td colSpan="2" style={{ textAlign: "center", fontSize: 20 }}>
+              <img src={userPic} alt="" width="150" height="150" />
+            </td>
+          </tr>
           <tr>
             <td style={{ fontWeight: "bold" }}>Full name</td>
             <td>{userOb.FullName}</td>
@@ -97,6 +92,7 @@ const ProfileTable = ({ userOb, onSetPopup }) => {
           <button
             className="btn"
             style={{ backgroundColor: "#BA0D32 ", color: "white" }}
+            onClick={() => onSetReasonDeletePopup(userOb.FullName, userOb._id)}
           >
             Delete Profile
           </button>

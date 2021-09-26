@@ -3,13 +3,56 @@ import Clock from "../../components/storeManager/reusables/clock";
 import axios from "axios";
 import hello from "../../pages/assets/hello.png";
 import * as IoIcons from "react-icons/io";
+import generatePDF from "../../components/storeManager/utils/reportGenerator";
+import moment from "moment";
+import swal from "sweetalert";
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import { Link } from "react-router-dom";
 
 class SMDashBoard extends Component {
   state = {
+    currentDate: moment(new Date()).format("YYYY-MM-DD"),
+    itemRecords: [],
     numOfProducts: 0,
     numOfMaterials: 0,
     numOfWastedItems: 0,
     numOfReturnedItems: 0,
+    noOfRequests: 0,
+    tickets: [
+      {
+        id: "1",
+        title: "main",
+        request: "myreq",
+        status: "ok",
+        updated_at: "2021-01-01",
+      },
+      {
+        id: "2",
+        title: "main",
+        request: "myreq",
+        status: "ok",
+        updated_at: "2021-01-02",
+      },
+      {
+        id: "3",
+        title: "main",
+        request: "myreq",
+        status: "ok",
+        updated_at: "2021-01-03",
+      },
+      {
+        id: "4",
+        title: "main",
+        request: "myreq",
+        status: "ok",
+        updated_at: "2021-01-04",
+      },
+    ],
   };
 
   componentDidMount() {
@@ -24,9 +67,64 @@ class SMDashBoard extends Component {
 
       this.setState({ numOfProducts: pCount, numOfMaterials: mCount });
     });
+    axios
+      .get(
+        "http://localhost:5000/items/multiplerecords/" + this.state.currentDate
+      )
+      .then((result) => {
+        const records = result.data;
+        this.setState({ itemRecords: records });
+        console.log(records);
+      });
+
+    axios.get("http://localhost:5000/returned/").then((result) => {
+      const rProducts = result.data;
+      const rCount = rProducts.length;
+      this.setState({ numOfReturnedItems: rCount });
+    });
+
+    axios.get("http://localhost:5000/wasted/").then((result) => {
+      const wItems = result.data;
+      const wCount = wItems.length;
+      this.setState({ numOfWastedItems: wCount });
+    });
+
+    axios.get("http://localhost:5000/requests/").then((result) => {
+      const requests = result.data;
+      const reqCount = requests.length;
+
+      this.setState({ noOfRequests: reqCount });
+    });
   }
 
+  handleMonthlyReports = () => {
+    const { currentDate } = this.state;
+    if (currentDate.toLocaleLowerCase().endsWith("29")) {
+      console.log("monthly");
+    } else {
+      swal({
+        text: "Please wait for end of the month.",
+        icon: "warning",
+        timer: "1500",
+      });
+    }
+  };
+
+  handleYearlyReports = () => {
+    const { currentDate } = this.state;
+    if (currentDate.toLocaleLowerCase().endsWith("12-29")) {
+    } else {
+      swal({
+        text: "Please wait for end of the Year.",
+        icon: "warning",
+        timer: "1500",
+      });
+    }
+  };
+
   render() {
+    const { tickets, itemRecords } = this.state;
+    console.log(this.state.currentDate);
     return (
       <React.Fragment>
         <div className="row">
@@ -81,7 +179,15 @@ class SMDashBoard extends Component {
                       color: "#307eaf",
                     }}
                   >
-                    Requestions
+                    <div>
+                      Requestions
+                      <span className="badge rounded-pill bg-primary">
+                        {this.state.noOfRequests}
+                      </span>
+                      <Button size="large">
+                        <Link to="/requests/for/items">Go and check</Link>
+                      </Button>
+                    </div>
                   </div>
                 </div>
 
@@ -89,7 +195,7 @@ class SMDashBoard extends Component {
                   <div className="row">
                     <div
                       className="col-11 col--6"
-                      style={{ textAlign: "center" }}
+                      style={{ textAlign: "center", fontSize: "20px" }}
                     >
                       Report Generation
                     </div>
@@ -106,7 +212,10 @@ class SMDashBoard extends Component {
                       color: "#307eaf",
                     }}
                   >
-                    Daily reports
+                    <button onClick={() => generatePDF(itemRecords)}>
+                      Daily reports
+                    </button>
+
                     <IoIcons.IoIosPaper />
                   </div>
                   <div
@@ -120,7 +229,9 @@ class SMDashBoard extends Component {
                       color: "#307eaf",
                     }}
                   >
-                    Monthly reports
+                    <button onClick={this.handleMonthlyReports}>
+                      Monthly reports
+                    </button>
                     <IoIcons.IoIosPaper />
                   </div>
                   <div
@@ -134,7 +245,9 @@ class SMDashBoard extends Component {
                       color: "#307eaf",
                     }}
                   >
-                    Yearly reports
+                    <button onClick={this.handleYearlyReports}>
+                      Yearly reports
+                    </button>
                     <IoIcons.IoIosPaper />
                   </div>
                 </div>
@@ -147,113 +260,78 @@ class SMDashBoard extends Component {
                 border: "3px solid white",
               }}
             >
-              <div
-                className="col-3"
-                style={{
-                  backgroundColor: "#F0B27A",
-                  height: 130,
-                  borderRight: "3px solid #050139",
-                  display: "flex",
-                  alignItems: "center",
-                  flexDirection: "column",
-                }}
-              >
-                <div>Products</div>
-                <span
-                  style={{
-                    display: "block",
-                    width: "80px",
-                    height: "80px",
-                    textAlign: "center",
-                    borderRadius: "40px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontSize: "20px",
+              <div className="col-3">
+                <Card
+                  sx={{
+                    minWidth: 10,
+                    backgroundColor: "#167092",
+                    maxWidth: 300,
                   }}
                 >
-                  <div>{this.state.numOfProducts}</div>
-                </span>
+                  <CardContent>
+                    <div style={{ color: "white", fontSize: "20px" }}>
+                      Products
+                    </div>
+                    <div style={{ color: "white", fontSize: "20px" }}>
+                      {this.state.numOfProducts}
+                    </div>
+                  </CardContent>
+                </Card>
               </div>
-              <div
-                className="col-3"
-                style={{
-                  backgroundColor: "#06846C",
-                  borderRight: "3px solid #050139",
-                  display: "flex",
-                  alignItems: "center",
-                  flexDirection: "column",
-                }}
-              >
-                <div>Materials</div>
-                <span
-                  style={{
-                    display: "block",
-                    width: "80px",
-                    height: "80px",
-                    textAlign: "center",
-                    borderRadius: "40px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontSize: "20px",
+              <div className="col-3">
+                <Card
+                  sx={{
+                    minWidth: 10,
+                    backgroundColor: "#06846C",
+                    maxWidth: 300,
                   }}
                 >
-                  {this.state.numOfMaterials}
-                </span>
+                  <CardContent>
+                    <div style={{ color: "white", fontSize: "20px" }}>
+                      Materials
+                    </div>
+                    <div style={{ color: "white", fontSize: "20px" }}>
+                      {this.state.numOfMaterials}
+                    </div>
+                  </CardContent>
+                </Card>
               </div>
-              <div
-                className="col-3"
-                style={{
-                  backgroundColor: "#F0B27A",
-                  borderRight: "3px solid #050139",
-                  display: "flex",
-                  alignItems: "center",
-                  flexDirection: "column",
-                }}
-              >
-                <div>Wasted Items</div>
-                <span
-                  style={{
-                    display: "block",
-                    width: "80px",
-                    height: "80px",
-                    textAlign: "center",
-                    borderRadius: "40px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontSize: "20px",
+
+              <div className="col-3">
+                <Card
+                  sx={{
+                    minWidth: 10,
+                    backgroundColor: "#DE6F27",
+                    maxWidth: 300,
                   }}
                 >
-                  {this.state.numOfWastedItems}
-                </span>
+                  <CardContent>
+                    <div style={{ color: "white", fontSize: "20px" }}>
+                      Returned products
+                    </div>
+                    <div style={{ color: "white", fontSize: "20px" }}>
+                      {this.state.numOfReturnedItems}
+                    </div>
+                  </CardContent>
+                </Card>
               </div>
-              <div
-                className="col-3"
-                style={{
-                  backgroundColor: "#06846C",
-                  display: "flex",
-                  alignItems: "center",
-                  flexDirection: "column",
-                }}
-              >
-                <div> Returned products</div>
-                <span
-                  style={{
-                    display: "block",
-                    width: "80px",
-                    height: "80px",
-                    textAlign: "center",
-                    borderRadius: "40px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontSize: "20px",
+              <div className="col-3">
+                <Card
+                  sx={{
+                    minWidth: 10,
+                    backgroundColor: "#AF2356 ",
+                    maxWidth: 300,
                   }}
                 >
-                  {this.state.numOfReturnedItems}
-                </span>
+                  <CardContent>
+                    <div style={{ color: "white", fontSize: "20px" }}>
+                      Wasted Items
+                    </div>
+                    <div style={{ color: "white", fontSize: "20px" }}>
+                      {this.state.numOfWastedItems}
+                    </div>
+                  </CardContent>
+                </Card>
               </div>
             </div>
 
@@ -279,29 +357,7 @@ class SMDashBoard extends Component {
                   border: "3px solid white",
                   boxShadow: "1px 1px 1px #77BFC7, -5px -5px 13px #77BFC7",
                 }}
-              >
-                <ol>
-                  <li>
-                    parm Lorem ipsum dolor sit amet consectetur adipisicing
-                    elit. Omnis, blanditiis nobis sequi, pariatur dolores iure
-                    laboriosam rem corporis repellat fuga harum saepe voluptatem
-                    ipsa doloremque aliquam quidem expedita vel unde. loremm
-                  </li>
-                  <li>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Minima delectus dicta culpa deserunt veritatis laboriosam
-                    aspernatur nihil placeat, praesentium voluptatum repellendus
-                    nisi fuga voluptates, sapiente sunt! Nulla quia deleniti
-                    nesciunt.
-                  </li>
-                  <li>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Quia assumenda aliquam, id illum facere tempora provident
-                    temporibus molestias repellat nobis dicta unde, veritatis,
-                    eos cum. Reprehenderit consectetur iusto quos neque.
-                  </li>
-                </ol>
-              </div>
+              ></div>
             </div>
           </div>
         </div>

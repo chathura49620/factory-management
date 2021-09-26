@@ -4,6 +4,8 @@ import axios from "axios";
 import FormPopup from "../../components/storeManager/reusables/formpopup";
 import FormProfileEdit from "../../components/storeManager/forms/formprofileedit";
 import userPic from "../../pages/assets/pem56.png";
+import NewDeleteProfileFeedback from "../../components/storeManager/forms/newdeleteprofilefeedback";
+import swal from "sweetalert";
 
 class MyProfile extends Component {
   state = {
@@ -27,6 +29,8 @@ class MyProfile extends Component {
     },
 
     openPopup: false,
+    openReasonDeletePopup: false,
+    deleteUserName: "",
   };
 
   componentDidMount() {
@@ -82,8 +86,32 @@ class MyProfile extends Component {
   };
 
   closePopAndSetState = (jsonOb) => {
-    //console.log("close and set", jsonOb);
     this.setState({ user: jsonOb, openPopup: false });
+  };
+
+  setReasonDeleteOpenPopup = (name, id) => {
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((result) => {
+      if (result) {
+        this.setState({
+          openReasonDeletePopup: true,
+          deleteUserName: name,
+        });
+      } //end of if
+    });
+  };
+
+  closeOpenReasonDeletePopup = () => {
+    this.setState({ openReasonDeletePopup: false });
+  };
+
+  closeOpenReasonDeletePopupAndLOGOut = () => {
+    this.setState({ openReasonDeletePopup: false });
   };
 
   render() {
@@ -94,20 +122,33 @@ class MyProfile extends Component {
             <div className="col-2"></div>
 
             <div className="col">
+              <h2 className="mt-3">My Profile</h2>
               <ProfileTable
                 userOb={this.state.user}
                 onSetPopup={this.setOpenPopup}
+                onSetReasonDeletePopup={this.setReasonDeleteOpenPopup}
               />
             </div>
           </div>
           <FormPopup
             openPopup={this.state.openPopup}
             onClose={this.closeOpenPopup}
-            title="Edit My Profile"
+            title="Update My Profile"
           >
             <FormProfileEdit
               userOb={this.state.user}
               onSetAndClose={this.closePopAndSetState}
+            />
+          </FormPopup>
+
+          <FormPopup
+            openPopup={this.state.openReasonDeletePopup}
+            onClose={this.closeOpenReasonDeletePopup}
+            title="Reason for delete"
+          >
+            <NewDeleteProfileFeedback
+              name={this.state.deleteUserName}
+              logoutAndClose={this.closeOpenReasonDeletePopupAndLOGOut}
             />
           </FormPopup>
         </div>

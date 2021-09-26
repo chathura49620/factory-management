@@ -6,7 +6,7 @@ const SelectSearch = ({ categories, categoryValue, onChange }) => {
       value={categoryValue}
       onChange={(e) => onChange(e.currentTarget.value)}
       style={{ border: "2px solid #050139" }}
-      className="form-select form-select-sm my-4"
+      className="form-select form-select-sm mt-3"
       aria-label=".form-select-sm example"
     >
       <option value={"first"}>Open the category menu</option>

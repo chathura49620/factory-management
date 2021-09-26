@@ -173,7 +173,7 @@ class ItemRecord extends Component {
               <div className="col">
                 <button
                   onClick={this.onSearch}
-                  className="btn  my-4"
+                  className="btn  mt-3"
                   style={{ backgroundColor: "#7121AD", color: "white" }}
                 >
                   Search
@@ -210,7 +210,7 @@ class ItemRecord extends Component {
             <div className="col">
               <Link
                 onClick={this.onSearch}
-                className="btn my-4"
+                className="btn mt-3"
                 style={{ backgroundColor: "#7121AD", color: "white" }}
               >
                 Search
@@ -220,6 +220,7 @@ class ItemRecord extends Component {
           <div className="row">
             <div className="col-3"></div>
             <div className="col">
+              <h2>Item records</h2>
               <TableVertilcle
                 records={itemRecords}
                 handleDelete={this.handleDelete}
@@ -245,7 +246,7 @@ class ItemRecord extends Component {
         <FormPopup
           openPopup={this.state.openPopup}
           onClose={this.closeOpenPopup}
-          title="Edit Items Record"
+          title="Update Items Record"
         >
           <EditItemRecordForm
             itemRecordOb={this.state.itemRecord}

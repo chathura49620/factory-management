@@ -40,12 +40,13 @@ class WastedItem extends Component {
       .then((result) => {
         const wastedItems = result.data;
 
+        this.setState({ wastedItems: wastedItems });
+
         axios.get("http://localhost:5000/category/").then((result) => {
           const categoryObjs = result.data;
           console.log(categoryObjs);
           //this.setState({categoryObjects: categoryObjs});
           this.setState({
-            wastedItems: wastedItems,
             categoryObjects: categoryObjs,
           });
         });
@@ -241,7 +242,7 @@ class WastedItem extends Component {
                 onItemDelete={this.handleDelete}
                 onSet={this.setConfirmDialog}
               /> */}
-
+              <h2 className="mt-3">Wasted items</h2>
               <WastedItemTable
                 filteredItems={pagewastedItems}
                 onItemDelete={this.handleDelete}
@@ -267,7 +268,7 @@ class WastedItem extends Component {
         <FormPopup
           openPopup={this.state.openPopup}
           onClose={this.closeOpenPopup}
-          title="Edit Wasted Item"
+          title="Update Wasted Item"
         >
           <EditWastedItemForm
             onSetAndClose={this.closePopAndSetState}

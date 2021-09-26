@@ -39,13 +39,13 @@ class ReturnedProduct extends Component {
       .get("http://localhost:5000/returned/")
       .then((result) => {
         const returnedProducts = result.data;
+        this.setState({ returnedProducts: returnedProducts });
 
         axios.get("http://localhost:5000/category/").then((result) => {
           const categoryObjs = result.data;
           console.log(categoryObjs);
           //this.setState({categoryObjects: categoryObjs});
           this.setState({
-            returnedProducts: returnedProducts,
             categoryObjects: categoryObjs,
           });
         });
@@ -235,7 +235,7 @@ class ReturnedProduct extends Component {
             <div className="col">
               <Link
                 to="/it/new/product/returned"
-                className="btn  my-4"
+                className="btn mt-3 mb-1"
                 style={{ backgroundColor: "#7121AD", color: "white" }}
               >
                 New Item
@@ -246,13 +246,7 @@ class ReturnedProduct extends Component {
           <div className="row">
             <div className="col-2"></div>
             <div className="col">
-              {/* <returnedProductTable
-                filteredItems={pagereturnedProducts}
-                onItemDelete={this.handleDelete}
-                onSet={this.setConfirmDialog}
-                onSetPopup={this.setOpenPopup}
-              /> */}
-
+              <h2>Returned products</h2>
               <ReturnedProductsTable
                 filteredItems={pageReturnedProducts}
                 onItemDelete={this.handleDelete}
@@ -278,7 +272,7 @@ class ReturnedProduct extends Component {
         <FormPopup
           openPopup={this.state.openPopup}
           onClose={this.closeOpenPopup}
-          title="Edit Returned Product"
+          title="Update Returned Product"
         >
           <EditReturnedProductForm
             onSetAndClose={this.closePopAndSetState}
