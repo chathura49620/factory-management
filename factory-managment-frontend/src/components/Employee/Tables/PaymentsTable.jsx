@@ -72,7 +72,7 @@ export class PaymentsTable extends Component{
                       accountnumber={accountnumber}
                       branch={branch}
                     />
-                    </ButtonToolbar>
+        </ButtonToolbar>
 <table className="table table-bordered" style={{overflow: "hidden"}}>
       <thead>
         <tr style={{ backgroundColor: "#7121AD", color: "white" }}>

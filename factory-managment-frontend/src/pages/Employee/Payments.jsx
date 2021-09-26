@@ -3,7 +3,7 @@ import axios from "axios";
 import { AddPaymentsModal } from "../../components/Employee/Modals/AddPaymentsModal";
 import { PaymentsTable } from "../../components/Employee/Tables/PaymentsTable";
 import { ButtonToolbar } from 'react-bootstrap';
-import leavepic from "../../pages/assets/leavepic.jpg"
+import paymentspic from "../../pages/assets/paymentspic.jpg"
 import "./styles.css"
 
 class Payments extends Component {
@@ -55,9 +55,9 @@ handlePaymentsDelete = (payments) => {
         <br></br>
         <h2 className="heading">My Saved Bank Details</h2>
 
-        {/* <div className="center">
-            <img src={leavepic} alt="leavepic"/>
-         </div> */}
+        <div className="center">
+            <img src={paymentspic} alt="paymentspic"/>
+         </div>
         
         <ButtonToolbar>
                     <button style={{ backgroundColor: "#7121AD", color: "white" }}

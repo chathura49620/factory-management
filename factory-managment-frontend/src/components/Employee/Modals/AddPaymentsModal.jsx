@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { Modal, Button, Row, Col, Form, FormGroup } from 'react-bootstrap';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
-import { Redirect } from 'react-router-dom';
-// import Cleave from 'cleave.js/react';
+
 
 
 export class AddPaymentsModal extends Component {
@@ -32,6 +31,7 @@ export class AddPaymentsModal extends Component {
                 
             },
             body: JSON.stringify({
+                id: event.target.id.value,
                 name: event.target.name.value,
                 bankname: event.target.bankname.value,
                 accountnumber: event.target.accountnumber.value,
@@ -91,12 +91,12 @@ export class AddPaymentsModal extends Component {
                 >
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title-vcenter">
-                            Add Your Bank Details
+                            Add your Bank Details 
                         </Modal.Title>
                     </Modal.Header>
 
                     <div class="alert alert-info" role="alert">
-                            Note: Your bank details will be verified with the bank by the admin.
+                            Note: Your bank details will be verified by the Finance Department, therefore please make sure to enter the correct information. 
                     </div>
                     <Modal.Body>
 
@@ -104,8 +104,14 @@ export class AddPaymentsModal extends Component {
                             <Col sm={6}>
                                 <Form onSubmit={this.handleSubmit}>
                                     <Form.Group controlId="name">
-                                        <Form.Label>Your Full Name</Form.Label>
-                                        <Form.Control type="text" name="name" required placeholder="Your full name..." className="form-field"/>
+                                        <Form.Label>Full Name</Form.Label>
+                                        <Form.Control 
+                                            type="text" 
+                                            name="name" 
+                                            required 
+                                            placeholder="Your full name.." 
+                                            className="form-field"/>
+
                                         <div style={{background:"#f8d7da"}}>{this.state.PaymentsError}</div>
                                     </Form.Group>
 
@@ -113,32 +119,47 @@ export class AddPaymentsModal extends Component {
 
                                     <Form.Group controlId="name">
                                         <Form.Label>Bank Name</Form.Label>
-                                        <Form.Control type="text" name="bankname" required placeholder="Eg. Commercial Bank.." />
-                                        {/* <div style={{background:"#f8d7da"}}>{this.state.PaymentsError}</div> */}
+                                        <Form.Control 
+                                            type="text" 
+                                            name="bankname" 
+                                            required 
+                                            placeholder="Eg. Commercial Bank.." />
                                     </Form.Group>
 
                                     <br></br>
 
                                     <Form.Group controlId="name">
                                         <Form.Label>Account Number</Form.Label>
-                                        <Form.Control type="text" name="accountnumber" required placeholder="Account Number..." />
-                                        {/* <div style={{background:"#f8d7da"}}>{this.state.PaymentsError}</div> */}
+                                        <Form.Control 
+                                            type="text" 
+                                            name="accountnumber" 
+                                            required 
+                                            placeholder="Account Number" />
                                     </Form.Group>
 
                                     <br></br>
 
                                     <Form.Group controlId="name">
-                                        <Form.Label>Bank Branch</Form.Label>
-                                        <Form.Control type="text" name="branch" required placeholder="Bank Branch..." />
-                                        {/* <div style={{background:"#f8d7da"}}>{this.state.PaymentsError}</div> */}
+                                        <Form.Label>Account Branch</Form.Label>
+                                        <Form.Control 
+                                            type="text" 
+                                            name="branch" 
+                                            required 
+                                            placeholder="Account Number" />
                                     </Form.Group>
                                     
                                     <br></br>
+
                                     <Form.Group>
-                                        <Button style={{ backgroundColor: "#7121AD", color: "white" }} className="btn"  type="submit" >
-                                            Add my Bank Details
+                                        <Button 
+                                            style={{ backgroundColor: "#7121AD", color: "white" }} 
+                                            className="btn"  
+                                            type="submit" >
+                                                Add Bank Details
                                         </Button>
                                     </Form.Group>
+
+                                   
                                 </Form>
                             </Col>
                         </Row>

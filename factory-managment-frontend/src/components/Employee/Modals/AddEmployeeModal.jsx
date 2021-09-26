@@ -3,7 +3,7 @@ import { Modal, Button, Row, Col, Form, FormGroup } from 'react-bootstrap';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import { Redirect } from 'react-router-dom';
-// import Cleave from 'cleave.js/react';
+
 
 
 export class AddEmployeeModal extends Component {
