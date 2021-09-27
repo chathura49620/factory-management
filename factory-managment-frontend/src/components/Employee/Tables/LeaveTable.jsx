@@ -61,17 +61,17 @@ export class LeaveTable extends Component{
     <React.Fragment>
 
       <ToastContainer draggable={false} transition={Zoom} autoClose={8000} newestOnTop />
-       <ButtonToolbar>
-                  <EditEmployeeModal
-                      show={this.state.editModelShow}
-                      onHide={EditModelClose}
-                      empleave= {this.state.empLeave}
-                      id={id}
-                      refno={refno}
-                      reasonforleave={reasonforleave}
-                      date={date}
-                    />
-                    </ButtonToolbar>
+        <ButtonToolbar>
+                    <EditEmployeeModal
+                        show={this.state.editModelShow}
+                        onHide={EditModelClose}
+                        empleave= {this.state.empLeave}
+                        id={id}
+                        refno={refno}
+                        reasonforleave={reasonforleave}
+                        date={date}
+                      />
+          </ButtonToolbar>
 <table className="table table-bordered" style={{overflow: "hidden"}}>
       <thead>
         <tr style={{ backgroundColor: "#7121AD", color: "white" }}>

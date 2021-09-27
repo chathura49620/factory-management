@@ -72,11 +72,7 @@ route.get('/api/payment-details/',contoller.paymentDetails.find);
 route.put('/api/payment-details/',contoller.paymentDetails.update);
 route.delete('/api/payment-details/',contoller.paymentDetails.delete);
 
-//employee profile APIs
-route.post('/api/profile-details/',contoller.profileDetails.create);
-route.get('/api/profile-details/',contoller.profileDetails.find);
-route.put('/api/profile-details/',contoller.profileDetails.update);
-route.delete('/api/profile-details/',contoller.profileDetails.delete);
+
 
 
 module.exports = route;

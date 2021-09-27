@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { AddEmployeeModal } from "../../components/Employee/Modals/AddEmployeeModal";
-import {LeaveTable} from "../../components/Employee/Tables/LeaveTable";
+import { LeaveTable } from "../../components/Employee/Tables/LeaveTable";
 import { ButtonToolbar } from 'react-bootstrap';
 import leavepic from "../../pages/assets/leavepic.jpg"
 import "./styles.css"
