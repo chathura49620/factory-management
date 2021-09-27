@@ -38,7 +38,7 @@ export const EmpSidebarData = [
   },
   {
     title: 'Add Previous Production Round',
-    path: '/view-production-rounds',
+    path: '/add-pre-production-round',
     icon: <FaIcons.FaEnvelopeOpenText />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
@@ -47,7 +47,7 @@ export const EmpSidebarData = [
 
   {
     title: 'Monitor Previous Production Round',
-    path: '/leave',
+    path: '/view-preproduction-rounds',
     icon: <FaIcons.FaEnvelopeOpenText />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,

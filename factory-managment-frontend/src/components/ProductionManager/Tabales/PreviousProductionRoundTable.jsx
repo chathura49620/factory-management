@@ -3,7 +3,7 @@ import { Table, Button, ButtonToolbar } from 'react-bootstrap';
 import swal from 'sweetalert';
 import { EditPreviousProductionRoundDetailsModal } from '../Modals/EditPreviousProductionRoundDetailsModal';
 
-export class PreviousProductonRoundTable extends Component {
+export class PreviousProductionRoundTable extends Component {
   constructor(props) {
     super(props);
     this.state = {editModalShow: false }
@@ -33,7 +33,7 @@ export class PreviousProductonRoundTable extends Component {
         }).then(res => res.json())
         .then((result) => {
           swal({
-            title: "New Production Round Deleted Succesfully",
+            title: "Previous Production Round Deleted Succesfully",
             icon: "success",
             button: "Done",
           }); 
@@ -51,7 +51,7 @@ export class PreviousProductonRoundTable extends Component {
     <div>
        <ButtonToolbar>
 
-        <EditProductionRoundDetailsModal
+        <EditPreviousProductionRoundDetailsModal
             show={this.state.editModalShow}
             onHide={EditModelClose}
             id={id}
@@ -75,7 +75,7 @@ export class PreviousProductonRoundTable extends Component {
         </tr>
       </thead>
       <tbody>
-        {this.props.prevproductionRound.map((i) => (
+        {this.props.preproductionRound.map((i) => (
           <tr
             key={i._id}
             className={

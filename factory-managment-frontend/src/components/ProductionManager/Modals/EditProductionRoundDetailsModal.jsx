@@ -90,7 +90,7 @@ export class EditProductionRoundDetailsModal extends Component {
                 >
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title-vcenter">
-                            Add Category
+                            Update Details
               </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>

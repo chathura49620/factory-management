@@ -4,11 +4,12 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import SuperAdminSideNav from '../components/SuperAdmin/sideNav/Sidebar';
 import EmpsideNav from '../components/Employee/EmpsideNav/EmpSidebar';
 import ProManagerNav from '../components/ProductionManager/ProManagersideNav/EmpSidebar';
+import WholesaleBuyerNav from '../components/WholeSaleBuyer/wholesaleBuyerSideNav/EmpSidebar';
 import FinanceTeamMemberSideNav from '../components/FinanceTeamMember/sideNav/Sidebar';
 
 import ProductionManagerDashboard from './ProductionManager/ProManagerDashboard'
+import WholesaleDashboard from './WholesaleBuyer/wholesalBuyerDashboard'
 
-import Sidebar from "../components/storeManagerComponents/sideNavigation/Sidebar";
 
 
 import SuperAdminDashboard from './SuperAdmin/Dashboard'
@@ -44,7 +45,8 @@ import Item from "../components/storeManagerComponents/items";
 import AddNewProductionRound from "./ProductionManager/AddNewProductionRound";
 import VIewNewProductionRound from "./ProductionManager/VIewNewProductionRound";
 import ViewProductList from "./ProductionManager/ViewProductList";
-
+import AddPreviousProductionRound from "./ProductionManager/AddPreviousProductionRound";
+import VIewPreviousProductionRound from "./ProductionManager/VIewPreviousProductionRound";
 
 //finance team member routers
 import BillType from "./FinanceTeamMember/BillType";
@@ -92,6 +94,10 @@ class Dashboard extends Component {
             }if(user_role == 'finance team member'){
                 return (
                     <FinanceTeamMemberSideNav/>   
+                );
+            }if(user_role == 'Whole Sale Buyer'){
+                return (
+                    <WholesaleBuyerNav/>   
                 );
             }else{
                 return false;
@@ -149,6 +155,8 @@ class Dashboard extends Component {
                            <Route path= '/' exact component={ProductionManagerDashboard}/>
                             <Route path= '/add-new-production-round' exact component={AddNewProductionRound} />
                             <Route path= '/view-production-rounds' exact component={VIewNewProductionRound}/>
+                            <Route path= '/add-pre-production-round' exact component={AddPreviousProductionRound} />
+                            <Route path= '/view-preproduction-rounds' exact component={VIewPreviousProductionRound}/>
                             <Route path= '/view-product-list' exact component={ViewProductList}/>
                         </div>
                     </div>
@@ -163,6 +171,15 @@ class Dashboard extends Component {
                         <Route path="/items" component={Item}></Route>
                         <Route path="/itemsrecords" component={ItemRecord}></Route>
                         {/* <Route path="/notfound" component={NotFound}></Route> */}
+                        </div>
+                    </div>
+                );
+            }if(user_role == 'Whole Sale Buyer'){
+                return (
+                    <div>
+                        <div>
+                        <Route path= '/' exact component={WholesaleDashboard}/>
+                            <Route path= '/add-new-production-round' exact component={AddNewProductionRound} />
                         </div>
                     </div>
                 );
