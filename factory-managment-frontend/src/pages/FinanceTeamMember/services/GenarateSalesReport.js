@@ -1,6 +1,6 @@
 // services/reportGenerator.js
 
-import jsPDF from "jspdf";
+import jsPDF from "jspdf"; 
 import "jspdf-autotable";
 // Date Fns is used to format the dates we receive
 // from our API call

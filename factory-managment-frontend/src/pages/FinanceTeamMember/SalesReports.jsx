@@ -4,6 +4,8 @@ import { Table, Button, ButtonToolbar,Row,Col, Card,Form} from 'react-bootstrap'
 import { AddNewBillTypeModal } from '../../components/FinanceTeamMember/Modals/AddNewBillTypeModal';
 import {SalariesTable} from "../../components/FinanceTeamMember/Tables/SalariesTable";
 import GenarateSalesReport from "./services/GenarateSalesReport";
+import jsPDF from "jspdf";
+import "jspdf-autotable";
 
 class SalesReports extends Component {
   state = {
@@ -15,36 +17,79 @@ class SalesReports extends Component {
 
   handleSubmitforCredit(event) {
     event.preventDefault();
-    axios
-    .get("http://localhost:5000/api/bills")
-    .then((result) => {
-      const Bills = result.data;
-      Bills.forEach(bills => {
-        if(bills.billType == 'Credit Bills' && bills.month == event.target.monthCredit.value) {
-          const CredirBills  =  [];
-          this.setState({ CredirBills: CredirBills });
-        } 
-      });
-      
-    })
-    .catch((err) => console.log(err.message));
-
-  }
-  handleSubmitforCash(event) {
-    event.preventDefault();
-    
+    const doc = new jsPDF();
+    const tableColumn = [ "Bill No", "Bill Type", "Amount", "Date"];
+    // define an empty array of rows
+    const tableRows = [];
     axios
           .get("http://localhost:5000/api/bills")
           .then((result) => {
             const Bills = result.data;
+            // console.log(Bills);
             const CashBills = [];
-            Bills.forEach(bills => {
-              if(bills.billType == 'Cash Bills' && bills.month == event.target.monthCash.value) {
-                GenarateSalesReport(bills)
+            Bills.forEach(ticket => {
+              if(ticket.billType == 'Credit Bills' && ticket.month == event.target.monthCredit.value) {
+              const ticketData = [
+                ticket.billNo,
+                ticket.billType,
+                ticket.amount,
+                ticket.billDate,
+                // called date-fns to format the date on the ticket
+              //   format(new Date(), "yyyy-MM-dd")
+              ];
+              // push each tickcet's info into a row
+              tableRows.push(ticketData);
               }
-              
             });
-            console.log(this.state.CashBills);
+            // startY is basically margin-top
+            doc.autoTable(tableColumn, tableRows, { startY: 20 });
+            const date = Date().split(" ");
+            // we use a date string to generate our filename.
+            const dateStr = date[0] + date[1] + date[2] + date[3] + date[4];
+            // ticket title. and margin-top + margin-left
+            doc.text("Credit Bills For Month "+event.target.monthCredit.value, 14, 15);
+            // we define the name of our PDF file.
+            doc.save(`report_${dateStr}.pdf`);
+            
+          })
+          .catch((err) => console.log(err.message));
+  }
+
+  handleSubmitforCash(event) {
+    event.preventDefault();
+    const doc = new jsPDF();
+    const tableColumn = [ "Bill No", "Bill Type", "Amount", "Date"];
+    // define an empty array of rows
+    const tableRows = [];
+    axios
+          .get("http://localhost:5000/api/bills")
+          .then((result) => {
+            const Bills = result.data;
+            console.log(Bills);
+            const CashBills = [];
+            Bills.forEach(ticket => {
+              if(ticket.billType == 'Cash Bills' && ticket.month == event.target.monthCash.value) {
+              const ticketData = [
+                ticket.billNo,
+                ticket.billType,
+                ticket.amount,
+                ticket.billDate,
+                // called date-fns to format the date on the ticket
+              //   format(new Date(), "yyyy-MM-dd")
+              ];
+              // push each tickcet's info into a row
+              tableRows.push(ticketData);
+              }
+            });
+            // startY is basically margin-top
+            doc.autoTable(tableColumn, tableRows, { startY: 20 });
+            const date = Date().split(" ");
+            // we use a date string to generate our filename.
+            const dateStr = date[0] + date[1] + date[2] + date[3] + date[4];
+            // ticket title. and margin-top + margin-left
+            doc.text("Cash Bills For Month "+event.target.monthCash.value, 14, 15);
+            // we define the name of our PDF file.
+            doc.save(`report_${dateStr}.pdf`);
             
           })
           .catch((err) => console.log(err.message));
