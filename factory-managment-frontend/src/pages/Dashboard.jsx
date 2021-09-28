@@ -51,6 +51,8 @@ import BillType from "./FinanceTeamMember/BillType";
 import Salaries from "./FinanceTeamMember/Salaries";
 import Bills from "./FinanceTeamMember/Bills";
 import MaterialCost from "./FinanceTeamMember/MaterialCost";
+import SalesReports from "./FinanceTeamMember/SalesReports";
+import Profit from "./FinanceTeamMember/Profit";
 
 class Dashboard extends Component {
     constructor(props) {
@@ -88,6 +90,10 @@ class Dashboard extends Component {
                     <SuperAdminSideNav/> 
                 );
             }if(user_role == 'finance team member'){
+                return (
+                    <FinanceTeamMemberSideNav/>   
+                );
+            }if(user_role == 'Whole Sale Buyer'){
                 return (
                     <FinanceTeamMemberSideNav/>   
                 );
@@ -136,6 +142,8 @@ class Dashboard extends Component {
                     return (
                         <div>
                             <Route path='/salaries' exact component={Salaries} />
+                            <Route path='/sales-reports' exact component={SalesReports} />
+                            <Route path='/profits' exact component={Profit} />
                             <Route path='/material-cost' exact component={MaterialCost} />
                             <Route path='/bill-types' exact component={BillType} />
                             <Route path='/bills' exact component={Bills} />
@@ -163,6 +171,15 @@ class Dashboard extends Component {
                         <Route path="/items" component={Item}></Route>
                         <Route path="/itemsrecords" component={ItemRecord}></Route>
                         {/* <Route path="/notfound" component={NotFound}></Route> */}
+                        </div>
+                    </div>
+                );
+            }if(user_role == 'Whole Sale Buyer'){
+                return (
+                    <div>
+                        <div>
+                        <Route path= '/' exact component={ProductionManagerDashboard}/>
+                            <Route path= '/add-new-production-round' exact component={AddNewProductionRound} />
                         </div>
                     </div>
                 );

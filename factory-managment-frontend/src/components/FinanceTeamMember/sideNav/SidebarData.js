@@ -56,7 +56,7 @@ export const SidebarData = [
       },
       {
         title: 'Sales Reports',
-        path: '',
+        path: '/sales-reports',
         icon: <IoIcons.IoIosPaper />,
         cName: 'sub-nav'
       },
@@ -64,7 +64,7 @@ export const SidebarData = [
   },
   {
     title: 'Profit',
-    path: '',
+    path: '/profits',
     icon: <FaIcons.FaCartPlus />
   },
   {
