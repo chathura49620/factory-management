@@ -14,7 +14,8 @@ exports.create = (req,res)=>{
         billNo : req.body.billNo,
         billType : req.body.billType,
         amount : req.body.amount,
-        billDate : req.body.billDate
+        billDate : req.body.billDate,
+        month:req.body.month
     })
 
     // save category in the database

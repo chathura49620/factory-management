@@ -17,6 +17,10 @@ var schema = new mongoose.Schema({
         type:Date,
         required:true
     },
+    month:{
+        type:String,
+        required:true
+    },
     status:String,
 })
 
