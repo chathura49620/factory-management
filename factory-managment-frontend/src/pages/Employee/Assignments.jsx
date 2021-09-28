@@ -7,6 +7,7 @@ import { Table, Button, ButtonToolbar } from 'react-bootstrap';
 import { computeStyles } from "@popperjs/core";
 import "./styles.css"
 import assignmentpic from "../../pages/assets/assignmentpic.jpg"
+import generatePDF from "../../components/Employee/utills/reportGeneratorAssignments";
 
 class Assignment extends Component {
   state = {
@@ -75,7 +76,19 @@ handleAssignmentDelete = (assignment) => {
                         
                     />
           </ButtonToolbar>
-            <br></br><br></br>
+
+            <br></br>
+
+            <ButtonToolbar>
+              <button 
+                  style={{ backgroundColor: "#7121AD", color: "white" }}
+                  className="btn btn-lg"
+                  onClick={() => generatePDF(this.state.Assignment)}> 
+                        Generate Monthly Report
+              </button>
+        </ButtonToolbar>
+
+        <br></br>
 
         <div className="row">
           <div className="col-1"></div>

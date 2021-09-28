@@ -4,15 +4,14 @@ import { Table, Button, ButtonToolbar } from 'react-bootstrap';
 import swal from 'sweetalert';
 import { ToastContainer, toast, Zoom, Bounce, Flip } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
-
-
-
+import generatePDF from './../utills/reportGenerator';
 
 
 export class LeaveTable extends Component{
   constructor(props) {
     super(props);
     this.state = { editModelShow: false }
+   
   }
 
   deleteleave(id){
@@ -72,6 +71,7 @@ export class LeaveTable extends Component{
                         date={date}
                       />
           </ButtonToolbar>
+         
 <table className="table table-bordered" style={{overflow: "hidden"}}>
       <thead>
         <tr style={{ backgroundColor: "#7121AD", color: "white" }}>
@@ -109,6 +109,7 @@ export class LeaveTable extends Component{
      
     </tbody>
     </table>
+   
 
     </React.Fragment>
   );
