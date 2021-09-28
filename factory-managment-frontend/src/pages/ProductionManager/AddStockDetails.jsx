@@ -150,7 +150,7 @@ validate(){
                                     </Form.Group>
                                     <Form.Group>
                                         <Button className="my-1" style={{ backgroundColor: "#7121AD", color: "white", }}  type="submit" >
-                                            Add Order Details
+                                            Add Stock Details
                                         </Button>
                                     </Form.Group>
               </Form>
