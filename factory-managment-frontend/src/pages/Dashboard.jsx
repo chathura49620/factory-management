@@ -47,6 +47,7 @@ import VIewNewProductionRound from "./ProductionManager/VIewNewProductionRound";
 import ViewProductList from "./ProductionManager/ViewProductList";
 import AddPreviousProductionRound from "./ProductionManager/AddPreviousProductionRound";
 import VIewPreviousProductionRound from "./ProductionManager/VIewPreviousProductionRound";
+import AddStockDetails from "./ProductionManager/AddStockDetails";
 
 //finance team member routers
 import BillType from "./FinanceTeamMember/BillType";
@@ -158,6 +159,7 @@ class Dashboard extends Component {
                             <Route path= '/add-pre-production-round' exact component={AddPreviousProductionRound} />
                             <Route path= '/view-preproduction-rounds' exact component={VIewPreviousProductionRound}/>
                             <Route path= '/view-product-list' exact component={ViewProductList}/>
+                            <Route path= '/add-stock-details' exact component={AddStockDetails}/>
                         </div>
                     </div>
                 );

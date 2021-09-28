@@ -2,14 +2,16 @@ const express = require('express');
 const route = express.Router()
 
 
+
 const contoller = require('../controller/controller');
 
 
-// //Super Admin Category APIs
-// route.post('/api/categories',contoller.category.create);
-// route.get('/api/categories',contoller.category.find);
-// route.put('/api/categories/',contoller.category.update);
-// route.delete('/api/categories/',contoller.category.delete);
+
+//Super Admin Category APIs
+route.post('/api/categories',contoller.category.create);
+route.get('/api/categories',contoller.category.find);
+route.put('/api/categories/',contoller.category.update);
+route.delete('/api/categories/',contoller.category.delete);
 
 
 // // Super Admin Metirial Code APIs
@@ -19,11 +21,11 @@ const contoller = require('../controller/controller');
 // route.delete('/api/meterial-code/',contoller.materialCode.delete);
 
 
-// // Super Admin Product Code APIs
-// route.post('/api/product-code/',contoller.productcode.create);
-// route.get('/api/product-code/',contoller.productcode.find);
-// route.put('/api/product-code/',contoller.productcode.update);
-// route.delete('/api/product-code/',contoller.productcode.delete);
+// Super Admin Product Code APIs
+route.post('/api/product-code/',contoller.productcode.create);
+route.get('/api/product-code/',contoller.productcode.find);
+route.put('/api/product-code/',contoller.productcode.update);
+route.delete('/api/product-code/',contoller.productcode.delete);
 
 
 // // Super Admin Bill Type APIs
@@ -44,8 +46,8 @@ const contoller = require('../controller/controller');
 // route.get('/api/user-roles/',contoller.userRole.find);
 // route.post('/api/user-roles/',contoller.userRole.create);
 
-// //login APIs
-// route.get('/api/login/',contoller.login.find);
+//login APIs
+route.get('/api/login/',contoller.login.find);
 
 
 // //Super Admin Factory Details APIs
@@ -84,12 +86,20 @@ route.get('/api/prevProRound-details/',contoller.previousProductionRoundDetails.
 route.put('/api/prevProRound-details/',contoller.previousProductionRoundDetails.update);
 route.delete('/api/prevProRound-details/',contoller.previousProductionRoundDetails.delete);
 
+
 //Order Details APIs
 
-route.post('/api/order-details/',contoller.orderDetails.create);
-route.get('/api/order-details/',contoller.orderDetails.find);
-route.put('/api/order-details/',contoller.orderDetails.update);
-route.delete('/api/order-details/',contoller.orderDetails.delete);
+route.post('/api/proStock-details/',contoller.productStockDetails.create);
+route.get('/api/proStock-details/',contoller.productStockDetails.find);
+route.put('/api/proStock-details/',contoller.productStockDetails.update);
+route.delete('/api/proStock-details/',contoller.productStockDetails.delete);
+
+// // //Order Details APIs
+
+// route.post('/api/order-details/',contoller.orderDetails.create);
+// route.get('/api/order-details/',contoller.orderDetails.find);
+// route.put('/api/order-details/',contoller.orderDetails.update);
+// route.delete('/api/order-details/',contoller.orderDetails.delete);
 
 //Feedback Details APIs
 route.post('/api/feedback-details/',contoller.feedbackDetails.create);
