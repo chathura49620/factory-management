@@ -11,7 +11,7 @@ exports.orderDetails= require('./orderDetails.controller');
 exports.login= require('./login.controller');
 exports.materialCost= require('./materialCost.controller');
 exports.tempSalaries= require('./tempSalaries.controller');
-   
+exports.user =  require('./user.controller');
 exports.billType= require('./billType.controller');
 exports.bills= require('./bills.controller');
 

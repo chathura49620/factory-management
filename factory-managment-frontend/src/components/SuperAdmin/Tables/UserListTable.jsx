@@ -17,7 +17,6 @@ export class UserListTable  extends Component {
           <th scope="col">User Name</th>
           <th scope="col">Email</th>
           <th scope="col">User Role</th>
-          <th scope="col">Action</th>
         </tr>
       </thead>
       <tbody>
@@ -30,14 +29,6 @@ export class UserListTable  extends Component {
             <td>{i.fullName}</td>
             <td>{i.email}</td> 
             <td>{i.userRole}</td>
-            <td><button 
-              className="btn-sm"
-              style={{ backgroundColor: "#7121AD", color: "white", marginRight:"4px" }}
-            >Approve</button> 
-            <button 
-             className="btn-sm"
-             style={{ backgroundColor: "#BA0D32 ", color: "white" }} 
-            >Reject</button></td>
           </tr>
         ))}
       </tbody>

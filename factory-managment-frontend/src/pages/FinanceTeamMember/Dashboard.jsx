@@ -7,17 +7,26 @@ import hello from "../assets/hello.png";
 import clock from "../assets/clock.png";
 import { AddFactoryDetailsModal } from '../../components/SuperAdmin/Modals/AddFactoryDetailsModal';
 import Clock from "../../components/ProductionManager/common/clock";
+import jsPDF from "jspdf";
+import "jspdf-autotable";
    
-class Dashboard extends Component {    
-  state = {
-    factoryDetails: [],
-    category:[],
-    matCode:[],
-    proCode:[],
-    users:[],
-    user_name:'',
-    addModalShow: true
-  };
+class Dashboard extends Component {  
+  constructor(props) { 
+    super(props);
+    this.state = {
+      factoryDetails: [],
+      matBill:[],
+      bills:[],
+      billtype:[],
+      users:[],
+      user_name:'',
+      addModalShow: true
+      
+    };
+    // this.genarateMatCost = this.genarateMatCost.bind(this);
+}
+  
+  
 
   componentDidMount() {
     axios
@@ -31,40 +40,31 @@ class Dashboard extends Component {
 
     const user_name = localStorage.getItem("user_full_name");
     this.setState({ user_name: user_name });
+    
+    axios
+    .get("http://localhost:5000/api/material-cost")
+    .then((result) => {
+      const matBill = result.data;
+
+      this.setState({ matBill: matBill });
+    })
+    .catch((err) => console.log(err.message));
+
+    axios
+    .get("http://localhost:5000/api/bills")
+    .then((result) => {
+      const bills = result.data;
+
+      this.setState({ bills: bills });
+    })
+    .catch((err) => console.log(err.message));
    
     axios
-    .get("http://localhost:5000/api/categories")
+    .get("http://localhost:5000/api/bill-type")
     .then((result) => {
-      const category = result.data;
+      const billtype = result.data;
 
-      this.setState({ category: category });
-    })
-    .catch((err) => console.log(err.message));
-
-    axios
-    .get("http://localhost:5000/api/meterial-code")
-    .then((result) => {
-      const matCode = result.data;
-
-      this.setState({ matCode: matCode });
-    })
-    .catch((err) => console.log(err.message));
-   
-    axios
-    .get("http://localhost:5000/api/product-code")
-    .then((result) => {
-      const proCode = result.data;
-
-      this.setState({ proCode: proCode });
-    })
-    .catch((err) => console.log(err.message));
-
-    axios
-    .get("http://localhost:5000/users")
-    .then((result) => {
-      const users = result.data;
-
-      this.setState({ users: users });
+      this.setState({ billtype: billtype });
     })
     .catch((err) => console.log(err.message));
 
@@ -77,17 +77,76 @@ class Dashboard extends Component {
     localStorage.removeItem('is_login');
     window.location.reload();
   }
+  genarateMatCost(){
+    const doc = new jsPDF();
+    const tableColumn = [ "matirial Code", "matirial BillNo", "date", "amount"];
+    const tableRows = [];
+    axios
+    .get("http://localhost:5000/api/material-cost/")
+    .then((result) => {
+      const matCost = result.data;
+            matCost.forEach(ticket => {
+              const ticketData = [
+                ticket.matirialCode,
+                ticket.matirialBillNo,
+                ticket.date,
+                ticket.amount,
+                // called date-fns to format the date on the ticket
+              //   format(new Date(), "yyyy-MM-dd")
+              ];
+              // push each tickcet's info into a row
+              tableRows.push(ticketData);
+              
+            });
+            // startY is basically margin-top
+            doc.autoTable(tableColumn, tableRows, { startY: 20 });
+            const date = Date().split(" ");
+            // we use a date string to generate our filename.
+            
+            // ticket title. and margin-top + margin-left
+            doc.text("Material Cost Report ", 14, 15);
+            // we define the name of our PDF file.
+            doc.save(`report_cost_finance.pdf`);
+    })
+    .catch((err) => console.log(err.message));
+  }
+
+  genarateSalaries(){
+    const doc = new jsPDF();
+    const tableColumn = [ "EmpNo", "Amount", "mounth"];
+    const tableRows = [];
+    axios
+    .get("http://localhost:5000/api/material-cost/")
+    .then((result) => {
+      const matCost = result.data;
+            matCost.forEach(ticket => {
+              const ticketData = [
+                ticket.empID,
+                ticket.amount,
+                ticket.month
+                // called date-fns to format the date on the ticket
+              //   format(new Date(), "yyyy-MM-dd")
+              ];
+              // push each tickcet's info into a row
+              tableRows.push(ticketData);
+              
+            });
+            // startY is basically margin-top
+            doc.autoTable(tableColumn, tableRows, { startY: 20 });
+            const date = Date().split(" ");
+            // we use a date string to generate our filename.
+            
+            // ticket title. and margin-top + margin-left
+            doc.text("All Salaries Report ", 14, 15);
+            // we define the name of our PDF file.
+            doc.save(`report_salaries_finance.pdf`);
+    })
+    .catch((err) => console.log(err.message));
+  }
  
   render() {
-    let AddModelClose = () => this.setState({ addModalShow: false })
     return (
       <React.Fragment>
-           <ButtonToolbar>
-                    <AddFactoryDetailsModal
-                        show={this.state.addModalShow && this.state.factoryDetails.length == 0}
-                        onHide={AddModelClose}
-                    />
-          </ButtonToolbar>
           <main>
             <div className="main__container">
               {/* <!-- MAIN TITLE STARTS HERE --> */}
@@ -130,19 +189,13 @@ class Dashboard extends Component {
 
                   <div className="charts__right__cards">
                  
-                 
-                      <div className="card1">
-                      <h1>Profit Report</h1>
-                    </div>
-                    
-                   
-                      <div className="card2">
-                      <h1>User Report</h1>
-                    </div>
+                      <div className="card2" >
+                      <h1 >Material Cost Report</h1>
+                  </div>
                      
                      
-                        <div className="card3">
-                        <h1>Cost Report</h1>
+                        <div className="card3" >
+                        <h1 >All Salaries Report</h1>
                         </div>
                        
                   
@@ -158,30 +211,30 @@ class Dashboard extends Component {
                 
                 <div className="carda">
                   <div className="card_inner">
-                    <p className="text-primary-p">Number of Users</p>
-                    <span className="font-bold text-title">{this.state.users.length}</span>
+                    <p className="text-primary-p">Number of Material Bills</p>
+                    <span className="font-bold text-title">{this.state.matBill.length}</span>
                   </div>
                 </div>
                 
                 <div className="cardd">
                   <div className="card_inner">
-                    <p className="text-primary-p">No of Categories</p>
-                    <span className="font-bold text-title">{this.state.category.length}</span>
+                    <p className="text-primary-p">No of Bills</p>
+                    <span className="font-bold text-title">{this.state.bills.length}</span>
                   </div>
                 </div>
                 <div className="carda">
                   <div className="card_inner">
-                    <p className="text-primary-p">Number of Product Codes</p>
-                    <span className="font-bold text-title">{this.state.proCode.length}</span>
+                    <p className="text-primary-p">Number of Bill Types</p>
+                    <span className="font-bold text-title">{this.state.billtype.length}</span>
                   </div>
                 </div>
                 
-                <div className="cardd">
+                {/* <div className="cardd">
                   <div className="card_inner">
                     <p className="text-primary-p">No of Metirial Codes</p>
                     <span className="font-bold text-title">{this.state.matCode.length}</span>
                   </div>
-                </div>
+                </div> */}
               </div>
               {/* <!-- MAIN CARDS ENDS HERE --> */}
 

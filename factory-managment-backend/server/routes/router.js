@@ -61,6 +61,9 @@ route.post('/api/user-roles/',contoller.userRole.create);
 //login APIs
 route.get('/api/login/',contoller.login.find);
 
+//add user route
+route.post('/api/user/',contoller.user.create);
+
 //Super Admin Factory Details APIs
 route.post('/api/factory-details/',contoller.factoryDetails.create);
 route.get('/api/factory-details/',contoller.factoryDetails.find);
