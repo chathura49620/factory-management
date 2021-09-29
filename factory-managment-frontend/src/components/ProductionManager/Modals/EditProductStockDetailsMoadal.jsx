@@ -31,7 +31,7 @@ export class EditProductStockDetailsMoadal extends Component {
   handleSubmit(event) {
     event.preventDefault();
 
-    fetch("http://localhost:5000/api/order-details", {
+    fetch("http://localhost:5000/update/order", {
       method: "PUT",
       headers: {
         Accept: "application/json",
@@ -108,16 +108,7 @@ export class EditProductStockDetailsMoadal extends Component {
                       />
                     </Form.Group>
                   </Form.Group>
-                  {/* <Form.Group controlId="status">
-                    <Form.Label>Status</Form.Label>
-                    <Form.Control
-                      type="text"
-                      name="status"
-                      required
-                      placeholder="Status"
-                      defaultValue={this.props.status}
-                    />
-                  </Form.Group> */}
+
                   <Form.Group>
                     <Form.Label style={{ fontWeight: "bold" }}>
                       Status

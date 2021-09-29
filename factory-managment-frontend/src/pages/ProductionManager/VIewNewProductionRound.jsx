@@ -64,7 +64,7 @@ class VIewNewProductionRound extends Component {
           <div className="row">
             <div className="col-4"></div>
             <div className="col">
-              <SearchBox onChange={this.handleSearch} placeHolder="hhhhhy" />
+              <SearchBox onChange={this.handleSearch} placeHolder="Search" />
             </div>
             <div className="col-3"></div>
           </div>

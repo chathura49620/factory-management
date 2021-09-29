@@ -69,25 +69,6 @@ exports.find = (req, res) => {
 };
 
 //update order details
-// exports.update = (req, res) => {
-//   if (!req.body) {
-//     return res.status(400).send({ message: "Data To Update Can Not Be Empty" });
-//   }
-
-//   const id = req.body.orderId;
-//   orderDetails
-//     .findByIdAndUpdate(id, req.body, { useFindAndModify: false })
-//     .then((data) => {
-//       if (!data) {
-//         res.status(400).send({ message: "Order Details Are Not Found" });
-//       } else {
-//         res.send(data);
-//       }
-//     })
-//     .catch((err) => {
-//       res.status(500).send({ message: "Error While Order Details Updateting" });
-//     });
-// };
 
 exports.update = (req, res) => {
   orderDetails
@@ -95,11 +76,6 @@ exports.update = (req, res) => {
       { _id: req.body.id },
       {
         $set: {
-          buyerName: req.body.buyerName,
-          email: req.body.email,
-          productCategory: req.body.productCategory,
-          quantity: Number(req.body.quantity),
-          paymentMethode: req.body.paymentMethode,
           status: req.body.status,
         },
       }

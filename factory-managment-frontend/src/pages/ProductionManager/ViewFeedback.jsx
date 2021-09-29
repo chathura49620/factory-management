@@ -26,7 +26,7 @@ class ViewFeedback extends Component {
         <div className="row">
           <div className="col-4"></div>
           <div className="col">
-            <h1>View Product List</h1>
+            <h1>View Feedback List</h1>
           </div>
         </div>
         <div className="row">

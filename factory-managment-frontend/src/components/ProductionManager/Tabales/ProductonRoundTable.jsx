@@ -52,7 +52,7 @@ export class ProductonRoundTable extends Component {
           <EditProductionRoundDetailsModal
             show={this.state.editModalShow}
             onHide={EditModelClose}
-            productId={id}
+            id={id}
             productCategory={productCategory}
             quantity={quantity}
             esDays={esDays}

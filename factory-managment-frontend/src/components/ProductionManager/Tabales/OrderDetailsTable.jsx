@@ -60,7 +60,7 @@ export class OrderDetailsTable extends Component {
           <EditProductStockDetailsMoadal
             show={this.state.editModalShow}
             onHide={EditModelClose}
-            orderId={id}
+            id={id}
             buyerName={buyerName}
             email={email}
             productCategory={productCategory}

@@ -36,21 +36,21 @@ export class EditProductionRoundDetailsModal extends Component {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        username: "chathura",
+        username: "thiranya",
       },
       body: JSON.stringify({
-        productId: event.target.id.value,
+        id: event.target.id.value,
         productCategory: event.target.productCategory.value,
-        quantity: event.target.quntity.value,
-        esDays: event.target.estDays.value,
-        esEmployees: event.target.estEmp.value,
+        quantity: event.target.quantity.value,
+        esDays: event.target.esDays.value,
+        esEmployees: event.target.esEmployees.value,
       }),
     })
       .then((res) => res.json())
       .then(
         (result) => {
           swal({
-            title: "Category Added Succesfully",
+            title: "Details Updated Succesfully",
             icon: "success",
             button: "Done",
           });
@@ -107,8 +107,6 @@ export class EditProductionRoundDetailsModal extends Component {
                         name="id"
                         required
                         placeholder="id"
-                        disabled
-                        hidden
                         defaultValue={this.props.id}
                       />
                     </Form.Group>
@@ -124,31 +122,31 @@ export class EditProductionRoundDetailsModal extends Component {
                       ))}
                     </Form.Control>
                   </Form.Group>
-                  <Form.Group controlId="quntity">
+                  <Form.Group controlId="quantity">
                     <Form.Label>Quntity</Form.Label>
                     <Form.Control
                       type="text"
-                      name="quntity"
+                      name="quantity"
                       required
                       placeholder="Quntity"
                       defaultValue={this.props.quantity}
                     />
                   </Form.Group>
-                  <Form.Group controlId="estDays">
+                  <Form.Group controlId="esDays">
                     <Form.Label>Estimated Days</Form.Label>
                     <Form.Control
                       type="text"
-                      name="estDays"
+                      name="esDays"
                       required
                       placeholder="Estimated Days"
                       defaultValue={this.props.esDays}
                     />
                   </Form.Group>
-                  <Form.Group controlId="estEmp">
+                  <Form.Group controlId="esEmployees">
                     <Form.Label>Estimated Employees</Form.Label>
                     <Form.Control
                       type="text"
-                      name="estEmp"
+                      name="esEmployees"
                       required
                       placeholder="Estimated Employees"
                       defaultValue={this.props.esEmployees}
