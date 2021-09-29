@@ -38,7 +38,7 @@ export const EmpSidebarData = [
 
   {
     title: "Return An Order",
-    path: "/leave",
+    path: "/return-order",
     icon: <FaIcons.FaEnvelopeOpenText />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,

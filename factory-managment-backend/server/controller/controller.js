@@ -11,6 +11,7 @@ exports.previousProductionRoundDetails = require("./previousProductionRound.cont
 exports.productStockDetails = require("./productStockDetails.controller");
 exports.orderDetails = require("./orderDetails.controller");
 exports.feedbackDetails = require("./feedbackDetails.controller");
+exports.returnOrderDetails = require("./returnOrderDetails.controller");
 exports.login = require("./login.controller");
 // exports.billType= require('./billType.controller');
 // exports.bills= require('./bills.controller');

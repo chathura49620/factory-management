@@ -50,6 +50,7 @@ import ViewFeedback from "./ProductionManager/ViewFeedback";
 import WholesaleDashboard from "./WholesaleBuyer/wholesalBuyerDashboard";
 import FeedbackPage from "./WholesaleBuyer/FeedbackPage";
 import PlaceAnOrder from "./WholesaleBuyer/PlaceAnOrder";
+import ReturnOrder from "./WholesaleBuyer/ReturnOrder";
 
 //finance team member routers
 import BillType from "./FinanceTeamMember/BillType";
@@ -203,6 +204,7 @@ class Dashboard extends Component {
               <Route path="/" exact component={WholesaleDashboard} />
               <Route path="/add-order" exact component={PlaceAnOrder} />
               <Route path="/add-feedback" exact component={FeedbackPage} />
+              <Route path="/return-order" exact component={ReturnOrder} />
             </div>
           </div>
         );
