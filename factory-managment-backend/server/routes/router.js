@@ -110,6 +110,7 @@ route.delete("/api/proStock-details/", contoller.productStockDetails.delete);
 route.post("/api/order-details/", contoller.orderDetails.create);
 route.get("/api/order-details/", contoller.orderDetails.find);
 route.put("/update/order", contoller.orderDetails.update);
+
 route.delete("/api/order-details/", contoller.orderDetails.delete);
 
 //Feedback Details APIs

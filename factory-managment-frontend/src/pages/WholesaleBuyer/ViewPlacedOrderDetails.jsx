@@ -1,23 +1,23 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Table, Button, ButtonToolbar } from "react-bootstrap";
-import { StockTable } from "../../components/WholeSaleBuyer/Tabales/StockTable";
+import { OrderDetailsTable } from "../../components/WholeSaleBuyer/Tabales/OrderDetailsTable";
 import SearchBox from "../../components/WholeSaleBuyer/common/searchBox";
 
-class PlaceAnOrder extends Component {
+class ViewPlacedOrderDetails extends Component {
   state = {
-    productStock: [],
+    orderDetails: [],
     addModalShow: false,
     searchQuery: "",
   };
 
   componentDidMount() {
     axios
-      .get("http://localhost:5000/api/proStock-details")
+      .get("http://localhost:5000/api/order-details")
       .then((result) => {
-        const productStock = result.data;
+        const orderDetails = result.data;
 
-        this.setState({ productStock: productStock });
+        this.setState({ orderDetails: orderDetails });
       })
       .catch((err) => console.log(err.message));
   }
@@ -29,20 +29,29 @@ class PlaceAnOrder extends Component {
   };
 
   filteredData() {
-    const { searchQuery, productStock } = this.state;
+    const { searchQuery, orderDetails } = this.state;
 
     let filtered = [];
 
     if (searchQuery) {
-      filtered = productStock.filter((r) =>
+      filtered = orderDetails.filter((r) =>
         r.productCategory.toLowerCase().startsWith(searchQuery.toLowerCase())
       );
     } else {
-      filtered = productStock;
+      filtered = orderDetails;
     }
 
     return filtered;
   }
+
+  // filterttg() {
+  //   const { orderDetails } = this.state;
+  //   let list = [];
+
+  //   list = orderDetails.filter((orData) => orData.status === "Rejected");
+
+  //   console.log(list);
+  // }
 
   render() {
     //take the filtered list
@@ -56,7 +65,7 @@ class PlaceAnOrder extends Component {
         <div className="row">
           <div className="col-4 my-2"></div>
           <div className="col">
-            <h1>View Production Details</h1>
+            <h1>View Order Details</h1>
           </div>
         </div>
 
@@ -76,7 +85,7 @@ class PlaceAnOrder extends Component {
           <div className="col-2"></div>
           <div className="col">
             {/**pass the filtered data */}
-            <StockTable productStock={filtered} />
+            <OrderDetailsTable orderDetails={filtered} />
           </div>
         </div>
       </React.Fragment>
@@ -84,4 +93,4 @@ class PlaceAnOrder extends Component {
   }
 }
 
-export default PlaceAnOrder;
+export default ViewPlacedOrderDetails;

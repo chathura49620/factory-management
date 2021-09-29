@@ -16,7 +16,6 @@ exports.create = (req, res) => {
     instock: req.body.instock,
     quantity: Number(req.body.quantity),
     price: Number(req.body.price),
-    status: req.body.status,
   });
 
   // save order details in the database

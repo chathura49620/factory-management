@@ -21,16 +21,22 @@ export const EmpSidebarData = [
   },
 
   {
-    title: "Place An Order",
+    title: "View Stock Details",
     path: "/add-order",
     icon: <FaIcons.FaEnvelopeOpenText />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
   },
-
+  {
+    title: "Place An Order",
+    path: "/add-order-details",
+    icon: <FaIcons.FaEnvelopeOpenText />,
+    iconClosed: <RiIcons.RiArrowDownSFill />,
+    iconOpened: <RiIcons.RiArrowUpSFill />,
+  },
   {
     title: "View Order Details",
-    path: "/view-production-rounds",
+    path: "/placed-order",
     icon: <FaIcons.FaEnvelopeOpenText />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,

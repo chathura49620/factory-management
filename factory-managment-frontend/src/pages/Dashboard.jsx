@@ -49,8 +49,10 @@ import ViewFeedback from "./ProductionManager/ViewFeedback";
 //wholesale buyer routes
 import WholesaleDashboard from "./WholesaleBuyer/wholesalBuyerDashboard";
 import FeedbackPage from "./WholesaleBuyer/FeedbackPage";
-import PlaceAnOrder from "./WholesaleBuyer/PlaceAnOrder";
+import ViewStockDetails from "./WholesaleBuyer/ViewStockDetails";
 import ReturnOrder from "./WholesaleBuyer/ReturnOrder";
+import ViewPlacedOrderDetails from "./WholesaleBuyer/ViewPlacedOrderDetails";
+import AddOrder from "./WholesaleBuyer/AddOrder";
 
 //finance team member routers
 import BillType from "./FinanceTeamMember/BillType";
@@ -202,9 +204,15 @@ class Dashboard extends Component {
           <div>
             <div>
               <Route path="/" exact component={WholesaleDashboard} />
-              <Route path="/add-order" exact component={PlaceAnOrder} />
+              <Route path="/add-order" exact component={ViewStockDetails} />
+              <Route path="/add-order-details" exact component={AddOrder} />
               <Route path="/add-feedback" exact component={FeedbackPage} />
               <Route path="/return-order" exact component={ReturnOrder} />
+              <Route
+                path="/placed-order"
+                exact
+                component={ViewPlacedOrderDetails}
+              />
             </div>
           </div>
         );

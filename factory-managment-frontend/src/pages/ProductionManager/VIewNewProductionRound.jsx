@@ -69,16 +69,7 @@ class VIewNewProductionRound extends Component {
             <div className="col-3"></div>
           </div>
           <div className="col-10"></div>
-          <div className="col">
-            <ButtonToolbar>
-              <Button
-                className="btn my-1"
-                style={{ backgroundColor: "#7121AD", color: "white" }}
-              >
-                Add New
-              </Button>
-            </ButtonToolbar>
-          </div>
+          <div className="col"></div>
         </div>
 
         <div className="row">

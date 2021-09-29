@@ -3,7 +3,7 @@ import { Modal, Button, Row, Col, Form, FormGroup } from "react-bootstrap";
 import swal from "sweetalert";
 import axios from "axios";
 
-class AddStockDetails extends Component {
+class AddOrder extends Component {
   constructor(props) {
     super(props);
     this.state = { snackbaropen: false, snackbarmsg: "", categories: [] };
@@ -28,7 +28,7 @@ class AddStockDetails extends Component {
     //alert(event.target.name.value);
 
     if (isValid) {
-      fetch("http://localhost:5000/api/proStock-details", {
+      fetch("http://localhost:5000/api/order-details", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -36,19 +36,20 @@ class AddStockDetails extends Component {
           username: "thirnaya",
         },
         body: JSON.stringify({
-          productId: event.target.proId.value,
+          orderId: event.target.orderId.value,
           productCategory: event.target.productCategory.value,
-          //productImage: event.target.filename.value,
-          instock: event.target.instock.value,
+          buyerName: event.target.buyerName.value,
+          email: event.target.email.value,
           quantity: event.target.quantity.value,
-          price: event.target.price.value,
+          paymentMethode: event.target.paymentMethode.value,
+          status: event.target.status.value,
         }),
       })
         .then((res) => res.json())
         .then(
           (result) => {
             swal({
-              title: "Order Added Succesfully",
+              title: "New Production Round Details Added Succesfully",
               icon: "success",
               button: "Done",
             });
@@ -81,7 +82,7 @@ class AddStockDetails extends Component {
         <div className="row">
           <div className="col-4"></div>
           <div className="col">
-            <h1>Add Stock Details</h1>
+            <h1>Add Order Details</h1>
           </div>
         </div>
 
@@ -91,15 +92,15 @@ class AddStockDetails extends Component {
           <div className="col">
             <Form onSubmit={this.handleSubmit}>
               <Form.Group>
-                <Form.Group controlId="proId">
+                <Form.Group controlId="orderId">
                   <Form.Label style={{ fontWeight: "bold" }}>
-                    Product Id
+                    Order Id
                   </Form.Label>
                   <Form.Control
                     style={{ border: "1px solid #050139" }}
                     type="text"
-                    name="proId"
-                    placeholder="Product Id"
+                    name="orderId"
+                    placeholder=" Order Id"
                   />
                   <div style={{ background: "#f8d7da" }}>
                     {this.state.validationError}
@@ -121,24 +122,31 @@ class AddStockDetails extends Component {
                   ))}
                 </Form.Control>
               </Form.Group>
-              {/* <Form.Group controlId="filename">
-                                        <Form.Label style={{fontWeight:"bold"}}>Select Image</Form.Label>
-                                        <Form.Control style={{ border: "1px solid #050139" }} class="form-control-lg" type="file" name="filename"  placeholder="Select Image"  />
-                                        <div style={{background:"#f8d7da"}}>{this.state.validationError}</div>
-                                    </Form.Group> */}
-              <Form.Group>
-                <Form.Label style={{ fontWeight: "bold" }}>Instock</Form.Label>
+              <Form.Group controlId="buyerName">
+                <Form.Label style={{ fontWeight: "bold" }}>
+                  Buyer Name
+                </Form.Label>
                 <Form.Control
                   style={{ border: "1px solid #050139" }}
-                  as="select"
-                  name="instock"
-                >
-                  <div style={{ background: "#f8d7da" }}>
-                    {this.state.validationError}
-                  </div>
-                  <option selected>Instock</option>
-                  <option>Out Of Stock</option>
-                </Form.Control>
+                  type="text"
+                  name="buyerName"
+                  placeholder="Buyer Name"
+                />
+                <div style={{ background: "#f8d7da" }}>
+                  {this.state.validationError}
+                </div>
+              </Form.Group>
+              <Form.Group controlId="email">
+                <Form.Label style={{ fontWeight: "bold" }}>Email</Form.Label>
+                <Form.Control
+                  style={{ border: "1px solid #050139" }}
+                  type="text"
+                  name="email"
+                  placeholder="Email"
+                />
+                <div style={{ background: "#f8d7da" }}>
+                  {this.state.validationError}
+                </div>
               </Form.Group>
               <Form.Group controlId="quantity">
                 <Form.Label style={{ fontWeight: "bold" }}>Quantity</Form.Label>
@@ -153,19 +161,21 @@ class AddStockDetails extends Component {
                 </div>
               </Form.Group>
 
-              <Form.Group controlId="price">
-                <Form.Label style={{ fontWeight: "bold" }}>Price</Form.Label>
+              <Form.Group controlId="paymentMethode">
+                <Form.Label style={{ fontWeight: "bold" }}>
+                  Payment Methode
+                </Form.Label>
                 <Form.Control
                   style={{ border: "1px solid #050139" }}
                   type="text"
-                  name="price"
-                  placeholder="Price"
+                  name="paymentMethode"
+                  placeholder="Payment Methode"
                 />
                 <div style={{ background: "#f8d7da" }}>
                   {this.state.validationError}
                 </div>
               </Form.Group>
-              {/* <Form.Group>
+              <Form.Group>
                 <Form.Label style={{ fontWeight: "bold" }}>Status</Form.Label>
                 <Form.Control
                   style={{ border: "1px solid #050139" }}
@@ -178,14 +188,14 @@ class AddStockDetails extends Component {
                   <option selected>Pending</option>
                   <option>Completed</option>
                 </Form.Control>
-              </Form.Group> */}
+              </Form.Group>
               <Form.Group>
                 <Button
                   className="my-1"
                   style={{ backgroundColor: "#7121AD", color: "white" }}
                   type="submit"
                 >
-                  Add Stock Details
+                  Add Order
                 </Button>
               </Form.Group>
             </Form>
@@ -198,4 +208,4 @@ class AddStockDetails extends Component {
   }
 }
 
-export default AddStockDetails;
+export default AddOrder;
