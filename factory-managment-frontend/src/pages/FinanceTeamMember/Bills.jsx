@@ -3,11 +3,13 @@ import axios from "axios";
 import { Table, Button, ButtonToolbar } from 'react-bootstrap';
 import { AddNewBillModal } from '../../components/FinanceTeamMember/Modals/AddNewBillModal';
 import {BillTables} from "../../components/FinanceTeamMember/Tables/BillTables";
+import SearchBox from "../../components/FinanceTeamMember/Common/searchBox";
 
 
 class Bills extends Component {
   state = {
     bill: [],
+    searchQuery: "",
     addModalShow: false
   };
 
@@ -22,8 +24,31 @@ class Bills extends Component {
       .catch((err) => console.log(err.message));
   }
 
+  handleSearch = (query) => {
+    this.setState({
+      searchQuery: query,
+    });
+  };
+
+  filteredData() {
+    const { searchQuery, bill } = this.state;
+
+    let filtered = [];
+
+    if (searchQuery) {
+      filtered = bill.filter((r) =>
+        r.billNo.toLowerCase().startsWith(searchQuery.toLowerCase())
+      );
+    } else {
+      filtered = bill;
+    }
+
+    return filtered;
+  }
 
   render() {
+    let filtered = this.filteredData();
+    console.log(filtered);
     let AddModelClose = () => this.setState({ addModalShow: false })
     return (
       <React.Fragment>
@@ -39,7 +64,18 @@ class Bills extends Component {
                         onHide={AddModelClose}
                     />
           </ButtonToolbar>
-            <BillTables filteredItems={this.state.bill} />
+          <div className="row">
+          <div className="row">
+            <div className="col-4"></div>
+            <div className="col">
+              <SearchBox onChange={this.handleSearch} placeHolder="Search" />
+            </div>
+            <div className="col-3"></div>
+          </div>
+          <div className="col-10"></div>
+          <div className="col"></div>
+        </div>
+            <BillTables filteredItems={filtered} />
       </React.Fragment>
     );
   }
