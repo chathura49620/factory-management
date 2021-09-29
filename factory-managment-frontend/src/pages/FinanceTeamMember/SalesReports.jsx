@@ -104,10 +104,10 @@ class SalesReports extends Component {
 
         <Row>
             <Col sm={6}> 
-              <Card style={{ width: '18rem' }}>
+              <Card style={{ width: '36rem',height: '20rem', background: 'yellow', margin: '20px' }}>
                 <Card.Body>
                   <Card.Text>
-                  <h2 style={{alignContent:"center"}}>Credit <br /> Sale <br /> Report </h2>
+                  <h2 style={{textAlign:"center"}}>Credit <br /> Sale <br /> Report </h2>
                    <Form onSubmit={this.handleSubmitforCredit}>
                    <Form.Group>
                         <Form.Label>Month</Form.Label>
@@ -129,7 +129,7 @@ class SalesReports extends Component {
                     </Form.Group>
                     <br /><br />
                     <Form.Group>
-                        <Button  style={{ backgroundColor: "#7121AD", color: "white" }} variant="primary" type="submit" >
+                        <Button  style={{ backgroundColor: "#7121AD", color: "white", marginLeft: 'center' }} variant="primary" type="submit"  className ="btn-lg">
                           Genarate
                         </Button>
                     </Form.Group>
@@ -139,17 +139,16 @@ class SalesReports extends Component {
               </Card>
             </Col>
             <Col sm={6}> 
-              <Card style={{ width: '18rem' , alignContent: 'center' }}>
+              <Card style={{ width: '36rem',height: '20rem', background: 'yellow', margin: '20px' }}>
                   <Card.Body>
                   <Card.Text>
-                  <h2>Cash <br /> Sale <br /> Report </h2>
+                  <h2 style={{textAlign:"center"}} >Cash <br /> Sale <br /> Report </h2>
                    <Form onSubmit={this.handleSubmitforCash}>
                    <Form.Group>
                         <Form.Label>Month</Form.Label>
                          <Form.Control as="select" required name="monthCash">
             
                                 <option value="January" >January</option>
-                                <option value="February" >February</option>
                                 <option value="February" >February</option>
                                 <option value="April" >April</option>
                                 <option value="May" >May</option>
@@ -164,7 +163,7 @@ class SalesReports extends Component {
                     </Form.Group>
                     <br /><br />
                     <Form.Group>
-                        <Button  style={{ backgroundColor: "#7121AD", color: "white" }} variant="primary" type="submit" >
+                        <Button  style={{ backgroundColor: "#7121AD", color: "white" }} variant="primary" type="submit"  className ="btn-lg">
                           Genarate
                         </Button>
                     </Form.Group>
