@@ -44,6 +44,15 @@ class ViewOrderDetails extends Component {
     return filtered;
   }
 
+  // filterttg() {
+  //   const { orderDetails } = this.state;
+  //   let list = [];
+
+  //   list = orderDetails.filter((orData) => orData.status === "Rejected");
+
+  //   console.log(list);
+  // }
+
   render() {
     //take the filtered list
     let filtered = this.filteredData();

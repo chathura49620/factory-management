@@ -6,6 +6,7 @@ import hello from "../assets/hello.png";
 import clock from "../assets/clock.png";
 import Clock from "../../components/ProductionManager/common/clock";
 import generatePDF from "../../components/ProductionManager/util/reportGenerator";
+import generateacceptedPDF from "../../components/ProductionManager/util/acceprtedreportGenerator";
 
 class Dashboard extends Component {
   state = {
@@ -13,6 +14,8 @@ class Dashboard extends Component {
     user_name: "",
     addModalShow: true,
     productionRound: [],
+    acceptedRounds: [],
+    rejectedRounds: [],
   };
 
   componentDidMount() {
@@ -22,6 +25,11 @@ class Dashboard extends Component {
         const productionRound = result.data;
 
         this.setState({ productionRound: productionRound });
+
+        const accepted = accepted.filter((p) => p.status === "Accepted");
+        const rejected = productionRound.filter((p) => p.status === "Rejected");
+
+        this.setState({ acceptedRounds: accepted, rejectedRounds: rejected });
       })
       .catch((err) => console.log(err.message));
   }
@@ -34,7 +42,7 @@ class Dashboard extends Component {
   // }
 
   render() {
-    const { productionRound } = this.state;
+    const { productionRound, acceptedRounds, rejectedRounds } = this.state;
     let AddModelClose = () => this.setState({ addModalShow: false });
     return (
       <React.Fragment>
@@ -91,13 +99,13 @@ class Dashboard extends Component {
                   </div>
 
                   <div className="card2">
-                    <button onClick={() => generatePDF(productionRound)}>
+                    <button onClick={() => generateacceptedPDF(acceptedRounds)}>
                       <h1>Accepted Order Details Report</h1>
                     </button>
                   </div>
 
                   <div className="card3">
-                    <button onClick={() => generatePDF(productionRound)}>
+                    <button onClick={() => generateacceptedPDF(rejectedRounds)}>
                       <h1>Rejected Order Details Report</h1>
                     </button>
                   </div>

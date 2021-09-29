@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Modal, Button, Row, Col, Form, FormGroup } from "react-bootstrap";
 import swal from "sweetalert";
 import axios from "axios";
+
 class FeedbackPage extends Component {
   constructor(props) {
     super(props);
@@ -35,16 +36,16 @@ class FeedbackPage extends Component {
           username: "thirnaya",
         },
         body: JSON.stringify({
-          email: event.target.proId.value,
+          email: event.target.email.value,
           mobileNumber: event.target.mobileNumber.value,
-          quantity: event.target.quntity.value,
+          feedback: event.target.feedback.value,
         }),
       })
         .then((res) => res.json())
         .then(
           (result) => {
             swal({
-              title: "Feedback Succesfully",
+              title: "New Production Round Details Added Succesfully",
               icon: "success",
               button: "Done",
             });
@@ -77,7 +78,7 @@ class FeedbackPage extends Component {
         <div className="row">
           <div className="col-4"></div>
           <div className="col">
-            <h1>Feedback Details</h1>
+            <h1>Add Feedback</h1>
           </div>
         </div>
 
@@ -92,27 +93,29 @@ class FeedbackPage extends Component {
                   style={{ border: "1px solid #050139" }}
                   type="text"
                   name="email"
-                  placeholder="email"
+                  placeholder="Email"
                 />
                 <div style={{ background: "#f8d7da" }}>
                   {this.state.validationError}
                 </div>
               </Form.Group>
-              <Form.Label style={{ fontWeight: "bold" }}>Contact</Form.Label>
-              <Form.Group controlId=" email">
+
+              <Form.Group controlId="mobileNumber">
+                <Form.Label style={{ fontWeight: "bold" }}>
+                  Mobile Number
+                </Form.Label>
                 <Form.Control
                   style={{ border: "1px solid #050139" }}
                   type="text"
-                  name="  email"
+                  name="mobileNumber"
                   placeholder="Mobile Number"
-                >
-                  <div style={{ background: "#f8d7da" }}>
-                    {this.state.validationError}
-                  </div>
-                </Form.Control>
+                />
+                <div style={{ background: "#f8d7da" }}>
+                  {this.state.validationError}
+                </div>
               </Form.Group>
               <Form.Group controlId="feedback">
-                <Form.Label style={{ fontWeight: "bold" }}>Quantity</Form.Label>
+                <Form.Label style={{ fontWeight: "bold" }}>Feedback</Form.Label>
                 <Form.Control
                   style={{ border: "1px solid #050139" }}
                   type="text"

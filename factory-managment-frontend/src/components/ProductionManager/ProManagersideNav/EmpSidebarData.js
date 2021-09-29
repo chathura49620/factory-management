@@ -68,7 +68,7 @@ export const EmpSidebarData = [
   },
   {
     title: "Feedback",
-    path: "/support",
+    path: "/view-feedback",
     icon: <IoIcons.IoMdHelpCircle />,
   },
   {
