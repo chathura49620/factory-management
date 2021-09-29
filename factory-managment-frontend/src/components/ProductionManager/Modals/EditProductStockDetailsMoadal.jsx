@@ -6,7 +6,7 @@ import swal from "sweetalert";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 
-export class EditProductionRoundDetailsModal extends Component {
+export class EditProductStockDetailsMoadal extends Component {
   constructor(props) {
     super(props);
     this.state = { snackbaropen: false, snackbarmsg: "", categories: [] };
@@ -31,26 +31,23 @@ export class EditProductionRoundDetailsModal extends Component {
   handleSubmit(event) {
     event.preventDefault();
 
-    fetch("http://localhost:5000/api/newProRound-details", {
+    fetch("http://localhost:5000/api/order-details", {
       method: "PUT",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        username: "chathura",
+        username: "thiranya",
       },
       body: JSON.stringify({
-        productId: event.target.id.value,
-        productCategory: event.target.productCategory.value,
-        quantity: event.target.quntity.value,
-        esDays: event.target.estDays.value,
-        esEmployees: event.target.estEmp.value,
+        id: event.target.id.value,
+        status: event.target.status.value,
       }),
     })
       .then((res) => res.json())
       .then(
         (result) => {
           swal({
-            title: "Category Added Succesfully",
+            title: "Order Status Changed Successfully",
             icon: "success",
             button: "Done",
           });
@@ -101,62 +98,47 @@ export class EditProductionRoundDetailsModal extends Component {
               <Col sm={6}>
                 <Form onSubmit={this.handleSubmit}>
                   <Form.Group>
-                    <Form.Group controlId="proId">
+                    <Form.Group controlId="orderId">
                       <Form.Control
                         type="text"
                         name="id"
                         required
                         placeholder="id"
-                        disabled
-                        hidden
                         defaultValue={this.props.id}
                       />
                     </Form.Group>
-                    <Form.Label>Product Category</Form.Label>
+                  </Form.Group>
+                  {/* <Form.Group controlId="status">
+                    <Form.Label>Status</Form.Label>
                     <Form.Control
+                      type="text"
+                      name="status"
+                      required
+                      placeholder="Status"
+                      defaultValue={this.props.status}
+                    />
+                  </Form.Group> */}
+                  <Form.Group>
+                    <Form.Label style={{ fontWeight: "bold" }}>
+                      Status
+                    </Form.Label>
+                    <Form.Control
+                      style={{ border: "1px solid #050139" }}
                       as="select"
-                      required
-                      name="productCategory"
-                      defaultValue={this.props.productCategory}
+                      name="status"
+                      defaultValue={this.props.status}
                     >
-                      {this.state.categories.map((i) => (
-                        <option key={i._id}>{i.categoryName}</option>
-                      ))}
+                      <div style={{ background: "#f8d7da" }}>
+                        {this.state.validationError}
+                      </div>
+                      <option selected>Pending</option>
+                      <option>Accepted</option>
+                      <option>Rejected</option>
                     </Form.Control>
-                  </Form.Group>
-                  <Form.Group controlId="quntity">
-                    <Form.Label>Quntity</Form.Label>
-                    <Form.Control
-                      type="text"
-                      name="quntity"
-                      required
-                      placeholder="Quntity"
-                      defaultValue={this.props.quantity}
-                    />
-                  </Form.Group>
-                  <Form.Group controlId="estDays">
-                    <Form.Label>Estimated Days</Form.Label>
-                    <Form.Control
-                      type="text"
-                      name="estDays"
-                      required
-                      placeholder="Estimated Days"
-                      defaultValue={this.props.esDays}
-                    />
-                  </Form.Group>
-                  <Form.Group controlId="estEmp">
-                    <Form.Label>Estimated Employees</Form.Label>
-                    <Form.Control
-                      type="text"
-                      name="estEmp"
-                      required
-                      placeholder="Estimated Employees"
-                      defaultValue={this.props.esEmployees}
-                    />
                   </Form.Group>
                   <Form.Group>
                     <Button variant="primary" type="submit">
-                      Update Production Round
+                      Accept Order
                     </Button>
                   </Form.Group>
                 </Form>

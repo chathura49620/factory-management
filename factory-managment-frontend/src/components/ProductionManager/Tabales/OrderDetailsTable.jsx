@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Table, Button, ButtonToolbar } from "react-bootstrap";
 import swal from "sweetalert";
-import { EditProductionRoundDetailsModal } from "../Modals/EditProductionRoundDetailsModal";
+import { EditProductStockDetailsMoadal } from "../Modals/EditProductStockDetailsMoadal";
 
-export class ProductonRoundTable extends Component {
+export class OrderDetailsTable extends Component {
   constructor(props) {
     super(props);
     this.state = { editModalShow: false };
@@ -18,7 +18,7 @@ export class ProductonRoundTable extends Component {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        fetch("http://localhost:5000/api/newProRound-details", {
+        fetch("http://localhost:5000/api/order-details", {
           method: "DELETE",
           headers: {
             Accept: "application/json",
@@ -32,7 +32,7 @@ export class ProductonRoundTable extends Component {
           .then((res) => res.json())
           .then((result) => {
             swal({
-              title: "New Production Round Deleted Succesfully",
+              title: "Order Rejected Succesfully",
               icon: "success",
               button: "Done",
             });
@@ -44,19 +44,29 @@ export class ProductonRoundTable extends Component {
   }
 
   render() {
-    const { id, productCategory, quantity, esDays, esEmployees } = this.state;
+    const {
+      id,
+      buyerName,
+      email,
+      productCategory,
+      quantity,
+      paymentMethode,
+      status,
+    } = this.state;
     let EditModelClose = () => this.setState({ editModalShow: false });
     return (
       <div>
         <ButtonToolbar>
-          <EditProductionRoundDetailsModal
+          <EditProductStockDetailsMoadal
             show={this.state.editModalShow}
             onHide={EditModelClose}
-            productId={id}
+            orderId={id}
+            buyerName={buyerName}
+            email={email}
             productCategory={productCategory}
             quantity={quantity}
-            esDays={esDays}
-            esEmployees={esEmployees}
+            paymentMethode={paymentMethode}
+            status={status}
           />
         </ButtonToolbar>
         <table
@@ -66,22 +76,25 @@ export class ProductonRoundTable extends Component {
           <thead>
             <tr style={{ backgroundColor: "#7121AD", color: "white" }}>
               <th scope="col">Id</th>
+              <th scope="col">Buyer Name</th>
+              <th scope="col">Email</th>
               <th scope="col">Product Category</th>
-              <th scope="col">Quntity</th>
-              <th scope="col">Estimated Days</th>
-              <th scope="col">Estimated Employees</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Payment Methode</th>
               <th scope="col">Status</th>
+
               <th scope="col">Action</th>
             </tr>
           </thead>
           <tbody>
-            {this.props.productionRound.map((i) => (
+            {this.props.orderDetails.map((i) => (
               <tr key={i._id} className={"table-succes table-primary"}>
-                <td>{i.productId}</td>
+                <td>{i.orderId}</td>
+                <td>{i.buyerName}</td>
+                <td>{i.email}</td>
                 <td>{i.productCategory}</td>
                 <td>{i.quantity}</td>
-                <td>{i.esDays}</td>
-                <td>{i.esEmployees}</td>
+                <td>{i.paymentMethode}</td>
                 <td>{i.status}</td>
                 <td>
                   <button
@@ -96,20 +109,17 @@ export class ProductonRoundTable extends Component {
                         editModalShow: true,
                         id: i._id,
                         productCategory: i.productCategory,
-                        quantity: i.quantity,
-                        esDays: i.esDays,
-                        esEmployees: i.esEmployees,
                       })
                     }
                   >
-                    Edit
+                    Accept
                   </button>
                   <button
                     className="btn-sm"
                     style={{ backgroundColor: "#BA0D32 ", color: "white" }}
                     onClick={() => this.deleteCat(i._id)}
                   >
-                    Delete
+                    Reject
                   </button>
                 </td>
               </tr>

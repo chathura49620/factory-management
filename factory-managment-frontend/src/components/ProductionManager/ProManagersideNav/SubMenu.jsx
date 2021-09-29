@@ -20,11 +20,9 @@ const SidebarLink = styled(Link)`
   }
 `;
 
-
 const SidebarLabel = styled.span`
   margin-left: 16px;
 `;
-
 
 const DropdownLink = styled(Link)`
   background: #414757;
@@ -41,7 +39,6 @@ const DropdownLink = styled(Link)`
     cursor: pointer;
   }
 `;
-
 
 const SubMenu = ({ item }) => {
   const [subnav, setSubnav] = useState(false);

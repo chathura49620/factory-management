@@ -91,11 +91,15 @@ class Dashboard extends Component {
                   </div>
 
                   <div className="card2">
-                    <h1>Accepted Order Details Report</h1>
+                    <button onClick={() => generatePDF(productionRound)}>
+                      <h1>Accepted Order Details Report</h1>
+                    </button>
                   </div>
 
                   <div className="card3">
-                    <h1>Rejected Order Details Report</h1>
+                    <button onClick={() => generatePDF(productionRound)}>
+                      <h1>Rejected Order Details Report</h1>
+                    </button>
                   </div>
                 </div>
               </div>
