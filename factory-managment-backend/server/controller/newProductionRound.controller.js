@@ -84,33 +84,11 @@ exports.update = (req, res) => {
         },
       }
     )
-    .then((result) => res.json("Updated"))
+    .then((result) =>
+      res.json("New Production Round Details Updated Successfully.")
+    )
     .catch((err) => res.status(400).json(err.message));
 };
-
-// exports.update = (req, res) => {
-//   if (!req.body) {
-//     return res
-//       .status(400)
-//       .send({ message: "Data To Be Update Can Not Be Empty" });
-//   }
-
-//   const id = req.body.id;
-//   newProductionRoundDetails
-//     .findByIdAndUpdate(id, req.body, { useFindAndModify: false })
-//     .then((data) => {
-//       if (!data) {
-//         res
-//           .status(400)
-//           .send({ message: "Previous Production Round Details Is Not Found" });
-//       } else {
-//         res.send(data);
-//       }
-//     })
-//     .catch((err) => {
-//       res.status(500).send({ message: "Error while Updateting Details" });
-//     });
-// };
 
 //Delete a leave request  with specified leave details id in the request
 exports.delete = (req, res) => {

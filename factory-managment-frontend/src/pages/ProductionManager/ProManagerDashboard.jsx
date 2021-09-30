@@ -16,6 +16,8 @@ class Dashboard extends Component {
     productionRound: [],
     acceptedRounds: [],
     rejectedRounds: [],
+    orderCount: [],
+    productionRoundCount: [],
   };
 
   componentDidMount() {
@@ -32,14 +34,32 @@ class Dashboard extends Component {
         this.setState({ acceptedRounds: accepted, rejectedRounds: rejected });
       })
       .catch((err) => console.log(err.message));
+
+    axios
+      .get("http://localhost:5000/api/order-details")
+      .then((result) => {
+        const orderCount = result.data;
+
+        this.setState({ orderCount: orderCount });
+      })
+      .catch((err) => console.log(err.message));
+
+    axios
+      .get("http://localhost:5000/api/newProRound-details")
+      .then((result) => {
+        const productionRoundCount = result.data;
+
+        this.setState({ productionRoundCount: productionRoundCount });
+      })
+      .catch((err) => console.log(err.message));
   }
 
-  // logout(){
-  //   localStorage.removeItem('user_full_name');
-  //   localStorage.removeItem('user_email');
-  //   localStorage.removeItem('is_login');
-  //   window.location.reload();
-  // }
+  logout() {
+    localStorage.removeItem("user_full_name");
+    localStorage.removeItem("user_email");
+    localStorage.removeItem("is_login");
+    window.location.reload();
+  }
 
   render() {
     const { productionRound, acceptedRounds, rejectedRounds } = this.state;
@@ -62,7 +82,16 @@ class Dashboard extends Component {
                 <h1>Hello, {this.state.user_name}</h1>
                 <p>Welcome to your profile.</p>
               </div>
-              {/* <button style={{ backgroundColor: "#7121AD", color: "white" ,width:"100px"}} onClick={this.logout}>Log Out</button> */}
+              <button
+                style={{
+                  backgroundColor: "#7121AD",
+                  color: "white",
+                  width: "100px",
+                }}
+                onClick={this.logout}
+              >
+                Log Out
+              </button>
             </div>
 
             <div className="charts">
@@ -120,16 +149,18 @@ class Dashboard extends Component {
               <div className="carda">
                 <div className="card_inner">
                   <p className="text-primary-p">Number Of Orders</p>
-                  <span className="font-bold text-title">300</span>
+                  <span className="font-bold text-title">
+                    {this.state.orderCount.length}
+                  </span>
                 </div>
               </div>
 
               <div className="cardd">
                 <div className="card_inner">
-                  <p className="text-primary-p">
-                    No Of Completed Production Rounds
-                  </p>
-                  <span className="font-bold text-title">445</span>
+                  <p className="text-primary-p">No Of Production Rounds</p>
+                  <span className="font-bold text-title">
+                    {this.state.productionRoundCount.length}
+                  </span>
                 </div>
               </div>
             </div>

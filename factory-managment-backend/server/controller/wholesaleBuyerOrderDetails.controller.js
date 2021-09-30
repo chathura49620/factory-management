@@ -1,4 +1,4 @@
-var orderDetails = require("../model/orderDetails.model");
+var wholesaleBuyerOrderDetails = require("../model/orderDetails.model");
 
 // create and save new order details
 exports.create = (req, res) => {
@@ -10,7 +10,7 @@ exports.create = (req, res) => {
 
   // order details
 
-  const orderDet = new orderDetails({
+  const wholsabuyerOrderDet = new wholesaleBuyerOrderDetails({
     orderId: req.body.orderId,
     buyerName: req.body.buyerName,
     email: req.body.email,
@@ -21,7 +21,7 @@ exports.create = (req, res) => {
   });
 
   // save order details in the database
-  orderDet
+  wholsabuyerOrderDet
     .save(orderDet)
     .then((data) => {
       res.send(data);
@@ -38,7 +38,7 @@ exports.find = (req, res) => {
   if (req.query.id) {
     const id = req.query.id;
 
-    orderDetails
+    wholesaleBuyerOrderDetails
       .findById(id)
       .then((data) => {
         if (!data) {
@@ -55,7 +55,7 @@ exports.find = (req, res) => {
         });
       });
   } else {
-    orderDetails
+    wholesaleBuyerOrderDetails
       .find()
       .then((matCode) => {
         res.send(matCode);
@@ -71,16 +71,18 @@ exports.find = (req, res) => {
 //update order details
 
 exports.update = (req, res) => {
-  orderDetails
+  wholesaleBuyerOrderDetails
     .updateOne(
       { _id: req.body.id },
       {
         $set: {
-          status: req.body.status,
+          productCategory: req.body.productCategory,
+          quantity: req.body.quantity,
+          paymentMethode: req.body.paymentMethode,
         },
       }
     )
-    .then((result) => res.json("Order Details Updated Successfully."))
+    .then((result) => res.json("Updated"))
     .catch((err) => res.status(400).json(err.message));
 };
 
@@ -88,7 +90,7 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
   const id = req.body.id;
 
-  orderDetails
+  wholesaleBuyerOrderDetails
     .findByIdAndDelete(id)
     .then((data) => {
       if (!data) {

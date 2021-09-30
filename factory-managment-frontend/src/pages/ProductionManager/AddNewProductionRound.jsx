@@ -6,7 +6,16 @@ import axios from "axios";
 class AddNewProductionRound extends Component {
   constructor(props) {
     super(props);
-    this.state = { snackbaropen: false, snackbarmsg: "", categories: [] };
+    this.state = {
+      snackbaropen: false,
+      snackbarmsg: "",
+      categories: [],
+      productIdError: "",
+      quantityError: "",
+      estimatedDateError: "",
+      estimatedEmployeeError: "",
+      statusError: "",
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -52,6 +61,19 @@ class AddNewProductionRound extends Component {
               icon: "success",
               button: "Done",
             });
+            this.setState({
+              productIdError: "",
+              quantityError: "",
+              estimatedDateError: "",
+              estimatedEmployeeError: "",
+              statusError: "",
+            });
+            setTimeout(
+              function () {
+                window.location.reload();
+              }.bind(this),
+              1500
+            );
           },
           (error) => {
             this.setState({ snackbaropen: true, snackbarmsg: "Failed" });
@@ -60,20 +82,63 @@ class AddNewProductionRound extends Component {
     }
   }
 
-  validate() {
-    let validationError = "";
+  validate(event) {
+    let productIdError = "";
+    let quantityError = "";
+    let estimatedDateError = "";
+    let estimatedEmployeeError = "";
+    let statusError = "";
 
-    if (!this.state.validationError) {
-      validationError = "This Field Cannot Be Blank";
+    if (!event.target.proId.value) {
+      productIdError = "Product Id Field  Cannot Be Blank";
+    }
+    if (!event.target.quntity.value) {
+      quantityError = "Quatity Field Cannot Be Blank";
+    }
+    if (!event.target.estDays.value) {
+      estimatedDateError = "Estimated Date Field Cannot Be Blank";
+    }
+    if (!event.target.estEmp.value) {
+      estimatedEmployeeError = "Estimated Employee Field Cannot Be Blank";
+    }
+    if (!event.target.status.value) {
+      statusError = "Status Field Cannot Be Blank";
     }
 
-    if (validationError) {
-      this.setState({ validationError: validationError });
+    if (
+      productIdError |
+      quantityError |
+      estimatedDateError |
+      estimatedEmployeeError |
+      statusError
+    ) {
+      this.setState({
+        productIdError: productIdError,
+        quantityError: quantityError,
+        estimatedDateError: estimatedDateError,
+        estimatedEmployeeError: estimatedEmployeeError,
+        statusError: statusError,
+      });
       return false;
     }
 
     return true;
   }
+
+  // validate() {
+  //   let validationError = "";
+
+  //   if (!this.state.validationError) {
+  //     validationError = "This Field Cannot Be Blank";
+  //   }
+
+  //   if (validationError) {
+  //     this.setState({ validationError: validationError });
+  //     return false;
+  //   }
+
+  //   return true;
+  // }
 
   render() {
     return (
@@ -102,7 +167,7 @@ class AddNewProductionRound extends Component {
                     placeholder="Product Id"
                   />
                   <div style={{ background: "#f8d7da" }}>
-                    {this.state.validationError}
+                    {this.state.productIdError}
                   </div>
                 </Form.Group>
                 <Form.Label style={{ fontWeight: "bold" }}>
@@ -114,7 +179,7 @@ class AddNewProductionRound extends Component {
                   name="productCategory"
                 >
                   <div style={{ background: "#f8d7da" }}>
-                    {this.state.validationError}
+                    {/* {this.state.validationError} */}
                   </div>
                   {this.state.categories.map((i) => (
                     <option key={i._id}>{i.categoryName}</option>
@@ -130,7 +195,7 @@ class AddNewProductionRound extends Component {
                   placeholder="Quantity"
                 />
                 <div style={{ background: "#f8d7da" }}>
-                  {this.state.validationError}
+                  {this.state.quantityError}
                 </div>
               </Form.Group>
               <Form.Group controlId="estDays">
@@ -144,7 +209,7 @@ class AddNewProductionRound extends Component {
                   placeholder="Estimated Days"
                 />
                 <div style={{ background: "#f8d7da" }}>
-                  {this.state.validationError}
+                  {this.state.estimatedDateError}
                 </div>
               </Form.Group>
               <Form.Group controlId="estEmp">
@@ -158,7 +223,7 @@ class AddNewProductionRound extends Component {
                   placeholder="Estimated Employees"
                 />
                 <div style={{ background: "#f8d7da" }}>
-                  {this.state.validationError}
+                  {this.state.estimatedEmployeeError}
                 </div>
               </Form.Group>
               <Form.Group>
@@ -169,7 +234,7 @@ class AddNewProductionRound extends Component {
                   name="status"
                 >
                   <div style={{ background: "#f8d7da" }}>
-                    {this.state.validationError}
+                    {this.state.statusError}
                   </div>
                   <option selected>Pending</option>
                   <option>Completed</option>

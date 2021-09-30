@@ -31,7 +31,7 @@ export class EditOrderDetailsMoadal extends Component {
   handleSubmit(event) {
     event.preventDefault();
 
-    fetch("http://localhost:5000/update/placedorder", {
+    fetch("http://localhost:5000/api/order-details", {
       method: "PUT",
       headers: {
         Accept: "application/json",
@@ -40,7 +40,7 @@ export class EditOrderDetailsMoadal extends Component {
       },
       body: JSON.stringify({
         id: event.target.id.value,
-        email: event.target.email.value,
+        productCategory: event.target.productCategory.value,
         quantity: event.target.quantity.value,
         paymentMethode: event.target.paymentMethode.value,
         //status: event.target.status.value,
@@ -110,16 +110,18 @@ export class EditOrderDetailsMoadal extends Component {
                         defaultValue={this.props.id}
                       />
                     </Form.Group>
-                  </Form.Group>
-                  <Form.Group controlId="email">
-                    <Form.Label>Email</Form.Label>
+
+                    <Form.Label>Product Category</Form.Label>
                     <Form.Control
-                      type="text"
-                      name="email"
+                      as="select"
                       required
-                      placeholder="Email"
-                      defaultValue={this.props.email}
-                    />
+                      name="productCategory"
+                      defaultValue={this.props.productCategory}
+                    >
+                      {this.state.categories.map((i) => (
+                        <option key={i._id}>{i.categoryName}</option>
+                      ))}
+                    </Form.Control>
                   </Form.Group>
                   <Form.Group controlId="quantity">
                     <Form.Label>Quntity</Form.Label>
@@ -140,10 +142,15 @@ export class EditOrderDetailsMoadal extends Component {
                       placeholder="Payment Methode"
                       defaultValue={this.props.paymentMethode}
                     />
+                    <div style={{ background: "#f8d7da" }}>
+                      {this.state.validationError}
+                    </div>
+                    <option selected>Cash</option>
+                    <option>Card</option>
                   </Form.Group>
                   <Form.Group>
                     <Button variant="primary" type="submit">
-                      Accept Order
+                      Edit Details
                     </Button>
                   </Form.Group>
                 </Form>

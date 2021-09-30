@@ -3,7 +3,7 @@ import "jspdf-autotable";
 import { format } from "date-fns";
 
 // define a generatePDF function that accepts a tickets argument
-const generatePDF = (tickets) => {
+const generateacceptedPDF = (tickets) => {
   // initialize jsPDF
   const doc = new jsPDF();
 
@@ -11,10 +11,11 @@ const generatePDF = (tickets) => {
   //const tableColumn = ["Id", "Title", "Issue", "Status", "Closed on"];
   const tableColumn = [
     "Id",
+    "Buyer Name",
+    "Email",
     "Product Category",
-    "Quntity",
-    "Estimated Days",
-    "Estimated Employees",
+    "Quantity",
+    "Payment Methode",
     "Status",
   ];
   // define an empty array of rows
@@ -23,13 +24,13 @@ const generatePDF = (tickets) => {
   // for each ticket pass all its data into an array
   tickets.forEach((ticket) => {
     const ticketData = [
-      ticket.productId,
+      ticket.orderId,
+      ticket.buyerName,
+      ticket.email,
       ticket.productCategory,
       ticket.quantity,
-      ticket.esDays,
-      ticket.esEmployees,
+      ticket.paymentMethode,
       ticket.status,
-
       // called date-fns to format the date on the ticket
     ];
     // push each tickcet's info into a row
@@ -44,9 +45,9 @@ const generatePDF = (tickets) => {
   // ticket title. and margin-top + margin-left
   doc.text("Factory Management System", 5, 5);
   // ticket title. and margin-top + margin-left
-  doc.text("Production Rounds.", 14, 15);
+  doc.text("Order Details Report", 14, 15);
   // we define the name of our PDF file.
   doc.save(`report_${dateStr}.pdf`);
 };
 
-export default generatePDF;
+export default generateacceptedPDF;
