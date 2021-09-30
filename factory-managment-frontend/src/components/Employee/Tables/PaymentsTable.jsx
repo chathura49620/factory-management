@@ -5,14 +5,6 @@ import swal from 'sweetalert';
 import { ToastContainer, toast, Zoom, Bounce, Flip } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 
-// toast.success("Welcome to your leave requests.", {
-//   position: toast.POSITION.TOP_RIGHT,
-//   draggable: true,
-//   transition: Flip,
-//   autoClose: 5000,
-//   closeOnClick: true
-// });
-
 
 export class PaymentsTable extends Component{
   constructor(props) {
@@ -107,11 +99,9 @@ export class PaymentsTable extends Component{
             
           ))
         }
-
-
      
     </tbody>
-    </table>
+</table>
 
     </React.Fragment>
   );

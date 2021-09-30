@@ -5,14 +5,6 @@ import swal from 'sweetalert';
 import { ToastContainer, toast, Zoom, Bounce, Flip } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 
-toast.success("Welcome to your assignments.", {
-  position: toast.POSITION.TOP_RIGHT,
-  draggable: true,
-  transition: Flip,
-  autoClose: 5000,
-  closeOnClick: true
-});
-
 
 export class AssignmentTable extends Component{
   constructor(props) {
@@ -106,8 +98,6 @@ export class AssignmentTable extends Component{
             
           ))
         }
-
-
      
     </tbody>
     </table>

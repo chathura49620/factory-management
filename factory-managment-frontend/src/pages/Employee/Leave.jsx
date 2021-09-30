@@ -7,9 +7,6 @@ import leavepic from "../../pages/assets/leavepic.jpg"
 import "./styles.css"
 import generatePDF from "../../components/Employee/utills/reportGenerator";
 
-
-
-
 class Leave extends Component {
   state = {
     Leave: [],

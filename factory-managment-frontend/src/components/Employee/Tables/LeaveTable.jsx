@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import {EditEmployeeModal} from '../Modals/EditEmployeeModal';
 import { Table, Button, ButtonToolbar } from 'react-bootstrap';
 import swal from 'sweetalert';
-import { ToastContainer, toast, Zoom, Bounce, Flip } from "react-toastify"
+import { ToastContainer, Zoom } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 import generatePDF from './../utills/reportGenerator';
 
