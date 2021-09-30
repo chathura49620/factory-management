@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Table, Button, ButtonToolbar } from "react-bootstrap";
 import { FeedbackTable } from "../../components/ProductionManager/Tabales/FeedbackTable";
+import "./styles.css";
+import viewpic from "../../pages/assets/viewpic.png";
 
 class ViewFeedback extends Component {
   state = {
@@ -23,12 +25,12 @@ class ViewFeedback extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className="row">
-          <div className="col-4"></div>
-          <div className="col">
-            <h1>View Feedback List</h1>
-          </div>
+        <h1 className="heading">View Feedback List</h1>
+
+        <div className="center">
+          <img src={viewpic} alt="leavepic" />
         </div>
+
         <div className="row">
           <div className="col-2"></div>
           <div className="col">

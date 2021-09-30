@@ -52,6 +52,12 @@ export class EditPreviousProductionRoundDetailsModal extends Component {
             icon: "success",
             button: "Done",
           });
+          setTimeout(
+            function () {
+              window.location.reload();
+            }.bind(this),
+            1500
+          );
         },
         (error) => {
           this.setState({ snackbaropen: true, snackbarmsg: "Failed" });

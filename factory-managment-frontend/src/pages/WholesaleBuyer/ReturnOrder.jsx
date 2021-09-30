@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Modal, Button, Row, Col, Form, FormGroup } from "react-bootstrap";
 import swal from "sweetalert";
 import axios from "axios";
+import "./styles.css";
+import addorder from "../../pages/assets/addorderpic.png";
 
 class ReturnOrder extends Component {
   constructor(props) {
@@ -49,6 +51,12 @@ class ReturnOrder extends Component {
               icon: "success",
               button: "Done",
             });
+            setTimeout(
+              function () {
+                window.location.reload();
+              }.bind(this),
+              1500
+            );
           },
           (error) => {
             this.setState({ snackbaropen: true, snackbarmsg: "Failed" });
@@ -75,11 +83,10 @@ class ReturnOrder extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className="row">
-          <div className="col-4"></div>
-          <div className="col">
-            <h1>Return An Order</h1>
-          </div>
+        <h1 className="heading">Return An Order</h1>
+
+        <div className="center">
+          <img src={addorder} alt="leavepic" />
         </div>
 
         <div className="row">

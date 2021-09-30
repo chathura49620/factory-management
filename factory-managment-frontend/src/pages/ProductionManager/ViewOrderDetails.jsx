@@ -3,6 +3,8 @@ import axios from "axios";
 import { Table, Button, ButtonToolbar } from "react-bootstrap";
 import { OrderDetailsTable } from "../../components/ProductionManager/Tabales/OrderDetailsTable";
 import SearchBox from "../../components/ProductionManager/common/searchBox";
+import "./styles.css";
+import viewpic from "../../pages/assets/viewpic.png";
 
 class ViewOrderDetails extends Component {
   state = {
@@ -44,15 +46,6 @@ class ViewOrderDetails extends Component {
     return filtered;
   }
 
-  // filterttg() {
-  //   const { orderDetails } = this.state;
-  //   let list = [];
-
-  //   list = orderDetails.filter((orData) => orData.status === "Rejected");
-
-  //   console.log(list);
-  // }
-
   render() {
     //take the filtered list
     let filtered = this.filteredData();
@@ -62,11 +55,10 @@ class ViewOrderDetails extends Component {
     let AddModelClose = () => this.setState({ addModalShow: false });
     return (
       <React.Fragment>
-        <div className="row">
-          <div className="col-4 my-2"></div>
-          <div className="col">
-            <h1>View Order Details</h1>
-          </div>
+        <h1 className="heading">View Order Details</h1>
+
+        <div className="center">
+          <img src={viewpic} alt="leavepic" />
         </div>
 
         <div className="row">

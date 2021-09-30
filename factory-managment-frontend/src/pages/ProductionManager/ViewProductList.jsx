@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Table, Button, ButtonToolbar } from 'react-bootstrap';
-import {ProductListTable} from "../../components/ProductionManager/Tabales/ProductListTable";
-
+import { Table, Button, ButtonToolbar } from "react-bootstrap";
+import { ProductListTable } from "../../components/ProductionManager/Tabales/ProductListTable";
+import "./styles.css";
+import viewpic from "../../pages/assets/viewpic.png";
 
 class ViewProductList extends Component {
   state = {
     ProductList: [],
-    addModalShow: false
+    addModalShow: false,
   };
-
 
   componentDidMount() {
     axios
@@ -25,29 +25,21 @@ class ViewProductList extends Component {
   render() {
     return (
       <React.Fragment>
+        <h1 className="heading">View Product List</h1>
 
+        <div className="center">
+          <img src={viewpic} alt="leavepic" />
+        </div>
 
-<div className="row">
-  <div className="col-4"></div>
-  <div className="col">
-  <h1>View Product List</h1>
-  </div>
-</div>
         <div className="row">
-          <div className="col-2">
-
-          </div>
+          <div className="col-2"></div>
           <div className="col">
- <ProductListTable ProductList={this.state.ProductList} />
-
+            <ProductListTable ProductList={this.state.ProductList} />
           </div>
         </div>
-       
-           
       </React.Fragment>
     );
   }
-};
-
+}
 
 export default ViewProductList;

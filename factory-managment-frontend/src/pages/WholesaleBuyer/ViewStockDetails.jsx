@@ -3,6 +3,9 @@ import axios from "axios";
 import { Table, Button, ButtonToolbar } from "react-bootstrap";
 import { ProductStockTable } from "../../components/WholeSaleBuyer/Tabales/ProductStockTable";
 import SearchBox from "../../components/WholeSaleBuyer/common/searchBox";
+import "./styles.css";
+import viewpic from "../../pages/assets/viewpic.png";
+
 class ViewStockDetails extends Component {
   state = {
     ProductList: [],
@@ -51,11 +54,10 @@ class ViewStockDetails extends Component {
 
     return (
       <React.Fragment>
-        <div className="row">
-          <div className="col-4"></div>
-          <div className="col">
-            <h1>View Product List</h1>
-          </div>
+        <h1 className="heading">View Product List</h1>
+
+        <div className="center">
+          <img src={viewpic} alt="leavepic" />
         </div>
 
         <div className="row">

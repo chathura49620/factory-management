@@ -30,6 +30,9 @@ class Dashboard extends Component {
       })
       .catch((err) => console.log(err.message));
 
+    const user_name = localStorage.getItem("user_full_name");
+    this.setState({ user_name: user_name });
+
     axios
       .get("http://localhost:5000/api/order-details")
       .then((result) => {

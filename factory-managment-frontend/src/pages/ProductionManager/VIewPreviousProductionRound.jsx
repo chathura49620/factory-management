@@ -3,6 +3,8 @@ import axios from "axios";
 import { Table, Button, ButtonToolbar } from "react-bootstrap";
 import { PreviousProductionRoundTable } from "../../components/ProductionManager/Tabales/PreviousProductionRoundTable";
 import SearchBox from "../../components/ProductionManager/common/searchBox";
+import "./styles.css";
+import viewpic from "../../pages/assets/viewpic4.png";
 
 class VIewPreviousProductionRound extends Component {
   state = {
@@ -53,11 +55,10 @@ class VIewPreviousProductionRound extends Component {
     let AddModelClose = () => this.setState({ addModalShow: false });
     return (
       <React.Fragment>
-        <div className="row">
-          <div className="col-4 my-2"></div>
-          <div className="col">
-            <h1>View Previous Production Round Details</h1>
-          </div>
+        <h1 className="heading">View Previous Production Round Details</h1>
+
+        <div className="center">
+          <img src={viewpic} alt="leavepic" />
         </div>
 
         <div className="row">
