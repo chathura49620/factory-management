@@ -56,7 +56,7 @@ const ItemRequestTable = ({ filteredItems, onItemDelete, onSetPopup }) => {
               <button
                 onClick={() => onItemDelete(request)}
                 className="btn-sm"
-                style={{ backgroundColor: "#BA0D32 ", color: "white" }}
+                style={{ backgroundColor: "#dc3545 ", color: "white" }}
               >
                 Delete
               </button>

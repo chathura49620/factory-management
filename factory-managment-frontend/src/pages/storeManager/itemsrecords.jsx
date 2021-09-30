@@ -13,6 +13,7 @@ import Pagination from "../../components/storeManager/reusables/pagination";
 import { paginate } from "../../components/storeManager/utils/paginate";
 import FormPopup from "../../components/storeManager/reusables/formpopup";
 import EditItemRecordForm from "../../components/storeManager/forms/edititemrecordform";
+import generatePDF from "./../../components/storeManager/utils/reportGenerator";
 
 class ItemRecord extends Component {
   state = {
@@ -134,6 +135,12 @@ class ItemRecord extends Component {
       });
   };
 
+  setListAndGenerateReport = (r) => {
+    let list = [r];
+    console.log("hhhhgenerate", list);
+    generatePDF(list);
+  };
+
   render() {
     //const valueArr = JSON.parse(this.state.itemRecords);
     //console.log(this.state.itemRecords);
@@ -217,18 +224,14 @@ class ItemRecord extends Component {
               </Link>
             </div>
           </div>
-          <div className="row">
-            <div className="col-3"></div>
-            <div className="col">
-              <h2>Item records</h2>
-              <TableVertilcle
-                records={itemRecords}
-                handleDelete={this.handleDelete}
-                onSet={this.setConfirmDialog}
-                onSetPopup={this.setOpenPopup}
-              />
-            </div>
-          </div>
+
+          <TableVertilcle
+            records={itemRecords}
+            handleDelete={this.handleDelete}
+            onSet={this.setConfirmDialog}
+            onSetPopup={this.setOpenPopup}
+            onReport={this.setListAndGenerateReport}
+          />
 
           {/* <div className="row">
             <div className="col-2"></div>

@@ -91,7 +91,7 @@ const ProfileTable = ({ userOb, onSetPopup, onSetReasonDeletePopup }) => {
 
           <button
             className="btn"
-            style={{ backgroundColor: "#BA0D32 ", color: "white" }}
+            style={{ backgroundColor: "#dc3545 ", color: "white" }}
             onClick={() => onSetReasonDeletePopup(userOb.FullName, userOb._id)}
           >
             Delete Profile

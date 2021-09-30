@@ -7,7 +7,11 @@ const ListGroup = ({ genres, onGenreSelect, selectedGenre }) => {
         <li
           onClick={() => onGenreSelect(g)}
           key={g}
-          style={{ backgroundColor: g === selectedGenre ? "#7121AD" : "white" }}
+          style={{
+            backgroundColor: g === selectedGenre ? "#7121AD" : "white",
+            borderRadius: "2px",
+            cursor: "pointer",
+          }}
           className="list-group-item"
         >
           {g}
