@@ -14,6 +14,7 @@ import { paginate } from "../../components/storeManager/utils/paginate";
 import FormPopup from "../../components/storeManager/reusables/formpopup";
 import EditItemRecordForm from "../../components/storeManager/forms/edititemrecordform";
 import generatePDF from "./../../components/storeManager/utils/reportGenerator";
+import userPic from "../../pages/assets/Product hunt-cuate.svg";
 
 class ItemRecord extends Component {
   state = {
@@ -191,6 +192,12 @@ class ItemRecord extends Component {
               <div className="col-2"></div>
               <div className="col">
                 <Notice />
+              </div>
+            </div>
+            <div className="row m-4">
+              <div className="col-5"></div>
+              <div className="col">
+                <img src={userPic} alt="" width="400" height="400" />
               </div>
             </div>
           </div>

@@ -14,6 +14,10 @@ import Pagination from "../../components/storeManager/reusables/pagination";
 import FormPopup from "./../../components/storeManager/reusables/formpopup";
 import EditItemForm from "./../../components/storeManager/forms/edititemform";
 import NewWastedItemForm from "../../components/storeManager/forms/newWastedItemForm";
+import userPic from "../../pages/assets/Media player-cuate.svg";
+import userPic2 from "../../pages/assets/Endpoint-rafiki.svg";
+import userPic3 from "../../pages/assets/Get in touch-cuate.svg";
+import userPic4 from "../../pages/assets/Self checkout-amico.svg";
 
 class Item extends Component {
   state = {
@@ -260,6 +264,18 @@ class Item extends Component {
               >
                 New Item
               </Link>
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="col-2"></div>
+            <div className="col">
+              <img src={userPic} alt="" width="150" height="150" />
+              <img src={userPic4} alt="" width="150" height="150" />
+            </div>
+            <div className="col">
+              <img src={userPic2} alt="" width="150" height="150" />
+              <img src={userPic3} alt="" width="150" height="150" />
             </div>
           </div>
 

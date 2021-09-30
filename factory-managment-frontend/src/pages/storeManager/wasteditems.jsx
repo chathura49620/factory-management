@@ -14,6 +14,10 @@ import Pagination from "../../components/storeManager/reusables/pagination";
 import WastedItemTable from "./../../components/storeManager/tables/wasteditemtable";
 import FormPopup from "./../../components/storeManager/reusables/formpopup";
 import EditWastedItemForm from "./../../components/storeManager/forms/editWastedItemForm";
+import userPic from "../../pages/assets/Remote meeting-cuate.svg";
+import userPic2 from "../../pages/assets/Messenger-cuate.svg";
+import userPic3 from "../../pages/assets/Online learning-cuate (1).svg";
+import userPic4 from "../../pages/assets/Investing-cuate.svg";
 
 class WastedItem extends Component {
   state = {
@@ -234,6 +238,17 @@ class WastedItem extends Component {
             <div className="col"></div>
           </div>
 
+          <div className="row">
+            <div className="col-2"></div>
+            <div className="col">
+              <img src={userPic} alt="" width="150" height="150" />
+              <img src={userPic2} alt="" width="150" height="150" />
+            </div>
+            <div className="col">
+              <img src={userPic4} alt="" width="150" height="150" />
+              <img src={userPic3} alt="" width="150" height="150" />
+            </div>
+          </div>
           <div className="row">
             <div className="col-2"></div>
             <div className="col">

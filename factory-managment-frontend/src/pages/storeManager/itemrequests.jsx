@@ -5,6 +5,7 @@ import swal from "sweetalert";
 import ItemRequestForm from "../../components/storeManager/forms/itemrequestform";
 import FormPopup from "../../components/storeManager/reusables/formpopup";
 import EditItemRequestForm from "../../components/storeManager/forms/edititemrequestform";
+import userPic from "../../pages/assets/Memory storage-cuate.svg";
 
 class ItemRequest extends Component {
   state = {
@@ -118,7 +119,9 @@ class ItemRequest extends Component {
                 <ItemRequestForm onSetRequest={this.setRequest} />
               </h3>
             </div>
-            <div className="col-1"></div>
+            <div className="col">
+              <img src={userPic} alt="" width="400" height="400" />
+            </div>
           </div>
 
           <FormPopup
