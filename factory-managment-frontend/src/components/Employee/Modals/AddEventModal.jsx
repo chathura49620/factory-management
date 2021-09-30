@@ -38,7 +38,7 @@ export default function ({isOpen, onClose, onEventAdded}) {
 
                 <div>
                     <label>Event Name</label>
-                    <input class="form-control" type="text" placeholder="Your Event Title" name="title" value={title} required onChange={ e => setTitle(e.target.value)}/>
+                    <input className="form-control" type="text" placeholder="Your Event Title" name="title" value={title} required onChange={ e => setTitle(e.target.value)}/>
                 </div>
 
                 <br></br>

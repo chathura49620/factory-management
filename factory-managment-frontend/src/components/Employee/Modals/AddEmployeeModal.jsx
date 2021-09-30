@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Modal, Button, Row, Col, Form, FormGroup } from 'react-bootstrap';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
-import { Redirect } from 'react-router-dom';
-
 
 
 export class AddEmployeeModal extends Component {
@@ -48,8 +46,6 @@ export class AddEmployeeModal extends Component {
             )
     }
 
-
-
   validate(){
         let LeaveError = "";
 
@@ -64,9 +60,6 @@ export class AddEmployeeModal extends Component {
 
         return true;
     }
-
-   
-
 
     render() {
         return (
@@ -115,7 +108,7 @@ export class AddEmployeeModal extends Component {
                                     </Form.Group>
                                     <br></br>
                                     <Form.Group controlId="name">
-                                        <Form.Label>Date</Form.Label>
+                                        <Form.Label>Day Range</Form.Label>
                                         <Form.Control type="text" name="date" required placeholder="Enter a date or number of days..." />
                                     </Form.Group>
                                     

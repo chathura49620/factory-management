@@ -14,9 +14,6 @@ export class AddAssignmentModal extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    
-
-
     snackbarClose = (event) => {
         this.setState({ snackbaropen: false });
     };
@@ -50,12 +47,6 @@ export class AddAssignmentModal extends Component {
 
             )
     }
-
-    //   handleSubmit = (event) => {
-
-    //       return <Redirect to='/login' />
-
-    //   }
 
     render() {
         return (
