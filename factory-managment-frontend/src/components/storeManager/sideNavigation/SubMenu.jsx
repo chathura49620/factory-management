@@ -74,6 +74,10 @@ class SubMenu extends Component {
               this.props.item.title === this.props.selected
                 ? "#252831"
                 : "#15171c",
+            borderLeft:
+              this.props.item.title === this.props.selected
+                ? "4px solid #C67405"
+                : "",
           }}
         >
           <div>
