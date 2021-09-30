@@ -205,9 +205,9 @@ class SMDashBoard extends Component {
                     style={{
                       backgroundColor: "#77BFC7",
                       height: 60,
-                      borderTop: "3px solid #050139",
-                      borderBottom: "3px solid #050139",
-                      borderRight: "3px solid #050139",
+                      borderTop: "2px solid #050139",
+                      borderBottom: "2px solid #050139",
+                      borderRight: "2px solid #050139",
                       fontSize: "25px",
                       color: "#307eaf",
                     }}
@@ -222,9 +222,9 @@ class SMDashBoard extends Component {
                     className="col-4 col--6"
                     style={{
                       backgroundColor: "#77BFC7",
-                      borderTop: "3px solid #050139",
-                      borderBottom: "3px solid #050139",
-                      borderRight: "3px solid #050139",
+                      borderTop: "2px solid #050139",
+                      borderBottom: "2px solid #050139",
+                      borderRight: "2px solid #050139",
                       fontSize: "25px",
                       color: "#307eaf",
                     }}
@@ -238,9 +238,9 @@ class SMDashBoard extends Component {
                     className="col-4 col--6"
                     style={{
                       backgroundColor: "#77BFC7",
-                      borderTop: "3px solid #050139",
-                      borderRight: "3px solid #050139",
-                      borderBottom: "3px solid #050139",
+                      borderTop: "2px solid #050139",
+                      borderRight: "2px solid #050139",
+                      borderBottom: "2px solid #050139",
                       fontSize: "25px",
                       color: "#307eaf",
                     }}
@@ -352,10 +352,11 @@ class SMDashBoard extends Component {
               <div
                 className="col-12"
                 style={{
-                  backgroundColor: "white",
+                  backgroundColor: "#F4F6F7",
                   height: 150,
-                  border: "3px solid white",
                   boxShadow: "1px 1px 1px #77BFC7, -5px -5px 13px #77BFC7",
+                  border: "2px solid black",
+                  borderRadius: "6px",
                 }}
               ></div>
             </div>
