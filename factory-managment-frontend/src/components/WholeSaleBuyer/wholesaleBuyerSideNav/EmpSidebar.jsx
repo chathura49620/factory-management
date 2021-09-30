@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import { Card,Row,Col,Container,Image } from 'react-bootstrap';
-import * as FaIcons from 'react-icons/fa';
-import * as AiIcons from 'react-icons/ai';
-import { EmpSidebarData } from './EmpSidebarData';
+import React, { useState } from "react";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+import { Card, Row, Col, Container, Image } from "react-bootstrap";
+import * as FaIcons from "react-icons/fa";
+import * as AiIcons from "react-icons/ai";
+import { EmpSidebarData } from "./EmpSidebarData";
 
-
-import SubMenu from './SubMenu';
-import { IconContext } from 'react-icons/lib';
+import SubMenu from "./SubMenu";
+import { IconContext } from "react-icons/lib";
 
 const Nav = styled.div`
   background: #15171c;
@@ -36,20 +35,16 @@ const SidebarNav = styled.nav`
   position: fixed;
   top: 0;
   @media only screen and (max-width: 1920px) {
-    left: ${({ sidebar }) => (sidebar ? '0' : '-100%')};
+    left: ${({ sidebar }) => (sidebar ? "0" : "-100%")};
   }
   left: 0;
   transition: 350ms;
   z-index: 10;
 `;
 
-
-
 const SidebarWrap = styled.div`
   width: 100%;
 `;
-
-
 
 const Sidebar = () => {
   const [sidebar, setSidebar] = useState(false);
@@ -58,16 +53,15 @@ const Sidebar = () => {
 
   return (
     <>
-      <IconContext.Provider value={{ color: '#fff' }}>
+      <IconContext.Provider value={{ color: "#fff" }}>
         <Nav>
-          <NavIcon to='#'>
+          <NavIcon to="#">
             <FaIcons.FaBars onClick={showSidebar} />
-            
           </NavIcon>
         </Nav>
         <SidebarNav sidebar={sidebar}>
           <SidebarWrap>
-            <NavIcon to='#'>
+            <NavIcon to="#">
               <AiIcons.AiOutlineClose onClick={showSidebar} />
             </NavIcon>
             {EmpSidebarData.map((item, index) => {

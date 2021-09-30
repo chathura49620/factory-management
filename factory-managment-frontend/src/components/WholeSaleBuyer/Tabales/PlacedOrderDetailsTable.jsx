@@ -88,7 +88,7 @@ export class PlacedOrderDetailsTable extends Component {
           </thead>
           <tbody>
             {this.props.placedorderDetails.map((i) => (
-              <tr key={i._id} className={"table-succes table-primary"}>
+              <tr key={i._id}>
                 <td>{i.orderId}</td>
                 <td>{i.buyerName}</td>
                 <td>{i.email}</td>
@@ -116,7 +116,7 @@ export class PlacedOrderDetailsTable extends Component {
                   </button>
                   <button
                     className="btn-sm"
-                    style={{ backgroundColor: "#BA0D32 ", color: "white" }}
+                    style={{ backgroundColor: "#dc3545", color: "white" }}
                     onClick={() => this.deleteCat(i._id)}
                   >
                     Delete

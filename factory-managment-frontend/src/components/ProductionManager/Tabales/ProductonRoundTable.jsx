@@ -76,7 +76,7 @@ export class ProductonRoundTable extends Component {
           </thead>
           <tbody>
             {this.props.productionRound.map((i) => (
-              <tr key={i._id} className={"table-succes table-primary"}>
+              <tr key={i._id}>
                 <td>{i.productId}</td>
                 <td>{i.productCategory}</td>
                 <td>{i.quantity}</td>
@@ -106,7 +106,7 @@ export class ProductonRoundTable extends Component {
                   </button>
                   <button
                     className="btn-sm"
-                    style={{ backgroundColor: "#BA0D32 ", color: "white" }}
+                    style={{ backgroundColor: "#dc3545", color: "white" }}
                     onClick={() => this.deleteCat(i._id)}
                   >
                     Delete

@@ -27,10 +27,19 @@ class Dashboard extends Component {
         const productionRound = result.data;
 
         this.setState({ productionRound: productionRound });
+      })
+      .catch((err) => console.log(err.message));
 
-        const accepted = accepted.filter((p) => p.status === "Accepted");
-        const rejected = productionRound.filter((p) => p.status === "Rejected");
+    axios
+      .get("http://localhost:5000/api/order-details")
+      .then((result) => {
+        const orders = result.data;
 
+        const accepted = orders.filter((order) => order.status === "Accepted");
+        const rejected = orders.filter((order) => order.status === "Rejected");
+
+        console.log(accepted);
+        console.log(rejected);
         this.setState({ acceptedRounds: accepted, rejectedRounds: rejected });
       })
       .catch((err) => console.log(err.message));

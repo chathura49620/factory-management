@@ -24,7 +24,7 @@ export class ProductStockTable extends Component {
           </thead>
           <tbody>
             {this.props.ProductList.map((i) => (
-              <tr key={i._id} className={"table-succes table-primary"}>
+              <tr key={i._id}>
                 <td>{i.productId}</td>
                 <td>{i.productCategory}</td>
                 <td>{i.instock}</td>

@@ -8,7 +8,7 @@ const generateacceptedPDF = (tickets) => {
   const doc = new jsPDF();
 
   // define the columns we want and their titles
-  //const tableColumn = ["Id", "Title", "Issue", "Status", "Closed on"];
+
   const tableColumn = [
     "Id",
     "Buyer Name",

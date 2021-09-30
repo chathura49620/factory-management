@@ -22,7 +22,7 @@ export class FeedbackTable extends Component {
           </thead>
           <tbody>
             {this.props.FeedbackList.map((i) => (
-              <tr key={i._id} className={"table-succes table-primary"}>
+              <tr key={i._id}>
                 <td>{i.email}</td>
                 <td>{i.mobileNumber}</td>
                 <td>{i.feedback}</td>

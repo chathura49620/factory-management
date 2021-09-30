@@ -5,13 +5,15 @@ import "../SuperAdmin/dashboard.css";
 import hello from "../assets/hello.png";
 import clock from "../assets/clock.png";
 import Clock from "../../components/ProductionManager/common/clock";
-
+import generateacceptedPDF from "../../components/WholeSaleBuyer/util/acceprtedreportGenerator";
 class Dashboard extends Component {
   state = {
-    factoryDetails: [],
-    orderCount: [],
     user_name: "",
     addModalShow: true,
+    factoryDetails: [],
+    orderCount: [],
+    acceptedRounds: [],
+    rejectedRounds: [],
   };
 
   componentDidMount() {
@@ -26,6 +28,20 @@ class Dashboard extends Component {
 
     const user_name = localStorage.getItem("user_full_name");
     this.setState({ user_name: user_name });
+
+    axios
+      .get("http://localhost:5000/api/order-details")
+      .then((result) => {
+        const orders = result.data;
+
+        const accepted = orders.filter((order) => order.status === "Accepted");
+        const rejected = orders.filter((order) => order.status === "Rejected");
+
+        console.log(accepted);
+        console.log(rejected);
+        this.setState({ acceptedRounds: accepted, rejectedRounds: rejected });
+      })
+      .catch((err) => console.log(err.message));
 
     axios
       .get("http://localhost:5000/api/order-details")
@@ -45,6 +61,7 @@ class Dashboard extends Component {
   }
 
   render() {
+    const { acceptedRounds, rejectedRounds } = this.state;
     let AddModelClose = () => this.setState({ addModalShow: false });
     return (
       <React.Fragment>
@@ -104,11 +121,15 @@ class Dashboard extends Component {
 
                 <div className="charts__right__cards">
                   <div className="card1">
-                    <h1>Order Details Report</h1>
+                    <button onClick={() => generateacceptedPDF(acceptedRounds)}>
+                      <h1>Order Details Report</h1>
+                    </button>
                   </div>
 
                   <div className="card2">
-                    <h1>Rejected Order Details Report</h1>
+                    <button onClick={() => generateacceptedPDF(rejectedRounds)}>
+                      <h1>Rejected Order Details Report</h1>
+                    </button>
                   </div>
                 </div>
               </div>
