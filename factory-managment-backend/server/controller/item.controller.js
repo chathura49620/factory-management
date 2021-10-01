@@ -193,3 +193,21 @@ exports.deleteOneAccordingToDateAndSup = (req, res) => {
     .then((result) => res.json("deleted one"))
     .catch((err) => res.status(400).json(err.message));
 };
+
+exports.updateItemRecord = (req, res) => {
+  ItemRecord.updateOne(
+    { _id: req.params.id },
+    {
+      $set: {
+        iCode: req.body.iCode,
+        iType: req.body.iType,
+        iCategory: req.body.iCategory,
+        iQuantity: Number(req.body.iQuantity),
+        iSupplier: req.body.iSupplier,
+        iAddedDate: req.body.iAddedDate,
+      },
+    }
+  )
+    .then((result) => res.json("Updated"))
+    .catch((err) => res.status(400).json(err.message));
+};

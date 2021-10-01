@@ -3,6 +3,37 @@ const route = express.Router();
 
 const contoller = require("../controller/controller");
 
+//store Manager APIs
+route.get("/", contoller.items.findAllItems);
+route.post("/add/record", contoller.items.addNewItemRecord);
+route.post("/add", contoller.items.addNewItems);
+route.delete("/record/:date", contoller.items.deleteItemRecords);
+route.delete("/multiplerecords/:date", contoller.items.deleteMultipleRecords);
+route.delete("/:id", contoller.items.deleteOneOfId);
+route.delete(
+  "/records/specific/:id",
+  contoller.items.deleteOneOfIdFromItemRecords
+);
+route.delete(
+  "/specific/:supplier/:date",
+  contoller.items.deleteAccordingToSNameAndDate
+);
+route.get("/:id", contoller.items.getSpecificItem);
+route.get("/record/:date", contoller.items.getAllDataOfSpecificDate);
+route.get("/multiplerecords/:date", contoller.items.getAllDataOfDateOnIRecords);
+route.post("/update/:id", contoller.items.updateOneItem);
+route.post("/update/record/:date", contoller.items.updateMultipleOfDate);
+route.post("/update/quantity/itemRecord", contoller.items.updateOneOnIRecords);
+route.get(
+  "/object/data/:supplier/:date",
+  contoller.items.findOneAccordingToDateAndSupplier
+);
+route.delete(
+  "/object/data/:supplier/:date",
+  contoller.items.deleteOneAccordingToDateAndSup
+);
+route.post("/update/unique/record/:id", contoller.items.updateItemRecord);
+
 //Super Admin Category APIs
 route.post("/api/categories", contoller.category.create);
 route.get("/api/categories", contoller.category.find);

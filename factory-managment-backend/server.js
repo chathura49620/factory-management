@@ -25,17 +25,19 @@ const cateRouter = require("./server/routes/categories");
 const wastedItemRouter = require("./server/routes/wasteditems");
 const returnedProductRouter = require("./server/routes/returnedproducts");
 const itemRequestsRouter = require("./server/routes/itemrequests");
+const feedbackRouter = require("./server/routes/deletefeedbacks");
 
-//load routers
+//load routers --need to improve performance  of routes
+//app.use("/items", require("./server/routes/router"));
 app.use("/items", itemsRouter);
-app.use("/", require("./server/routes/router"));
-// app.use("/items", require("./server/routes/router"));
 app.use("/users", usersRouter);
 app.use("/codes", codesRouter);
-app.use("/category", cateRouter);
 app.use("/wasted", wastedItemRouter);
-app.use("/returned", returnedProductRouter);
 app.use("/requests", itemRequestsRouter);
+app.use("/returned", returnedProductRouter);
+app.use("/category", cateRouter);
+app.use("/feedbackForDelete", feedbackRouter);
+app.use("/", require("./server/routes/router"));
 
 app.listen(port, () => {
   console.log(`Server is Running on port: ${port}`);

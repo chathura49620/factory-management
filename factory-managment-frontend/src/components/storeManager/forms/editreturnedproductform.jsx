@@ -53,17 +53,13 @@ class EditReturnedProductForm extends FormSuper {
     this.setState({ data: ob });
     //take the category set from db
     //take the Material codes from db
-    axios.get("http://localhost:5000/codes/material/").then((result) => {
-      const materialCodesObjs = result.data;
-      console.log(materialCodesObjs);
-      axios.get("http://localhost:5000/category/").then((result) => {
-        const categoryObjs = result.data;
 
-        //this.setState({categoryObjects: categoryObjs});
-        this.setState({
-          materialCodeObjects: materialCodesObjs,
-          categoryObjects: categoryObjs,
-        });
+    axios.get("http://localhost:5000/category/").then((result) => {
+      const categoryObjs = result.data;
+
+      //this.setState({categoryObjects: categoryObjs});
+      this.setState({
+        categoryObjects: categoryObjs,
       });
     });
 
@@ -118,7 +114,7 @@ class EditReturnedProductForm extends FormSuper {
               {this.renderInput("Buyer", "Buyer Name")}
               {this.renderInput("ReturnedDate", "Returned date", "date")}
               {this.renderInput("Reason", "Reason for return")}
-              {this.renderButton("Add Item")}
+              {this.renderButton("Update product")}
             </form>
           </div>
         </div>

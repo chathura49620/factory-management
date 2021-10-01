@@ -14,6 +14,10 @@ import Pagination from "../../components/storeManager/reusables/pagination";
 import WastedItemTable from "./../../components/storeManager/tables/wasteditemtable";
 import FormPopup from "./../../components/storeManager/reusables/formpopup";
 import EditWastedItemForm from "./../../components/storeManager/forms/editWastedItemForm";
+import userPic from "../../pages/assets/Remote meeting-cuate.svg";
+import userPic2 from "../../pages/assets/Messenger-cuate.svg";
+import userPic3 from "../../pages/assets/Online learning-cuate (1).svg";
+import userPic4 from "../../pages/assets/Investing-cuate.svg";
 
 class WastedItem extends Component {
   state = {
@@ -40,12 +44,13 @@ class WastedItem extends Component {
       .then((result) => {
         const wastedItems = result.data;
 
+        this.setState({ wastedItems: wastedItems });
+
         axios.get("http://localhost:5000/category/").then((result) => {
           const categoryObjs = result.data;
           console.log(categoryObjs);
           //this.setState({categoryObjects: categoryObjs});
           this.setState({
-            wastedItems: wastedItems,
             categoryObjects: categoryObjs,
           });
         });
@@ -236,12 +241,23 @@ class WastedItem extends Component {
           <div className="row">
             <div className="col-2"></div>
             <div className="col">
+              <img src={userPic} alt="" width="150" height="150" />
+              <img src={userPic2} alt="" width="150" height="150" />
+            </div>
+            <div className="col">
+              <img src={userPic4} alt="" width="150" height="150" />
+              <img src={userPic3} alt="" width="150" height="150" />
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-2"></div>
+            <div className="col">
               {/* <Table
                 filteredwastedItems={pagewastedItems}
                 onItemDelete={this.handleDelete}
                 onSet={this.setConfirmDialog}
               /> */}
-
+              <h2 className="mt-3">Wasted items</h2>
               <WastedItemTable
                 filteredItems={pagewastedItems}
                 onItemDelete={this.handleDelete}
@@ -267,7 +283,7 @@ class WastedItem extends Component {
         <FormPopup
           openPopup={this.state.openPopup}
           onClose={this.closeOpenPopup}
-          title="Edit Wasted Item"
+          title="Update Wasted Item"
         >
           <EditWastedItemForm
             onSetAndClose={this.closePopAndSetState}

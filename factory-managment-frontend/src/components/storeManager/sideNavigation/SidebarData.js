@@ -15,13 +15,13 @@ export const SidebarData = [
   { 
     title: "Basic Info",
     path: "/basic-info",
-    icon: <AiIcons.AiFillHome />,
+    icon: <IoIcons.IoMdPlay />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
   },
   {
     title: "Items",
-    icon: <IoIcons.IoIosPaper />,
+    icon: <RiIcons.RiBookmark3Fill />,
 
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
@@ -30,13 +30,13 @@ export const SidebarData = [
       {
         title: "Item Lists",
         path: "/items",
-        icon: <IoIcons.IoIosPaper />,
+        icon: <IoIcons.IoIosListBox />,
         cName: "sub-nav",
       },
       {
         title: "Item Records",
         path: "/itemsrecords",
-        icon: <IoIcons.IoIosPaper />,
+        icon: <RiIcons.RiBarChartFill />,
         cName: "sub-nav",
       },
     ],
@@ -45,23 +45,23 @@ export const SidebarData = [
   {
     title: "Returned Product",
     path: "/it/new/returned/product",
-    icon: <IoIcons.IoIosPaper />,
+    icon: <IoIcons.IoMdTime />,
   },
 
   {
     title: "Wasted Items",
     path: "/it/new/wasted/item",
-    icon: <IoIcons.IoIosPaper />,
+    icon: <IoIcons.IoMdColorFill />,
   },
   {
     title: "Item Requests",
     path: "/requests/for/items",
-    icon: <IoIcons.IoIosPaper />,
+    icon: <IoIcons.IoMdPaperPlane />,
   },
 
   {
     title: "My Profile",
     path: "/myprofile",
-    icon: <FaIcons.FaCartPlus />,
+    icon: <IoIcons.IoMdPerson />,
   },
 ];

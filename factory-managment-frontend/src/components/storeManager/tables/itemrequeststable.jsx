@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-
-const ItemRequestTable = ({ filteredItems, onItemDelete }) => {
+//itemRequestTable
+const ItemRequestTable = ({ filteredItems, onItemDelete, onSetPopup }) => {
   return (
     <table
       className="table table-bordered table-sm"
@@ -47,6 +47,7 @@ const ItemRequestTable = ({ filteredItems, onItemDelete }) => {
               <button
                 className="btn-sm"
                 style={{ backgroundColor: "#7121AD", color: "white" }}
+                onClick={() => onSetPopup(request._id)}
               >
                 Edit
               </button>
@@ -55,7 +56,7 @@ const ItemRequestTable = ({ filteredItems, onItemDelete }) => {
               <button
                 onClick={() => onItemDelete(request)}
                 className="btn-sm"
-                style={{ backgroundColor: "#BA0D32 ", color: "white" }}
+                style={{ backgroundColor: "#dc3545 ", color: "white" }}
               >
                 Delete
               </button>

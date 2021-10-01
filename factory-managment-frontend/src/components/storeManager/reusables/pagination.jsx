@@ -14,8 +14,13 @@ const Pagination = (props) => {
     <nav>
       <ul className="pagination">
         {pages.map((page) => (
+<<<<<<< HEAD
           <li key={page}>
             <a  
+=======
+          <li key={page} style={{ cursor: "pointer" }}>
+            <a
+>>>>>>> IT19156316
               onClick={() => {
                 onPageChange(page);
               }}
@@ -23,6 +28,7 @@ const Pagination = (props) => {
               style={{
                 backgroundColor: page === currentPage ? "#7121AD" : "white",
                 color: "black",
+                borderRadius: "3px",
               }}
             >
               {page}

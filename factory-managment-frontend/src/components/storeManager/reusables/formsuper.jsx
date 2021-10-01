@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Joi from "joi-browser";
 import Input from "./input";
 import Select from "./select";
+import TextArea from "./textarea";
+import Radio from "./radio";
 
 class FormSuper extends Component {
   handleChange = ({ currentTarget }) => {
@@ -65,6 +67,18 @@ class FormSuper extends Component {
     return (
       <Input
         type={type}
+        name={name}
+        label={label}
+        value={this.state.data[name]}
+        onChange={this.handleChange}
+        error={this.state.errors[name]}
+      />
+    );
+  }
+
+  renderTextArea(name, label) {
+    return (
+      <TextArea
         name={name}
         label={label}
         value={this.state.data[name]}

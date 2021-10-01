@@ -14,6 +14,10 @@ import Pagination from "../../components/storeManager/reusables/pagination";
 import FormPopup from "./../../components/storeManager/reusables/formpopup";
 import ReturnedProductsTable from "../../components/storeManager/tables/returnedproductstable";
 import EditReturnedProductForm from "./../../components/storeManager/forms/editreturnedproductform";
+import userPic from "../../pages/assets/Remote meeting-cuate.svg";
+import userPic2 from "../../pages/assets/Messenger-cuate.svg";
+import userPic3 from "../../pages/assets/Get in touch-cuate1.svg";
+import userPic4 from "../../pages/assets/Analyze-cuate.svg";
 
 class ReturnedProduct extends Component {
   state = {
@@ -39,13 +43,13 @@ class ReturnedProduct extends Component {
       .get("http://localhost:5000/returned/")
       .then((result) => {
         const returnedProducts = result.data;
+        this.setState({ returnedProducts: returnedProducts });
 
         axios.get("http://localhost:5000/category/").then((result) => {
           const categoryObjs = result.data;
           console.log(categoryObjs);
           //this.setState({categoryObjects: categoryObjs});
           this.setState({
-            returnedProducts: returnedProducts,
             categoryObjects: categoryObjs,
           });
         });
@@ -235,10 +239,10 @@ class ReturnedProduct extends Component {
             <div className="col">
               <Link
                 to="/it/new/product/returned"
-                className="btn  my-4"
+                className="btn mt-3 mb-1"
                 style={{ backgroundColor: "#7121AD", color: "white" }}
               >
-                New Item
+                Add returned Product
               </Link>
             </div>
           </div>
@@ -246,13 +250,18 @@ class ReturnedProduct extends Component {
           <div className="row">
             <div className="col-2"></div>
             <div className="col">
-              {/* <returnedProductTable
-                filteredItems={pagereturnedProducts}
-                onItemDelete={this.handleDelete}
-                onSet={this.setConfirmDialog}
-                onSetPopup={this.setOpenPopup}
-              /> */}
-
+              <img src={userPic} alt="" width="150" height="150" />
+              <img src={userPic4} alt="" width="150" height="150" />
+            </div>
+            <div className="col">
+              <img src={userPic3} alt="" width="150" height="150" />
+              <img src={userPic2} alt="" width="150" height="150" />
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-2"></div>
+            <div className="col">
+              <h2>Returned products</h2>
               <ReturnedProductsTable
                 filteredItems={pageReturnedProducts}
                 onItemDelete={this.handleDelete}
@@ -278,7 +287,7 @@ class ReturnedProduct extends Component {
         <FormPopup
           openPopup={this.state.openPopup}
           onClose={this.closeOpenPopup}
-          title="Edit Returned Product"
+          title="Update Returned Product"
         >
           <EditReturnedProductForm
             onSetAndClose={this.closePopAndSetState}

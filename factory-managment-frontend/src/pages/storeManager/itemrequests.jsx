@@ -3,11 +3,16 @@ import ItemRequestTable from "../../components/storeManager/tables/itemrequestst
 import axios from "axios";
 import swal from "sweetalert";
 import ItemRequestForm from "../../components/storeManager/forms/itemrequestform";
+import FormPopup from "../../components/storeManager/reusables/formpopup";
+import EditItemRequestForm from "../../components/storeManager/forms/edititemrequestform";
+import userPic from "../../pages/assets/Memory storage-cuate.svg";
 
 class ItemRequest extends Component {
   state = {
     itemRequests: [],
     searchQuery: "",
+    openPopup: false,
+    itemRequest: {},
     openPopup: false,
     itemRequest: {},
   };
@@ -22,6 +27,37 @@ class ItemRequest extends Component {
       })
       .catch((err) => console.log(err.message));
   }
+
+  setOpenPopup = (id) => {
+    const { itemRequests: itemRequests } = this.state;
+    const itemRequest = itemRequests.filter((request) => request._id === id);
+    const editItem = itemRequest[0];
+
+    console.log(editItem);
+
+    this.setState({ openPopup: true, itemRequest: editItem });
+  };
+
+  closeOpenPopup = () => {
+    this.setState({ openPopup: false });
+  };
+
+  closePopAndSetState = (jsonOb) => {
+    //console.log("close and set", jsonOb);
+
+    const itemRequests = [...this.state.itemRequests];
+
+    const itemRequest = itemRequests.filter((req) => req._id === jsonOb._id);
+    const editedRequest = itemRequest[0];
+
+    const index = itemRequests.indexOf(editedRequest);
+    itemRequests[index] = { ...itemRequests[index] };
+    itemRequests[index] = jsonOb;
+
+    //console.log(itemRequests);
+
+    this.setState({ openPopup: false, itemRequests: itemRequests });
+  };
 
   handleDelete = (request) => {
     swal({
@@ -63,25 +99,41 @@ class ItemRequest extends Component {
 
     return (
       <React.Fragment>
-        <div className="row">
-          <div className="col-2"></div>
-          <div className="col">
-            <h1>Item Requests</h1>
-            <ItemRequestTable
-              filteredItems={itemRequests}
-              onItemDelete={this.handleDelete}
-            />
+        <div style={{ marginLeft: "30px" }}>
+          <div className="row">
+            <div className="col-2"></div>
+            <div className="col">
+              <h2 className="mt-3">Item Requests</h2>
+              <ItemRequestTable
+                filteredItems={itemRequests}
+                onItemDelete={this.handleDelete}
+                onSetPopup={this.setOpenPopup}
+              />
+            </div>
           </div>
-        </div>
 
-        <div className="row">
-          <div className="col-2"></div>
-          <div className="col">
-            <h3>
-              <ItemRequestForm onSetRequest={this.setRequest} />
-            </h3>
+          <div className="row">
+            <div className="col-2"></div>
+            <div className="col">
+              <h3>
+                <ItemRequestForm onSetRequest={this.setRequest} />
+              </h3>
+            </div>
+            <div className="col">
+              <img src={userPic} alt="" width="400" height="400" />
+            </div>
           </div>
-          <div className="col-1"></div>
+
+          <FormPopup
+            openPopup={this.state.openPopup}
+            onClose={this.closeOpenPopup}
+            title="update Item Request"
+          >
+            <EditItemRequestForm
+              requestOb={this.state.itemRequest}
+              onSetAndClose={this.closePopAndSetState}
+            />
+          </FormPopup>
         </div>
       </React.Fragment>
     );

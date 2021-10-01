@@ -3,6 +3,8 @@ import FormSuper from "../reusables/formsuper";
 import Joi, { join } from "joi-browser";
 import axios from "axios";
 import swal from "sweetalert";
+import TextArea from "../reusables/textarea";
+import moment from "moment";
 
 class NewWastedItemForm extends FormSuper {
   state = {
@@ -31,8 +33,7 @@ class NewWastedItemForm extends FormSuper {
   };
 
   componentDidMount() {
-    const date = new Date();
-    const wastedDate = date.toLocaleDateString();
+    const wastedDate = moment(new Date()).format("YYYY-MM-DD");
 
     const wOb = {
       _id: this.props.wastedOb._id,
@@ -73,15 +74,11 @@ class NewWastedItemForm extends FormSuper {
   render() {
     return (
       <React.Fragment>
-        <div className="row">
-          <div className="col">
-            <form onSubmit={this.handleSubmit}>
-              {this.renderInput("Reason", "Reason For Drop")}
+        <form onSubmit={this.handleSubmit}>
+          {this.renderTextArea("Reason", "Reason For Drop")}
 
-              {this.renderButton("Add Item")}
-            </form>
-          </div>
-        </div>
+          {this.renderButton("Add Item")}
+        </form>
       </React.Fragment>
     );
   }

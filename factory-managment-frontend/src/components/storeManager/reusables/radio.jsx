@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-const Radio = ({ rValue, onChange }) => {
+const Radio = ({ label, name, value, onChange, error }) => {
   return (
     <React.Fragment>
       <div style={{ fontWeight: "bold" }}>Gender</div>
@@ -8,10 +8,8 @@ const Radio = ({ rValue, onChange }) => {
         <input
           className="form-check-input"
           type="radio"
-          name="inlineRadioOptions"
-          id="inlineRadio1"
-          value="option1"
-          checked
+          value="Male"
+          name="Gender"
         />
         <label className="form-check-label" for="inlineRadio1">
           Male 
@@ -21,9 +19,11 @@ const Radio = ({ rValue, onChange }) => {
         <input 
           className="form-check-input"
           type="radio"
-          name="inlineRadioOptions"
-          id="inlineRadio2"
-          value="Male"
+          className="form-check-input"
+          type="radio"
+          checked
+          value="Female"
+          name="Gender"
         />
         <label className="form-check-label" for="inlineRadio2">
           Female

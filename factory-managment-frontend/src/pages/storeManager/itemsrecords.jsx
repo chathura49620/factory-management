@@ -13,6 +13,8 @@ import Pagination from "../../components/storeManager/reusables/pagination";
 import { paginate } from "../../components/storeManager/utils/paginate";
 import FormPopup from "../../components/storeManager/reusables/formpopup";
 import EditItemRecordForm from "../../components/storeManager/forms/edititemrecordform";
+import generatePDF from "./../../components/storeManager/utils/reportGenerator";
+import userPic from "../../pages/assets/Product hunt-cuate.svg";
 
 class ItemRecord extends Component {
   state = {
@@ -134,6 +136,13 @@ class ItemRecord extends Component {
       });
   };
 
+  setListAndGenerateReport = (r) => {
+    let list = [r];
+    console.log("hhhhgenerate", list);
+    let title = r.iAddedDate + " Recieved Stocks";
+    generatePDF(list, title);
+  };
+
   render() {
     //const valueArr = JSON.parse(this.state.itemRecords);
     //console.log(this.state.itemRecords);
@@ -173,7 +182,7 @@ class ItemRecord extends Component {
               <div className="col">
                 <button
                   onClick={this.onSearch}
-                  className="btn  my-4"
+                  className="btn  mt-3"
                   style={{ backgroundColor: "#7121AD", color: "white" }}
                 >
                   Search
@@ -184,6 +193,12 @@ class ItemRecord extends Component {
               <div className="col-2"></div>
               <div className="col">
                 <Notice />
+              </div>
+            </div>
+            <div className="row m-4">
+              <div className="col-5"></div>
+              <div className="col">
+                <img src={userPic} alt="" width="400" height="400" />
               </div>
             </div>
           </div>
@@ -210,24 +225,21 @@ class ItemRecord extends Component {
             <div className="col">
               <Link
                 onClick={this.onSearch}
-                className="btn my-4"
+                className="btn mt-3"
                 style={{ backgroundColor: "#7121AD", color: "white" }}
               >
                 Search
               </Link>
             </div>
           </div>
-          <div className="row">
-            <div className="col-3"></div>
-            <div className="col">
-              <TableVertilcle
-                records={itemRecords}
-                handleDelete={this.handleDelete}
-                onSet={this.setConfirmDialog}
-                onSetPopup={this.setOpenPopup}
-              />
-            </div>
-          </div>
+
+          <TableVertilcle
+            records={itemRecords}
+            handleDelete={this.handleDelete}
+            onSet={this.setConfirmDialog}
+            onSetPopup={this.setOpenPopup}
+            onReport={this.setListAndGenerateReport}
+          />
 
           {/* <div className="row">
             <div className="col-2"></div>
@@ -245,7 +257,7 @@ class ItemRecord extends Component {
         <FormPopup
           openPopup={this.state.openPopup}
           onClose={this.closeOpenPopup}
-          title="Edit Items Record"
+          title="Update Items Record"
         >
           <EditItemRecordForm
             itemRecordOb={this.state.itemRecord}

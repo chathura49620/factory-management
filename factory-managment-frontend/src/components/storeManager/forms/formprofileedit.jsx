@@ -25,6 +25,10 @@ class FormProfileEdit extends FormSuper {
     },
 
     errors: {},
+    genders: [
+      { _id: "1", categoryName: "Male" },
+      { _id: "2", categoryName: "Female" },
+    ],
   };
 
   schema = {
@@ -91,10 +95,7 @@ class FormProfileEdit extends FormSuper {
           {this.renderInput("Email", "Email")}
           {this.renderInput("Contact", "Contact Number")}
           {this.renderInput("Age", "Age")}
-          <Radio
-            rValue={this.state.data["Gender"]}
-            onChange={this.handleGenderChange}
-          />
+          {this.renderSelect("Gender", "Gender", this.state.genders)}
           {this.renderInput("Address", "Address")}
           {this.renderInput("Designation", "Designation")}
           {this.renderInput("BankName", "Bank name")}
@@ -103,7 +104,7 @@ class FormProfileEdit extends FormSuper {
           {this.renderInput("BranchCode", "Branch Code")}
           {this.renderInput("NumberOfFamilyMembers", "Number of family")}
 
-          {this.renderButton("Edit Profile")}
+          {this.renderButton("Update Profile")}
         </form>
       </React.Fragment>
     );

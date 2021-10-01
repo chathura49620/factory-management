@@ -60,17 +60,12 @@ class EditWastedItemForm extends FormSuper {
 
     this.setState({ data: ob });
 
-    axios.get("http://localhost:5000/codes/material/").then((result) => {
-      const materialCodesObjs = result.data;
-      console.log(materialCodesObjs);
-      axios.get("http://localhost:5000/category/").then((result) => {
-        const categoryObjs = result.data;
-        console.log(categoryObjs);
-        //this.setState({categoryObjects: categoryObjs});
-        this.setState({
-          materialCodeObjects: materialCodesObjs,
-          categoryObjects: categoryObjs,
-        });
+    axios.get("http://localhost:5000/category/").then((result) => {
+      const categoryObjs = result.data;
+      console.log(categoryObjs);
+      //this.setState({categoryObjects: categoryObjs});
+      this.setState({
+        categoryObjects: categoryObjs,
       });
     });
 
@@ -120,6 +115,7 @@ class EditWastedItemForm extends FormSuper {
                 this.state.categoryObjects
               )}
               {this.renderInput("Quantity", "Item Quantity")}
+              {this.renderInput("Supplier", "Supplier Name")}
               {this.renderInput("WastedDate", "Wasted date", "date")}
               {this.renderInput("Reason", "Reason For wasted")}
               {this.renderButton("Update Item")}
