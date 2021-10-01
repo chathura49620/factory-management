@@ -108,6 +108,7 @@ class AddOrder extends Component {
                     type="text"
                     name="orderId"
                     placeholder=" Order Id"
+                    required
                   />
                   <div style={{ background: "#f8d7da" }}>
                     {this.state.validationError}
@@ -120,6 +121,7 @@ class AddOrder extends Component {
                   style={{ border: "1px solid #050139" }}
                   as="select"
                   name="productCategory"
+                  required
                 >
                   <div style={{ background: "#f8d7da" }}>
                     {this.state.validationError}
@@ -138,6 +140,7 @@ class AddOrder extends Component {
                   type="text"
                   name="buyerName"
                   placeholder="Buyer Name"
+                  required
                 />
                 <div style={{ background: "#f8d7da" }}>
                   {this.state.validationError}
@@ -150,6 +153,7 @@ class AddOrder extends Component {
                   type="text"
                   name="email"
                   placeholder="Email"
+                  required
                 />
                 <div style={{ background: "#f8d7da" }}>
                   {this.state.validationError}
@@ -162,6 +166,7 @@ class AddOrder extends Component {
                   type="text"
                   name="quantity"
                   placeholder="Quantity"
+                  required
                 />
                 <div style={{ background: "#f8d7da" }}>
                   {this.state.validationError}
@@ -177,6 +182,7 @@ class AddOrder extends Component {
                   type="text"
                   name="paymentMethode"
                   placeholder="Payment Methode"
+                  required
                 />
                 <div style={{ background: "#f8d7da" }}>
                   {this.state.validationError}
@@ -188,6 +194,7 @@ class AddOrder extends Component {
                   style={{ border: "1px solid #050139" }}
                   as="select"
                   name="status"
+                  required
                 >
                   <div style={{ background: "#f8d7da" }}>
                     {this.state.validationError}

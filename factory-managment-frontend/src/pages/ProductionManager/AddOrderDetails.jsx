@@ -106,6 +106,7 @@ class AddNewProductionRound extends Component {
                     type="text"
                     name="proId"
                     placeholder=" Order Id"
+                    required
                   />
                   <div style={{ background: "#f8d7da" }}>
                     {this.state.validationError}
@@ -118,6 +119,7 @@ class AddNewProductionRound extends Component {
                   style={{ border: "1px solid #050139" }}
                   as="select"
                   name="productCategory"
+                  required
                 >
                   <div style={{ background: "#f8d7da" }}>
                     {this.state.validationError}
@@ -134,6 +136,7 @@ class AddNewProductionRound extends Component {
                   type="text"
                   name="quntity"
                   placeholder="Quantity"
+                  required
                 />
                 <div style={{ background: "#f8d7da" }}>
                   {this.state.validationError}
@@ -148,6 +151,7 @@ class AddNewProductionRound extends Component {
                   type="text"
                   name="estDays"
                   placeholder="Payment Methode"
+                  required
                 />
                 <div style={{ background: "#f8d7da" }}>
                   {this.state.validationError}
@@ -159,6 +163,7 @@ class AddNewProductionRound extends Component {
                   style={{ border: "1px solid #050139" }}
                   as="select"
                   name="status"
+                  required
                 >
                   <div style={{ background: "#f8d7da" }}>
                     {this.state.validationError}

@@ -101,6 +101,7 @@ class FeedbackPage extends Component {
                   type="text"
                   name="email"
                   placeholder="Email"
+                  required
                 />
                 <div style={{ background: "#f8d7da" }}>
                   {this.state.validationError}
@@ -116,6 +117,7 @@ class FeedbackPage extends Component {
                   type="text"
                   name="mobileNumber"
                   placeholder="Mobile Number"
+                  required
                 />
                 <div style={{ background: "#f8d7da" }}>
                   {this.state.validationError}
@@ -128,6 +130,7 @@ class FeedbackPage extends Component {
                   type="text"
                   name="feedback"
                   placeholder="Feedback"
+                  required
                 />
                 <div style={{ background: "#f8d7da" }}>
                   {this.state.validationError}

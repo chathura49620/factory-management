@@ -107,6 +107,7 @@ class AddStockDetails extends Component {
                     type="text"
                     name="proId"
                     placeholder="Product Id"
+                    required
                   />
                   <div style={{ background: "#f8d7da" }}>
                     {this.state.validationError}
@@ -119,6 +120,7 @@ class AddStockDetails extends Component {
                   style={{ border: "1px solid #050139" }}
                   as="select"
                   name="productCategory"
+                  required
                 >
                   <div style={{ background: "#f8d7da" }}>
                     {this.state.validationError}
@@ -128,17 +130,14 @@ class AddStockDetails extends Component {
                   ))}
                 </Form.Control>
               </Form.Group>
-              {/* <Form.Group controlId="filename">
-                                        <Form.Label style={{fontWeight:"bold"}}>Select Image</Form.Label>
-                                        <Form.Control style={{ border: "1px solid #050139" }} class="form-control-lg" type="file" name="filename"  placeholder="Select Image"  />
-                                        <div style={{background:"#f8d7da"}}>{this.state.validationError}</div>
-                                    </Form.Group> */}
+
               <Form.Group>
                 <Form.Label style={{ fontWeight: "bold" }}>Instock</Form.Label>
                 <Form.Control
                   style={{ border: "1px solid #050139" }}
                   as="select"
                   name="instock"
+                  required
                 >
                   <div style={{ background: "#f8d7da" }}>
                     {this.state.validationError}
@@ -154,6 +153,7 @@ class AddStockDetails extends Component {
                   type="text"
                   name="quantity"
                   placeholder="Quantity"
+                  required
                 />
                 <div style={{ background: "#f8d7da" }}>
                   {this.state.validationError}
@@ -167,25 +167,13 @@ class AddStockDetails extends Component {
                   type="text"
                   name="price"
                   placeholder="Price"
+                  required
                 />
                 <div style={{ background: "#f8d7da" }}>
                   {this.state.validationError}
                 </div>
               </Form.Group>
-              {/* <Form.Group>
-                <Form.Label style={{ fontWeight: "bold" }}>Status</Form.Label>
-                <Form.Control
-                  style={{ border: "1px solid #050139" }}
-                  as="select"
-                  name="status"
-                >
-                  <div style={{ background: "#f8d7da" }}>
-                    {this.state.validationError}
-                  </div>
-                  <option selected>Pending</option>
-                  <option>Completed</option>
-                </Form.Control>
-              </Form.Group> */}
+
               <Form.Group>
                 <Button
                   className="my-1"

@@ -11,6 +11,7 @@ class AddNewProductionRound extends Component {
       snackbaropen: false,
       snackbarmsg: "",
       categories: [],
+      validationError: "",
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -108,6 +109,7 @@ class AddNewProductionRound extends Component {
                     style={{ border: "1px solid #050139" }}
                     type="text"
                     name="proId"
+                    required
                     placeholder="Product Id"
                   />
                   <div style={{ background: "#f8d7da" }}>
@@ -120,6 +122,7 @@ class AddNewProductionRound extends Component {
                 <Form.Control
                   style={{ border: "1px solid #050139" }}
                   as="select"
+                  required
                   name="productCategory"
                 >
                   <div style={{ background: "#f8d7da" }}>
@@ -136,6 +139,7 @@ class AddNewProductionRound extends Component {
                   style={{ border: "1px solid #050139" }}
                   type="text"
                   name="quntity"
+                  required
                   placeholder="Quantity"
                 />
                 <div style={{ background: "#f8d7da" }}>
@@ -150,6 +154,7 @@ class AddNewProductionRound extends Component {
                   style={{ border: "1px solid #050139" }}
                   type="text"
                   name="estDays"
+                  required
                   placeholder="Estimated Days"
                 />
                 <div style={{ background: "#f8d7da" }}>
@@ -164,6 +169,7 @@ class AddNewProductionRound extends Component {
                   style={{ border: "1px solid #050139" }}
                   type="text"
                   name="estEmp"
+                  required
                   placeholder="Estimated Employees"
                 />
                 <div style={{ background: "#f8d7da" }}>
@@ -175,6 +181,7 @@ class AddNewProductionRound extends Component {
                 <Form.Control
                   style={{ border: "1px solid #050139" }}
                   as="select"
+                  required
                   name="status"
                 >
                   <div style={{ background: "#f8d7da" }}>

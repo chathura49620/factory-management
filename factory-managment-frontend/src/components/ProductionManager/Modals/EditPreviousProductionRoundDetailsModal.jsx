@@ -129,18 +129,18 @@ export class EditPreviousProductionRoundDetailsModal extends Component {
                   <Form.Group controlId="status">
                     <Form.Label>Status</Form.Label>
                     <Form.Control
-                      type="text"
+                      as="select"
                       name="status"
                       required
                       placeholder="Status"
                       defaultValue={this.props.status}
-                    />
-
-                    <div style={{ background: "#f8d7da" }}>
-                      {this.state.validationError}
-                    </div>
-                    <option selected>Pending</option>
-                    <option>Completed</option>
+                    >
+                      <div style={{ background: "#f8d7da" }}>
+                        {this.state.validationError}
+                      </div>
+                      <option selected>Pending</option>
+                      <option>Completed</option>
+                    </Form.Control>
                   </Form.Group>
 
                   <Form.Group>
