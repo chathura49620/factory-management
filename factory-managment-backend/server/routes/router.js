@@ -70,29 +70,5 @@ route.get('/api/factory-details/',contoller.factoryDetails.find);
 route.put('/api/factory-details/',contoller.factoryDetails.update);
 route.delete('/api/factory-details/',contoller.factoryDetails.delete);
 
-//Employee Leave Details APIs
-route.post('/api/leave-details/',contoller.leaveDetails.create);
-route.get('/api/leave-details/',contoller.leaveDetails.find);
-route.put('/api/leave-details/',contoller.leaveDetails.update);
-route.delete('/api/leave-details/',contoller.leaveDetails.delete); 
-
-//employee assignment APIs
-route.post('/api/assignment-details/',contoller.assignmentDetails.create);
-route.get('/api/assignment-details/',contoller.assignmentDetails.find);
-route.put('/api/assignment-details/',contoller.assignmentDetails.update);
-route.delete('/api/assignment-details/',contoller.assignmentDetails.delete);
-
-module.exports = route;
-//New Production Round Details APIs
-route.post('/api/newProRound-details/',contoller.newProductionRoundDetails.create);
-route.get('/api/newProRound-details/',contoller.newProductionRoundDetails.find);
-route.put('/api/newProRound-details/',contoller.newProductionRoundDetails.update);
-route.delete('/api/newProRound-details/',contoller.newProductionRoundDetails.delete);
-
-//Order Details APIs
-route.post('/api/order-details/',contoller.orderDetails.create);
-route.get('/api/order-details/',contoller.orderDetails.find);
-route.put('/api/order-details/',contoller.orderDetails.update);
-route.delete('/api/order-details/',contoller.orderDetails.delete);
 
 module.exports =route;

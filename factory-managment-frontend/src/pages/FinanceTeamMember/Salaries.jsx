@@ -4,7 +4,7 @@ import { Table, Button, ButtonToolbar } from 'react-bootstrap';
 import { AddNewBillTypeModal } from '../../components/FinanceTeamMember/Modals/AddNewBillTypeModal';
 import {SalariesTable} from "../../components/FinanceTeamMember/Tables/SalariesTable";
 import "./styles.css";
-import BillTypeImg from "./assert/img1.jpeg"
+import BillTypeImg from "./assert/img5.jpeg"
 
 class Salaries extends Component {
   state = {
