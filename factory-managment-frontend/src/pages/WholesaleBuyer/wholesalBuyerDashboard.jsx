@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Table, Button, ButtonToolbar } from "react-bootstrap";
-import "../SuperAdmin/dashboard.css";
+import "../WholesaleBuyer/dashboard.css";
 import hello from "../assets/hello.png";
 import clock from "../assets/clock.png";
 import Clock from "../../components/ProductionManager/common/clock";
