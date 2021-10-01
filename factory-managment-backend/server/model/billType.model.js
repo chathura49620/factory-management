@@ -11,4 +11,4 @@ var schema = new mongoose.Schema({
    
 const billType = mongoose.model("billType", schema);
 
-module.exports = billType;   
+module.exports = billType;    

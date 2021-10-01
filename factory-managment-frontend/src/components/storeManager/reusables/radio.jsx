@@ -18,7 +18,7 @@ const Radio = ({ rValue, onChange }) => {
         </label>
       </div>
       <div className="form-check form-check-inline">
-        <input
+        <input 
           className="form-check-input"
           type="radio"
           name="inlineRadioOptions"

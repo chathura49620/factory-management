@@ -14,7 +14,7 @@ const FormPopup = ({ title, children, openPopup, onClose }) => {
         }}
       >
         <DialogTitle
-          style={{
+          style={{ 
             height: 56,
           }} 
         >

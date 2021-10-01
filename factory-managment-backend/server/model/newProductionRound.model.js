@@ -16,7 +16,7 @@ var schema = new mongoose.Schema({
         required:true
     },
 
-    esDays:{
+    esDays:{ 
         type:Number,
         required:true
     },   

@@ -14,4 +14,4 @@ const SearchBox = ({ value, onChange, placeHolder }) => {
     />
   );
 };
-export default SearchBox; 
+export default SearchBox;  

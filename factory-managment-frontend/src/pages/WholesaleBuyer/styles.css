@@ -1,0 +1,13 @@
+.center {
+  text-align: center;
+}
+
+img {
+  height: 200px;
+  width: 300px;
+}
+
+.heading {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serifs;
+  color: #566573;
+}

@@ -13,7 +13,7 @@ var schema = new mongoose.Schema({
         type:String,
         required:true
     },
-    billDate:{
+    billDate:{ 
         type:Date,
         required:true   
     },

@@ -51,8 +51,11 @@ export class EditMaterialCostBillModal extends Component {
                 
             }
 
-            )
-    }
+  componentDidMount() {
+    axios
+      .get("http://localhost:5000/api/categories")
+      .then((result) => {
+        const categories = result.data;
 
     render() {
         return (
@@ -117,12 +120,107 @@ export class EditMaterialCostBillModal extends Component {
                             </Col>
                         </Row>
 
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <Button variant="danger" onClick={this.props.onHide}>Close</Button>
-                    </Modal.Footer>
-                </Modal>
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div className="container">
+        <Snackbar
+          anchorOrigin={{ vertical: "top", horizontal: "center" }}
+          open={this.state.snackbaropen}
+          autoHideDuration={6000}
+          onClose={this.snackbarClose}
+          message={<span id="message-id">{this.state.snackbarmsg}</span>}
+          action={[
+            <IconButton
+              key="close"
+              aria-label="Close"
+              color="danger"
+              onClick={this.snackbarClose}
+            ></IconButton>,
+          ]}
+        />
+        <Modal
+          {...this.props}
+          size="lg"
+          aria-labelledby="contained-modal-title-vcenter"
+          //centered
+        >
+          <Modal.Header closeButton>
+            <Modal.Title id="contained-modal-title-vcenter">
+              Update Details
+            </Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Row>
+              <Col sm={6}>
+                <Form onSubmit={this.handleSubmit}>
+                  <Form.Group>
+                    <Form.Group controlId="proId">
+                      <Form.Control
+                        type="text"
+                        name="id"
+                        required
+                        placeholder="id"
+                        defaultValue={this.props.id}
+                      />
+                    </Form.Group>
+                    <Form.Label>Product Category</Form.Label>
+                    <Form.Control
+                      as="select"
+                      required
+                      name="productCategory"
+                      defaultValue={this.props.productCategory}
+                    >
+                      {this.state.categories.map((i) => (
+                        <option key={i._id}>{i.categoryName}</option>
+                      ))}
+                    </Form.Control>
+                  </Form.Group>
+                  <Form.Group controlId="quantity">
+                    <Form.Label>Quntity</Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="quantity"
+                      required
+                      placeholder="Quntity"
+                      defaultValue={this.props.quantity}
+                    />
+                  </Form.Group>
+                  <Form.Group controlId="esDays">
+                    <Form.Label>Estimated Days</Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="esDays"
+                      required
+                      placeholder="Estimated Days"
+                      defaultValue={this.props.esDays}
+                    />
+                  </Form.Group>
+                  <Form.Group controlId="esEmployees">
+                    <Form.Label>Estimated Employees</Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="esEmployees"
+                      required
+                      placeholder="Estimated Employees"
+                      defaultValue={this.props.esEmployees}
+                    />
+                  </Form.Group>
+                  <Form.Group>
+                    <Button variant="primary" type="submit">
+                      Update Production Round
+                    </Button>
+                  </Form.Group>
+                </Form>
+              </Col>
+            </Row>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="danger" onClick={this.props.onHide}>
+              Close
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </div>
+    );
+  }
 }

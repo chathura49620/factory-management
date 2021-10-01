@@ -62,7 +62,7 @@ router.route("/add").post((req, res) => {
 router.route("/record/:date").delete((req, res) => {
   const date = req.params.date;
 
-  Item.deleteMany({ iAddedDate: date })
+  Item.deleteMany({ iAddedDate: date }) 
     .then((result) => res.json("deleted"))
     .catch((err) => res.status(400).json(err.message));
 });

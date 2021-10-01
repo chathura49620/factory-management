@@ -18,7 +18,7 @@ const Notice = () => {
           fontSize: 20,
           color: "black", 
           textAlign: "center",
-          borderBottom: "2px solid black",
+          borderBottom: "2px solid black", 
         }}
       >
         Notices

@@ -19,7 +19,7 @@ const Select = ({ name, label, options, error, ...rest }) => {
           <option key={opt._id} value={opt.categoryName}>
             {opt.categoryName} 
           </option>
-        ))}
+        ))} 
       </select>
       {error && (
         <div className="alert alert-danger" style={{ padding: 3 }}>

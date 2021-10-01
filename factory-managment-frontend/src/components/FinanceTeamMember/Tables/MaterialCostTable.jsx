@@ -16,8 +16,7 @@ export class MaterialCostTable extends Component {
       icon: "warning",
       buttons: true,
       dangerMode: true,
-    })
-    .then((willDelete) => {
+    }).then((willDelete) => {
       if (willDelete) {
         fetch('http://localhost:5000/api/material-cost/', {
             method: 'DELETE',
@@ -104,5 +103,4 @@ export class MaterialCostTable extends Component {
   );
 };
 }
-
-
+ 

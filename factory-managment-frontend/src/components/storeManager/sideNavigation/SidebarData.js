@@ -12,7 +12,7 @@ export const SidebarData = [
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
   },
-  {
+  { 
     title: "Basic Info",
     path: "/basic-info",
     icon: <AiIcons.AiFillHome />,

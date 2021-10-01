@@ -2,7 +2,12 @@ import React, { Component } from "react";
 import { Modal, Button, Row, Col, Form, FormGroup } from "react-bootstrap";
 import swal from "sweetalert";
 import axios from "axios";
+<<<<<<< HEAD
 
+=======
+import "./styles.css";
+import addorder from "../../pages/assets/addorderpic.png";
+>>>>>>> IT19129440
 class AddNewProductionRound extends Component {
   constructor(props) {
     super(props);
@@ -21,9 +26,15 @@ class AddNewProductionRound extends Component {
       .catch((err) => console.log(err.message));
   }
 
+<<<<<<< HEAD
   handleSubmit(event, props) {  
     console.log(event);
     const isValid = this.validate(); 
+=======
+  handleSubmit(event, props) {
+    console.log(event);
+    const isValid = this.validate();
+>>>>>>> IT19129440
     event.preventDefault();
     //alert(event.target.name.value);
 
@@ -52,6 +63,15 @@ class AddNewProductionRound extends Component {
               icon: "success",
               button: "Done",
             });
+<<<<<<< HEAD
+=======
+            setTimeout(
+              function () {
+                window.location.reload();
+              }.bind(this),
+              1500
+            );
+>>>>>>> IT19129440
           },
           (error) => {
             this.setState({ snackbaropen: true, snackbarmsg: "Failed" });
@@ -78,11 +98,18 @@ class AddNewProductionRound extends Component {
   render() {
     return (
       <React.Fragment>
+<<<<<<< HEAD
         <div className="row">
           <div className="col-4"></div>
           <div className="col">
             <h1>Add Order Details</h1>
           </div>
+=======
+        <h1 className="heading">Add Order Details</h1>
+
+        <div className="center">
+          <img src={addorder} alt="leavepic" />
+>>>>>>> IT19129440
         </div>
 
         <div className="row">
@@ -100,6 +127,10 @@ class AddNewProductionRound extends Component {
                     type="text"
                     name="proId"
                     placeholder=" Order Id"
+<<<<<<< HEAD
+=======
+                    required
+>>>>>>> IT19129440
                   />
                   <div style={{ background: "#f8d7da" }}>
                     {this.state.validationError}
@@ -112,6 +143,10 @@ class AddNewProductionRound extends Component {
                   style={{ border: "1px solid #050139" }}
                   as="select"
                   name="productCategory"
+<<<<<<< HEAD
+=======
+                  required
+>>>>>>> IT19129440
                 >
                   <div style={{ background: "#f8d7da" }}>
                     {this.state.validationError}
@@ -128,6 +163,10 @@ class AddNewProductionRound extends Component {
                   type="text"
                   name="quntity"
                   placeholder="Quantity"
+<<<<<<< HEAD
+=======
+                  required
+>>>>>>> IT19129440
                 />
                 <div style={{ background: "#f8d7da" }}>
                   {this.state.validationError}
@@ -142,6 +181,10 @@ class AddNewProductionRound extends Component {
                   type="text"
                   name="estDays"
                   placeholder="Payment Methode"
+<<<<<<< HEAD
+=======
+                  required
+>>>>>>> IT19129440
                 />
                 <div style={{ background: "#f8d7da" }}>
                   {this.state.validationError}
@@ -153,6 +196,10 @@ class AddNewProductionRound extends Component {
                   style={{ border: "1px solid #050139" }}
                   as="select"
                   name="status"
+<<<<<<< HEAD
+=======
+                  required
+>>>>>>> IT19129440
                 >
                   <div style={{ background: "#f8d7da" }}>
                     {this.state.validationError}

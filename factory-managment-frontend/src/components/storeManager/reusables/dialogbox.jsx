@@ -16,7 +16,7 @@ const DialogBox = ({ show, deleteOrNot }) => {
 
           <hr />
 
-          <div className="dialog__footer">
+          <div className="dialog__footer"> 
             <button
               onClick={() => deleteOrNot("no")}
               className="dialog__cancel"

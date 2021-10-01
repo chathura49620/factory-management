@@ -18,5 +18,5 @@ const SelectSearch = ({ categories, categoryValue, onChange }) => {
     </select>
   );
 }; 
-
+ 
 export default SelectSearch;

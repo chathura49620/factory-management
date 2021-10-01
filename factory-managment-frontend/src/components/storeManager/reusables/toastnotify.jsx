@@ -15,7 +15,7 @@ const ToastNotify = () => {
             <img src="..." className="rounded me-2" alt="..." />
             <strong className="me-auto">Bootstrap</strong>
             <small>11 mins ago</small>
-            <button
+            <button 
               type="button"
               className="btn-close"
               data-bs-dismiss="toast"

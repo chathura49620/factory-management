@@ -15,6 +15,6 @@ const ListGroup = ({ genres, onGenreSelect, selectedGenre }) => {
       ))}
     </ul>
   );
-}; 
+};  
 
 export default ListGroup;
