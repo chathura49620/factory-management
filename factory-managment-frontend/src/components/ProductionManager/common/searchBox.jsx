@@ -7,7 +7,7 @@ const SearchBox = ({ value, onChange, placeHolder }) => {
       type="text"
       name="query"
       autoComplete="off"
-      className="form-control my-4"
+      className="form-control mt-3"
       placeholder={placeHolder}
       value={value}
       onChange={(e) => onChange(e.currentTarget.value)}
@@ -15,3 +15,4 @@ const SearchBox = ({ value, onChange, placeHolder }) => {
   );
 };
 export default SearchBox;
+   

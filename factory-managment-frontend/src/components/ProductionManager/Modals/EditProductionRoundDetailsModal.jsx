@@ -20,7 +20,7 @@ export class EditProductionRoundDetailsModal extends Component {
   componentDidMount() {
     axios
       .get("http://localhost:5000/api/categories")
-      .then((result) => {
+      .then((result) => {   
         const categories = result.data;
 
         this.setState({ categories: categories });

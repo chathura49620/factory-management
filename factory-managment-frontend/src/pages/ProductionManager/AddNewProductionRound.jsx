@@ -26,7 +26,7 @@ class AddNewProductionRound extends Component {
       })
       .catch((err) => console.log(err.message));
   }
-
+  
   handleSubmit(event, props) {
     // console.log(event);
     const isValid = this.validate(event);

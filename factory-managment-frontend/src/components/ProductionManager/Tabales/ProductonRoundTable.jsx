@@ -29,7 +29,7 @@ export class ProductonRoundTable extends Component {
             id: id,
           }),
         })
-          .then((res) => res.json())
+          .then((res) => res.json())  
           .then((result) => {
             swal({
               title: "New Production Round Deleted Succesfully",

@@ -9,4 +9,12 @@ exports.feedbackDetails = require("./feedbackDetails.controller");
 exports.returnOrderDetails = require("./returnOrderDetails.controller");
 exports.wholesaleBuyerOrderDetails = require("./wholesaleBuyerOrderDetails.controller");
 exports.login = require("./login.controller");
-
+exports.materialCode = require("./materialcode.controller");
+exports.factoryDetails = require("./factoryDetails.controller");
+exports.userRole = require("./userRole.controller");
+exports.leaveDetails = require("./employeeLeave.controller");
+exports.assignmentDetails = require("./employeeassignment.controller");
+exports.login = require("./login.controller");
+exports.items = require("./item.controller");
+exports.billType = require("./billType.controller");
+exports.bills = require("./bills.controller");

@@ -20,6 +20,7 @@ route.delete("/api/product-code/", contoller.productcode.delete);
 route.get("/api/login/", contoller.login.find);
 
 //New Production Round Details APIs
+
 route.post(
   "/api/newProRound-details/",
   contoller.newProductionRoundDetails.create
@@ -38,6 +39,7 @@ route.delete(
 );
 
 //previous Production Round Details APIs
+
 route.post(
   "/api/prevProRound-details/",
   contoller.previousProductionRoundDetails.create
@@ -56,12 +58,14 @@ route.delete(
 );
 
 //Order Details APIs
+
 route.post("/api/proStock-details/", contoller.productStockDetails.create);
 route.get("/api/proStock-details/", contoller.productStockDetails.find);
 route.put("/api/proStock-details/", contoller.productStockDetails.update);
 route.delete("/api/proStock-details/", contoller.productStockDetails.delete);
 
 // //Order Details APIs
+
 route.post("/api/order-details/", contoller.orderDetails.create);
 route.get("/api/order-details/", contoller.orderDetails.find);
 route.put("/update/order", contoller.orderDetails.update);
@@ -75,4 +79,34 @@ route.get("/apifeedback-details/", contoller.feedbackDetails.find);
 //Return An Order APIs
 route.post("/api/return-order-details/", contoller.returnOrderDetails.create);
 
+//store Manager APIs
+route.get("/", contoller.items.findAllItems);
+route.post("/add/record", contoller.items.addNewItemRecord);
+route.post("/add", contoller.items.addNewItems);
+route.delete("/record/:date", contoller.items.deleteItemRecords);
+route.delete("/multiplerecords/:date", contoller.items.deleteMultipleRecords);
+route.delete("/:id", contoller.items.deleteOneOfId);
+route.delete(
+  "/records/specific/:id",
+  contoller.items.deleteOneOfIdFromItemRecords
+);
+route.delete(
+  "/specific/:supplier/:date",
+  contoller.items.deleteAccordingToSNameAndDate
+);
+route.get("/:id", contoller.items.getSpecificItem);
+route.get("/record/:date", contoller.items.getAllDataOfSpecificDate);
+route.get("/multiplerecords/:date", contoller.items.getAllDataOfDateOnIRecords);
+route.post("/update/:id", contoller.items.updateOneItem);
+route.post("/update/record/:date", contoller.items.updateMultipleOfDate);
+route.post("/update/quantity/itemRecord", contoller.items.updateOneOnIRecords);
+route.get(
+  "/object/data/:supplier/:date",
+  contoller.items.findOneAccordingToDateAndSupplier
+);
+route.delete(
+  "/object/data/:supplier/:date",
+  contoller.items.deleteOneAccordingToDateAndSup
+);
+route.post("/update/unique/record/:id", contoller.items.updateItemRecord);
 module.exports = route;

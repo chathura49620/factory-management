@@ -22,7 +22,7 @@ class login extends Component {
         this.setState({ users: user });
         // console.log(this.state.users.length);
       })
-      .catch((err) => console.log(err.message));
+      .catch((err) => console.log(err.message));     
   }
 
   login(event) {

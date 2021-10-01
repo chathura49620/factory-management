@@ -22,9 +22,9 @@ const NavIcon = styled(Link)`
   font-size: 2rem;
   height: 80px;
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-start;  
   align-items: center;
-`;
+`;  
 
 const SidebarNav = styled.nav`
   background: #15171c;
