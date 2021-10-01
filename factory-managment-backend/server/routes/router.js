@@ -111,6 +111,7 @@ route.get('/api/factory-details/',contoller.factoryDetails.find);
 route.put('/api/factory-details/',contoller.factoryDetails.update);
 route.delete('/api/factory-details/',contoller.factoryDetails.delete);
 
+<<<<<<< HEAD
 >>>>>>> IT19048338
 
 route.post("/api/proStock-details/", contoller.productStockDetails.create);
@@ -163,4 +164,27 @@ route.delete(
   contoller.items.deleteOneAccordingToDateAndSup
 );
 route.post("/update/unique/record/:id", contoller.items.updateItemRecord);
+=======
+//Employee Leave Details APIs
+route.post('/api/leave-details/',contoller.leaveDetails.create);
+route.get('/api/leave-details/',contoller.leaveDetails.find);
+route.put('/api/leave-details/',contoller.leaveDetails.update);
+route.delete('/api/leave-details/',contoller.leaveDetails.delete); 
+
+//employee assignment APIs
+route.post('/api/assignment-details/',contoller.assignmentDetails.create);
+route.get('/api/assignment-details/',contoller.assignmentDetails.find);
+route.put('/api/assignment-details/',contoller.assignmentDetails.update);
+route.delete('/api/assignment-details/',contoller.assignmentDetails.delete);
+
+//employee payment APIs
+route.post('/api/payment-details/',contoller.paymentDetails.create);
+route.get('/api/payment-details/',contoller.paymentDetails.find);
+route.put('/api/payment-details/',contoller.paymentDetails.update);
+route.delete('/api/payment-details/',contoller.paymentDetails.delete);
+
+
+
+
+>>>>>>> IT19189086
 module.exports = route;

@@ -2,19 +2,15 @@ import React, { Component } from 'react';
 import { Modal, Button, Row, Col, Form, FormGroup } from 'react-bootstrap';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
-import swal from 'sweetalert';
 import { Redirect } from 'react-router-dom';
 
 
-export class AddCategoryModal extends Component {
+export class AddAssignmentModal extends Component {
     constructor(props) {
+
+        console.log("Run");
         super(props);
-        this.state = {
-            snackbaropen: false,  
-            snackbarmsg: '',
-            CategoryNameError:''
-             
-        };
+        this.state = { snackbaropen: false, snackbarmsg: '' };
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -23,45 +19,39 @@ export class AddCategoryModal extends Component {
     };
 
     handleSubmit(event) {
+
         event.preventDefault();
-        const isValid = this.validate();
-        if(isValid){
-            fetch('http://localhost:5000/api/categories', {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                    'username': 'chathura'
-                },
-                body: JSON.stringify({
-                    categoryName: event.target.categoryName.value,
-                    status: event.target.status.value
-                })
+        alert(event.target.name.value);
+        fetch('http://localhost:5000/api/assignment-details/', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+                
+            },
+            body: JSON.stringify({
+                id: event.target.id.value,
+                documentid: event.target.documentid.value,
+                supervisor: event.target.supervisor.value,
+                description: event.target.description.value,
+                status: event.target.status.value
             })
-                .then(res => res.json())
-                .then((result) => {
-                    swal({
-                        title: "Category Added Succesfully",
-                        icon: "success",
-                        button: "Done",
-                    }); 
-                    this.setState({CategoryNameError:''})
-                    setTimeout(function() {
-                        window.location.reload(); 
-                      }.bind(this), 1000);
-                }, (error) => {
-                    this.setState({ snackbaropen: true, snackbarmsg: 'Failed' })
-                }
+        })
+            .then(res => res.json())
+            .then((result) => {
+                alert("Success!");
+                console.log("result" , result)
+            }, (error) => {
+                this.setState({ snackbaropen: true, snackbarmsg: 'Failed' })
+            }
 
-                )
-        }
+            )
     }
-
-  
 
     render() {
         return (
             <div className="container">
+
 
                 <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
                     open={this.state.snackbaropen}
@@ -80,7 +70,7 @@ export class AddCategoryModal extends Component {
                 >
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title-vcenter">
-                            Add Category
+                            Add a Leave Request 
               </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
@@ -89,20 +79,27 @@ export class AddCategoryModal extends Component {
                             <Col sm={6}>
                                 <Form onSubmit={this.handleSubmit}>
                                     <Form.Group controlId="name">
-                                        <Form.Label>Name</Form.Label>
-                                        <Form.Control type="text" name="categoryName"  placeholder="Category Name" />
+                                        <Form.Label>Document ID</Form.Label>
+                                        <Form.Control type="text" name="documentid" required placeholder="Enter a Document Number" />
                                     </Form.Group>
-                                    <Form.Group>
+                                    <Form.Group controlId="name">
+                                        <Form.Label>Supervisor name</Form.Label>
+                                        <Form.Control type="text" name="supervisor" required placeholder="supervisor" />
+                                    </Form.Group>
+                                    <Form.Group controlId="name">
+                                        <Form.Label>Description</Form.Label>
+                                        <Form.Control type="text" name="description" required placeholder="Description" />
+                                    </Form.Group>
+                                    <Form.Group controlId="name">
                                         <Form.Label>Status</Form.Label>
-                                        <Form.Control as="select" required name="status">
-                                            <option selected>ACTIVE</option>
-                                            <option>INACTIVE</option>
-                                        </Form.Control>
+                                        <Form.Control type="text" name="status" required placeholder="status" />
                                     </Form.Group>
+                                    
                                     <br></br>
+
                                     <Form.Group>
-                                        <Button  style={{ backgroundColor: "#7121AD", color: "white" }} variant="primary" type="submit" >
-                                            Add Category
+                                        <Button style={{ backgroundColor: "#7121AD", color: "white" }} className="btn"  type="submit" >
+                                            Submit Assignment Request
                                         </Button>
                                     </Form.Group>
                                 </Form>

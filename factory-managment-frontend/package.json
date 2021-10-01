@@ -8,16 +8,24 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.15",
+    "@fullcalendar/daygrid": "^5.9.0",
+    "@fullcalendar/react": "^5.9.0",
     "@material-ui/core": "^4.12.3",
+<<<<<<< HEAD
     "@mui/material": "^5.0.1",
     "@mui/styled-engine-sc": "^5.0.0",
+=======
+    "@react-css/flex": "^1.5.0",
+>>>>>>> IT19189086
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.1",
-    "bootstrap": "^5.1.0",
+    "bootstrap": "^4.6.0",
     "bootstrap-icons": "^1.5.0",
+    "cleave.js": "^1.6.0",
     "fa-icons": "^0.2.0",
+    "flexiblegrid": "^1.2.2",
     "joi": "^17.4.2",
     "joi-browser": "13.4",
     "jspdf": "^2.4.0",
@@ -28,6 +36,7 @@
     "react": "^17.0.2",
     "react-bootstrap": "^2.0.0-beta.4",
     "react-datepicker": "^4.2.0",
+    "react-datetime": "^3.1.1",
     "react-dom": "^17.0.2",
     "react-icons": "^3.11.0",
     "react-modal": "^3.14.3",
@@ -35,6 +44,10 @@
     "react-scripts": "4.0.3",
     "react-toastify": "^7.0.4",
     "react-vis": "^1.11.7",
+<<<<<<< HEAD
+=======
+    "reactstrap": "^8.10.0",
+>>>>>>> IT19189086
     "styled-components": "^5.2.1",
     "sweetalert": "^2.1.2",
     "sweetalert2": "^11.1.4",
