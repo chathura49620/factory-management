@@ -17,13 +17,13 @@ class Profit extends Component {
       'April', 'May'],
       datasets: [
       {
-        label: 'Rainfall',
+        label: 'Profit',
         fill: false,
         lineTension: 0.5,
         backgroundColor: 'rgba(75,192,192,1)',
         borderColor: 'rgba(0,0,0,1)',
         borderWidth: 2,
-        data: [65, 59, 80, 81, 56]
+        data: [150000,200000,160000,250000,3000000]
       }
       ]
     },
@@ -83,9 +83,9 @@ class Profit extends Component {
           <div className="col-3"></div>
 
         <div className="col">
-        <h1 className="mb-5">Profit</h1>
+        <h1 className="heading">Profit</h1>
         
-        Profit For the Last Month : Rs. {(this.state.Salaries + this.state.materialCost) - this.state.bill}/=
+        <div className="heading">Profit For the Last Month : Rs. {(this.state.Salaries + this.state.materialCost) - this.state.bill}/= </div>
 
         <Line
           data={this.state.graphdata}

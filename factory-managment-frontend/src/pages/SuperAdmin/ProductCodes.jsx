@@ -4,6 +4,9 @@ import { Table, Button, ButtonToolbar } from 'react-bootstrap';
 import { AddProductCodeModal } from '../../components/SuperAdmin/Modals/AddProductCodeModal';
 import {ProductCodesTable} from "../../components/SuperAdmin/Tables/ProductCodesTable";
 import SearchBox from "../../components/FinanceTeamMember/Common/searchBox";  
+import "./styles.css";
+import BillsImg from "./assert/img9.jpeg";
+
 
 class ProductCodes extends Component {   
   state = {
@@ -55,7 +58,10 @@ class ProductCodes extends Component {
           <div className="col-3"></div>
 
         <div className="col">
-        <h1 className="mb-5">Product Codes</h1>
+        <h1 className="heading">Product Codes</h1>
+        <div className="center">
+              <img src={BillsImg} alt="billsPic" />
+            </div>
         <ButtonToolbar>
                     <Button style={{ backgroundColor: "#7121AD", color: "white" }}
                     className="btn btn-lg"

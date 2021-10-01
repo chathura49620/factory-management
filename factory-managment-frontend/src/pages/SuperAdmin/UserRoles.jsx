@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import UserRolesTable from "../../components/SuperAdmin/Tables/UserRolesTable";
+import "./styles.css";
+import BillsImg from "./assert/img7.jpeg";
 
 class UserRoles extends Component {
   
@@ -76,7 +78,10 @@ class UserRoles extends Component {
           <div className="col-3"></div>
 
         <div className="col">
-        <h1 className="mb-5">User Roles</h1>
+        <h1 className="heading">User Roles</h1>
+         <div className="center">
+              <img src={BillsImg} alt="billsPic" />
+            </div>
         <div className="row">
           <div className="col-1"></div>
           <div className="col">

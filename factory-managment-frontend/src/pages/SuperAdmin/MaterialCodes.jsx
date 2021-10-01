@@ -4,6 +4,8 @@ import { Table, Button, ButtonToolbar } from 'react-bootstrap';
 import { AddMaterialCodeModal } from '../../components/SuperAdmin/Modals/AddMaterialCodeModal';
 import {MaterialCodeTable} from "../../components/SuperAdmin/Tables/MaterialCodeTable";
 import SearchBox from "../../components/FinanceTeamMember/Common/searchBox";  
+import "./styles.css";
+import BillsImg from "./assert/img10.jpeg";
 
 class MaterialCodes extends Component {
   state = {
@@ -53,7 +55,10 @@ class MaterialCodes extends Component {
           <div className="col-3"></div>
 
         <div className="col">
-        <h1 className="mb-5">Material Codes</h1>
+        <h1 className="heading">Material Codes</h1>
+        <div className="center">
+              <img src={BillsImg} alt="billsPic" />
+            </div>
         <ButtonToolbar>
                     <Button style={{ backgroundColor: "#7121AD", color: "white" }}
                     className="btn btn-lg"

@@ -3,7 +3,10 @@ import axios from "axios";
 import { Table, Button, ButtonToolbar } from 'react-bootstrap';
 import { AddCategoryModal } from '../../components/SuperAdmin/Modals/AddCategoryModal';
 import {CategoriesTable} from "../../components/SuperAdmin/Tables/CategoriesTable";
-import SearchBox from "../../components/FinanceTeamMember/Common/searchBox";   
+import SearchBox from "../../components/FinanceTeamMember/Common/searchBox";
+import "./styles.css";
+import BillsImg from "./assert/img11.jpeg";
+
 
 class Categories extends Component {
   state = {
@@ -53,7 +56,10 @@ class Categories extends Component {
           <div className="col-3"></div>
 
         <div className="col">
-        <h1 className="mb-5">Categories</h1>
+        <h1 className="heading">Categories</h1>
+            <div className="center">
+              <img src={BillsImg} alt="billsPic" />
+            </div>
         <ButtonToolbar>
                     <Button style={{ backgroundColor: "#7121AD", color: "white" }}
                     className="btn btn-lg"

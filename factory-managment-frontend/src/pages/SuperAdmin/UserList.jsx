@@ -4,6 +4,9 @@ import { Table, Button, ButtonToolbar } from 'react-bootstrap';
 import UserListTable from "../../components/SuperAdmin/Tables/UserListTable";
 import AddNewUserModal from "../../components/SuperAdmin/Modals/AddNewUserModal";
 import RejectUsersTable from "../../components/SuperAdmin/Tables/RejectUsersTable";
+import "./styles.css";
+import BillsImg from "./assert/img8.jpeg";
+
 
 class UserList extends Component {
   state = {
@@ -31,7 +34,10 @@ class UserList extends Component {
           <div className="col-3"></div>
 
         <div className="col">
-         <h1 className="mb-5">User Lists</h1>
+         <h1 className="heading">User Lists</h1>
+         <div className="center">
+              <img src={BillsImg} alt="billsPic" />
+            </div>
          <ButtonToolbar>
                     <Button style={{ backgroundColor: "#7121AD", color: "white" }}
                     className="btn btn-lg"

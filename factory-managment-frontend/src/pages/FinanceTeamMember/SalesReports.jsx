@@ -6,6 +6,9 @@ import {SalariesTable} from "../../components/FinanceTeamMember/Tables/SalariesT
 import GenarateSalesReport from "./services/GenarateSalesReport";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
+import "./styles.css";
+import BillTypeImg from "./assert/img3.jpeg"
+
 
 class SalesReports extends Component {
   state = {
@@ -103,8 +106,11 @@ class SalesReports extends Component {
           <div className="col-3"></div>
 
         <div className="col">
-        <h1 className="">Sales Reports</h1>
-        <h2>Please Select Month and Genarate Reports</h2>
+        <h1 className="heading">Sales Reports</h1>
+        <h2 className="heading">Please Select Month and Genarate Reports</h2>
+        <div className="center">
+          <img src={BillTypeImg} alt="billsPic" />
+        </div>
 
         <Row>
             <Col sm={6}> 

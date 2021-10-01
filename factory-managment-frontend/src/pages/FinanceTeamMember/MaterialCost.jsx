@@ -4,7 +4,8 @@ import { Table, Button, ButtonToolbar } from 'react-bootstrap';
 import { AddNewMaterialCostBill } from '../../components/FinanceTeamMember/Modals/AddNewMaterialCostBill';
 import {MaterialCostTable} from "../../components/FinanceTeamMember/Tables/MaterialCostTable";
 import SearchBox from "../../components/FinanceTeamMember/Common/searchBox";
-
+import "./styles.css";
+import BillTypeImg from "./assert/img11.jpeg"
 
 class MaterialCost extends Component {
   state = {
@@ -54,7 +55,10 @@ class MaterialCost extends Component {
           <div className="col-3"></div>
 
         <div className="col">
-        <h1 className="mb-5">Bill Types</h1>
+        <h1 className="heading">Bill Types</h1>
+        <div className="center">
+          <img src={BillTypeImg} alt="billsPic" />
+        </div>
         <ButtonToolbar>
                     <Button style={{ backgroundColor: "#7121AD", color: "white" }}
                     className="btn btn-lg"

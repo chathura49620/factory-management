@@ -3,7 +3,8 @@ import axios from "axios";
 import { Table, Button, ButtonToolbar } from 'react-bootstrap';
 import { AddNewBillTypeModal } from '../../components/FinanceTeamMember/Modals/AddNewBillTypeModal';
 import {SalariesTable} from "../../components/FinanceTeamMember/Tables/SalariesTable";
-
+import "./styles.css";
+import BillTypeImg from "./assert/img1.jpeg"
 
 class Salaries extends Component {
   state = {
@@ -30,7 +31,11 @@ class Salaries extends Component {
           <div className="col-3"></div>
 
         <div className="col">
-        <h1 className="mb-5">Salaries</h1>
+       
+        <h1 className="heading">Salaries</h1>
+        <div className="center">
+          <img src={BillTypeImg} alt="billsPic" />
+        </div>
             <SalariesTable filteredItems={this.state.Salaries} />
             </div>
             </div>

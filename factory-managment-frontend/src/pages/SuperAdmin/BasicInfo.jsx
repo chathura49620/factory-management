@@ -3,6 +3,9 @@ import React, { Component } from "react";
 import { Modal, Button, Row, Col, Form, FormGroup } from 'react-bootstrap';
 import swal from 'sweetalert';
 import axios from "axios";
+import "./styles.css";
+import BillsImg from "./assert/img12.jpeg";
+
 
 class BasicInfo extends Component  {
   constructor(props) {
@@ -67,7 +70,10 @@ class BasicInfo extends Component  {
         <div className="col">
         <div className="row">
           <div className="col">
-            <h1>Basic Info</h1>
+            <h1 className="heading">Basic Info</h1>
+            <div className="center">
+              <img src={BillsImg} alt="billsPic" />
+            </div>
             {this.state.factoryDetails.map((i) => (
             <Form onSubmit={this.handleSubmit}  key={i._id}>
                                       <Form.Group controlId="id">
