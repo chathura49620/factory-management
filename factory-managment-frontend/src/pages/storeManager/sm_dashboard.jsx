@@ -212,7 +212,11 @@ class SMDashBoard extends Component {
                       color: "#307eaf",
                     }}
                   >
-                    <button onClick={() => generatePDF(itemRecords)}>
+                    <button
+                      onClick={() =>
+                        generatePDF(itemRecords, "Today Recieved Stocks")
+                      }
+                    >
                       Daily reports
                     </button>
 

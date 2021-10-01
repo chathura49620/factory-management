@@ -139,7 +139,8 @@ class ItemRecord extends Component {
   setListAndGenerateReport = (r) => {
     let list = [r];
     console.log("hhhhgenerate", list);
-    generatePDF(list);
+    let title = r.iAddedDate + " Recieved Stocks";
+    generatePDF(list, title);
   };
 
   render() {
