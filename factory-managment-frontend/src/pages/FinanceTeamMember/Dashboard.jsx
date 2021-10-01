@@ -6,7 +6,7 @@ import "./dashboard.css";
 import hello from "../assets/hello.png";
 import clock from "../assets/clock.png";
 import { AddFactoryDetailsModal } from '../../components/SuperAdmin/Modals/AddFactoryDetailsModal';
-import Clock from "../../components/ProductionManager/common/clock";
+import Clock from "./clock";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
    
