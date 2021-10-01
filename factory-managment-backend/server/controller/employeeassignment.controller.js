@@ -20,7 +20,7 @@ exports.create = (req,res)=>{
     // save assignment details in the database
     assignmentDetails
         .save(assignmentDetails)
-        .then(data => {
+        .then(data => {   
             res.send(data)
         })
         .catch(err =>{

@@ -24,9 +24,9 @@ class Dashboard extends Component {
   //     })
   //     .catch((err) => console.log(err.message));
 
-  //     const user_name = localStorage.getItem("user_full_name");
+  //     const user_name = localStorage.getItem("user_full_name"); 
   //     this.setState({ user_name: user_name });
-
+  
   //   }
   // logout(){
   //   localStorage.removeItem('user_full_name');

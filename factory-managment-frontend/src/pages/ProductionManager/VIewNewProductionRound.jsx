@@ -27,7 +27,7 @@ componentDidMount() {
     let AddModelClose = () => this.setState({ addModalShow: false })
     return (
       <React.Fragment>
-
+  
         <div className="row">
 
 <div className="col-4 my-2">

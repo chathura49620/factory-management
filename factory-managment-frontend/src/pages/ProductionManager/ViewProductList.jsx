@@ -26,7 +26,7 @@ class ViewProductList extends Component {
     return (
       <React.Fragment>
 
-
+  
 <div className="row">
   <div className="col-4"></div>
   <div className="col">

@@ -17,7 +17,7 @@ exports.create = (req,res)=>{
         email : req.body.email,
         productCategory : req.body.productCategory,
         quantity : Number(req.body.quantity),
-        paymentMethode : req.body.paymentMethode,
+        paymentMethode : req.body.paymentMethode,   
         status : req.body.status
     })
 

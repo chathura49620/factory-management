@@ -22,13 +22,13 @@ export const SidebarData = [
     subNav: [
       {
         title: 'Material Cost',
-        path: '',
+        path: '/material-cost',
         icon: <IoIcons.IoIosPaper />,
         cName: 'sub-nav'
       },
       {
         title: 'Salaries',
-        path: '',
+        path: '/salaries',
         icon: <IoIcons.IoIosPaper />,
         cName: 'sub-nav'
       },
@@ -56,7 +56,7 @@ export const SidebarData = [
       },
       {
         title: 'Sales Reports',
-        path: '',
+        path: '/sales-reports',
         icon: <IoIcons.IoIosPaper />,
         cName: 'sub-nav'
       },
@@ -64,7 +64,7 @@ export const SidebarData = [
   },
   {
     title: 'Profit',
-    path: '',
+    path: '/profits',
     icon: <FaIcons.FaCartPlus />
   },
   {

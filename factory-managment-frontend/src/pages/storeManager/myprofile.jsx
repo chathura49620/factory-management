@@ -22,7 +22,7 @@ class MyProfile extends Component {
       BankName: "",
       AccountNumber: "",
       Branch: "",
-      BranchCode: "",
+      BranchCode: "", 
       NumberOfFamilyMembers: "",
     },
 

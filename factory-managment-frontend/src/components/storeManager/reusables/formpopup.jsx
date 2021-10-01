@@ -16,7 +16,7 @@ const FormPopup = ({ title, children, openPopup, onClose }) => {
         <DialogTitle
           style={{
             height: 56,
-          }}
+          }} 
         >
           <div
             style={{ display: "flex", textAlign: "center", color: "#7121AD" }}

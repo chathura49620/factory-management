@@ -19,7 +19,7 @@ var schema = new mongoose.Schema({
     esDays:{
         type:Number,
         required:true
-    },
+    },   
 
     esEmployees:{
         type:Number,

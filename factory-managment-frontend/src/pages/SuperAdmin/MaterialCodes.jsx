@@ -3,10 +3,14 @@ import axios from "axios";
 import { Table, Button, ButtonToolbar } from 'react-bootstrap';
 import { AddMaterialCodeModal } from '../../components/SuperAdmin/Modals/AddMaterialCodeModal';
 import {MaterialCodeTable} from "../../components/SuperAdmin/Tables/MaterialCodeTable";
+import SearchBox from "../../components/FinanceTeamMember/Common/searchBox";  
+import "./styles.css";
+import BillsImg from "./assert/img10.jpeg";
 
 class MaterialCodes extends Component {
   state = {
     MaterialCodes: [],
+    searchQuery: "",
     addModalShow: false
   }; 
       
@@ -20,12 +24,41 @@ class MaterialCodes extends Component {
       })
       .catch((err) => console.log(err.message));
   }
+  handleSearch = (query) => {
+    this.setState({
+      searchQuery: query,
+    });
+  };
+
+  filteredData() {
+    const { searchQuery, MaterialCodes } = this.state;
+
+    let filtered = [];
+
+    if (searchQuery) {
+      filtered = MaterialCodes.filter((r) =>
+        r.materialName.toLowerCase().startsWith(searchQuery.toLowerCase())
+      );
+    } else {
+      filtered = MaterialCodes;
+    }
+
+    return filtered;
+  }
     
   render(){
+    let filtered = this.filteredData();
     let AddModelClose = () => this.setState({ addModalShow: false })
   return (
     <React.Fragment>
-        <h1 className="mb-5">Material Codes</h1>
+       <div className="row">
+          <div className="col-3"></div>
+
+        <div className="col">
+        <h1 className="heading">Material Codes</h1>
+        <div className="center">
+              <img src={BillsImg} alt="billsPic" />
+            </div>
         <ButtonToolbar>
                     <Button style={{ backgroundColor: "#7121AD", color: "white" }}
                     className="btn btn-lg"
@@ -37,11 +70,24 @@ class MaterialCodes extends Component {
                         onHide={AddModelClose}
                     />
           </ButtonToolbar>
+          <div className="row">
+          <div className="row">
+            <div className="col-4"></div>
+            <div className="col">
+              <SearchBox onChange={this.handleSearch} placeHolder="Search" />
+            </div>
+            <div className="col-3"></div>
+          </div>
+          <div className="col-10"></div>
+          <div className="col"></div>
+        </div>
         <div className="row">
           <div className="col-1"></div>
           <div className="col">
-            <MaterialCodeTable filteredItems={this.state.MaterialCodes} />
+            <MaterialCodeTable filteredItems={filtered} />
           </div>
+        </div>
+        </div>
         </div>
       </React.Fragment>
   );

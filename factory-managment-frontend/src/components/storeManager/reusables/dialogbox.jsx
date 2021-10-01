@@ -32,7 +32,7 @@ const DialogBox = ({ show, deleteOrNot }) => {
           </div>
         </div>
       </div>
-    </React.Fragment>
+    </React.Fragment> 
   );
 };
 

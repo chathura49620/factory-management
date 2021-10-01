@@ -109,8 +109,8 @@ router.route("/:id").get((req, res) => {
   Item.findById(id)
     .then((result) => res.json(result))
     .catch((err) => res.status(400).json(err.message));
-});
-
+});   
+    
 //getting all the document of tha date
 router.route("/record/:date").get((req, res) => {
   const date = req.params.date;

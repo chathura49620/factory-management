@@ -55,7 +55,8 @@ export class AddNewBillModal extends Component {
                     billNo: event.target.billNo.value,
                     billType: event.target.billType.value,
                     amount: event.target.amount.value,
-                    billDate: event.target.billDate.value
+                    billDate: event.target.billDate.value,
+                    month:event.target.month.value
                 })
             })
                 .then(res => res.json())
@@ -144,6 +145,24 @@ export class AddNewBillModal extends Component {
                                         <Form.Label>Date</Form.Label>
                                         <Form.Control type="date" name="billDate" required placeholder="Bill Date" />
                                         <div style={{background:"#f8d7da"}}>{this.state.startDate}</div>
+                                    </Form.Group>
+                                    <Form.Group>
+                                        <Form.Label>Month</Form.Label>
+                                        <Form.Control as="select" required name="month">
+                            
+                                                <option value="January" >January</option>
+                                                <option value="February" >February</option>
+                                                <option value="February" >February</option>
+                                                <option value="April" >April</option>
+                                                <option value="May" >May</option>
+                                                <option value="June" >June </option>
+                                                <option value="July" >July</option>
+                                                <option value="August" >August</option>
+                                                <option value="September" >September</option>
+                                                <option value="October" >October</option>
+                                                <option value="November" >November</option>
+                                                <option value="December" >December</option>
+                                        </Form.Control>
                                     </Form.Group>
                                     <br></br>
                                     <Form.Group>

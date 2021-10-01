@@ -6,7 +6,9 @@ import "./dashboard.css";
 import hello from "../assets/hello.png";
 import clock from "../assets/clock.png";
 import { AddFactoryDetailsModal } from '../../components/SuperAdmin/Modals/AddFactoryDetailsModal';
-import Clock from "../../components/ProductionManager/common/clock";
+import Clock from "./clock";
+import jsPDF from "jspdf";
+import "jspdf-autotable";
    
 class Dashboard extends Component {    
   state = {
@@ -77,6 +79,75 @@ class Dashboard extends Component {
     localStorage.removeItem('is_login');
     window.location.reload();
   }
+
+  genarateUserReport(){
+    const doc = new jsPDF();
+    const tableColumn = [ "fullName", "email", "contact", "userRole"];
+    const tableRows = [];
+    axios
+    .get("http://localhost:5000/api/users")
+    .then((result) => {
+      const User = result.data;
+            User.forEach(ticket => {
+              const ticketData = [
+                ticket.fullName,
+                ticket.email,
+                ticket.contact,
+                ticket.userRole,
+                // called date-fns to format the date on the ticket
+              //   format(new Date(), "yyyy-MM-dd")
+              ];
+              // push each tickcet's info into a row
+              tableRows.push(ticketData);
+              
+            });
+            // startY is basically margin-top
+            doc.autoTable(tableColumn, tableRows, { startY: 20 });
+            const date = Date().split(" ");
+            // we use a date string to generate our filename.
+            const dateStr = date[0] + date[1] + date[2] + date[3] + date[4];
+            // ticket title. and margin-top + margin-left
+            doc.text("User List ", 14, 15);
+            // we define the name of our PDF file.
+            doc.save(`report_user_list.pdf`);
+    })
+    .catch((err) => console.log(err.message));
+  }
+
+
+  genarateCostReport(){
+    const doc = new jsPDF();
+    const tableColumn = [ "matirial Code", "matirial BillNo", "date", "amount"];
+    const tableRows = [];
+    axios
+    .get("http://localhost:5000/api/material-cost/")
+    .then((result) => {
+      const matCost = result.data;
+            matCost.forEach(ticket => {
+              const ticketData = [
+                ticket.matirialCode,
+                ticket.matirialBillNo,
+                ticket.date,
+                ticket.amount,
+                // called date-fns to format the date on the ticket
+              //   format(new Date(), "yyyy-MM-dd")
+              ];
+              // push each tickcet's info into a row
+              tableRows.push(ticketData);
+              
+            });
+            // startY is basically margin-top
+            doc.autoTable(tableColumn, tableRows, { startY: 20 });
+            const date = Date().split(" ");
+            // we use a date string to generate our filename.
+            
+            // ticket title. and margin-top + margin-left
+            doc.text("Material Cost Report ", 14, 15);
+            // we define the name of our PDF file.
+            doc.save(`report_cost.pdf`);
+    })
+    .catch((err) => console.log(err.message));
+  }
  
   render() {
     let AddModelClose = () => this.setState({ addModalShow: false })
@@ -129,20 +200,14 @@ class Dashboard extends Component {
                   </div>
 
                   <div className="charts__right__cards">
-                 
-                 
-                      <div className="card1">
-                      <h1>Profit Report</h1>
-                    </div>
-                    
-                   
+              
                       <div className="card2">
-                      <h1>User Report</h1>
+                      <button >User Report</button>
                     </div>
                      
                      
                         <div className="card3">
-                        <h1>Cost Report</h1>
+                        <button >Cost Report</button>
                         </div>
                        
                   

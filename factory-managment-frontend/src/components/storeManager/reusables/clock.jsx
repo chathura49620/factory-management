@@ -7,7 +7,7 @@ const Clock = () => {
     setInterval(() => {
       const date = new Date();
       setClockState(date.toLocaleTimeString());
-    }, 1000);
+    }, 1000); 
   }, []);
 
   const date = new Date();

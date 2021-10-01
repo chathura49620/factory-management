@@ -17,7 +17,7 @@ exports.create = (req,res)=>{
         quantity : Number(req.body.quantity),
         esDays : Number(req.body.esDays),
         esEmployees : Number(req.body.esEmployees),
-        status : req.body.status
+        status : req.body.status   
     })
 
     // save new production round details in the database

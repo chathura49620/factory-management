@@ -15,7 +15,7 @@ class FormSuper extends Component {
     const data = { ...this.state.data };
     data[currentTarget.name] = currentTarget.value;
     this.setState({ data: data, errors: errors });
-  };
+  }; 
 
   validateProperty = (input) => {
     const obj = { [input.name]: input.value };

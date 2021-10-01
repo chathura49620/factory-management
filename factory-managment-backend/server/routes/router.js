@@ -55,18 +55,36 @@ route.get("/api/product-code/", contoller.productcode.find);
 route.put("/api/product-code/", contoller.productcode.update);
 route.delete("/api/product-code/", contoller.productcode.delete);
 
+<<<<<<< HEAD
 // Super Admin Bill Type APIs
 route.post("/api/bill-type/", contoller.billType.create);
 route.get("/api/bill-type/", contoller.billType.find);
 route.put("/api/bill-type/", contoller.billType.update);
 route.delete("/api/bill-type/", contoller.billType.delete);
+=======
+//Financial Team Member Bill Type APIs
+route.post('/api/bill-type/',contoller.billType.create);
+route.get('/api/bill-type/',contoller.billType.find);
+route.put('/api/bill-type/',contoller.billType.update);
+route.delete('/api/bill-type/',contoller.billType.delete);
 
-// Super Admin Bills APIs
+>>>>>>> IT19048338
+
+// Financial Team Member Bills APIs
 route.post('/api/bills/',contoller.bills.create);
 route.get('/api/bills/',contoller.bills.find);
 route.put('/api/bills/',contoller.bills.update);
 route.delete('/api/bills/',contoller.bills.delete);
 
+// Financial Team Member Bills APIs
+route.post('/api/material-cost/',contoller.materialCost.create);
+route.get('/api/material-cost/',contoller.materialCost.find);
+route.put('/api/material-cost/',contoller.materialCost.update);
+route.delete('/api/material-cost/',contoller.materialCost.delete);
+
+// Financial Team Member Temp Salaries APIs
+route.post('/api/temp-salaries/',contoller.tempSalaries.create);
+route.get('/api/temp-salaries/',contoller.tempSalaries.find);
    
 
 //Super Admin User Role APIs
@@ -76,12 +94,16 @@ route.post("/api/user-roles/", contoller.userRole.create);
 //login APIs
 route.get("/api/login/", contoller.login.find);
 
+//add user route
+route.post('/api/user/',contoller.user.create);
+
 //Super Admin Factory Details APIs
 route.post("/api/factory-details/", contoller.factoryDetails.create);
 route.get("/api/factory-details/", contoller.factoryDetails.find);
 route.put("/api/factory-details/", contoller.factoryDetails.update);
 route.delete("/api/factory-details/", contoller.factoryDetails.delete);
 
+<<<<<<< HEAD
 //Employee Leave Details APIs
 route.post("/api/leave-details/", contoller.leaveDetails.create);
 route.get("/api/leave-details/", contoller.leaveDetails.find);
@@ -125,5 +147,7 @@ route.delete("/api/order-details/", contoller.orderDetails.delete);
 //Feedback Details APIs
 route.post('/api/feedback-details/',contoller.feedbackDetails.create);
 route.get('/apifeedback-details/',contoller.feedbackdetails.find);
+=======
+>>>>>>> IT19048338
 
 module.exports =route;

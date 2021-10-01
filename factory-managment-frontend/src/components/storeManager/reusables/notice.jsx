@@ -16,7 +16,7 @@ const Notice = () => {
         style={{
           height: 40,
           fontSize: 20,
-          color: "black",
+          color: "black", 
           textAlign: "center",
           borderBottom: "2px solid black",
         }}

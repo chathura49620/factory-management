@@ -17,7 +17,7 @@ class SMDashBoard extends Component {
       const items = result.data;
 
       const materials = items.filter((item) => item.iType === "Material");
-      const products = items.filter((item) => item.iType === "Product");
+      const products = items.filter((item) => item.iType === "Product"); 
 
       const mCount = materials.length;
       const pCount = products.length;

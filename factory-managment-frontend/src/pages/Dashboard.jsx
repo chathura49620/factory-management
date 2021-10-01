@@ -100,11 +100,18 @@ class Dashboard extends Component {
                 return (
                     <SuperAdminSideNav/> 
                 );
-            }if(user_role == 'finance team member'){
+            }
+            if(user_role == 'finance team member'){
                 return (
                     <FinanceTeamMemberSideNav/>   
                 );
-            }else{
+            }
+            if(user_role == 'Whole Sale Buyer'){
+                return (
+                    <FinanceTeamMemberSideNav/>   
+                );
+            }
+            else{
                 return false;
             }
         }
@@ -133,7 +140,8 @@ class Dashboard extends Component {
                         <Route path= '/leave' exact component={Leave}/> 
                     </div>
                 );
-            }if(user_role == 'Super Admin'){
+            }
+            if(user_role == 'Super Admin'){
                 return (
                     <div>
                         <Route path='/' exact component={SuperAdminDashboard} />
@@ -145,15 +153,22 @@ class Dashboard extends Component {
                         <Route path='/metirial-codes' exact component={MaterialCodes} />
                     </div>
                 );
-                }if(user_role == 'finance team member'){
+                }
+                if(user_role == 'finance team member'){
                     return (
                         <div>
+                            <Route path='/' exact component={FinancialAdminDashboard} />
+                            <Route path='/salaries' exact component={Salaries} />
+                            <Route path='/sales-reports' exact component={SalesReports} />
+                            <Route path='/profits' exact component={Profit} />
+                            <Route path='/material-cost' exact component={MaterialCost} />
                             <Route path='/bill-types' exact component={BillType} />
                             <Route path='/bills' exact component={Bills} />
                            
                         </div>
                     ); 
-                }if(user_role == 'production team member'){
+                }
+                if(user_role == 'production team member'){
                 return (
                     <div>
                         <div>
@@ -177,7 +192,17 @@ class Dashboard extends Component {
                         </div>
                     </div>
                 );
-            }else{
+            }if(user_role == 'Whole Sale Buyer'){
+                return (
+                    <div>
+                        <div>
+                        <Route path= '/' exact component={ProductionManagerDashboard}/>
+                            <Route path= '/add-new-production-round' exact component={AddNewProductionRound} />
+                        </div>
+                    </div>
+                );
+            }
+            else{
                 return false;
             }
         }
