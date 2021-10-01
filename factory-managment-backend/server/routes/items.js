@@ -9,7 +9,7 @@ router.route("/").get((req, res) => {
     .catch((err) => res.status(400).json(err.message));
 });
 
-router.route("/add/record").post((req, res) => {    
+router.route("/add/record").post((req, res) => {
   const iCode = req.body.Code;
   const iType = req.body.Type;
   const iCategory = req.body.Category;
@@ -20,7 +20,7 @@ router.route("/add/record").post((req, res) => {
   const newItemRecord = new ItemRecord({
     iCode,
     iType,
-    iCategory,  
+    iCategory,
     iQuantity,
     iSupplier,
     iAddedDate,

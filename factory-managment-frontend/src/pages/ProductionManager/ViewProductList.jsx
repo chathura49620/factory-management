@@ -26,7 +26,7 @@ class ViewProductList extends Component {
     return (
       <React.Fragment>
         <h1 className="heading">View Product List</h1>
-  
+
         <div className="center">
           <img src={viewpic} alt="leavepic" />
         </div>

@@ -24,7 +24,7 @@ class AddNewProductionRound extends Component {
 
   handleSubmit(event, props) {
     console.log(event);
-    const isValid = this.validate();  
+    const isValid = this.validate();
     event.preventDefault();
     //alert(event.target.name.value);
 

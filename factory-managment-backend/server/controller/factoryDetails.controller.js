@@ -9,14 +9,14 @@ exports.create = (req,res)=>{
     }
 
     // new factoryDetails
-       
-    const facDetails = new factoryDetails({ 
+    
+    const facDetails = new factoryDetails({
         companyName : req.body.companyName,
         companyAddress : req.body.companyAddress,
         ownerName : req.body.ownerName,
         companyLogo : req.body.companyLogo,
         mainProduct : req.body.mainProduct,
-        br : req.body.br, 
+        br : req.body.br,
         startDate : req.body.startDate,
         is_added : req.body.is_added
     })
@@ -46,7 +46,7 @@ exports.find = (req,res) =>{
             if(!data){
                 res.status(404).send({message:"not found factory Details with id" + id});
             }else{
-                res.send(data); 
+                res.send(data);
             }
         })
         .catch(err =>{
@@ -64,7 +64,7 @@ exports.find = (req,res) =>{
 }
 
 //update a new identify factoryDetails by factoryDetails id
-exports.update = (req,res) => { 
+exports.update = (req,res) => {
     if(!req.body){
         return res
                 .status(400)
@@ -78,7 +78,7 @@ exports.update = (req,res) => {
             res.status(400).send({message:"factory Details id not found"});
         }else{
             res.send(data);
-        } 
+        }
     })
     .catch(err =>{
         res.status(500).send({message:"Error while updateting"})
@@ -90,7 +90,7 @@ exports.delete = (req,res) => {
     const id  = req.body.id;
 
     factoryDetails.findByIdAndDelete(id)
-    .then(data=>{ 
+    .then(data=>{
         if(!data){
             res.status(400).send({message:`cannot Delete factory Details with $(id). Maybe factory Details not found`});
         }

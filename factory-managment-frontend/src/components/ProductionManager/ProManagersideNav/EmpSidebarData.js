@@ -26,7 +26,7 @@ export const EmpSidebarData = [
     icon: <FaIcons.FaEnvelopeOpenText />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
-  },   
+  },
 
   {
     title: "View New Production Round",

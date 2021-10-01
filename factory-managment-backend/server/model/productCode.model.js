@@ -12,9 +12,9 @@ var schema = new mongoose.Schema({
     stockCount:{
         type:String,
     },
-    status:String, 
+    status:String,
 })
 
 const productcode = mongoose.model('productcode',schema);
 
-module.exports = productcode;      
+module.exports = productcode;

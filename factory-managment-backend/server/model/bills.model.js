@@ -8,17 +8,13 @@ var schema = new mongoose.Schema({
     billType:{
         type:String,
         required:true
-    },   
+    },
     amount:{
         type:String,
         required:true
     },
     billDate:{
         type:Date,
-        required:true
-    },
-    month:{
-        type:String,
         required:true
     },
     status:String,

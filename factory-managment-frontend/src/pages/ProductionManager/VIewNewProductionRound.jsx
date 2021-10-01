@@ -25,7 +25,7 @@ class VIewNewProductionRound extends Component {
   }
 
   handleSearch = (query) => {
-    this.setState({  
+    this.setState({
       searchQuery: query,
     });
   };

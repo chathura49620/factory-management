@@ -24,8 +24,8 @@ export const EmpSidebarData = [
     title: "View Stock Details",
     path: "/add-order",
     icon: <FaIcons.FaEnvelopeOpenText />,
-    iconClosed: <RiIcons.RiArrowDownSFill />,  
-    iconOpened: <RiIcons.RiArrowUpSFill />,  
+    iconClosed: <RiIcons.RiArrowDownSFill />,
+    iconOpened: <RiIcons.RiArrowUpSFill />,
   },
   {
     title: "Place An Order",

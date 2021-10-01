@@ -8,7 +8,7 @@ var schema = new mongoose.Schema({
     status:String,
 })
 
-   
+
 const billType = mongoose.model("billType", schema);
 
 module.exports = billType;

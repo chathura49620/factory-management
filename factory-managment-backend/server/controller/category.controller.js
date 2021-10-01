@@ -6,17 +6,12 @@ exports.create = (req,res)=>{
     if(!req.body){  
         res.status(400).send({ message : req.body});
         return;
-    }        
+    }   
 
     // new category
        
-<<<<<<< HEAD
-    const cat = new category({     
-        categoryName : req.body.categoryName,    
-=======
     const cat = new category({  
         categoryName : req.body.categoryName,
->>>>>>> IT19048338
         status : req.body.status
     })
 

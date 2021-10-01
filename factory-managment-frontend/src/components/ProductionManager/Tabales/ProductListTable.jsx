@@ -26,7 +26,7 @@ export class ProductListTable extends Component {
                 <td>{i.productCode}</td>
                 <td>{i.productCategory}</td>
                 <td>{i.stockCount}</td>
-              </tr>  
+              </tr>
             ))}
           </tbody>
         </table>
