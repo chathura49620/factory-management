@@ -15,6 +15,15 @@ router.route("/:id").get((req, res) => {
     .catch((err) => res.status(400).json(err.message));
 });
 
+//delete one according to id
+router.route("/:id").delete((req, res) => {
+  const id = req.params.id;
+
+  User.deleteOne({ _id: id })
+    .then((result) => res.json("deleted one"))
+    .catch((err) => res.status(400).json(err.message));
+});
+
 router.route("/update/:id").post((req, res) => {
   const id = req.params.id;
   User.updateOne(

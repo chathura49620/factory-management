@@ -35,6 +35,7 @@ class MyProfile extends Component {
 
   componentDidMount() {
     //get user details from database and set them to the state and tableprofile
+    //use email of user session
     axios
       .get("http://localhost:5000/users/" + this.state.userObjectId)
       .then((result) => {
@@ -111,7 +112,14 @@ class MyProfile extends Component {
   };
 
   closeOpenReasonDeletePopupAndLOGOut = () => {
+    const currentUserId = this.state.user._id;
     this.setState({ openReasonDeletePopup: false });
+
+    // axios
+    //   .delete("http://localhost:5000/users/" + currentUserId)
+    //   .then((result) => console.log(result.data));
+
+    //now log out
   };
 
   render() {
