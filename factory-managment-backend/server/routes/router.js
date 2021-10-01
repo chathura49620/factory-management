@@ -11,12 +11,53 @@ route.delete("/api/categories/", contoller.category.delete);
 
 
 // Super Admin Product Code APIs
+<<<<<<< HEAD
 route.post("/api/product-code/", contoller.productcode.create);
 route.get("/api/product-code/", contoller.productcode.find);
 route.put("/api/product-code/", contoller.productcode.update);
 route.delete("/api/product-code/", contoller.productcode.delete);
+=======
+route.post('/api/product-code/',contoller.productcode.create);
+route.get('/api/product-code/',contoller.productcode.find);
+route.put('/api/product-code/',contoller.productcode.update);
+route.delete('/api/product-code/',contoller.productcode.delete);
+
+
+
+
+//Financial Team Member Bill Type APIs
+route.post('/api/bill-type/',contoller.billType.create);
+route.get('/api/bill-type/',contoller.billType.find);
+route.put('/api/bill-type/',contoller.billType.update);
+route.delete('/api/bill-type/',contoller.billType.delete);
+
+
+// Financial Team Member Bills APIs
+route.post('/api/bills/',contoller.bills.create);
+route.get('/api/bills/',contoller.bills.find);
+route.put('/api/bills/',contoller.bills.update);
+route.delete('/api/bills/',contoller.bills.delete);
+
+// Financial Team Member Bills APIs
+route.post('/api/material-cost/',contoller.materialCost.create);
+route.get('/api/material-cost/',contoller.materialCost.find);
+route.put('/api/material-cost/',contoller.materialCost.update);
+route.delete('/api/material-cost/',contoller.materialCost.delete);
+
+// Financial Team Member Temp Salaries APIs
+route.post('/api/temp-salaries/',contoller.tempSalaries.create);
+route.get('/api/temp-salaries/',contoller.tempSalaries.find);
+   
+
+//Super Admin User Role APIs
+route.get('/api/user-roles/',contoller.userRole.find);
+route.post('/api/user-roles/',contoller.userRole.create);
+>>>>>>> IT19048338
+
+
 
 //login APIs
+<<<<<<< HEAD
 route.get("/api/login/", contoller.login.find);
 
 //New Production Round Details APIs
@@ -58,6 +99,19 @@ route.delete(
 );
 
 //Order Details APIs
+=======
+route.get('/api/login/',contoller.login.find);
+
+//add user route
+route.post('/api/user/',contoller.user.create);
+
+//Super Admin Factory Details APIs
+route.post('/api/factory-details/',contoller.factoryDetails.create);
+route.get('/api/factory-details/',contoller.factoryDetails.find);
+route.put('/api/factory-details/',contoller.factoryDetails.update);
+route.delete('/api/factory-details/',contoller.factoryDetails.delete);
+
+>>>>>>> IT19048338
 
 route.post("/api/proStock-details/", contoller.productStockDetails.create);
 route.get("/api/proStock-details/", contoller.productStockDetails.find);

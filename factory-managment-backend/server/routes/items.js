@@ -20,7 +20,7 @@ router.route("/add/record").post((req, res) => {
   const newItemRecord = new ItemRecord({
     iCode,
     iType,
-    iCategory,
+    iCategory,  
     iQuantity,
     iSupplier,
     iAddedDate,

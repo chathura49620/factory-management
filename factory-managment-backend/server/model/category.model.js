@@ -12,4 +12,8 @@ var schema = new mongoose.Schema({
 const category = mongoose.model("categories", schema);
 
 module.exports = category;
+<<<<<<< HEAD
              
+=======
+      
+>>>>>>> IT19048338

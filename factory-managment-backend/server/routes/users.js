@@ -22,7 +22,7 @@ router.route("/:id").delete((req, res) => {
   User.deleteOne({ _id: id })
     .then((result) => res.json("deleted one"))
     .catch((err) => res.status(400).json(err.message));
-});   
+});      
 
 router.route("/update/:id").post((req, res) => {
   const id = req.params.id;

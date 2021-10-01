@@ -10,8 +10,13 @@ exports.create = (req,res)=>{
 
     // new category
        
+<<<<<<< HEAD
     const cat = new category({     
         categoryName : req.body.categoryName,    
+=======
+    const cat = new category({  
+        categoryName : req.body.categoryName,
+>>>>>>> IT19048338
         status : req.body.status
     })
 

@@ -16,7 +16,7 @@ const Clock = () => {
       <div style={{ fontSize: "55px", color: "#06846C" }}>{clockState}</div>
       <div style={{ fontSize: "20px" }}>{date.toLocaleDateString()}</div>
     </React.Fragment>
-  );
+  );  
 };
 
 export default Clock;
