@@ -49,6 +49,10 @@ class MaterialCodes extends Component {
     let AddModelClose = () => this.setState({ addModalShow: false })
   return (
     <React.Fragment>
+       <div className="row">
+          <div className="col-3"></div>
+
+        <div className="col">
         <h1 className="mb-5">Material Codes</h1>
         <ButtonToolbar>
                     <Button style={{ backgroundColor: "#7121AD", color: "white" }}
@@ -77,6 +81,8 @@ class MaterialCodes extends Component {
           <div className="col">
             <MaterialCodeTable filteredItems={filtered} />
           </div>
+        </div>
+        </div>
         </div>
       </React.Fragment>
   );

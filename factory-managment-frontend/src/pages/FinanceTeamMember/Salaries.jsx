@@ -26,8 +26,14 @@ class Salaries extends Component {
   render() {
     return (
       <React.Fragment>
+        <div className="row">
+          <div className="col-3"></div>
+
+        <div className="col">
         <h1 className="mb-5">Salaries</h1>
             <SalariesTable filteredItems={this.state.Salaries} />
+            </div>
+            </div>
       </React.Fragment>
     );
   }

@@ -27,6 +27,10 @@ class UserList extends Component {
     
   return (
     <React.Fragment>
+      <div className="row">
+          <div className="col-3"></div>
+
+        <div className="col">
          <h1 className="mb-5">User Lists</h1>
          <ButtonToolbar>
                     <Button style={{ backgroundColor: "#7121AD", color: "white" }}
@@ -45,6 +49,8 @@ class UserList extends Component {
             <h1>User List</h1>
               <UserListTable filteredItems={this.state.Users} />
             </div>
+          </div>
+          </div>
           </div>
       </React.Fragment>
   );

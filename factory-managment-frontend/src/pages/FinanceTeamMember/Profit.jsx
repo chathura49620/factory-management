@@ -79,6 +79,10 @@ class Profit extends Component {
     return (
       <div>
       <React.Fragment>
+      <div className="row">
+          <div className="col-3"></div>
+
+        <div className="col">
         <h1 className="mb-5">Profit</h1>
         
         Profit For the Last Month : Rs. {(this.state.Salaries + this.state.materialCost) - this.state.bill}/=
@@ -97,6 +101,8 @@ class Profit extends Component {
             }
           }}
         />
+        </div>
+        </div>
       </React.Fragment>
       
       </div>

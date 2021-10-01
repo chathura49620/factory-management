@@ -61,6 +61,10 @@ class BasicInfo extends Component  {
   render() {
     return (
       <React.Fragment>
+         <div className="row">
+          <div className="col-3"></div>
+
+        <div className="col">
         <div className="row">
           <div className="col">
             <h1>Basic Info</h1>
@@ -109,8 +113,10 @@ class BasicInfo extends Component  {
 
           
 
-            
+          </div>
         </div>
+        </div>
+        
       </React.Fragment>
     );
   }

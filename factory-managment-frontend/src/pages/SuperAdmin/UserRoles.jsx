@@ -72,35 +72,10 @@ class UserRoles extends Component {
     // const filtered = this.filteredData();
     return (
       <React.Fragment>
-        {/* <div className="row">
-          <div className="col">
-            <ListGroup
-              genres={this.state.genres}
-              onGenreSelect={this.handleGenreSelect}
-              selectedGenre={this.state.selectedGenre}
-            />
-          </div>
-          <div className="col">
-            <SelectSearch
-              categories={this.state.categories}
-              onChange={this.handleSelectChange}
-              categoryValue={this.state.selectedCategory}
-            />
-          </div>
+        <div className="row">
+          <div className="col-3"></div>
 
-          <div className="col">
-            <SearchBox
-              onChange={this.handleSearch}
-              value={this.state.searchQuery}
-              placeHolder="Search date and time"
-            />
-          </div>
-          <div className="col">
-            <Link to="/items/new" className="btn btn-primary mt-2">
-              New Item
-            </Link>
-          </div>
-        </div> */}
+        <div className="col">
         <h1 className="mb-5">User Roles</h1>
         <div className="row">
           <div className="col-1"></div>
@@ -108,7 +83,8 @@ class UserRoles extends Component {
             <UserRolesTable filteredItems={this.state.userRoles} />
           </div>
         </div>
-      
+        </div>
+        </div>
       </React.Fragment>
     );
   }

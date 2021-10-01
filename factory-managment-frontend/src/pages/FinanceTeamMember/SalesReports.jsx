@@ -99,6 +99,10 @@ class SalesReports extends Component {
   render() {
     return (
       <React.Fragment>
+        <div className="row">
+          <div className="col-3"></div>
+
+        <div className="col">
         <h1 className="">Sales Reports</h1>
         <h2>Please Select Month and Genarate Reports</h2>
 
@@ -173,7 +177,8 @@ class SalesReports extends Component {
                 </Card>
             </Col>
         </Row>    
-            
+        </div>
+        </div>
       </React.Fragment>
     );
   }

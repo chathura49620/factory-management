@@ -52,6 +52,10 @@ class Bills extends Component {
     let AddModelClose = () => this.setState({ addModalShow: false })
     return (
       <React.Fragment>
+        <div className="row">
+          <div className="col-3"></div>
+
+        <div className="col">
         <h1 className="mb-5">Bill</h1>
         <ButtonToolbar>
                     <Button style={{ backgroundColor: "#7121AD", color: "white" }}
@@ -76,6 +80,8 @@ class Bills extends Component {
           <div className="col"></div>
         </div>
             <BillTables filteredItems={filtered} />
+            </div>
+            </div>
       </React.Fragment>
     );
   }
