@@ -8,16 +8,9 @@ router.route("/").get((req, res) => {
     .catch((err) => res.status(400).json(err.message));
 });
 
-// router.route("/:id").get((req, res) => {
-//   const id = req.params.id;
-//   User.findById(id)
-//     .then((result) => res.json(result))
-//     .catch((err) => res.status(400).json(err.message));
-// });
-
 router.route("/:id").get((req, res) => {
   const id = req.params.id;
-  User.findOne({ email: id })
+  User.findById(id)
     .then((result) => res.json(result))
     .catch((err) => res.status(400).json(err.message));
 });
