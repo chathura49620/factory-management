@@ -1,0 +1,33 @@
+// flex grid variable
+
+$grid-name: "column";
+$grid-hidden-name: "hidden";
+$grid-opacity-name: "opacity";
+$absolute-name: "absolute";
+$relative-name: "relative";
+$margin-name: "margin";
+$padding-name: "padding"; 
+$grid-container-name: "container";
+
+$grid-columns:               12 !default;
+$grid-gutter-width:          20px !default;
+
+
+//grid media queries
+$screen-xs:                  0px !default;
+$screen-sm:                  768px !default;
+$screen-md:                  1024px !default;
+$screen-lg:                  1279px !default;
+$screen-xl:                  1366px !default;
+
+
+//flex container
+$container-media-list: (
+    xs: 540px,
+    sm: 720px,
+    md: 960px,
+    lg: 1140px,
+    xl: 1366px
+);
+
+

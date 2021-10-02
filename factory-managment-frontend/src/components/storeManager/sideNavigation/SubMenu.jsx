@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Component } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -12,7 +11,7 @@ const SidebarLink = styled(Link)`
   list-style: none;
   height: 60px;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 18px; 
 
   &:hover {
     background: #252831;
@@ -36,73 +35,42 @@ const DropdownLink = styled(Link)`
   font-size: 18px;
 
   &:hover {
+    background: #632ce4;
     cursor: pointer;
   }
 `;
 
-class SubMenu extends Component {
-  state = {
-    subnav: false,
-    selected: "",
-  };
-  //const [subnav, setSubnav] = useState(false);
+const SubMenu = ({ item }) => {
+  const [subnav, setSubnav] = useState(false);
 
-  //const showSubnav = () => setSubnav(!subnav);
+  const showSubnav = () => setSubnav(!subnav);
 
-  componentDidMount() {
-    this.setState({ selected: this.props.selected });
-  }
-
-  showSubnav = (title) => {
-    if (this.props.item.subNav) {
-      this.setState({ subnav: !this.state.subnav });
-    }
-    this.props.setChangeColor(title);
-  };
-
-  render() {
-    const { selected } = this.state;
-    console.log(this.props.selected);
-    return (
-      <>
-        <SidebarLink
-          to={this.props.item.path}
-          onClick={() => this.showSubnav(this.props.item.title)}
-          style={{
-            backgroundColor:
-              this.props.item.title === this.props.selected
-                ? "#252831"
-                : "#15171c",
-            borderLeft:
-              this.props.item.title === this.props.selected
-                ? "4px solid #C67405"
-                : "",
-          }}
-        >
-          <div>
-            {this.props.item.icon}
-            <SidebarLabel>{this.props.item.title}</SidebarLabel>
-          </div>
-          <div>
-            {this.props.item.subNav && this.state.subnav
-              ? this.props.item.iconOpened
-              : this.props.item.subNav
-              ? this.props.item.iconClosed
-              : null}
-          </div>
-        </SidebarLink>
-        {this.state.subnav &&
-          this.props.item.subNav.map((item, index) => {
-            return (
-              <DropdownLink to={item.path} key={index}>
-                {item.icon}
-                <SidebarLabel>{item.title}</SidebarLabel>
-              </DropdownLink>
-            );
-          })}
-      </>
-    );
-  }
-}
+  return (
+    <>
+      <SidebarLink to={item.path} onClick={item.subNav && showSubnav}>
+        <div>
+          {item.icon}
+          <SidebarLabel>{item.title}</SidebarLabel>
+        </div>
+        <div>
+          {item.subNav && subnav
+            ? item.iconOpened
+            : item.subNav
+            ? item.iconClosed
+            : null}
+        </div>
+      </SidebarLink>
+      {subnav &&
+        item.subNav.map((item, index) => {
+          return (
+            <DropdownLink to={item.path} key={index}>
+              {item.icon}
+              <SidebarLabel>{item.title}</SidebarLabel>
+            </DropdownLink>
+          );
+        })}
+    </>
+  );
+};
 
 export default SubMenu;

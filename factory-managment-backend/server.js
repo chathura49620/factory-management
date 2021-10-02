@@ -36,14 +36,11 @@ app.use("/wasted", wastedItemRouter);
 app.use("/requests", itemRequestsRouter);
 app.use("/returned", returnedProductRouter);
 app.use("/category", cateRouter);
-<<<<<<< HEAD
 app.use("/feedbackForDelete", feedbackRouter);
 app.use("/", require("./server/routes/router"));
-=======
 app.use("/api/calendar", require("./server/controller/CalendarController"));
 
 
->>>>>>> IT19189086
 
 app.listen(port, () => {
   console.log(`Server is Running on port: ${port}`);

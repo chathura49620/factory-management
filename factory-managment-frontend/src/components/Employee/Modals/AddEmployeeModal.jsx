@@ -9,7 +9,7 @@ export class AddEmployeeModal extends Component {
 
         console.log("Run");
         super(props);
-        this.state = { snackbaropen: false, snackbarmsg: '' };
+        this.state = { snackbaropen: false, snackbarmsg: '',LeaveError:'' };
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -21,35 +21,42 @@ export class AddEmployeeModal extends Component {
     handleSubmit(event) {
 
         event.preventDefault();
-        alert(event.target.name.value);
-        fetch('http://localhost:5000/api/leave-details/', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-                
-            },
-            body: JSON.stringify({
-                refno: event.target.refno.value,
-                reasonforleave: event.target.reasonforleave.value,
-                date: event.target.date.value
+        const isValid = this.validate(event);
+        if(isValid){
+            fetch('http://localhost:5000/api/leave-details/', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                    
+                },
+                body: JSON.stringify({
+                    refno: event.target.refno.value,
+                    reasonforleave: event.target.reasonforleave.value,
+                    date: event.target.date.value
+                })
             })
-        })
-            .then(res => res.json())
-            .then((result) => {
-                alert("Success!");
-                console.log("result" , result)
-            }, (error) => {
-                this.setState({ snackbaropen: true, snackbarmsg: 'Failed' })
-            }
+                .then(res => res.json())
+                .then((result) => {
+                    alert("Success!");
+                   
+                        // window.location.reload();
+                        this.setState({
+                            LeaveError:'',
+                        })
+                    console.log("result" , this.state.LeaveError)
+                }, (error) => {
+                    this.setState({ snackbaropen: true, snackbarmsg: 'Failed' })
+                }
 
-            )
+                )
+       }
     }
 
-  validate(){
+  validate(event){
         let LeaveError = "";
 
-        if(!this.state.LeaveError){
+        if(!event.target.refno.value){
             LeaveError = "This Cannot Be Blank."
         }
 
@@ -97,19 +104,19 @@ export class AddEmployeeModal extends Component {
                                 <Form onSubmit={this.handleSubmit}>
                                     <Form.Group controlId="name">
                                         <Form.Label>Reference Number</Form.Label>
-                                        <Form.Control type="text" name="refno" required placeholder="Enter a reference ID" className="form-field"/>
+                                        <Form.Control type="text" name="refno"  placeholder="Enter a reference ID" className="form-field"/>
                                         <div style={{background:"#f8d7da"}}>{this.state.LeaveError}</div>
                                     </Form.Group>
                                     <br></br>
                                     <Form.Group controlId="name">
                                         <Form.Label>Reason for leave</Form.Label>
                                         
-                                        <Form.Control type="text" name="reasonforleave" required placeholder="Make your reason descriptive.." />
+                                        <Form.Control type="text" name="reasonforleave"  placeholder="Make your reason descriptive.." />
                                     </Form.Group>
                                     <br></br>
                                     <Form.Group controlId="name">
                                         <Form.Label>Day Range</Form.Label>
-                                        <Form.Control type="text" name="date" required placeholder="Enter a date or number of days..." />
+                                        <Form.Control type="text" name="date"  placeholder="Enter a date or number of days..." />
                                     </Form.Group>
                                     
                                     <br></br>

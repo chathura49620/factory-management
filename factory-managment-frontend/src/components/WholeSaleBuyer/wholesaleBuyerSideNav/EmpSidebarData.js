@@ -13,13 +13,12 @@ export const EmpSidebarData = [
     iconOpened: <RiIcons.RiArrowUpSFill />,
   },
   {
-    title: "Profile",
-    path: "/view-product-list",
+    title: "My Profile",
+    path: "/myprofile",
     icon: <AiIcons.AiFillHome />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
   },
-
   {
     title: "View Stock Details",
     path: "/add-order",

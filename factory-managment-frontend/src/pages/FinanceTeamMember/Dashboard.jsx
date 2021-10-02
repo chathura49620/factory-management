@@ -190,12 +190,12 @@ class Dashboard extends Component {
                   <div className="charts__right__cards">
                  
                       <div className="card2" >
-                      <h1 >Material Cost Report</h1>
+                      <h1 onClick={() => this.genarateMatCost()}>Material Cost Report</h1>
                   </div>
                      
                      
                         <div className="card3" >
-                        <h1 >All Salaries Report</h1>
+                        <h1 onClick={() => this.genarateSalaries()}>All Salaries Report</h1>
                         </div>
                        
                   

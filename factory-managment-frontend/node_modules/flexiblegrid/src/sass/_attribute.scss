@@ -1,0 +1,184 @@
+// flex attribute function
+@mixin make-attribute($screen-name) {
+    @each $attribute-name,$options-list in $flex-attribute-list {
+        .#{$attribute-name}-#{$screen-name} {
+            @each $option-name, $option-value in $options-list {
+                #{$option-name}:#{$option-value};
+            }
+        }
+    }
+}
+
+//make attribute (screen-size)
+@each $screen-name,$screen-size in $grid-type-list {
+    @media (min-width: $screen-size) {
+        @include make-attribute($screen-name);
+    }
+}
+
+//make attribute (noscreen)
+@each $attribute-name, $options-list in $flex-attribute-list {
+    .#{$attribute-name} {
+        @each $option-name,
+        $option-value in $options-list {
+            #{$option-name}:#{$option-value};
+        }
+    }
+}
+
+// order
+@for $i from  0 through $grid-columns{
+    .order-#{$i}{
+        order: #{$i}
+    }
+}
+
+
+// hidden, position (absole,relative)
+@each $screen-name, $screen-size in $grid-type-list {
+    @media (min-width: $screen-size) {
+        @for $i from 1 through 1 {
+            .#{$grid-hidden-name}-#{$screen-name} {
+                display: none;
+            }
+            .#{$grid-opacity-name}-0-#{$screen-name} {
+                opacity:0;
+            }
+        }
+    }
+} 
+
+@each $option-name, $option-value in $aspect-ratio-list {
+    .#{$option-name}{padding-top: #{$option-value};}
+}
+
+@each $option-name, $option-value in $border-radius-type-list {
+    .#{$option-name}{border-radius: #{$option-value}; overflow:hidden;}
+}
+
+@each $option-name, $option-value in $text-align-type-list {
+    .#{$option-name}{text-align: #{$option-value};}
+}
+
+@each $option-name, $option-value in $width-type-list {
+    .#{$option-name}{width: #{$option-value};}
+}
+
+@each $option-name, $option-value in $height-type-list {
+    .#{$option-name}{height: #{$option-value};}
+}
+
+
+
+// opacity function
+@mixin make-opacity($screen-name, $line:"-"){
+    @each $option-name, $option-value in $opacity-type-list {
+        .#{$option-name}#{$line}#{$screen-name}{
+            opacity: #{$option-value};
+        }
+    }
+}
+@include make-opacity($screen-name:null, $line:null);
+
+
+
+// absolute function
+@mixin make-position($screen-name, $line:"-"){
+    @each $option-name, $option-value in $position-type-list {
+        @for $i from 1 through 1 {
+            .#{$option-name}#{$line}#{$screen-name}{
+                position: #{$option-value};
+            }
+        }
+    }
+}
+@include make-position($screen-name:null, $line:null);
+
+
+
+// top,riht,bottom,left function
+@mixin make-top-right-bottom-left($screen-name, $line:"-"){
+    @each $option-name, $option-value in $top-right-bottom-left-type-list {
+        @for $i from 1 through 1 {
+            .#{$option-name}#{$line}#{$screen-name}{
+                #{$option-name}: 0;
+            }
+        }
+    }
+}
+@include make-top-right-bottom-left($screen-name:null, $line:null);
+
+
+
+
+// padding function
+@mixin make-margin($screen-name, $line:"-"){
+    @each $option-name, $option-value in $margin-type-list {
+        @for $i from 0 through 4 {
+            .#{$option-name}-#{$i * 10}#{$line}#{$screen-name}{
+                @if( $option-name == "m" ){
+                    margin: #{$i * 10px};
+                }
+                @else{
+                    margin-#{$option-value}: #{$i * 10px};
+                }
+            }
+        }
+    }
+    @for $i from 1 through 4 {
+        .m#{$line}#{$screen-name}-#{$i * 10} {
+            margin: #{$i * 10px};
+        } 
+    }
+}
+@include make-margin($screen-name:null, $line:null);
+                
+
+
+// margin function
+@mixin make-padding($screen-name, $line:"-"){
+    @each $option-name, $option-value in $padding-type-list {
+        @for $i from 0 through 4 {
+            .#{$option-name}-#{$i * 10}#{$line}#{$screen-name}{
+                @if( $option-name == "p" ){
+                    padding: #{$i * 10px};
+                }
+                @else{
+                    padding-#{$option-value}: #{$i * 10px};
+                }
+            }
+        }
+    }
+    @for $i from 1 through 4 {
+        .p#{$line}#{$screen-name}-#{$i * 10} {
+            padding: #{$i * 10px};
+        }
+    }
+}
+@include make-padding($screen-name:null, $line:null);
+
+
+
+// margin, padding
+@each $screen-name,$screen-size in $grid-type-list {
+    @media (min-width: $screen-size) {
+        // padding
+        @include make-margin($screen-name);
+        // margin
+        @include make-padding($screen-name);
+        // opacity
+        @include make-opacity($screen-name);
+        // position
+        @include make-position($screen-name);
+        // top,riht,bottom,left
+        @include make-top-right-bottom-left($screen-name);
+    }
+}
+
+
+.mp-0{
+    .row{
+        margin:0px;
+        [class*="#{$grid-name}"]{padding: 0px;}
+    }
+}

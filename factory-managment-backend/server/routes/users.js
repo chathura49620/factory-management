@@ -10,10 +10,20 @@ router.route("/").get((req, res) => {
 
 router.route("/:id").get((req, res) => {
   const id = req.params.id;
-  User.findById(id)
+  User.findOne({ email: id })
     .then((result) => res.json(result))
     .catch((err) => res.status(400).json(err.message));
 });
+
+// router.route("/:id").get((req, res) => {
+//   const id = req.params.id;
+//   // User.findById(id)
+//   //   .then((result) => res.json(result))
+//   //   .catch((err) => res.status(400).json(err.message));
+//   User.find({email:id})
+//     .then((result) => res.json(result))
+//     .catch((err) => res.status(400).json(err.message));
+// });
 
 //delete one according to id
 router.route("/:id").delete((req, res) => {

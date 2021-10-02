@@ -1,9 +1,55 @@
 import React, { Component } from "react";
+import axios from "axios";
 import Chart from "../charts/chart";
 import "./dashboardelements.css";
 import hello from "../assets/hello.png";
 
 class EmployeeDashboard extends Component {
+  state = {
+    user_name: "",
+    assignments:[],
+    leavereq:[],
+    payments:[]
+  }; 
+
+  componentDidMount() {
+    axios
+      .get("http://localhost:5000/api/assignment-details/")
+      .then((result) => {
+        const assignments = result.data;
+
+        this.setState({assignments: assignments});
+      })
+      .catch((err) => console.log(err.message));
+
+    const user_name = localStorage.getItem("user_full_name");
+    this.setState({ user_name: user_name });
+
+    axios
+      .get("http://localhost:5000/api/leave-details/")
+      .then((result) => {
+        const leavereq = result.data;
+
+        this.setState({leavereq: leavereq});
+      })
+      .catch((err) => console.log(err.message));
+
+    axios
+      .get("http://localhost:5000/api/payment-details/")
+      .then((result) => {
+        const payments = result.data;
+
+        this.setState({payments: payments});
+      })
+      .catch((err) => console.log(err.message));
+  }
+  logout() {
+    localStorage.removeItem("user_full_name");
+    localStorage.removeItem("user_email");
+    localStorage.removeItem("is_login");
+    window.location.reload();
+  }
+
   render(){
   return (
     
@@ -14,10 +60,20 @@ class EmployeeDashboard extends Component {
         <div className="main__title">
         <img src={hello} alt="hello" />
           <div className="main__greeting">
-            <h1>Hello, Hanna Rahman.</h1>
+            <h1>Hello, {this.state.user_name}.</h1>
             <p>Welcome to your profile.</p>
           </div>
         </div>
+        <button
+                style={{
+                  backgroundColor: "#7121AD",
+                  color: "white",
+                  width: "100px",
+                }}
+                onClick={this.logout}
+              >
+                Log Out
+              </button>
 
         {/* <!-- MAIN TITLE ENDS HERE --> */}
 
@@ -29,16 +85,16 @@ class EmployeeDashboard extends Component {
               aria-hidden="true"
             ></i>
             <div className="card_inner">
-              <p className="text-primary-p">Number of Projects</p>
-              <span className="font-bold text-title">578</span>
+              <p className="text-primary-p">Number of Assignments</p>
+              <span className="font-bold text-title">{this.state.assignments.length}</span>
             </div>
           </div>
 
           <div className="cardb">
             <i className="fa fa-calendar fa-2x text-red" aria-hidden="true"></i>
             <div className="card_inner">
-              <p className="text-primary-p">Completed</p>
-              <span className="font-bold text-title">2467</span>
+              <p className="text-primary-p">Number of Leave Requests</p>
+              <span className="font-bold text-title">{this.state.leavereq.length}</span>
             </div>
           </div>
 
@@ -48,8 +104,8 @@ class EmployeeDashboard extends Component {
               aria-hidden="true"
             ></i>
             <div className="card_inner">
-              <p className="text-primary-p">Process</p>
-              <span className="font-bold text-title">340</span>
+              <p className="text-primary-p">Payments</p>
+              <span className="font-bold text-title">{this.state.payments.length}</span>
             </div>
           </div>
 
@@ -59,8 +115,8 @@ class EmployeeDashboard extends Component {
               aria-hidden="true"
             ></i>
             <div className="card_inner">
-              <p className="text-primary-p">Pending</p>
-              <span className="font-bold text-title">645</span>
+              <p className="text-primary-p">Rejected Assignments</p>
+              <span className="font-bold text-title">{this.state.assignments.length}</span>
             </div>
           </div>
         </div>

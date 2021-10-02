@@ -7,14 +7,15 @@ exports.create = (req,res)=>{
         res.status(400).send({ message : req.body});
         return;
     }
-
+   
     // new category
     
     const bill = new bills({
         billNo : req.body.billNo,
         billType : req.body.billType,
         amount : req.body.amount,
-        billDate : req.body.billDate
+        billDate : req.body.billDate,
+        month:req.body.month
     })
 
     // save category in the database

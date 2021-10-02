@@ -1,23 +1,20 @@
 import React, { Component } from "react";
-import Clock from "../../components/storeManager/reusables/clock";
 import axios from "axios";
-import hello from "../../pages/assets/hello.png";
-import * as IoIcons from "react-icons/io";
+import { Table, Button, ButtonToolbar } from "react-bootstrap";
+import "../ProductionManager/dashboard.css";
+import hello from "../assets/hello.png";
+import clock from "../assets/clock.png";
+import Clock from "../../components/ProductionManager/common/clock";
 import generatePDF from "../../components/storeManager/utils/reportGenerator";
 import moment from "moment";
 import swal from "sweetalert";
-import Box from "@mui/material/Box";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import { Link } from "react-router-dom";
 
-class SMDashBoard extends Component {
+
+class Dashboard extends Component {
   state = {
     currentDate: moment(new Date()).format("YYYY-MM-DD"),
     itemRecords: [],
+    user_name: "",
     numOfProducts: 0,
     numOfMaterials: 0,
     numOfWastedItems: 0,
@@ -67,6 +64,8 @@ class SMDashBoard extends Component {
 
       this.setState({ numOfProducts: pCount, numOfMaterials: mCount });
     });
+    const user_name = localStorage.getItem("user_full_name");
+    this.setState({user_name:user_name});
     axios
       .get(
         "http://localhost:5000/items/multiplerecords/" + this.state.currentDate
@@ -97,6 +96,13 @@ class SMDashBoard extends Component {
     });
   }
 
+  logout() {
+    localStorage.removeItem("user_full_name");
+    localStorage.removeItem("user_email");
+    localStorage.removeItem("is_login");
+    window.location.reload();
+  }
+
   handleMonthlyReports = () => {
     const { currentDate } = this.state;
     if (currentDate.toLocaleLowerCase().endsWith("29")) {
@@ -123,252 +129,132 @@ class SMDashBoard extends Component {
   };
 
   render() {
-    const { tickets, itemRecords } = this.state;
-    console.log(this.state.currentDate);
+    const { itemRecords } = this.state;
+    let AddModelClose = () => this.setState({ addModalShow: false });
     return (
       <React.Fragment>
-        <div className="row">
-          <div className="col-2"></div>
-          <div className="col">
-            <div className="row">
-              <div className="col">
-                <img
-                  src={hello}
-                  alt="hello"
-                  style={{ width: "100px", height: "100px" }}
-                />
-              </div>
-              <div className="col">
+        <ButtonToolbar>
+          {/* <AddFactoryDetailsModal
+                        show={this.state.addModalShow && this.state.factoryDetails.length == 0}
+                        onHide={AddModelClose}
+                    /> */}
+        </ButtonToolbar>
+        <main>
+          <div className="main__container">
+            {/* <!-- MAIN TITLE STARTS HERE --> */}
+
+            <div className="main__title">
+              <img src={hello} alt="hello" />
+              <div className="main__greeting">
                 <h1>Hello, {this.state.user_name}</h1>
-                <p style={{ color: "#16A085" }}>Welcome to your profile.</p>
+                <p>Welcome to your profile.</p>
               </div>
-              <div className="col-9"></div>
-            </div>
-          </div>
-        </div>
-        <div className="row my-2">
-          <div className="col-2"></div>
-          <div className="col">
-            <div
-              className="row m-2"
-              style={{
-                border: "3px solid white",
-                boxShadow: "1px 1px 1px #77BFC7, -5px -5px 13px #77BFC7",
-              }}
-            >
-              <div
-                className="col-4"
+              <button
                 style={{
-                  backgroundColor: "white",
-                  height: 170,
-                  borderRight: "3px solid #050139",
+                  backgroundColor: "#7121AD",
+                  color: "white",
+                  width: "100px",
                 }}
+                onClick={this.logout}
               >
-                <Clock />
-              </div>
+                Log Out
+              </button>
+            </div>
 
-              <div className="col-8" style={{ backgroundColor: "white" }}>
-                <div className="row">
-                  <div
-                    className="col-12 col--6"
-                    style={{
-                      backgroundColor: "#F0B27A",
-                      height: 70,
-                      fontSize: "30px",
-                      borderBottom: "3px solid #307eaf",
-                      color: "#307eaf",
-                    }}
-                  >
-                    <div>
-                      Requestions
-                      <span className="badge rounded-pill bg-primary">
-                        {this.state.noOfRequests}
-                      </span>
-                      <Button size="large">
-                        <Link to="/requests/for/items">Go and check</Link>
-                      </Button>
-                    </div>
+            <div className="charts">
+              <div className="charts__left">
+                <div className="charts__left__title">
+                  <div>
+                    <h1>Date and Time</h1>
+                  </div>
+                  <i className="fa fa-usd" aria-hidden="true"></i>
+                </div>
+                <div className="row mt-5">
+                  <div className="col-md-6">
+                    <img src={clock} alt="clock" />
+                  </div>
+                  <div className="col-md-6">
+                    <Clock />
                   </div>
                 </div>
+              </div>
 
-                <div className="row">
-                  <div className="row">
-                    <div
-                      className="col-11 col--6"
-                      style={{ textAlign: "center", fontSize: "20px" }}
-                    >
-                      Report Generation
+              <div className="charts__right">
+                <div className="charts__right__title">
+                  <div>
+                    <h1>Report Genaration</h1>
+                  </div>
+                  <i className="fa fa-usd" aria-hidden="true"></i>
+                </div>
+
+                <div className="charts__right__cards">
+                  <div className="card3">
+                    <button onClick={() => generatePDF(itemRecords, "Today Recieved Stocks")}>
+                      <h1>Daily Report</h1>
+                    </button>
                     </div>
-                  </div>
-                  <div
-                    className="col-4 col--6"
-                    style={{
-                      backgroundColor: "#77BFC7",
-                      height: 60,
-                      borderTop: "2px solid #050139",
-                      borderBottom: "2px solid #050139",
-                      borderRight: "2px solid #050139",
-                      fontSize: "25px",
-                      color: "#307eaf",
-                    }}
-                  >
-                    <button
-                      onClick={() =>
-                        generatePDF(itemRecords, "Today Recieved Stocks")
-                      }
-                    >
-                      Daily reports
+                    <div className="card2">
+                    <button onClick={() => this.handleMonthlyReports()}>
+                      <h1>Monthly Report</h1>
                     </button>
-
-                    <IoIcons.IoIosPaper />
-                  </div>
-                  <div
-                    className="col-4 col--6"
-                    style={{
-                      backgroundColor: "#77BFC7",
-                      borderTop: "2px solid #050139",
-                      borderBottom: "2px solid #050139",
-                      borderRight: "2px solid #050139",
-                      fontSize: "25px",
-                      color: "#307eaf",
-                    }}
-                  >
-                    <button onClick={this.handleMonthlyReports}>
-                      Monthly reports
+                    </div>
+                    <div class="card1">
+                    <button onClick={() => this.handleYearlyReports()}>
+                      <h1>Yearly Report</h1>
                     </button>
-                    <IoIcons.IoIosPaper />
-                  </div>
-                  <div
-                    className="col-4 col--6"
-                    style={{
-                      backgroundColor: "#77BFC7",
-                      borderTop: "2px solid #050139",
-                      borderRight: "2px solid #050139",
-                      borderBottom: "2px solid #050139",
-                      fontSize: "25px",
-                      color: "#307eaf",
-                    }}
-                  >
-                    <button onClick={this.handleYearlyReports}>
-                      Yearly reports
-                    </button>
-                    <IoIcons.IoIosPaper />
                   </div>
                 </div>
               </div>
             </div>
 
-            <div
-              className="row m-4"
-              style={{
-                border: "3px solid white",
-              }}
-            >
-              <div className="col-3">
-                <Card
-                  sx={{
-                    minWidth: 10,
-                    backgroundColor: "#167092",
-                    maxWidth: 300,
-                  }}
-                >
-                  <CardContent>
-                    <div style={{ color: "white", fontSize: "20px" }}>
-                      Products
-                    </div>
-                    <div style={{ color: "white", fontSize: "20px" }}>
-                      {this.state.numOfProducts}
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-              <div className="col-3">
-                <Card
-                  sx={{
-                    minWidth: 10,
-                    backgroundColor: "#06846C",
-                    maxWidth: 300,
-                  }}
-                >
-                  <CardContent>
-                    <div style={{ color: "white", fontSize: "20px" }}>
-                      Materials
-                    </div>
-                    <div style={{ color: "white", fontSize: "20px" }}>
-                      {this.state.numOfMaterials}
-                    </div>
-                  </CardContent>
-                </Card>
+            {/* <!-- MAIN TITLE ENDS HERE --> */}
+
+            {/* <!-- MAIN CARDS STARTS HERE --> */}
+            <div className="main__cards">
+              <div className="carda">
+                <div className="card_inner">
+                  <p className="text-primary-p">Number Of Items</p>
+                  <span className="font-bold text-title">
+                    {this.state.numOfProducts}
+                  </span>
+                </div>
               </div>
 
-              <div className="col-3">
-                <Card
-                  sx={{
-                    minWidth: 10,
-                    backgroundColor: "#DE6F27",
-                    maxWidth: 300,
-                  }}
-                >
-                  <CardContent>
-                    <div style={{ color: "white", fontSize: "20px" }}>
-                      Returned products
-                    </div>
-                    <div style={{ color: "white", fontSize: "20px" }}>
-                      {this.state.numOfReturnedItems}
-                    </div>
-                  </CardContent>
-                </Card>
+              <div className="cardd">
+                <div className="card_inner">
+                  <p className="text-primary-p">No Of Material</p>
+                  <span className="font-bold text-title">
+                    {this.state.numOfMaterials}
+                  </span>
+                </div>
               </div>
-              <div className="col-3">
-                <Card
-                  sx={{
-                    minWidth: 10,
-                    backgroundColor: "#AF2356 ",
-                    maxWidth: 300,
-                  }}
-                >
-                  <CardContent>
-                    <div style={{ color: "white", fontSize: "20px" }}>
-                      Wasted Items
-                    </div>
-                    <div style={{ color: "white", fontSize: "20px" }}>
-                      {this.state.numOfWastedItems}
-                    </div>
-                  </CardContent>
-                </Card>
+              <div className="carda">
+                <div className="card_inner">
+                  <p className="text-primary-p">No Of Wasted Items</p>
+                  <span className="font-bold text-title">
+                    {this.state.numOfWastedItems}
+                  </span>
+                </div>
+              </div>
+              <div className="cardd">
+                <div className="card_inner">
+                  <p className="text-primary-p">No Of Requests</p>
+                  <span className="font-bold text-title">
+                    {this.state.noOfRequests}
+                  </span>
+                </div>
               </div>
             </div>
+            {/* <!-- MAIN CARDS ENDS HERE --> */}
 
-            <div className="row m-2">
-              <div
-                className="col-12"
-                style={{
-                  backgroundColor: "#F2F3F4",
-                  height: 50,
-                  border: "3px solid white",
-                }}
-              >
-                Notifications
-              </div>
-            </div>
+            {/* <!-- CHARTS STARTS HERE --> */}
 
-            <div className="row m-2">
-              <div
-                className="col-12"
-                style={{
-                  backgroundColor: "#F4F6F7",
-                  height: 150,
-                  boxShadow: "1px 1px 1px #77BFC7, -5px -5px 13px #77BFC7",
-                  border: "2px solid black",
-                  borderRadius: "6px",
-                }}
-              ></div>
-            </div>
+            {/* <!-- CHARTS ENDS HERE --> */}
           </div>
-        </div>
+        </main>
       </React.Fragment>
     );
   }
 }
 
-export default SMDashBoard;
+export default Dashboard;

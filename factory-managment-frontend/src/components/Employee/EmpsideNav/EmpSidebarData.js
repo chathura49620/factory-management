@@ -7,7 +7,7 @@ import * as RiIcons from 'react-icons/ri';
 export const EmpSidebarData = [
   {
     title: 'Dashboard',
-    path: '/employee-dashboard',
+    path: '/',
     icon: <AiIcons.AiOutlineHome />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
@@ -52,8 +52,8 @@ export const EmpSidebarData = [
     iconOpened: <RiIcons.RiArrowUpSFill />,
   },
   {
-    title: 'Support',
-    path: '/support',
-    icon: <IoIcons.IoMdHelpCircle />
-  }
+    title: "My Profile",
+    path: "/myprofile",
+    icon: <IoIcons.IoMdPerson />,
+  },
 ];

@@ -11,12 +11,6 @@ route.delete("/api/categories/", contoller.category.delete);
 
 
 // Super Admin Product Code APIs
-<<<<<<< HEAD
-route.post("/api/product-code/", contoller.productcode.create);
-route.get("/api/product-code/", contoller.productcode.find);
-route.put("/api/product-code/", contoller.productcode.update);
-route.delete("/api/product-code/", contoller.productcode.delete);
-=======
 route.post('/api/product-code/',contoller.productcode.create);
 route.get('/api/product-code/',contoller.productcode.find);
 route.put('/api/product-code/',contoller.productcode.update);
@@ -52,12 +46,10 @@ route.get('/api/temp-salaries/',contoller.tempSalaries.find);
 //Super Admin User Role APIs
 route.get('/api/user-roles/',contoller.userRole.find);
 route.post('/api/user-roles/',contoller.userRole.create);
->>>>>>> IT19048338
 
 
 
 //login APIs
-<<<<<<< HEAD
 route.get("/api/login/", contoller.login.find);
 
 //New Production Round Details APIs
@@ -99,7 +91,6 @@ route.delete(
 );
 
 //Order Details APIs
-=======
 route.get('/api/login/',contoller.login.find);
 
 //add user route
@@ -111,8 +102,6 @@ route.get('/api/factory-details/',contoller.factoryDetails.find);
 route.put('/api/factory-details/',contoller.factoryDetails.update);
 route.delete('/api/factory-details/',contoller.factoryDetails.delete);
 
-<<<<<<< HEAD
->>>>>>> IT19048338
 
 route.post("/api/proStock-details/", contoller.productStockDetails.create);
 route.get("/api/proStock-details/", contoller.productStockDetails.find);
@@ -164,7 +153,9 @@ route.delete(
   contoller.items.deleteOneAccordingToDateAndSup
 );
 route.post("/update/unique/record/:id", contoller.items.updateItemRecord);
-=======
+
+
+
 //Employee Leave Details APIs
 route.post('/api/leave-details/',contoller.leaveDetails.create);
 route.get('/api/leave-details/',contoller.leaveDetails.find);
@@ -185,6 +176,4 @@ route.delete('/api/payment-details/',contoller.paymentDetails.delete);
 
 
 
-
->>>>>>> IT19189086
 module.exports = route;

@@ -12,6 +12,6 @@ var schema = new mongoose.Schema({
     status:String,
 })
 
-const userRole = mongoose.model('userRole',schema);
+const userRole = mongoose.model('userRole',schema); 
 
-module.exports = userRole;
+module.exports = userRole;     

@@ -1,4 +1,4 @@
-import React, { useState, Component } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { Card, Row, Col, Container, Image } from "react-bootstrap";
@@ -10,7 +10,7 @@ import { IconContext } from "react-icons/lib";
 
 const Nav = styled.div`
   background: #15171c;
-  height: 80px;
+  height: 80px; 
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -33,7 +33,7 @@ const SidebarNav = styled.nav`
   justify-content: center;
   position: fixed;
   top: 0;
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 1920px) {
     left: ${({ sidebar }) => (sidebar ? "0" : "-100%")};
   }
   left: 0;
@@ -45,52 +45,32 @@ const SidebarWrap = styled.div`
   width: 100%;
 `;
 
-class Sidebar extends Component {
-  state = {
-    sidebar: false,
-    selectedNav: "Dashboard",
-  };
-  showBar = () => {
-    this.setState({ sidebar: true });
-  };
+const Sidebar = () => {
+  const [sidebar, setSidebar] = useState(false);
 
-  handleSideBarChange = (title) => {
-    console.log("sidebar wena patak", title);
-    this.setState({ selectedNav: title });
-  };
-  //const [sidebar, setSidebar] = useState(false);
+  const showSidebar = () => setSidebar(!sidebar);
 
-  //const showSidebar = () => setSidebar(!sidebar);
-  render() {
-    return (
-      <div>
-        <IconContext.Provider value={{ color: "#fff" }}>
-          <Nav>
+  return (
+    <>
+      <IconContext.Provider value={{ color: "#fff" }}>
+        <Nav>
+          <NavIcon to="#">
+            <FaIcons.FaBars onClick={showSidebar} />
+          </NavIcon>
+        </Nav>
+        <SidebarNav sidebar={sidebar}>
+          <SidebarWrap>
             <NavIcon to="#">
-              <FaIcons.FaBars onClick={this.showBar} />
+              <AiIcons.AiOutlineClose onClick={showSidebar} />
             </NavIcon>
-          </Nav>
-          <SidebarNav sidebar={this.sidebar}>
-            <SidebarWrap>
-              <NavIcon to="#">
-                <AiIcons.AiOutlineClose onClick={this.showBar} />
-              </NavIcon>
-              {SidebarData.map((item, index) => {
-                return (
-                  <SubMenu
-                    item={item}
-                    key={index}
-                    selected={this.state.selectedNav}
-                    setChangeColor={this.handleSideBarChange}
-                  />
-                );
-              })}
-            </SidebarWrap>
-          </SidebarNav>
-        </IconContext.Provider>
-      </div>
-    );
-  }
-}
+            {SidebarData.map((item, index) => {
+              return <SubMenu item={item} key={index} />;
+            })}
+          </SidebarWrap>
+        </SidebarNav>
+      </IconContext.Provider>
+    </>
+  );
+};
 
 export default Sidebar;

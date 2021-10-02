@@ -62,15 +62,12 @@ class VIewPreviousProductionRound extends Component {
         </div>
 
         <div className="row">
-          <div className="row">
-            <div className="col-4"></div>
-            <div className="col">
-              <SearchBox onChange={this.handleSearch} placeHolder="Search" />
+            <div className="col-md-4">
             </div>
-            <div className="col-3"></div>
-          </div>
-          <div className="col-10"></div>
-          <div className="col"></div>
+            <div className="col-md-5">
+                <SearchBox onChange={this.handleSearch} placeHolder="Search" />
+            </div>
+            <div className="col-md-3"></div>
         </div>
 
         <div className="row">

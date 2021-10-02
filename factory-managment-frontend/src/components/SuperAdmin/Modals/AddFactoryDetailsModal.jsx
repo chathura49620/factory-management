@@ -97,7 +97,7 @@ export class AddFactoryDetailsModal extends Component {
             startDateError = "start Date  Cannot Be Blank"
         }
 
-        if(companyNameError | companyAddressError | ownerNameError | mainProductError | startDateError){
+        if(companyNameError || companyAddressError || ownerNameError || mainProductError || startDateError){
             this.setState({
                 companyNameError:companyNameError,
                 companyAddressError:companyAddressError,

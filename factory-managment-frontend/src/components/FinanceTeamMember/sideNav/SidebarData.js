@@ -68,8 +68,8 @@ export const SidebarData = [
     icon: <FaIcons.FaCartPlus />
   },
   {
-    title: 'Support',
-    path: '/support',
-    icon: <IoIcons.IoMdHelpCircle />
-  }
+    title: "My Profile",
+    path: "/myprofile",
+    icon: <IoIcons.IoMdPerson />,
+  },
 ];

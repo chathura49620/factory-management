@@ -32,7 +32,7 @@ export class AddPaymentsModal extends Component {
             },
             body: JSON.stringify({
                 id: event.target.id.value,
-                name: event.target.name.value,
+                name: event.target.namecus.value,
                 bankname: event.target.bankname.value,
                 accountnumber: event.target.accountnumber.value,
                 branch: event.target.branch.value
@@ -107,7 +107,7 @@ export class AddPaymentsModal extends Component {
                                         <Form.Label>Full Name</Form.Label>
                                         <Form.Control 
                                             type="text" 
-                                            name="name" 
+                                            name="namecus" 
                                             required 
                                             placeholder="Your full name.." 
                                             className="form-field"/>

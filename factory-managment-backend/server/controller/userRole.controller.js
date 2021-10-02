@@ -7,9 +7,9 @@ exports.create = (req,res)=>{
         res.status(400).send({ message : req.body});
         return;
     }
-
+   
     // new materialcode
-    
+        
     const uRoles = new userRole({
         userRole : req.body.userRole,
         userRoleNo : req.body.userRoleNo,
@@ -29,7 +29,7 @@ exports.create = (req,res)=>{
         });
 
 }
-
+  
 //retrive and return all materialcodes/retive a single materialcode'
 exports.find = (req,res) =>{
 
@@ -56,4 +56,4 @@ exports.find = (req,res) =>{
             res.status(500).send({message:err.message || "Error on retriving userRole"})
         })
     }
-}
+}   

@@ -11,12 +11,9 @@
     "@fullcalendar/daygrid": "^5.9.0",
     "@fullcalendar/react": "^5.9.0",
     "@material-ui/core": "^4.12.3",
-<<<<<<< HEAD
     "@mui/material": "^5.0.1",
     "@mui/styled-engine-sc": "^5.0.0",
-=======
     "@react-css/flex": "^1.5.0",
->>>>>>> IT19189086
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
@@ -44,10 +41,7 @@
     "react-scripts": "4.0.3",
     "react-toastify": "^7.0.4",
     "react-vis": "^1.11.7",
-<<<<<<< HEAD
-=======
     "reactstrap": "^8.10.0",
->>>>>>> IT19189086
     "styled-components": "^5.2.1",
     "sweetalert": "^2.1.2",
     "sweetalert2": "^11.1.4",

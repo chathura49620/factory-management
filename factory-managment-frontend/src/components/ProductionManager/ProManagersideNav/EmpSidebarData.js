@@ -72,8 +72,8 @@ export const EmpSidebarData = [
     icon: <IoIcons.IoMdHelpCircle />,
   },
   {
-    title: "Support",
-    path: "/support",
+    title: "Profile",
+    path: "/myprofile",
     icon: <IoIcons.IoMdHelpCircle />,
   },
 ];

@@ -202,12 +202,12 @@ class Dashboard extends Component {
                   <div className="charts__right__cards">
               
                       <div className="card2">
-                      <button >User Report</button>
+                      <button onClick={() => this.genarateUserReport()}>User Report</button>
                     </div>
                      
                      
                         <div className="card3">
-                        <button >Cost Report</button>
+                        <button onClick={() => this.genarateCostReport()}>Cost Report</button>
                         </div>
                        
                   

@@ -5,7 +5,7 @@ export class UserListTable  extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { cate: [], editModalShow: false } 
+    this.state = { cate: [], editModalShow: false }
   }   
    
   render(){  

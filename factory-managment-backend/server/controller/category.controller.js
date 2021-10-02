@@ -6,7 +6,7 @@ exports.create = (req,res)=>{
     if(!req.body){  
         res.status(400).send({ message : req.body});
         return;
-    }   
+    }
 
     // new category
        
@@ -27,7 +27,7 @@ exports.create = (req,res)=>{
             });
         });
 
-}   
+}
 
 //retrive and return all categories/retive a single category'
 exports.find = (req,res) =>{

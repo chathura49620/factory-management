@@ -107,14 +107,14 @@ class SalesReports extends Component {
 
         <div className="col">
         <h1 className="heading">Sales Reports</h1>
-        <h2 className="heading">Please Select Month and Genarate Reports</h2>
+        <h2 className="heading">Please Select Month and Generate Reports</h2>
         <div className="center">
           <img src={BillTypeImg} alt="billsPic" />
         </div>
 
         <Row>
             <Col sm={6}> 
-              <Card style={{ width: '36rem',height: '20rem', background: 'yellow', margin: '20px' }}>
+              <Card style={{ width: '36rem',height: '20rem', background: ' #d7bde2', margin: '20px' }}>
                 <Card.Body>
                   <Card.Text>
                   <h2 style={{textAlign:"center"}}>Credit <br /> Sale <br /> Report </h2>
@@ -140,7 +140,7 @@ class SalesReports extends Component {
                     <br /><br />
                     <Form.Group>
                         <Button  style={{ backgroundColor: "#7121AD", color: "white", marginLeft: 'center' }} variant="primary" type="submit"  className ="btn-lg">
-                          Genarate
+                        Generate
                         </Button>
                     </Form.Group>
                    </Form>
@@ -149,7 +149,7 @@ class SalesReports extends Component {
               </Card>
             </Col>
             <Col sm={6}> 
-              <Card style={{ width: '36rem',height: '20rem', background: 'yellow', margin: '20px' }}>
+              <Card style={{ width: '36rem',height: '20rem', background: ' #d7bde2', margin: '20px' }}>
                   <Card.Body>
                   <Card.Text>
                   <h2 style={{textAlign:"center"}} >Cash <br /> Sale <br /> Report </h2>
@@ -174,7 +174,7 @@ class SalesReports extends Component {
                     <br /><br />
                     <Form.Group>
                         <Button  style={{ backgroundColor: "#7121AD", color: "white" }} variant="primary" type="submit"  className ="btn-lg">
-                          Genarate
+                          Generate
                         </Button>
                     </Form.Group>
                    </Form>

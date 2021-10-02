@@ -37,7 +37,7 @@ class MyProfile extends Component {
     //get user details from database and set them to the state and tableprofile
     //use email of user session
     axios
-      .get("http://localhost:5000/users/" + this.state.userObjectId)
+      .get("http://localhost:5000/users/" + localStorage.getItem("user_email"))
       .then((result) => {
         const user = result.data;
 
@@ -115,11 +115,17 @@ class MyProfile extends Component {
     const currentUserId = this.state.user._id;
     this.setState({ openReasonDeletePopup: false });
 
-    // axios
-    //   .delete("http://localhost:5000/users/" + currentUserId)
-    //   .then((result) => console.log(result.data));
 
+      axios.get("http://localhost:5000/users/" + currentUserId).then((result) => {
+        localStorage.removeItem("user_full_name");
+        localStorage.removeItem("user_email");
+        localStorage.removeItem("is_login");
+        this.props.history.push('/')
+        window.location.reload();
+      });
+       
     //now log out
+
   };
 
   render() {
