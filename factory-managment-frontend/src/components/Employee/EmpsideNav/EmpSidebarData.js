@@ -13,7 +13,7 @@ export const EmpSidebarData = [
     iconOpened: <RiIcons.RiArrowUpSFill />,
   },
   {
-    title: 'Profile',
+    title: 'About Me',
     path: '/profile',
     icon: <AiIcons.AiOutlineUser />,
     iconClosed: <RiIcons.RiArrowDownSFill />,

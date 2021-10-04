@@ -28,7 +28,7 @@ export class EditPaymentsModal extends Component {
             },
             body: JSON.stringify({
                 id: event.target.id.value,
-                name: event.target.name.value,
+                name: event.target.namecus.value,
                 bankname: event.target.bankname.value,
                 accountnumber: event.target.accountnumber.value,
                 branch: event.target.branch.value
@@ -36,6 +36,8 @@ export class EditPaymentsModal extends Component {
         })
             .then(res => res.json())
             .then((result) => {
+
+                window.location.reload();
                 swal({
                     title: "Bank Details Updated Succesfully",
                     icon: "success",
@@ -84,7 +86,7 @@ export class EditPaymentsModal extends Component {
 
                                 <Form.Group controlId="name">
                                     <Form.Label>Full Name</Form.Label>  
-                                    <Form.Control  value= {this.state.name} type="text" name="name" required placeholder="Your Full Name" defaultValue={this.props.name} />
+                                    <Form.Control  value= {this.state.namecus} type="text" name="namecus" required placeholder="Your Full Name" defaultValue={this.props.name} />
                                 </Form.Group>
 
 

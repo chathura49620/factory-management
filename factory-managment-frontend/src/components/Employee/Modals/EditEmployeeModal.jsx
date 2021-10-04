@@ -35,6 +35,8 @@ export class EditEmployeeModal extends Component {
         })
             .then(res => res.json())
             .then((result) => {
+
+                window.location.reload();
                 swal({
                     title: "Employee Leave Updated Succesfully",
                     icon: "success",

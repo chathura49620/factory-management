@@ -5,6 +5,8 @@ import { PaymentsTable } from "../../components/Employee/Tables/PaymentsTable";
 import { ButtonToolbar } from 'react-bootstrap';
 import paymentspic from "../../pages/assets/paymentspic.jpg"
 import "./styles.css"
+import SearchBox from "../../components/FinanceTeamMember/Common/searchBox";
+
 
 class Payments extends Component {
   state = {
@@ -12,7 +14,8 @@ class Payments extends Component {
     addModalShow: false,
     editModelShow: false,
     empPayments:{}, 
-    id: ""
+    id: "",
+    searchQuery: ""
   };
 
   componentDidMount()  {
@@ -26,6 +29,28 @@ class Payments extends Component {
         this.setState({ Payments: Payments });
       })
       .catch((err) => console.log(err.message));
+  }
+
+
+  handleSearch = (query) => {
+    this.setState({
+      searchQuery: query,
+    });
+  };
+
+  filteredData() {
+    const { searchQuery, Payments } = this.state;
+
+    let filtered = [];
+
+    if (searchQuery) {
+      filtered = Payments.filter((r) =>
+        r.bankname.toLowerCase().startsWith(searchQuery.toLowerCase())
+      );
+    } else {
+      filtered = Payments;
+    }
+    return filtered;
   }
 
 setNewDetails = (payments) => {
@@ -46,6 +71,7 @@ handlePaymentsDelete = (payments) => {
 }
 
   render(){
+    let filtered = this.filteredData();
     let AddModelClose = () => this.setState({ addModalShow: false })
   return (
     <React.Fragment>
@@ -71,12 +97,16 @@ handlePaymentsDelete = (payments) => {
                         
                     />
         </ButtonToolbar>
-            <br></br><br></br>
+        <br></br>
+
+        <div className="col-md-5">
+                <SearchBox onChange={this.handleSearch} placeHolder="Search by Bank Name" />
+        </div>
 
         <div className="row">
           <div className="col-1"></div>
               <div className="col">
-            <PaymentsTable filteredItems={this.state.Payments}  />
+            <PaymentsTable filteredItems={filtered}  />
           </div>
         </div>
       </React.Fragment>

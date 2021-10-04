@@ -36,6 +36,8 @@ export class EditAssignmentModal extends Component {
         })
             .then(res => res.json())
             .then((result) => {
+
+                window.location.reload();
                 swal({
                     title: "Assignment Updated Succesfully",
                     icon: "success",
@@ -69,7 +71,7 @@ export class EditAssignmentModal extends Component {
                 >
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title-vcenter">
-                            Edit Category
+                            Edit Assignment
               </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>

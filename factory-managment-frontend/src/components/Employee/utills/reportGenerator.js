@@ -1,14 +1,7 @@
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 import { format } from "date-fns";
-/*
-[
 
-  {},
-  {},
-  {}
-]
-*/
 
 // define a generatePDF function that accepts a tickets argument
 const generatePDF = (tickets) => {
@@ -44,9 +37,9 @@ const generatePDF = (tickets) => {
   // we use a date string to generate our filename.
   const dateStr = date[0] + date[1] + date[2] + date[3] + date[4];
   // ticket title. and margin-top + margin-left
-  doc.text("Employee Leaves.", 14, 15);
+  doc.text("Employee Leaves as at 2021-01-01.", 14, 15);
   // we define the name of our PDF file.
-  doc.save(`report_${dateStr}.pdf`);
+  doc.save(`Leave_Report_${dateStr}.pdf`);
 };
 
 export default generatePDF;

@@ -8,6 +8,8 @@ import { computeStyles } from "@popperjs/core";
 import "./styles.css"
 import assignmentpic from "../../pages/assets/assignmentpic.jpg"
 import generatePDF from "../../components/Employee/utills/reportGeneratorAssignments";
+import SearchBox from "../../components/FinanceTeamMember/Common/searchBox";
+
 
 class Assignment extends Component {
   state = {
@@ -15,7 +17,8 @@ class Assignment extends Component {
     addModalShow: false,
     editModelShow: false,
     empass:{}, 
-    id: ""
+    id: "",
+    searchQuery: ""
   };
   
   componentDidMount()  {
@@ -30,6 +33,29 @@ class Assignment extends Component {
       })
       .catch((err) => console.log(err.message));
   }
+
+
+  handleSearch = (query) => {
+    this.setState({
+      searchQuery: query,
+    });
+  };
+
+  filteredData() {
+    const { searchQuery, Assignment } = this.state;
+
+    let filtered = [];
+
+    if (searchQuery) {
+      filtered = Assignment.filter((r) =>
+        r.supervisor.toLowerCase().startsWith(searchQuery.toLowerCase())
+      );
+    } else {
+      filtered = Assignment;
+    }
+    return filtered;
+  }
+
 
 setNewDetails = (assignment) => {  
   
@@ -52,6 +78,7 @@ handleAssignmentDelete = (assignment) => {
 }
 
   render(){
+    let filtered = this.filteredData();
     let AddModelClose = () => this.setState({ addModalShow: false })
   return (
     <React.Fragment>
@@ -90,10 +117,15 @@ handleAssignmentDelete = (assignment) => {
 
         <br></br>
 
+        <div className="col-md-5">
+                <SearchBox onChange={this.handleSearch} placeHolder="Search by Supervisor..." />
+            </div>
+
+
         <div className="row">
           <div className="col-1"></div>
               <div className="col">
-            <AssignmentTable filteredItems={this.state.Assignment}  />
+            <AssignmentTable filteredItems={filtered}  />
           </div>
         </div>
       </React.Fragment>

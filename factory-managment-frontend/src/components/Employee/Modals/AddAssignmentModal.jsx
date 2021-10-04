@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Modal, Button, Row, Col, Form, FormGroup } from 'react-bootstrap';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
-import { Redirect } from 'react-router-dom';
+
 
 
 export class AddAssignmentModal extends Component {
@@ -10,7 +10,7 @@ export class AddAssignmentModal extends Component {
 
         console.log("Run");
         super(props);
-        this.state = { snackbaropen: false, snackbarmsg: '' };
+        this.state = { snackbaropen: false, snackbarmsg: '', AssignmentError: ''};
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -21,6 +21,8 @@ export class AddAssignmentModal extends Component {
     handleSubmit(event) {
 
         event.preventDefault();
+        const isValid = this.validate(event);
+        if(isValid){
         alert(event.target.name.value);
         fetch('http://localhost:5000/api/assignment-details/', {
             method: 'POST',
@@ -40,13 +42,50 @@ export class AddAssignmentModal extends Component {
             .then(res => res.json())
             .then((result) => {
                 alert("Success!");
+
+                window.location.reload();
+                this.setState({
+                    AssignmentError:'',
+                })
+
+
                 console.log("result" , result)
             }, (error) => {
                 this.setState({ snackbaropen: true, snackbarmsg: 'Failed' })
             }
 
             )
+        }
     }
+
+
+    validate(event){
+        let AssignmentError = "";
+
+        if(!event.target.documentid.value){
+            AssignmentError = "This Cannot Be Blank."
+        }
+
+        if(!event.target.supervisor.value){
+            AssignmentError = "This Cannot Be Blank."
+        }
+
+        if(!event.target.description.value){
+            AssignmentError = "This Cannot Be Blank."
+        }
+
+        if(!event.target.status.value){
+            AssignmentError = "This Cannot Be Blank."
+        }
+
+        if(AssignmentError){
+            this.setState({AssignmentError:AssignmentError})
+            return false;
+        }
+
+        return true;
+    }
+
 
     render() {
         return (
@@ -70,7 +109,7 @@ export class AddAssignmentModal extends Component {
                 >
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title-vcenter">
-                            Add a Leave Request 
+                            Add an Assignment. 
               </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
@@ -80,19 +119,29 @@ export class AddAssignmentModal extends Component {
                                 <Form onSubmit={this.handleSubmit}>
                                     <Form.Group controlId="name">
                                         <Form.Label>Document ID</Form.Label>
-                                        <Form.Control type="text" name="documentid" required placeholder="Enter a Document Number" />
+                                        <Form.Control type="text" name="documentid" placeholder="Enter a Document Number for reference." />
+                                        <div style={{background:"#f8d7da"}}>{this.state.AssignmentError}</div>
                                     </Form.Group>
+
+
                                     <Form.Group controlId="name">
                                         <Form.Label>Supervisor name</Form.Label>
-                                        <Form.Control type="text" name="supervisor" required placeholder="supervisor" />
+                                        <Form.Control type="text" name="supervisor" placeholder="Supervisor Name" />
+                                        <div style={{background:"#f8d7da"}}>{this.state.AssignmentError}</div>
                                     </Form.Group>
+
+
                                     <Form.Group controlId="name">
                                         <Form.Label>Description</Form.Label>
-                                        <Form.Control type="text" name="description" required placeholder="Description" />
+                                        <Form.Control type="text" name="description" placeholder="Assignment Description..." />
+                                        <div style={{background:"#f8d7da"}}>{this.state.AssignmentError}</div>
                                     </Form.Group>
+
+
                                     <Form.Group controlId="name">
                                         <Form.Label>Status</Form.Label>
-                                        <Form.Control type="text" name="status" required placeholder="status" />
+                                        <Form.Control type="text" name="status" placeholder="Eg. Completed or Pending... " />
+                                        <div style={{background:"#f8d7da"}}>{this.state.AssignmentError}</div>
                                     </Form.Group>
                                     
                                     <br></br>

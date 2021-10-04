@@ -6,6 +6,7 @@ import { ButtonToolbar } from 'react-bootstrap';
 import leavepic from "../../pages/assets/leavepic.jpg"
 import "./styles.css"
 import generatePDF from "../../components/Employee/utills/reportGenerator";
+import SearchBox from "../../components/FinanceTeamMember/Common/searchBox";
 
 class Leave extends Component {
   state = {
@@ -13,7 +14,8 @@ class Leave extends Component {
     addModalShow: false,
     editModelShow: false,
     empLeave:{}, 
-    id: ""
+    id: "",
+    searchQuery: ""
   };
 
   componentDidMount()  {
@@ -28,6 +30,28 @@ class Leave extends Component {
       })
       .catch((err) => console.log(err.message));
   }
+
+  handleSearch = (query) => {
+    this.setState({
+      searchQuery: query,
+    });
+  };
+
+  filteredData() {
+    const { searchQuery, Leave } = this.state;
+
+    let filtered = [];
+
+    if (searchQuery) {
+      filtered = Leave.filter((r) =>
+        r.refno.toLowerCase().startsWith(searchQuery.toLowerCase())
+      );
+    } else {
+      filtered = Leave;
+    }
+    return filtered;
+  }
+
 
 setNewDetails = (leave) => {
   this.setState({addModalShow: true, empLeave: leave});
@@ -49,6 +73,7 @@ handleLeaveDelete = (leave) => {
 
 
   render(){
+    let filtered = this.filteredData();
     let AddModelClose = () => this.setState({ addModalShow: false })
     const {Leave} = this.state;
   return (
@@ -86,20 +111,16 @@ handleLeaveDelete = (leave) => {
                         Generate Monthly Report
               </button>
         </ButtonToolbar>
-            <br></br><br></br>
+            <br></br>
+
+            <div className="col-md-5">
+                <SearchBox onChange={this.handleSearch} placeHolder="Search by Reference Number..." />
+            </div>
 
         <div className="row">
           <div className="col-1"></div>
               <div className="col">
-
-
-
-            
-            
-
-
-
-            <LeaveTable filteredItems={this.state.Leave}  />
+            <LeaveTable filteredItems={filtered}  />
           </div>
         </div>
       </React.Fragment>

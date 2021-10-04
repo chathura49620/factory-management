@@ -40,7 +40,7 @@ export class AddEmployeeModal extends Component {
                 .then((result) => {
                     alert("Success!");
                    
-                        // window.location.reload();
+                        window.location.reload();
                         this.setState({
                             LeaveError:'',
                         })
@@ -57,6 +57,14 @@ export class AddEmployeeModal extends Component {
         let LeaveError = "";
 
         if(!event.target.refno.value){
+            LeaveError = "This Cannot Be Blank."
+        }
+
+        if(!event.target.reasonforleave.value){
+            LeaveError = "This Cannot Be Blank."
+        }
+
+        if(!event.target.date.value){
             LeaveError = "This Cannot Be Blank."
         }
 
@@ -110,13 +118,14 @@ export class AddEmployeeModal extends Component {
                                     <br></br>
                                     <Form.Group controlId="name">
                                         <Form.Label>Reason for leave</Form.Label>
-                                        
                                         <Form.Control type="text" name="reasonforleave"  placeholder="Make your reason descriptive.." />
+                                        <div style={{background:"#f8d7da"}}>{this.state.LeaveError}</div>
                                     </Form.Group>
                                     <br></br>
                                     <Form.Group controlId="name">
                                         <Form.Label>Day Range</Form.Label>
                                         <Form.Control type="text" name="date"  placeholder="Enter a date or number of days..." />
+                                        <div style={{background:"#f8d7da"}}>{this.state.LeaveError}</div>
                                     </Form.Group>
                                     
                                     <br></br>

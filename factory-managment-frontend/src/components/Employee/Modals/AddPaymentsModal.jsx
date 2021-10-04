@@ -10,7 +10,7 @@ export class AddPaymentsModal extends Component {
 
         console.log("Run");
         super(props);
-        this.state = { snackbaropen: false, snackbarmsg: '' };
+        this.state = { snackbaropen: false, snackbarmsg: '', PaymentsError:''};
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -23,6 +23,8 @@ export class AddPaymentsModal extends Component {
 
         event.preventDefault();
         // alert(event.target.name.value);
+        const isValid = this.validate(event);
+        if(isValid){
         fetch('http://localhost:5000/api/payment-details/', {
             method: 'POST',
             headers: {
@@ -41,20 +43,39 @@ export class AddPaymentsModal extends Component {
             .then(res => res.json())
             .then((result) => {
                 alert("Success!");
+
+                window.location.reload();
+                this.setState({
+                    PaymentsError:'',
+                })
+
                 console.log("result" , result)
             }, (error) => {
                 this.setState({ snackbaropen: true, snackbarmsg: 'Failed' })
             }
 
             )
+        }
     }
 
 
 
-  validate(){
+    validate(event){
         let PaymentsError = "";
 
-        if(!this.state.PaymentsError){
+        if(!event.target.namecus.value){
+            PaymentsError = "This Cannot Be Blank."
+        }
+
+        if(!event.target.bankname.value){
+            PaymentsError = "This Cannot Be Blank."
+        }
+
+        if(!event.target.accountnumber.value){
+            PaymentsError = "This Cannot Be Blank."
+        }
+
+        if(!event.target.branch.value){
             PaymentsError = "This Cannot Be Blank."
         }
 
@@ -108,7 +129,7 @@ export class AddPaymentsModal extends Component {
                                         <Form.Control 
                                             type="text" 
                                             name="namecus" 
-                                            required 
+                                             
                                             placeholder="Your full name.." 
                                             className="form-field"/>
 
@@ -122,8 +143,10 @@ export class AddPaymentsModal extends Component {
                                         <Form.Control 
                                             type="text" 
                                             name="bankname" 
-                                            required 
+                                             
                                             placeholder="Eg. Commercial Bank.." />
+
+                                        <div style={{background:"#f8d7da"}}>{this.state.PaymentsError}</div>
                                     </Form.Group>
 
                                     <br></br>
@@ -133,8 +156,9 @@ export class AddPaymentsModal extends Component {
                                         <Form.Control 
                                             type="text" 
                                             name="accountnumber" 
-                                            required 
+                                             
                                             placeholder="Account Number" />
+                                            <div style={{background:"#f8d7da"}}>{this.state.PaymentsError}</div>
                                     </Form.Group>
 
                                     <br></br>
@@ -144,8 +168,9 @@ export class AddPaymentsModal extends Component {
                                         <Form.Control 
                                             type="text" 
                                             name="branch" 
-                                            required 
-                                            placeholder="Account Number" />
+                                             
+                                            placeholder="Account Branch" />
+                                            <div style={{background:"#f8d7da"}}>{this.state.PaymentsError}</div>
                                     </Form.Group>
                                     
                                     <br></br>
